@@ -6,6 +6,10 @@
   --shade-dark-color: #292747;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 body {
   background-color: var(--main-bg-color);
   width: 100%;
@@ -15,11 +19,38 @@ body {
  #banner {
   background-color: var(--dark-accent-color);
   color: var(--shade-light-color);
-  font-size: 6rem;
+  font-size: 9rem;
   font-family: 'Silkscreen', cursive;
+  display: flex;
 }
 
 #banner > p {
-  padding-top: 0.7rem;
-  padding-bottom: 0.7rem;
+  text-align: center;
+  justify-content: center;
+  vertical-align: middle;
+  flex: 1 0 30%;
+}
+
+#sidebar {
+  background-color: var(--light-accent-color);
+  color: var(--shade-dark-color);
+  font-family: 'DotGothic16', sans-serif;
+  width: 22rem;
+  height: 100%;
+  position: absolute;
+  font-size: 2.7rem;
+  padding-top: 1rem;
+  padding-left: 2rem;
+}
+
+#sidebar > a {
+  display: grid;
+  grid-template-rows: repeat(auto-fill, minmax(5rem, 1fr));
+  gap: 1rem;
+  transition: all 0.22s ease-in-out;
+}
+
+#sidebar > a:hover {
+  color: hotpink;
+  font-size: 3.5rem;
 }
