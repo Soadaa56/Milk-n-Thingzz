@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a personal project to build up my understanding of Ruby on Rails.
 
-Things you may want to cover:
+I will be making a website for my gf to show off arts and craft and allow this site to function as a 'virtual business card'.
 
-* Ruby version
+# Ideas
 
-* System dependencies
+1. Allow users to sign up for an account.
 
-* Configuration
+2. Users can reset their password through an email link.
 
-* Database creation
+3. Users can comment on posts of crafts.
 
-* Database initialization
+4. Users can see post history of their comments and other user comment histories.
 
-* How to run the test suite
+# Credits
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Use of Milk carton for icon [Freepik]("https://www.flaticon.com/free-icon/milk-box_3500274?term=milk+carton&page=1&position=5&origin=search&related_id=3500274")
