@@ -15,7 +15,8 @@ I will be making a website for my gf to show off arts and craft and allow this s
 4. Users can see post history of their comments and other user comment histories.
 
 # Credits
-I'm unsure if any free images/icons will be in the final project, but of course will credit website and creator until then.
+
+I'm unsure if any free images/icons will be in the final project, but I will of course credit the website and creator until then.
 
 
 Use of Milk carton for favicon [Freepik]("https://www.flaticon.com/free-icon/milk-box_3500274?term=milk+carton&page=1&position=5&origin=search&related_id=3500274")
