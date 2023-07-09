@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  get 'crafts/index'
-  get 'crafts/show'
-  # get 'home/index'
   root 'home#index'
+  
   get 'home/about'
   get 'home/print'
   get 'home/crotchet'
@@ -10,4 +8,7 @@ Rails.application.routes.draw do
   get 'home/social'
   get 'home/contact'
   get 'home/credit'
+  
+  get '/crafts', to: 'crafts#index'
+  get 'crafts/:id', to: "crafts#show"
 end
