@@ -9,6 +9,5 @@ Rails.application.routes.draw do
   get 'home/contact'
   get 'home/credit'
   
-  get '/crafts', to: 'crafts#index'
-  get 'crafts/:id', to: "crafts#show"
+  resources :crafts, only: [:index, :show]
 end
