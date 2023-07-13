@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_09_202309) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_13_194542) do
+  create_table "craft_images", force: :cascade do |t|
+    t.integer "craft_id", null: false
+    t.string "image_path"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["craft_id"], name: "index_craft_images_on_craft_id"
+  end
+
   create_table "crafts", force: :cascade do |t|
     t.string "name"
     t.string "category"
@@ -18,4 +26,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_09_202309) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "craft_images", "crafts"
 end
