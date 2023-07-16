@@ -32,3 +32,5 @@
 # CraftImage.create(craft_id: 9, image_path: "crotchet/4_1")
 # CraftImage.create(craft_id: 10, image_path: "embroidery/1_1")
 # CraftImage.create(craft_id: 11, image_path: "embroidery/2_1")
+
+# CraftImage.create(craft_id: 9, image_path: "crotchet/1_2")
