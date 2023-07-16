@@ -12,8 +12,9 @@ html {
 
 body {
   background-color: var(--main-bg-color);
-  width: 100%;
+  /* overflow-x: hidden !important; */
   height: 100vh;
+  width: 100vw;
  }
 
  #banner {
@@ -31,46 +32,55 @@ body {
   flex: 1 0 30%;
 }
 
+.grid-container-nav-main {
+  display: grid;
+  grid-template-columns: 20rem auto;
+}
+
+/* Nav height of 100vh causing slight horizontal scrolling. nav 100% doesn't, but green sidebar doesn't extend very far.
+This may be due to bootstrap and negative margins of navbar. Problem persisted before making sidebar and main-content grid items, thought it could fix issue.
+Setting navbar-nav margin/pad to 0 does nothing, could be a different selector.
+I can hide overflow-x but that will cause super slight shifting of what is 'center' for the flex items (easy fix, not perfect).
+Perhaps figure out if this problem occurs due to the sizing of the body or html elements (easy-medium, might not fix).
+Figure out how to extend sidebar color without altering height (unknown). */
 #sidebar {
   background-color: var(--light-accent-color);
   color: var(--shade-dark-color);
   font-family: 'DotGothic16', sans-serif;
   width: 20rem;
-  height: 100%;
-  position: absolute;
-  font-size: 2.7rem;
+  /* I should use a calc below so multiple pages can adjust size to main-content height */
+  height: 120vh;
+  font-size: 2.3rem;
   padding-top: 1rem;
   padding-left: 2rem;
 }
 
+/* Need to change. I'm not sure how I like menu links hover when clearly far from the text.
+ Making the box smaller causes 3-D print to overflow to next line.
+ Maybe I can wrap each nav link item inside another div */
 #sidebar > a {
   display: grid;
   grid-template-rows: repeat(auto-fill, minmax(5rem, 1fr));
-  gap: 1rem;
+  margin-top: 1.5rem;
   transition: all 0.22s ease-in-out;
+  /* width: 70%; */
 }
 
 #sidebar > a:hover {
   color: hotpink;
-  font-size: 3.5rem;
+  font-size: 3rem;
 }
 
 #main-content {
-  margin-left: 22rem;
-  display: grid;
-  grid-template-columns: repeat();
+  /* display: grid; */
 }
 
 #main-content h1 {
   text-align: center;
-}
-
-.flex-container-3 {
-  display: flex;
-  max-width: 100%;
-  max-height: 100%;
+  /* margin-left: 45%; */
 }
 
 .flex-item {
-  flex-basis: 100%;
+  width: 30rem;
+  height: auto;
 }

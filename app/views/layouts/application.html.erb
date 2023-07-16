@@ -18,11 +18,14 @@
   <body>
     <%= render 'home/header' %>
 
-    <%= render 'home/nav' %>
+    <div class="grid-container-nav-main">
+      
+      <%= render 'home/nav' %>
+      
+      <div id="main-content" class="grid-item-main-content">
+        <%= yield %>
+      </div>
 
-    </br>
-    <div id="main-content" class="container-fluid">
-      <%= yield %>
     </div>
 
 
