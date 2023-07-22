@@ -1,0 +1,8 @@
+<div class="container">
+  <% @crafts.each do |craft| %>
+    <% dprint = CraftImage.find(craft.craft_images.ids) %>
+      <% dprint.each do |item| %>
+        <%= image_tag(item.image_path) %>
+      <% end %>
+  <% end %>
+</div>
