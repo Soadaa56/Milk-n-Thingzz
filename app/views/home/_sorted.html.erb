@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container d-flex justify-content-evenly">
   <% @crafts.each do |craft| %>
     <% dprint = CraftImage.find(craft.craft_images.ids) %>
       <% dprint.each do |item| %>
-        <%= image_tag(item.image_path) %>
+        <%= image_tag(item.image_path, class: "flex-item") %>
       <% end %>
   <% end %>
 </div>
