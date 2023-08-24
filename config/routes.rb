@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'home#index'
   
   get 'home/about'
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   get 'home/social'
   get 'home/contact'
   get 'home/credit'
+  match '/' => 'errors#not_found', via: :all
   
   resources :crafts, only: [:index, :show]
 end

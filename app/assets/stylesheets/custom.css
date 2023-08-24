@@ -84,3 +84,9 @@ Figure out how to extend sidebar color without altering height (unknown). */
   width: 30rem;
   height: auto;
 }
+
+.alert {
+  max-width: 200px;
+  max-height: 100px;
+  text-align: center;
+}
