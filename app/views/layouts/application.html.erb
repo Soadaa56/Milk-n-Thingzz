@@ -12,6 +12,7 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "custom", "data-turbo-track": "reload" %>
+    <% javascript_importmap_tags %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
@@ -21,6 +22,7 @@
     <div class="grid-container-nav-main">
       
       <%= render 'home/nav' %>
+      
       
       <div id="main-content" class="grid-item-main-content">
         <% if alert %>
