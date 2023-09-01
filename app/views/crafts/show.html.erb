@@ -1,10 +1,10 @@
 
-<h1>Name: <%= @craft.name %></h1>
+<h1><%= @craft.name %></h1>
 </br>
-<h4>Type: <%= @craft.category %></h4>
+<h4 class='center'><%= @craft.category %></h4>
 
-<%= image_tag(@craftimage.image_path) %>
+<%= image_tag(@craftimage.image_path, class: 'center-img') %>
 
 </br>
 
-<%= link_to 'Back', crafts_path %>
+<%= link_to 'Back', :back, class:'btn btn-secondary indent' %>
