@@ -1,6 +1,6 @@
 <div id="banner">
     <P>Milk 'n' thingzz</p>
-    <% if Git_branch == 'development' %>
+    <% if Rails.env == 'development' %>
     <%= Git_branch %>
     <% end %>
 </div>
