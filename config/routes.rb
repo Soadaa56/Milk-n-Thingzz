@@ -11,5 +11,9 @@ Rails.application.routes.draw do
   get 'home/credit'
   match '/' => 'errors#not_found', via: :all
   
+  resources :crafts do
+    resources :comments
+  end
+  
   resources :crafts, only: [:index, :show]
 end

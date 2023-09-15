@@ -5,4 +5,5 @@
 // require turbolinks
 //= require_tree .
 import "bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";import "trix"
+import "@rails/actiontext"

@@ -1,0 +1,230 @@
+= ..ffiinndd
+
+(from ruby core)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  EEnnccooddiinngg
+------------------------------------------------------------------------
+  Encoding.find(string) -> enc
+
+------------------------------------------------------------------------
+
+Search the encoding with specified _n_a_m_e. _n_a_m_e should be
+a string.
+
+  Encoding.find("US-ASCII")  #=> #<Encoding:US-ASCII>
+
+Names which this method accept are encoding names and aliases including
+following special aliases
+
+"external":
+  default external encoding
+
+"internal":
+  default internal encoding
+
+"locale":
+  locale encoding
+
+"filesystem":
+  filesystem encoding
+
+
+An ArgumentError is raised when no encoding with _n_a_m_e. Only
+Encoding.find("internal") however returns nil when no encoding named
+"internal", in other words, when Ruby has no default internal encoding.
+
+
+(from ruby core)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  EEnnuummeerraabbllee
+------------------------------------------------------------------------
+  find(if_none_proc = nil) {|element| ... } -> object or nil
+  find(if_none_proc = nil) -> enumerator
+
+------------------------------------------------------------------------
+
+Returns the first element for which the block returns a truthy value.
+
+With a block given, calls the block with successive elements of the
+collection; returns the first element for which the block returns a
+truthy value:
+
+  (0..9).find {|element| element > 2}                # => 3
+
+If no such element is found, calls if_none_proc and returns its return
+value.
+
+  (0..9).find(proc {false}) {|element| element > 12} # => false
+  {foo: 0, bar: 1, baz: 2}.find {|key, value| key.start_with?('b') }            # => [:bar, 1]
+  {foo: 0, bar: 1, baz: 2}.find(proc {[]}) {|key, value| key.start_with?('c') } # => []
+
+With no block given, returns an Enumerator.
+
+
+(from ruby core)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  FFiinndd
+------------------------------------------------------------------------
+  find(*paths, ignore_error: true) { |path| ... }
+
+------------------------------------------------------------------------
+
+Calls the associated block with the name of every file and directory
+listed as arguments, then recursively on their subdirectories, and so
+on.
+
+Returns an enumerator if no block is given.
+
+See the Find module documentation for an example.
+
+
+(from ruby core)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  FFiinndd
+------------------------------------------------------------------------
+  find(*paths, ignore_error: true) { |path| ... }
+
+------------------------------------------------------------------------
+
+Calls the associated block with the name of every file and directory
+listed as arguments, then recursively on their subdirectories, and so
+on.
+
+Returns an enumerator if no block is given.
+
+See the Find module documentation for an example.
+
+
+(from gem globalid-1.1.0)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  GGlloobbaallIIDD
+------------------------------------------------------------------------
+  find(gid, options = {})
+
+------------------------------------------------------------------------
+
+
+(from gem globalid-1.1.0)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  GGlloobbaallIIDD
+------------------------------------------------------------------------
+  find(options = {})
+
+------------------------------------------------------------------------
+
+
+(from ruby core)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  LLooccaallee
+------------------------------------------------------------------------
+  find(file , paths = $:)
+
+------------------------------------------------------------------------
+
+
+(from gem mail-2.8.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  MMaaiill
+------------------------------------------------------------------------
+  find(*args, &block)
+
+------------------------------------------------------------------------
+
+Find emails from the default retriever See Mail::Retriever for a
+complete documentation.
+
+
+(from gem mail-2.8.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  IIMMAAPP
+------------------------------------------------------------------------
+  find(options=nil) { |new_message, imap, uid, attr| ... }
+
+------------------------------------------------------------------------
+
+Find emails in a IMAP mailbox. Without any options, the 10 last received
+emails are returned.
+
+Possible options:
+  mailbox: mailbox to search the email(s) in. The default is 'INBOX'.
+  what:    last or first emails. The default is :first.
+  order:   order of emails returned. Possible values are :asc or :desc. Default value is :asc.
+  count:   number of emails to retrieve. The default value is 10. A value of 1 returns an
+           instance of Message, not an array of Message instances.
+  read_only: will ensure that no writes are made to the inbox during the session.  Specifically, if this is
+             set to true, the code will use the EXAMINE command to retrieve the mail.  If set to false, which
+             is the default, a SELECT command will be used to retrieve the mail
+             This is helpful when you don't want your messages to be set to read automatically. Default is false.
+  delete_after_find: flag for whether to delete each retreived email after find. Default
+          is false. Use #find_and_delete if you would like this to default to true.
+  keys:   are passed as criteria to the SEARCH command.  They can either be a string holding the entire search string, 
+          or a single-dimension array of search keywords and arguments.  Refer to  [IMAP] section 6.4.4 for a full list
+          The default is 'ALL'
+  search_charset: charset to pass to IMAP server search. Omitted by default. Example: 'UTF-8' or 'ASCII'.
+
+
+(from gem mail-2.8.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  PPOOPP33
+------------------------------------------------------------------------
+  find(options = nil) { |new_message| ... }
+
+------------------------------------------------------------------------
+
+Find emails in a POP3 mailbox. Without any options, the 5 last received
+emails are returned.
+
+Possible options:
+  what:  last or first emails. The default is :first.
+  order: order of emails returned. Possible values are :asc or :desc. Default value is :asc.
+  count: number of emails to retrieve. The default value is 10. A value of 1 returns an
+         instance of Message, not an array of Message instances.
+  delete_after_find: flag for whether to delete each retreived email after find. Default
+          is false. Use #find_and_delete if you would like this to default to true.
+
+
+(from gem mail-2.8.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  TTeessttRReettrriieevveerr
+------------------------------------------------------------------------
+  find(options = nil) { |email| ... }
+
+------------------------------------------------------------------------
+
+
+(from ruby core)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  PPaatthhnnaammee
+------------------------------------------------------------------------
+  find(ignore_error: true) { |pathname| ... }
+
+------------------------------------------------------------------------
+
+Iterates over the directory tree in a depth first manner, yielding a
+Pathname for each file under "this" directory.
+
+Returns an Enumerator if no block is given.
+
+Since it is implemented by the standard library module Find, Find.prune
+can be used to control the traversal.
+
+If self is ., yielded pathnames begin with a filename in the current
+directory, not ./.
+
+See Find.find
+
+
+(from ruby core)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  RReessttrriicctteedd
+------------------------------------------------------------------------
+  find(klassname)
+
+------------------------------------------------------------------------
+
+
+(from ruby core)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  TTuupplleeBBaagg
+------------------------------------------------------------------------
+  find(template)
+
+------------------------------------------------------------------------
+
+Finds a live tuple that matches template.
+
+
+(from ruby core)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  TTuupplleeBBiinn
+------------------------------------------------------------------------
+  find() { |x| ... }
+
+------------------------------------------------------------------------
+
+

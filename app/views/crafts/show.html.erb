@@ -7,4 +7,11 @@
 
 </br>
 
+<div class="container">
+  <%= render 'comments/form', craft: @craft %>
+  <% @comments.each do |comment| %>
+    <%= render 'comments/comment', craft: @craft, comment: comment%>
+  <% end %>
+</div>
+
 <%= link_to 'Back', :back, class:'btn btn-custom indent' %>

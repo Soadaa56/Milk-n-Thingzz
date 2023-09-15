@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-# Initial Craft table seed. Saved incase of data lose.
+# Initial Craft table seed. Saved incase of data lost.
 
 # Craft.create(name: 'Flower Coffin', category: '3D-Print')
 # Craft.create(name: 'Skull Pot', category: '3D-Print')
