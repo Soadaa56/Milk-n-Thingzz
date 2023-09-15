@@ -25,11 +25,13 @@ body {
   display: flex;
 }
 
-#banner > p {
+#banner > p, #banner > a {
   text-align: center;
   justify-content: center;
   vertical-align: middle;
   flex: 1 0 30%;
+  text-decoration: inherit;
+  color: var(--shade-light-color);
 }
 
 .grid-container-nav-main {
