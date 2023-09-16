@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
   root 'home#index'
+
+  get 'users/profile'
+  devise_for :users
+  get 'u/:id', to: 'users#profile', as: 'user'
   
   get 'home/about'
   get 'home/print'
@@ -11,9 +14,12 @@ Rails.application.routes.draw do
   get 'home/credit'
   match '/' => 'errors#not_found', via: :all
   
-  resources :crafts do
+  # resources :crafts do
+  #   resources :comments
+  # end
+  
+  resources :crafts, only: [:index, :show] do
     resources :comments
   end
   
-  resources :crafts, only: [:index, :show]
 end

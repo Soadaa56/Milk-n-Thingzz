@@ -8,7 +8,7 @@
 </br>
 
 <div class="container">
-  <%= render 'comments/form', craft: @craft %>
+  <%= render 'comments/form', craft: @craft, comment: @craft.comments.build %>
   <% @comments.each do |comment| %>
     <%= render 'comments/comment', craft: @craft, comment: comment%>
   <% end %>

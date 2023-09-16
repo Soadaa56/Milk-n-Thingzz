@@ -21,8 +21,17 @@ class CommentsController < ApplicationController
     redirect_to craft_path(@craft)
   end
 
-  def edit
+  def update
+    @comment = @craft.comments.find(params[:id])
     
+    respond_to do |format|
+      if @comment.update(comment_params)
+        format.html { redirect_to craft_url(@craft), notice: "Comment has been updated." }
+      else
+        format.html { redirect_to craft_url(@craft), alter: "Comment could not be updated!" }
+      end
+    end
+
   end
 
   private
