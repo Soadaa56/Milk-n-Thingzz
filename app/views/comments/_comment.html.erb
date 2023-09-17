@@ -10,7 +10,7 @@
     <div class="btn-group float-end">
       <%= link_to "Edit", nil, remote:true, class:"btn btn-warning",
         data: {
-          controller: "Comments"
+          controller: "comment"
         }%>
       <%= button_to "Delete", [craft, comment], class:"btn btn-danger", method: :delete %>
     </div>

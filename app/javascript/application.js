@@ -2,8 +2,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap.min
-// require turbolinks
-//= require_tree .
+//= require turbolinks
+//= require_tree
+//= require controllers
 import "bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";import "trix"
-import "@rails/actiontext"
+import "bootstrap/dist/css/bootstrap.min.css";
+import "trix";
+import "@rails/actiontext";
+import "controllers";
