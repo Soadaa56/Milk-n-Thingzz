@@ -1,7 +1,7 @@
 </br>
 <%= form_with(model: [craft, comment]) do |f| %>
   <div class="form-control">
-    <%= f.rich_text_area :body %>
+    <%= f.rich_text_area :body, placeholder: "Add a comment", class: "form-control", id: f.object.object_id %>
     <%= f.submit "Reply", class: "btn btn-primary mt-1" %>
   </div>
 <% end %>

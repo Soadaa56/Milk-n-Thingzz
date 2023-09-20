@@ -6,10 +6,14 @@
 //= require_tree .
 //= require controllers
 //= require trix
+//= require @rails/actiontext
+//= require activestorage
+//= require actiontext
 
-import "@popperjs/core";
+// import "@popperjs/core";
+import "@hotwired/turbo-rails";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "trix";
 import "@rails/actiontext";
-import "./controllers";
+import "./controllers"

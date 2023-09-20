@@ -6,6 +6,5 @@
 //= link controllers/application.js
 
 
-// link_tree ../../javascript .js
-// link controllers/comment_controller.js
-// link controllers/index.js
+//= link controllers/comment_controller.js
+//= link controllers/index.js
