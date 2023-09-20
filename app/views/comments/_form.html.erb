@@ -1,6 +1,6 @@
 </br>
 <%= form_with(model: [craft, comment]) do |f| %>
-  <div class="form-control mx-1">
+  <div class="form-control">
     <%= f.rich_text_area :body %>
     <%= f.submit "Reply", class: "btn btn-primary mt-1" %>
   </div>
