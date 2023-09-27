@@ -8,13 +8,17 @@
   <% end %>
   <% if current_user == comment.user %>
     <div class="btn-group float-end">
-      <%= link_to "Edit", nil, remote:true, class:"btn btn-warning",
+      <%= link_to "Edit", nil, remote:true, class:"btn btn-warning", id:"edit-button-#{comment.id}",
         data: {
-          controller: "comment"
+          controller: "comment",
+          action: "comment#toggleForm",
+          comment_form_param: "edit-form-#{comment.id}",
+          comment_body_param: "comment-body-#{comment.id}",
+          comment_button_param: "edit-button-#{comment.id}"
         }%>
       <%= button_to "Delete", [craft, comment], class:"btn btn-danger", method: :delete %>
     </div>
-    <div id="edit-form-<% comment.id %>" class="d-none">
+    <div id="edit-form-<%= comment.id %>" class="d-none">
       <%= render 'comments/form', craft: @craft, comment: comment %>
     </div>
   <% end %>
