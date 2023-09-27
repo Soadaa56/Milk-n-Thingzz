@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_post
+  before_action :set_craft
 
   def create
     @comment = @craft.comments.create(comment_params)
@@ -36,7 +36,7 @@ class CommentsController < ApplicationController
 
   private
 
-  def set_post
+  def set_craft
     @craft = Craft.find(params[:craft_id])
   end
 

@@ -1,0 +1,7 @@
+<div class="center profile-title"><%= current_user.username %></div>
+
+<%= link_to 'Edit Profile', edit_user_registration_path, class:"fs-3 nav-link center" %>
+
+<% @userComment.each do |comment| %>
+  <%= render 'profile/comment', user: @user, comment: comment, craft:@craft %>
+<% end %>
