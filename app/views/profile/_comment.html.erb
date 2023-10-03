@@ -1,16 +1,18 @@
-<div class="comment-<%= comment.id %> container mx-1"
-    style = "border: 1px solid black; padding: 1em; margin: 1em;"  >
-  <%= link_to Craft.find(comment.craft_id).name, craft_path(comment.craft_id), class:"nav-link underline" %>
-  </br>
-  <%= comment.user.username %> <br/>
-  <% if (comment.updated_at - comment.created_at) > 1 %>
-    <span>Edited <%= time_ago_in_words(comment.updated_at) %> ago</span>
-  <% else %>
-    <span>Posted <%= time_ago_in_words(comment.created_at) %> ago</span>
-  <% end %>
-  
-  <div id="comment-body-<%= comment.id %>">
+<div class="container">
+  <div class="comment-<%= comment.id %> container mx-1"
+      style = "border: 1px solid black; padding: 1em; margin: 1em;"  >
+    <%= link_to Craft.find(comment.craft_id).name, craft_path(comment.craft_id), class:"nav-link underline" %>
     </br>
-    <%= comment.body %>
+    <%= comment.user.username %> <br/>
+    <% if (comment.updated_at - comment.created_at) > 1 %>
+      <span>Edited <%= time_ago_in_words(comment.updated_at) %> ago</span>
+    <% else %>
+      <span>Posted <%= time_ago_in_words(comment.created_at) %> ago</span>
+    <% end %>
+  
+    <div id="comment-body-<%= comment.id %>">
+      </br>
+      <%= comment.body %>
+    </div>
   </div>
 </div>

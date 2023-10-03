@@ -1,13 +1,19 @@
 class ProfileController < ApplicationController
+  # before_action :set_user
 
   def index
     @userComment = current_user.comments
     @craft = Craft.all
   end
 
+  def show
+    set_user
+  end
+
   private 
 
-  def find_comment
-    puts "hello"
+  def set_user
+    @user = User.find(params[:id])
   end
+
 end

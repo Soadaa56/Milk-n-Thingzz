@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'profile', to: 'profile#index'
   devise_for :users
-  get 'u/:id', to: 'users#profile', as: 'user'
+  get 'u/:id', to: 'profile#show', as: 'user'
   
   get 'home/about'
   get 'home/print'
