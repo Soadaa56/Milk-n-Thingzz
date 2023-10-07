@@ -81,6 +81,8 @@ Figure out how to extend sidebar color without altering height (unknown). */
 
 #main-content h1 {
   text-align: center;
+  font-size: 5rem;
+  text-decoration: underline;
   /* margin-left: 45%; */
 }
 
@@ -137,4 +139,17 @@ Figure out how to extend sidebar color without altering height (unknown). */
 
 .profile-title {
   font-size: 4.7rem;
+}
+
+.large-text {
+  font-size: 1.5rem;
+}
+
+.about-us-paragraph {
+  display: block;
+  font-size: 1.75rem;
+  width: 120rem;
+  /* font-family: 'DotGothic16', sans-serif; */
+  font-family: 'Courier New', Courier, monospace;
+  color: var(--dark-accent-color);
 }
