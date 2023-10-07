@@ -1,7 +1,8 @@
 <% if @user != nil %>
   <div class="center profile-title"><%= @user.username %>'s Profile</div>
 
-  <% @user.comments.each do |comment| %>
+  <%# @user.comments.includes(:rich_text_body).each do |comment| %>
+  <% @comments.each do |comment| %>
     <%= render 'profile/comment', user: @user, comment: comment, craft:@craft %>
   <% end %>
 
