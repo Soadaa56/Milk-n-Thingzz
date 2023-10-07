@@ -12,7 +12,7 @@ html {
 
 body {
   background-color: var(--main-bg-color);
-  /* overflow-x: hidden !important; */
+  overflow-x: hidden !important;
   height: 100vh;
   width: 100vw;
  }
@@ -51,7 +51,8 @@ Figure out how to extend sidebar color without altering height (unknown). */
   font-family: 'DotGothic16', sans-serif;
   width: 20rem;
   /* I should use a calc below so multiple pages can adjust size to main-content height */
-  height: 120vh;
+  /* height: 120vh; */
+  min-height: 95vh;
   font-size: 2.2rem;
   padding-top: 1rem;
   padding-left: 2rem;
