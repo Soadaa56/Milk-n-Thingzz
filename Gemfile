@@ -49,3 +49,5 @@ group :test do
 end
 
 gem "importmap-rails", "~> 1.2"
+
+gem "solargraph", "~> 0.49.0"
