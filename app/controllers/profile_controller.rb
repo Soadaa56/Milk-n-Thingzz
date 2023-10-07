@@ -14,7 +14,13 @@ class ProfileController < ApplicationController
   private 
 
   def set_user
-    @user = User.find(params[:id])
+    begin
+      @user = User.find(params[:id])
+    rescue => exception
+      
+    else
+      
+    end
   end
 
 end

@@ -1,5 +1,12 @@
-<div class="center profile-title"><%= @user.username %>'s Profile</div>
+<% if @user != nil %>
+  <div class="center profile-title"><%= @user.username %>'s Profile</div>
 
-<% @user.comments.each do |comment| %>
-  <%= render 'profile/comment', user: @user, comment: comment, craft:@craft %>
+  <% @user.comments.each do |comment| %>
+    <%= render 'profile/comment', user: @user, comment: comment, craft:@craft %>
+  <% end %>
+
+<% else %>  
+
+  <h1 style="text-decoration: none">User Not Found</h1>
+
 <% end %>
