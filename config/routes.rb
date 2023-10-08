@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   root 'home#index'
   get 'home', to: 'home#index'
-
+  
   get 'profile', to: 'profile#index'
   devise_for :users
   get 'u/:id', to: 'profile#show', as: 'user'
+  get 'admin/index'
+  get 'admin', to: 'admin#index', as: 'admin'
   
   get 'home/about'
   get 'home/print'
