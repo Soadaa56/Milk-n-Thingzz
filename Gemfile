@@ -2,13 +2,13 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
-gem "rails", "~> 7.0.6"
+gem 'rails', '~> 7.1'
 
 gem 'bootstrap', '~> 5.3.1'
 gem 'jquery-rails'
 gem "sprockets-rails"
 gem "sqlite3", "~> 1.4"
-gem "puma", "~> 5.0"
+gem 'puma', '~> 6.4'
 gem "jsbundling-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
@@ -51,4 +51,4 @@ end
 gem "importmap-rails", "~> 1.2"
 gem "solargraph", "~> 0.49.0"
 gem 'yaml', '~> 0.2.1'
-gem 'psych', '~> 4.0.6'
+gem 'psych', '~> 5.1'
