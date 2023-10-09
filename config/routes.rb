@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   get 'profile', to: 'profile#index'
   devise_for :users
   get 'u/:id', to: 'profile#show', as: 'user'
-  get 'admin/index'
+  get 'admin/index', to: 'admin#index'
   get 'admin', to: 'admin#index', as: 'admin'
+  get 'admin/create', to: 'admin#create', as: 'admin_create'
+  get 'admin/console', to: 'admin#console'
   
   get 'home/about'
   get 'home/print'

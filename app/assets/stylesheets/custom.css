@@ -154,3 +154,8 @@ Figure out how to extend sidebar color without altering height (unknown). */
   font-family: 'Courier New', Courier, monospace;
   color: var(--dark-accent-color);
 }
+
+#admin-dashboard {
+  color: var(--dark-accent-color);
+  font-family: 'Courier New', Courier, monospace;
+}
