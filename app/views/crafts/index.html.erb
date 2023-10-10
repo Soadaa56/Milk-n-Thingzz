@@ -1,9 +1,11 @@
-<h1>Crafts#index</h1>
+<h1>All Crafts</h1>
 
 <ul>
   <% @crafts.each do |craft| %>
     <li>
+      <%= craft.id %>
       <%= link_to craft.name, craft_path(craft) %>
+      <%= link_to 'Edit', edit_craft_path(craft) %>
     </li>
   <% end %>
 </ul>

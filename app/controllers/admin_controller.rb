@@ -10,12 +10,9 @@ class AdminController < ApplicationController
     @user = User.new(user_params)
   end
 
-  def update
-    
-  end
+  def update; end
 
-  def console
-  end
+  def console; end
 
   private
 

@@ -8,4 +8,5 @@ class CraftsController < ApplicationController
     @craftimage = CraftImage.find(params[:id])
     @comments = @craft.comments.includes(:user, :rich_text_body).order(created_at: :desc)
   end
+
 end

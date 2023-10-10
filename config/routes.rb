@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   #   resources :comments
   # end
   
-  resources :crafts, only: [:index, :show] do
+  resources :crafts, only: [:index, :show, :edit, :create] do
     resources :comments
   end
   

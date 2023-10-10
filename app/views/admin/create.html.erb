@@ -1,6 +1,10 @@
 <div id="admin-dashboard">
   <div class="container" style="font-size: 1.6rem" >
-    <h2 class="underline">Create new user<h2>
+    <h2 class="underline center">Create new user<h2>
+    <div class="center">
+      <%= link_to "Admin Dashboard", admin_index_path, class: "btn btn-dark" %>
+    </div>
+    </br>
     <%= form_with(model: @user, url: admin_create_path, method: :post) do |f| %>
       <div class="field">
         <%= f.text_field :username, value: nil, placeholder: "Username" %>
@@ -15,7 +19,5 @@
         <%= f.submit "Create user", class:"btn btn-primary" %>
       </div>
     <% end %>
-    </br>
-    <%= link_to "Admin Dashboard", admin_index_path, class: "btn btn-custom" %>
   </div>
 </div>
