@@ -87,6 +87,12 @@ Figure out how to extend sidebar color without altering height (unknown). */
   /* margin-left: 45%; */
 }
 
+.max-craft-image-size {
+  height: auto;
+  max-width: 50rem;
+  padding-bottom: 5rem;
+}
+
 .flex-item {
   width: 30rem;
   height: auto;
@@ -183,4 +189,8 @@ Figure out how to extend sidebar color without altering height (unknown). */
   height: auto;
   width: 15rem;
   margin-bottom: 1rem;
+}
+
+.comment-container {
+  max-width: 100rem;
 }

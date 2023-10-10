@@ -2,11 +2,9 @@
 </br>
 <h4 class='center'><%= @craft.category %></h4>
 
-<%= image_tag(@craftimage.image_path, class: 'center-img') %>
+<%= image_tag(@craftimage.image_path, class: 'center-img max-craft-image-size') %>
 
-</br>
-
-<div class="container">
+<div class="container comment-container">
   <%= render 'comments/form', craft: @craft, comment: @craft.comments.build %>
   <% @comments.each do |comment| %>
     <%= render 'comments/comment', craft: @craft, comment: comment%>
