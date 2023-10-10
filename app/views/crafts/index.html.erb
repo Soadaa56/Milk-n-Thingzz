@@ -1,11 +1,15 @@
 <h1>All Crafts</h1>
-
-<ul>
-  <% @crafts.each do |craft| %>
-    <li>
-      <%= craft.id %>
-      <%= link_to craft.name, craft_path(craft) %>
-      <%= link_to 'Edit', edit_craft_path(craft) %>
-    </li>
-  <% end %>
-</ul>
+<% if current_user.admin? %>
+  <ul>
+    <% @crafts.each do |craft| %>
+      <li>
+        <%= craft.id %>
+        <%= link_to craft.name, craft_path(craft) %> | 
+        <%= link_to 'Edit', edit_craft_path(craft) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>You might have gotten lost.</p>
+  <%= link_to 'Home', root_path %>
+<% end %>

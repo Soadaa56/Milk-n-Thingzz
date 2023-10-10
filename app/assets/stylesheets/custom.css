@@ -194,3 +194,8 @@ Figure out how to extend sidebar color without altering height (unknown). */
 .comment-container {
   max-width: 100rem;
 }
+
+.craft-edit-image-size {
+  height: auto;
+  width: 25rem;
+}

@@ -1,3 +1,18 @@
 <h1>Edit Craft</h1>
 
-<%= @craft %>
+<%= image_tag(@craftimage.image_path, class: 'center-img craft-edit-image-size') %>
+
+<div class="indent large-text">
+  <div>
+    ID: <%= @craft.id %>
+  </div>
+  <div>
+    Name: <%= @craft.name %>
+  </div>
+  <div>
+    Category: <%= @craft.category %>
+  </div>
+</div>
+
+
+<%= link_to 'Back', :back, class:'btn btn-custom indent' %>
