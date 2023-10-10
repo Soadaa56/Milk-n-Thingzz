@@ -4,14 +4,11 @@ class HomeController < ApplicationController
     @crafts = Craft.all
   end
 
-  def about
-  end
+  def about; end
 
-  def contact
-  end
+  def contact; end
 
-  def credit
-  end
+  def credit; end
 
   def crotchet
     @crafts = Craft.where(category: "Crotchet")
@@ -25,6 +22,5 @@ class HomeController < ApplicationController
     @crafts = Craft.where(category: "3D-Print")
   end
 
-  def social
-  end
+  def social; end
 end
