@@ -54,8 +54,6 @@ Figure out how to extend sidebar color without altering height (unknown). */
   /* height: 120vh; */
   min-height: 95vh;
   font-size: 2.2rem;
-  padding-top: 1rem;
-  padding-left: 2rem;
 }
 
 /* Need to change. I'm not sure how I like menu links hover when clearly far from the text.
@@ -66,7 +64,7 @@ Figure out how to extend sidebar color without altering height (unknown). */
   grid-template-rows: repeat(auto-fill, minmax(5rem, 1fr));
   margin-top: 1.5rem;
   transition: all 0.22s ease-in-out;
-  /* width: 70%; */
+  width: 90%;
 }
 
 #sidebar > a:hover, #sidebar > div:hover {
@@ -84,13 +82,14 @@ Figure out how to extend sidebar color without altering height (unknown). */
   text-align: center;
   font-size: 5rem;
   text-decoration: underline;
-  /* margin-left: 45%; */
 }
+
+
 
 .max-craft-image-size {
   height: auto;
   max-width: 50rem;
-  padding-bottom: 5rem;
+  margin-bottom: 5rem;
 }
 
 .flex-item {
@@ -198,4 +197,19 @@ Figure out how to extend sidebar color without altering height (unknown). */
 .craft-edit-image-size {
   height: auto;
   width: 25rem;
+}
+
+.about-us-link-wrapper {
+  text-align: center;
+}
+
+.about-us-link {
+  text-decoration: none;
+  color: var(--shade-dark-color);
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.about-us-link:hover {
+  color: blue;
 }
