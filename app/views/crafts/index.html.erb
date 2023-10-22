@@ -9,7 +9,9 @@
       </li>
     <% end %>
   </ul>
+  <%= link_to 'Back', :back, class:'btn btn-custom indent' %>
 <% else %>
   <p>You might have gotten lost.</p>
   <%= link_to 'Home', root_path %>
+  <%= link_to 'Back', :back, class:'btn btn-custom indent' %>
 <% end %>
