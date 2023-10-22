@@ -10,6 +10,7 @@ class CraftsController < ApplicationController
   end
 
   def edit
+    check_if_admin?
     @craft = set_craft
     @craftimage = set_craft_image
   end
@@ -30,5 +31,9 @@ class CraftsController < ApplicationController
 
   def craft_params
     params.require(:craft).permit(:name, :category, :image)
+  end
+
+  def check_if_admin?
+    redirect_to root_path unless current_user.admin?
   end
 end
