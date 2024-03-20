@@ -2,6 +2,7 @@
   <div class="center profile-title"><%= @user.username %>'s Profile</div>
 
   <%# @user.comments.includes(:rich_text_body).each do |comment| %>
+  <p class="center fs-2">Number of comments: <%= @comments.all.count %></p>
   <% @comments.each do |comment| %>
     <%= render 'profile/comment', user: @user, comment: comment, craft:@craft %>
   <% end %>
