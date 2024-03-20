@@ -4,15 +4,15 @@ class CraftsController < ApplicationController
   end
 
   def show
-    @craft = set_craft
-    @craftimage = set_craft_image
+    set_craft
+    set_craft_image
     @comments = @craft.comments.includes(:user, :rich_text_body).order(created_at: :desc)
   end
 
   def edit
     check_if_admin?
-    @craft = set_craft
-    @craftimage = set_craft_image
+    set_craft
+    set_craft_image
   end
 
   def create
@@ -22,11 +22,11 @@ class CraftsController < ApplicationController
   private
 
   def set_craft
-    Craft.find(params[:id])
+    @craft = Craft.find(params[:id])
   end
 
   def set_craft_image
-    CraftImage.find(params[:id])
+    @craftimage = CraftImage.find(params[:id])
   end
 
   def craft_params

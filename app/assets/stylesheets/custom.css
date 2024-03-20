@@ -213,3 +213,7 @@ Figure out how to extend sidebar color without altering height (unknown). */
 .about-us-link:hover {
   color: blue;
 }
+
+.edit-craft-form {
+  margin-bottom: 5rem;
+}

@@ -1,18 +1,23 @@
 <% if current_user.admin? %>
   <h1>Edit Craft</h1>
   <%= image_tag(@craftimage.image_path, class: 'center-img craft-edit-image-size') %>
-  <div class="indent large-text">
-    <div>
-      ID: <%= @craft.id %>
+  <%= form_with(model: @craft) do |form| %>
+    <div class="indent large-text edit-craft-form">
+      <div>
+        ID: <%= @craft.id %>
+      </div>
+      <div>
+        <%= form.label :name, style: "display: block" %>
+        <%= form.text_field :name %>
+      </div>
+      <div>
+        <%= form.label :category, style: "display: block" %>
+        <%= form.text_field :category %>
+      </div>
     </div>
-    <div>
-      Name: <%= @craft.name %>
-    </div>
-    <div>
-      Category: <%= @craft.category %>
-    </div>
-  </div>
-  </br>
+    <%= @craft.inspect %>
+
+  <% end %>
   <%= link_to 'Back', :back, class:'btn btn-custom indent' %>
 <% else %>
   <%= link_to 'Back', :back, class:'btn btn-custom indent' %>
