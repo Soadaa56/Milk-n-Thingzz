@@ -2,6 +2,21 @@
 
 <%= link_to 'Edit Profile', edit_user_registration_path, class:"fs-3 nav-link center underline" %>
 
+<br>
+<% if @user.bio == nil %>
+  <p class="center">
+    <%= link_to 'Add Bio', profile_edit_path(@user), class:"nav-link fs-3 underline" %>
+  </p>
+<% else %>
+  <p class="center">
+    <%= link_to 'Edit Bio', profile_edit_path(@user), class:"nav-link fs-3 underline" %>
+  </p>
+  <p class="center fs-4">
+    <%= render 'bio' %>
+  </p>
+<% end %>
+
+<br>
 <p class="center fs-2">Number of comments: <%= @userComment.all.count %></p>
 <% @userComment.each do |comment| %>
   <%= render 'profile/comment', user: @user, comment: comment, craft:@craft %>

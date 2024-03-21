@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   
   get 'profile', to: 'profile#index'
   devise_for :users
+  get 'profile/:id/edit', to: 'profile#edit', as: :profile_edit
+  patch 'profile/:id', to: 'profile#update', as: :profile_update
   get 'u/:id', to: 'profile#show', as: 'user'
   get 'admin/index', to: 'admin#index'
   get 'admin', to: 'admin#index', as: 'admin'
