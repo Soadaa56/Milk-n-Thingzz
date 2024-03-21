@@ -2,7 +2,7 @@
 
 <%= link_to 'Edit Profile', edit_user_registration_path, class:"fs-3 nav-link center underline" %>
 
-<p class="center fs-2">Number of comments: <%= @comments.all.count %></p>
+<p class="center fs-2">Number of comments: <%= @userComment.all.count %></p>
 <% @userComment.each do |comment| %>
   <%= render 'profile/comment', user: @user, comment: comment, craft:@craft %>
 <% end %>
