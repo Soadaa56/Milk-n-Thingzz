@@ -1,5 +1,9 @@
 <h1>All Crafts</h1>
 <% if current_user.admin? %>
+  <p class="center fs-3">
+    <%= link_to "Create craft posting", new_craft_path, class:"underlined" %>
+  </p>
+  <br>
   <ul>
     <% @crafts.each do |craft| %>
       <li>
@@ -11,7 +15,7 @@
   </ul>
   <%= link_to 'Back', :back, class:'btn btn-custom indent' %>
 <% else %>
-  <p>You might have gotten lost.</p>
+  <p>You might be lost.</p>
   <%= link_to 'Home', root_path %>
   <%= link_to 'Back', :back, class:'btn btn-custom indent' %>
 <% end %>
