@@ -1,18 +1,18 @@
 <h1>New Craft</h1>
 
 <%= form_with model: @craft do |f| %>
-  <div>
+  <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
-  <div>
+  <div class="field">
     <%= f.label :category %>
     <%= f.select :category, ["3D-Print", "Crotchet", "Embroidery", "Miscellaneous"]%>
   </div>
 
-  <div>
+  <div class="field">
     <%= f.label :image %>
-    
+    <%= f.file_field :image%>
   </div>
 
   <div>
