@@ -1,21 +1,5 @@
 <h1>New Craft</h1>
-
-<%= form_with model: @craft do |f| %>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :category %>
-    <%= f.select :category, ["3D-Print", "Crotchet", "Embroidery", "Miscellaneous"]%>
-  </div>
-
-  <div class="field">
-    <%= f.label :image %>
-    <%= f.file_field :image%>
-  </div>
-
-  <div>
-    <%= f.submit "Create craft post"%>
-  </div>
-<% end %>
+<h4 class="center">
+  <%= link_to "List all crafts", crafts_path %>
+</h4>
+<%= render "form", craft: @craft %>
