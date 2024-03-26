@@ -11,4 +11,7 @@
   <% end %>
 </div>
 
-<%= link_to 'Back', :back, class:'btn btn-custom indent' %>
+<%= link_to "Back", :back, class:"btn btn-custom indent" %>
+<% if current_user.admin? %>
+  <%= link_to "All Crafts - Admin", crafts_path, class:"btn btn-primary"%>
+<% end %>

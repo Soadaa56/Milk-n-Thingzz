@@ -25,7 +25,8 @@ Rails.application.routes.draw do
   #   resources :comments
   # end
   
-  resources :crafts, only: [:index, :show, :edit, :new] do
+  
+  resources :crafts, only: [:index, :show, :edit, :new, :create, :update, :destroy] do
     resources :comments
   end
   

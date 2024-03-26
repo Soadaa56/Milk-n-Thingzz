@@ -1,4 +1,15 @@
-<%= form_with model: craft do |f| %>
+<%= form_with(model: craft) do |f| %>
+  <% if craft.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(craft.errors.count, "error") %> prohibited this craft from being saved:</h2>
+
+      <ul>
+        <% craft.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div>
     <%= f.label :name %>
     <%= f.text_field :name %>

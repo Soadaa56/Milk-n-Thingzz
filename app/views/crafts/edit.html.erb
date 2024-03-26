@@ -1,25 +1,38 @@
 <% if current_user.admin? %>
   <h1>Edit Craft</h1>
+  <div class="center">
+    <%= link_to 'All Crafts', crafts_path, class:"btn btn-dark" %>
+  </div>
   <%= image_tag(@craftimage.image_path, class: 'center-img craft-edit-image-size') %>
-  <%= form_with(model: @craft) do |form| %>
+  <%= form_with(model: @craft) do |f| %>
     <div class="indent large-text edit-craft-form">
       <div>
         ID: <%= @craft.id %>
       </div>
       <div>
-        <%= form.label :name, style: "display: block" %>
-        <%= form.text_field :name %>
+        <%= f.label :name, style: "display: block" %>
+        <%= f.text_field :name %>
       </div>
       <div>
-        <%= form.label :category, style: "display: block" %>
-        <%= form.text_field :category %>
+        <%= f.label :category, style: "display: block" %>
+         <%= f.select :category, ["3D-Print", "Crotchet", "Embroidery", "Miscellaneous"]%>
+      </div>
+      <div>
+        <%= f.label :image, style: "display: block" %>
+        <%= image_tag @craft.image_url if @craft.image_data %>
+      </div>
+      <div>
+        <%= f.submit 'Update Craft', class: "btn btn-primary"%>
       </div>
     </div>
-    <%= @craft.inspect %>
 
+    <%= @craft.inspect %>
+    <%= button_to 'Destroy Craft', craft_path(@craft), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+    <br><br>
+    
   <% end %>
-  <%= link_to 'Back', :back, class:'btn btn-custom indent' %>
 <% else %>
-  <%= link_to 'Back', :back, class:'btn btn-custom indent' %>
+  <p>You seem to be lost!</p>
 <% end %>
+<%= link_to 'Back', :back, class:'btn btn-custom indent' %>
 

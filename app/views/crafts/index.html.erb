@@ -1,15 +1,20 @@
 <h1>All Crafts</h1>
 <% if current_user.admin? %>
   <p class="center fs-3">
-    <%= link_to "Create craft posting", new_craft_path, class:"underlined" %>
+    <% if current_user.admin? %>
+      <%= link_to "Create craft posting", new_craft_path, class:"underlined" %>
+      <br>
+      <%= link_to 'Admin Dashboard', admin_index_path, class:"underlined" %>
+    <% end %>
   </p>
   <br>
   <ul>
     <% @crafts.each do |craft| %>
-      <li>
+      <li class="fs-3">
         <%= craft.id %>
         <%= link_to craft.name, craft_path(craft) %> | 
-        <%= link_to 'Edit', edit_craft_path(craft) %>
+        <%= link_to 'Edit', edit_craft_path(craft) %> |
+        <%= button_to 'Destroy Craft', craft_path(craft), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
       </li>
     <% end %>
   </ul>
