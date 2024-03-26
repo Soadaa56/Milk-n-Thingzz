@@ -27,10 +27,10 @@
     </div>
 
     <%= @craft.inspect %>
+  <% end %>
     <%= button_to 'Destroy Craft', craft_path(@craft), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
     <br><br>
     
-  <% end %>
 <% else %>
   <p>You seem to be lost!</p>
 <% end %>

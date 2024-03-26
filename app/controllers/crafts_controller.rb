@@ -60,7 +60,7 @@ class CraftsController < ApplicationController
   end
 
   def set_craft_image
-    @craftimage = CraftImage.find(params[:id])
+    @craftimage = CraftImage.find_by(params[:id])
   end
 
   def craft_params

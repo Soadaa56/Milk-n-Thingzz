@@ -13,8 +13,7 @@
       <li class="fs-3">
         <%= craft.id %>
         <%= link_to craft.name, craft_path(craft) %> | 
-        <%= link_to 'Edit', edit_craft_path(craft) %> |
-        <%= button_to 'Destroy Craft', craft_path(craft), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        <%= link_to 'Edit', edit_craft_path(craft) %>
       </li>
     <% end %>
   </ul>
