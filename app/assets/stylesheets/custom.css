@@ -84,17 +84,15 @@ Figure out how to extend sidebar color without altering height (unknown). */
   text-decoration: underline;
 }
 
-
-
-.max-craft-image-size {
-  height: auto;
-  max-width: 50rem;
-  margin-bottom: 5rem;
-}
-
 .flex-item {
   width: 30rem;
   height: auto;
+}
+
+.grid-sorted {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+  gap: 25px;
 }
 
 .alert {
