@@ -1,6 +1,5 @@
 class CraftsController < ApplicationController
   before_action :set_craft, only: [:show, :edit, :update, :destroy]
-  before_action :set_craft_image, only: [:show, :edit]
   before_action :check_if_admin?, only: [:new, :edit, :create, :update, :destroy]
 
   def index
@@ -57,10 +56,6 @@ class CraftsController < ApplicationController
 
   def set_craft
     @craft = Craft.find(params[:craft_id] || params[:id])
-  end
-
-  def set_craft_image
-    @craftimage = CraftImage.find_by(params[:id])
   end
 
   def craft_params

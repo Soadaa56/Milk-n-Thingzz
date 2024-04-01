@@ -217,3 +217,8 @@ Figure out how to extend sidebar color without altering height (unknown). */
 .edit-craft-form {
   margin-bottom: 5rem;
 }
+
+.max-size-image {
+  max-width: 500px;
+  max-height: 500px;
+}

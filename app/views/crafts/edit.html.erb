@@ -3,7 +3,7 @@
   <div class="center">
     <%= link_to 'All Crafts', crafts_path, class:"btn btn-dark" %>
   </div>
-  <%= image_tag(@craftimage.image_path, class: 'center-img craft-edit-image-size') %>
+  
   <%= form_with(model: @craft) do |f| %>
     <div class="indent large-text edit-craft-form">
       <div>
@@ -19,7 +19,7 @@
       </div>
       <div>
         <%= f.label :image, style: "display: block" %>
-        <%= image_tag @craft.image_url if @craft.image_data %>
+        <%= f.file_field :image %>
       </div>
       <div>
         <%= f.submit 'Update Craft', class: "btn btn-primary"%>

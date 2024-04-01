@@ -1,5 +1,5 @@
 class Craft < ApplicationRecord
-  has_many :craft_images
+  include ImageUploader::Attachment(:image)
   has_many :comments, dependent: :destroy
   validates :name, presence: true
 end
