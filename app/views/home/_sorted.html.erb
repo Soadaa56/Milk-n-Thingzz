@@ -1,5 +1,5 @@
 <div class="container grid-sorted">
   <% @crafts.each do |craft| %>
-    <%= image_tag craft.image_url, class: "flex-item" %>
+    <%= link_to image_tag(craft.image_url, class: "flex-item"), craft_path(craft) %>
   <% end %>
 </div>
