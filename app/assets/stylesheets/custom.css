@@ -92,7 +92,7 @@ Figure out how to extend sidebar color without altering height (unknown). */
 .grid-sorted {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
-  gap: 25px;
+  gap: 40px;
 }
 
 .alert {
