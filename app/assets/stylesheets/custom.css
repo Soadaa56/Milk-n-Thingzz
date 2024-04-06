@@ -93,7 +93,26 @@ Figure out how to extend sidebar color without altering height (unknown). */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
   gap: 40px;
+  justify-content: center;
+  align-items: center;
 }
+
+.grid-sorted > * {
+  background: var(--shade-dark-color);
+  padding: 30px;
+  min-height: 100%;
+  min-width: 100%;
+  display: grid;
+  border: 3px solid var(--dark-accent-color);
+}
+
+.grid-sorted > * > img {
+  grid-column: 1;
+  grid-row: 1 / -1;
+  align-self: center;
+}
+
+
 
 .alert {
   max-width: 20rem;
@@ -177,7 +196,6 @@ Figure out how to extend sidebar color without altering height (unknown). */
 }
 
 .social-item {
-
 }
 
 .social-logo {
