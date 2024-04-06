@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="comment-<%= comment.id %> container mx-1"
+  <div class="single-comment-<%= comment.id %> container mx-1"
       style = "border: 1px solid black; padding: 1em; margin: 1em;"  >
     <%= link_to Craft.find(comment.craft_id).name, craft_path(comment.craft_id), class:"nav-link underline" %>
     </br>

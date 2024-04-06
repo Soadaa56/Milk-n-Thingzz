@@ -192,6 +192,13 @@ Figure out how to extend sidebar color without altering height (unknown). */
   max-width: 100rem;
 }
 
+[class^="single-comment-"] {
+  background: var(--shade-dark-color)
+}
+
+[class^="comment-body"] {
+}
+
 .craft-edit-image-size {
   height: auto;
   width: 25rem;
