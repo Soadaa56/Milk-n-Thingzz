@@ -4,12 +4,12 @@ class ProfileController < ApplicationController
 
   def index
     @user = current_user
-    @userComment = @user.comments.includes(:rich_text_body)
+    @comments = @user.comments.includes(:rich_text_body).order(created_at: :desc)
     @craft = Craft.all
   end
 
   def show
-    @comments = @user.comments.includes(:rich_text_body)
+    @comments = @user.comments.includes(:rich_text_body).order(created_at: :desc)
   end
 
   def edit

@@ -17,7 +17,7 @@
 <% end %>
 
 <br>
-<p class="center fs-2">Number of comments: <%= @userComment.all.count %></p>
-<% @userComment.each do |comment| %>
+<p class="center fs-2">Number of comments: <%= @comments.all.count %></p>
+<% @comments.each do |comment| %>
   <%= render 'profile/comment', user: @user, comment: comment, craft:@craft %>
 <% end %>
