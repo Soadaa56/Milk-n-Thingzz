@@ -21,7 +21,7 @@
     </div>
     <div>
       <%= f.label :description, style: "display: block" %>
-      <%= f.text_field :description %>
+      <%= f.text_area :description, rows: 5, cols: 40 %>
     </div>
     <div>
       <%= image_tag f.object.image_url if f.object.cached_image_data %>
@@ -33,7 +33,7 @@
   
     <% if @craft.new_record?%>
       <div>
-        <%= f.submit "Create New Craft"%>
+        <%= f.submit "Create New Craft", class: "btn btn-primary" %>
       </div>
     <% else %>
         <%= f.submit "Edit Craft" %>

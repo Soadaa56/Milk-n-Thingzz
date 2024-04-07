@@ -2,9 +2,8 @@
 <% if current_user.admin? %>
   <p class="center fs-3">
     <% if current_user.admin? %>
-      <%= link_to "Create craft posting", new_craft_path, class:"underlined" %>
-      <br>
-      <%= link_to 'Admin Dashboard', admin_index_path, class:"underlined" %>
+      <%= link_to 'Admin Dashboard', admin_index_path, class:"btn btn-dark" %>
+      <%= link_to "Create craft posting", new_craft_path, class:"btn btn-dark" %>
     <% end %>
   </p>
   <br>

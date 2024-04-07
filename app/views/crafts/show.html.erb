@@ -6,6 +6,13 @@
   <%= image_tag @craft.image_url, class: "max-size-image" %>
 </div>
 
+<% if current_user.admin? %>
+  <div class= "center mt-3">
+    <%= link_to "All Crafts - Admin", crafts_path, class: "btn btn-dark"%>
+    <%= link_to "Edit Craft - Admin", edit_craft_path(@craft), class: "btn btn-primary" %>
+  </div>
+<% end %>
+
 <div class="container comment-container">
   <%= render 'comments/form', craft: @craft, comment: @craft.comments.build %>
   <% @comments.each do |comment| %>
@@ -13,7 +20,5 @@
   <% end %>
 </div>
 
+<br><br>
 <%= link_to "Back", :back, class:"btn btn-custom indent" %>
-<% if current_user.admin? %>
-  <%= link_to "All Crafts - Admin", crafts_path, class:"btn btn-primary"%>
-<% end %>

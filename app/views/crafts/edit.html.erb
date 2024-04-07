@@ -1,6 +1,7 @@
+<h1>Edit Craft</h1>
 <% if current_user.admin? %>
-  <h1>Edit Craft</h1>
-  <div class="center">
+  <div class="center mb-3">
+    <%= link_to 'Admin Dashboard', admin_index_path, class:"btn btn-dark" %>
     <%= link_to 'All Crafts', crafts_path, class:"btn btn-dark" %>
   </div>
 
