@@ -1,24 +1,22 @@
 <h1>All Crafts</h1>
 <% if current_user.admin? %>
-  <p class="center fs-3">
+  <div class="center fs-3 mb-5">
     <% if current_user.admin? %>
       <%= link_to 'Admin Dashboard', admin_index_path, class:"btn btn-dark" %>
       <%= link_to "Create craft posting", new_craft_path, class:"btn btn-dark" %>
     <% end %>
-  </p>
-  <br>
+  </div>
   <ul>
     <% @crafts.each do |craft| %>
-      <li class="fs-3">
+      <li class="fs-3 ms-5 mb-2">
         <%= craft.id %>
         <%= link_to craft.name, craft_path(craft) %> | 
         <%= link_to 'Edit', edit_craft_path(craft) %>
       </li>
     <% end %>
   </ul>
-  <%= link_to 'Back', :back, class:'btn btn-custom indent' %>
+  <%= link_to 'Back', :back, class:'btn btn-custom ms-5' %>
 <% else %>
   <p>You might be lost.</p>
-  <%= link_to 'Home', root_path %>
-  <%= link_to 'Back', :back, class:'btn btn-custom indent' %>
+  <%= link_to 'Back', :back, class:'btn btn-custom ms-5' %>
 <% end %>

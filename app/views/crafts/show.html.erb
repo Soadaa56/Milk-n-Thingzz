@@ -1,19 +1,20 @@
 <h1><%= @craft.name %></h1>
 </br>
-<h4 class='center'><%= @craft.category %></h4>
+<h4 class="center"><%= @craft.category %></h4>
 
-<div class='center'>
+<div class="center">
   <%= image_tag @craft.image_url, class: "max-size-image" %>
 </div>
 
 <% if current_user.admin? %>
-  <div class= "center mt-3">
+  <div class="center mt-3">
     <%= link_to "All Crafts - Admin", crafts_path, class: "btn btn-dark"%>
     <%= link_to "Edit Craft - Admin", edit_craft_path(@craft), class: "btn btn-primary" %>
   </div>
 <% end %>
 
 <div class="container comment-container">
+  <p class="fs-2">Total comments: <%= @comments.all.count %></p>
   <%= render 'comments/form', craft: @craft, comment: @craft.comments.build %>
   <% @comments.each do |comment| %>
     <%= render 'comments/comment', craft: @craft, comment: comment%>

@@ -1,6 +1,9 @@
-<div class="center profile-title">Hello, <%= current_user.username %></div>
-
-<%= link_to 'Edit Profile', edit_user_registration_path, class:"fs-3 nav-link center underline" %>
+<div class="center profile-title">
+  Hello, <%= current_user.username %>
+</div>
+<div class="center">
+  <%= link_to 'Edit Profile', edit_user_registration_path, class:"btn btn-dark" %>
+</div>
 
 <br>
 <% if @user.bio == nil %>
@@ -17,7 +20,6 @@
 <% end %>
 
 <br>
-<p class="center fs-2">Number of comments: <%= @comments.all.count %></p>
 <% @comments.each do |comment| %>
   <%= render 'profile/comment', user: @user, comment: comment, craft:@craft %>
 <% end %>

@@ -1,5 +1,4 @@
-<div class="single-comment-<%= comment.id %> container mx-1"
-    style = "border: 1px solid black; padding: 1em; margin: 1em;"  >
+<div class="single-comment-<%= comment.id %> container mx-1" >
   <%= link_to comment.user.username, user_path(comment.user.id) %> <br/>
   <% if (comment.updated_at - comment.created_at) > 1 %>
     <span>Edited <%= time_ago_in_words(comment.updated_at) %> ago</span>

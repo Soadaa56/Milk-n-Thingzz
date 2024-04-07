@@ -95,6 +95,7 @@ Figure out how to extend sidebar color without altering height (unknown). */
   gap: 40px;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10rem;
 }
 
 .grid-sorted > * {
@@ -107,12 +108,9 @@ Figure out how to extend sidebar color without altering height (unknown). */
 }
 
 .grid-sorted > * > img {
-  grid-column: 1;
-  grid-row: 1 / -1;
-  align-self: center;
+  min-width: 100%;
+  height: auto;
 }
-
-
 
 .alert {
   max-width: 20rem;
@@ -135,7 +133,7 @@ Figure out how to extend sidebar color without altering height (unknown). */
 }
 
 .indent {
-  margin-left: 1rem;
+  margin-left: 5rem;
 }
 
 .underline {
@@ -211,10 +209,10 @@ Figure out how to extend sidebar color without altering height (unknown). */
 }
 
 [class^="single-comment-"] {
-  background: var(--shade-dark-color)
-}
-
-[class^="comment-body"] {
+  background: var(--shade-dark-color);
+  border: 1px solid black;
+  padding: 1em;
+  margin: 1em;
 }
 
 .craft-edit-image-size {
