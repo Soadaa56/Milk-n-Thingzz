@@ -3,4 +3,10 @@
   <%= link_to "List all crafts", crafts_path %>
 </h4>
 
-<%= render "form", craft: @craft %>
+<% if current_user.admin? %>
+  <%= render "form", craft: @craft %>
+<% else %>
+  <p>You seem to be lost!</p>
+<% end %>
+
+<%= link_to 'Back', :back, class:'btn btn-custom indent', style: "margin-left: 5rem" %>
