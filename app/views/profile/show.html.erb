@@ -2,6 +2,9 @@
   <div class="center profile-title">
     <%= @user.username %>'s Profile
   </div>
+  <% if @user.admin? %>
+    <div class="center fs-3 red">Admin</div>
+  <% end %>
 
   <%# @user.comments.includes(:rich_text_body).each do |comment| %>
   <% if @user.bio != nil %>

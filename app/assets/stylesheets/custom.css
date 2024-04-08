@@ -244,3 +244,11 @@ Figure out how to extend sidebar color without altering height (unknown). */
   max-width: 500px;
   max-height: 500px;
 }
+
+.craft-show-image {
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+}
+
+.craft-show-image img {
+}

@@ -14,7 +14,7 @@
 <% end %>
 
 <div class="container comment-container">
-  <p class="fs-2">Total comments: <%= @comments.all.count %></p>
+  <p class="fs-2">Comments: <%= @comments.all.count %></p>
   <%= render 'comments/form', craft: @craft, comment: @craft.comments.build %>
   <% @comments.each do |comment| %>
     <%= render 'comments/comment', craft: @craft, comment: comment%>
