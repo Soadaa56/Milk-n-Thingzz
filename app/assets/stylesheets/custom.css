@@ -89,29 +89,6 @@ Figure out how to extend sidebar color without altering height (unknown). */
   height: auto;
 }
 
-.grid-sorted {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
-  gap: 40px;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10rem;
-}
-
-.grid-sorted > * {
-  background: var(--shade-dark-color);
-  padding: 30px;
-  min-height: 100%;
-  min-width: 100%;
-  display: grid;
-  border: 3px solid var(--dark-accent-color);
-}
-
-.grid-sorted > * > img {
-  min-width: 100%;
-  height: auto;
-}
-
 .alert {
   max-width: 20rem;
   max-height: 10rem;
@@ -251,4 +228,35 @@ Figure out how to extend sidebar color without altering height (unknown). */
 }
 
 .craft-show-image img {
+}
+
+
+.grid-sorted {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10rem;
+  margin-left: 15rem;
+  margin-right: 15rem;
+}
+
+.grid-sorted > * {
+}
+
+.sorted-image-container {
+  background: var(--shade-dark-color);
+  padding: 1.5rem;
+  display: grid;
+  border: 3px solid
+  var(--dark-accent-color);
+}
+
+.sorted-image {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 35rem;
+  object-fit: cover;
 }
