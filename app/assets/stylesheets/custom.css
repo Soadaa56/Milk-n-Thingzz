@@ -35,6 +35,32 @@ body {
   position: absolute;
   right: 5rem;
   margin-top: -3.1rem;
+  color: var(--shade-dark-color);
+}
+
+.btn-profile {
+  color: var(--shade-dark-color);
+  background-color: var(--shade-light-color);
+  --bs-btn-hover-color: var(--dark-accent-color);
+  --bs-btn-border-color: var(--dark-accent-color);
+  --bs-btn-hover-border-color: var(--dark-accent-color);
+}
+
+.btn-custom {
+    --bs-btn-color: var(--shade-dark-color);
+    --bs-btn-bg: var(--shade-light-color);
+    --bs-btn-border-color: #6c757d;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--shade-dark-color);
+    --bs-btn-hover-border-color: #565e64;
+    --bs-btn-focus-shadow-rgb: 130,138,145;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #565e64;
+    --bs-btn-active-border-color: #51585e;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #6c757d;
+    --bs-btn-disabled-border-color: #6c757d;
 }
 
 /* #banner > p, #banner > a {
@@ -124,24 +150,6 @@ Figure out how to extend sidebar color without altering height (unknown). */
 
 .underline {
   text-decoration: underline;
-}
-
-.btn-custom {
-  font-family:'Courier New', Courier, monospace;
-    --bs-btn-color: var(--shade-dark-color);
-    --bs-btn-bg: var(--shade-light-color);
-    --bs-btn-border-color: #6c757d;
-    --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: var(--shade-dark-color);
-    --bs-btn-hover-border-color: #565e64;
-    --bs-btn-focus-shadow-rgb: 130,138,145;
-    --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #565e64;
-    --bs-btn-active-border-color: #51585e;
-    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #fff;
-    --bs-btn-disabled-bg: #6c757d;
-    --bs-btn-disabled-border-color: #6c757d;
 }
 
 .profile-title {
