@@ -19,12 +19,8 @@
 
   <body>
     <%= render 'home/header' %>
-
-    <div class="grid-container-nav-main">
-      
+    <div class="grid-container-nav-main"> 
       <%= render 'home/nav' %>
-      
-      
       <div id="main-content" class="grid-item-main-content">
         <% if alert || notice%>
           <%= render 'layouts/alerts' %>
@@ -32,9 +28,6 @@
 
         <%= yield %>
       </div>
-
     </div>
-
-
   </body>
 </html>

@@ -17,22 +17,34 @@ body {
   width: 100vw;
  }
 
+ .banner-container {
+ }
+
  #banner {
   background-color: var(--dark-accent-color);
   color: var(--shade-light-color);
   font-size: 9rem;
   font-family: 'Silkscreen', cursive;
   display: flex;
+  position: relative;
 }
 
-#banner > p, #banner > a {
+.profile-button {
+  margin: 0 auto;
+  display: inline;
+  position: absolute;
+  right: 5rem;
+  margin-top: -3.1rem;
+}
+
+/* #banner > p, #banner > a {
   text-align: center;
   justify-content: center;
   vertical-align: middle;
   flex: 1 0 30%;
   text-decoration: inherit;
   color: var(--shade-light-color);
-}
+} */
 
 .grid-container-nav-main {
   display: grid;
@@ -56,9 +68,6 @@ Figure out how to extend sidebar color without altering height (unknown). */
   font-size: 2.2rem;
 }
 
-/* Need to change. I'm not sure how I like menu links hover when clearly far from the text.
- Making the box smaller causes 3-D print to overflow to next line.
- Maybe I can wrap each nav link item inside another div */
 #sidebar > a, #sidebar > div {
   display: grid;
   grid-template-rows: repeat(auto-fill, minmax(5rem, 1fr));
@@ -260,3 +269,4 @@ Figure out how to extend sidebar color without altering height (unknown). */
   max-height: 35rem;
   object-fit: cover;
 }
+
