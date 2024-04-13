@@ -1,22 +1,22 @@
-<div id="admin-dashboard">
-  <div class="container" style="font-size: 1.6rem" >
-    <h2 class="underline center">Create new user<h2>
-    <div class="center">
-      <%= link_to "Admin Dashboard", admin_index_path, class: "btn btn-dark" %>
+<div id='admin-dashboard'>
+  <div class='container' style='font-size: 1.6rem' >
+    <h2 class='underline center'>Create new user<h2>
+    <div class='center'>
+      <%= link_to 'Admin Dashboard', admin_index_path, class: 'btn btn-dark' %>
     </div>
     </br>
     <%= form_with(model: @user, url: admin_create_path, method: :post) do |f| %>
-      <div class="field">
-        <%= f.text_field :username, value: nil, placeholder: "Username" %>
-        <%= f.email_field :email, placeholder: "Email" %>
-        <%= f.select :role, User.roles.keys.map { |w| [w.humanize, w] }, include_blank: "Select a role" %>
+      <div class='field'>
+        <%= f.text_field :username, value: nil, placeholder: 'Username' %>
+        <%= f.email_field :email, placeholder: 'Email' %>
+        <%= f.select :role, User.roles.keys.map { |w| [w.humanize, w] }, include_blank: 'Select a role' %>
       </div>
-      <div class="field">
-        <%= f.password_field :password, placeholder: "Password" %>
-        <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
+      <div class='field'>
+        <%= f.password_field :password, placeholder: 'Password' %>
+        <%= f.password_field :password_confirmation, placeholder: 'Password Confirmation' %>
       </div>
-      <div class="actions">
-        <%= f.submit "Create user", class:"btn btn-primary" %>
+      <div class='actions'>
+        <%= f.submit 'Create user', class:'btn btn-primary' %>
       </div>
     <% end %>
   </div>

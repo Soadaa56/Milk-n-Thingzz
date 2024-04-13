@@ -2,26 +2,26 @@
 <html>
   <head>
     <title>Milk'n'Thingzz</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Silkscreen&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
-    <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=DotGothic16&family=Silkscreen&display=swap' rel='stylesheet'>
+    <link rel='stylesheet' type='text/css' href='https://unpkg.com/trix@2.0.0/dist/trix.css'>
+    <script type='text/javascript' src='https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js'></script>
     <%= favicon_link_tag asset_path('milk-purple.png') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "custom", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= stylesheet_link_tag 'custom', 'data-turbo-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true %>
   </head>
 
   <body>
     <%= render 'home/header' %>
-    <div class="grid-container-nav-main"> 
+    <div class='grid-container-nav-main'> 
       <%= render 'home/nav' %>
-      <div id="main-content" class="grid-item-main-content">
+      <div id='main-content' class='grid-item-main-content'>
         <% if alert || notice%>
           <%= render 'layouts/alerts' %>
         <% end %>

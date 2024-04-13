@@ -1,23 +1,23 @@
 <h1 class>Edit Craft</h1>
 <% if current_user&.admin? %>
-  <div class="center mb-3">
-    <%= link_to "Admin Dashboard", admin_index_path, class:"btn btn-dark" %>
-    <%= link_to "All Crafts", crafts_path, class:"btn btn-dark" %>
+  <div class='center mb-3'>
+    <%= link_to 'Admin Dashboard', admin_index_path, class:'btn btn-dark' %>
+    <%= link_to 'All Crafts', crafts_path, class:'btn btn-dark' %>
   </div>
-  <div class="center mb-3">
-    <%= link_to "View This Post", craft_path(@craft), class: "btn btn-primary" %>
+  <div class='center mb-3'>
+    <%= link_to 'View This Post', craft_path(@craft), class: 'btn btn-primary' %>
   </div>
 
-  <div class="center">
-    <%= image_tag @craft.image_url, class: "max-size-image" %>
+  <div class='center'>
+    <%= image_tag @craft.image_url, class: 'max-size-image' %>
   </div>
   
-  <%= render "form", craft: @craft %>
+  <%= render 'form', craft: @craft %>
 
 <% else %>
   <p>You seem to be lost!</p>
 <% end %>
 
-<%= button_to "Destroy Craft", craft_path(@craft), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', style: "margin-left: 5rem; margin-bottom: 5rem" %>
-<%= link_to "Back", :back, class:'btn btn-custom indent', style: "margin-left: 5rem" %>
+<%= button_to 'Destroy Craft', craft_path(@craft), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', style: 'margin-left: 5rem; margin-bottom: 5rem' %>
+<%= link_to 'Back', :back, class:'btn btn-custom indent', style: 'margin-left: 5rem' %>
 

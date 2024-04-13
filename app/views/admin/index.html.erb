@@ -1,21 +1,21 @@
-<div id="admin-dashboard">
+<div id='admin-dashboard'>
   <% if Rails.env == 'development' %>
     <h1>Git Branch: <%= Git_branch %></h1>
   <% end %>
   <h1>Admin Dashboard</h1>
-  <div class="center">
-    <%= link_to 'Create User', admin_create_path, class:"btn btn-dark" %>
-    <%= link_to 'Console', admin_console_path, class:"btn btn-dark" %>
-    <%= link_to 'All Crafts', crafts_path, class:"btn btn-dark" %>
-    <%= link_to "New Craft", new_craft_path, class:"btn btn-dark" %>
+  <div class='center'>
+    <%= link_to 'Create User', admin_create_path, class:'btn btn-dark' %>
+    <%= link_to 'Console', admin_console_path, class:'btn btn-dark' %>
+    <%= link_to 'All Crafts', crafts_path, class:'btn btn-dark' %>
+    <%= link_to 'New Craft', new_craft_path, class:'btn btn-dark' %>
   </div>
   </br></br>
   
-  <div class="container" style="font-size: 1.7rem" >
+  <div class='container' style='font-size: 1.7rem' >
     <% @users.each do |user| %>
       <div>
         User <%= user.id %>: <%= link_to user.username, user_path(user.id) %>
-        <div class="indent">
+        <div class='indent'>
           Email: <%= user.email %> |
           Role: <%= user.role %> |
           <%# Need to add counter cahce to comments, for users and crafts %>

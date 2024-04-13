@@ -1,25 +1,25 @@
 <% if @user != nil %>
-  <div class="center profile-title">
+  <div class='center profile-title'>
     <%= @user.username %>'s Profile
   </div>
   <% if @user.admin? %>
-    <div class="center fs-3 red">Admin</div>
+    <div class='center fs-3 red'>Admin</div>
   <% end %>
 
   <%# @user.comments.includes(:rich_text_body).each do |comment| %>
   <% if @user.bio != nil %>
-    <p class="center fs-4">
+    <p class='center fs-4'>
       <%= render 'bio' %>
     </p>
   <% end%>
 
-  <p class="center fs-2">Number of comments: <%= @comments.all.count %></p>
+  <p class='center fs-2'>Number of comments: <%= @comments.all.count %></p>
   <% @comments.each do |comment| %>
     <%= render 'profile/comment', user: @user, comment: comment, craft:@craft %>
   <% end %>
 
 <% else %>  
 
-  <h1 style="text-decoration: none">User Not Found</h1>
+  <h1 style='text-decoration: none'>User Not Found</h1>
 
 <% end %>

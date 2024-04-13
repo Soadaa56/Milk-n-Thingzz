@@ -1,20 +1,20 @@
-<div class="center profile-title">
+<div class='center profile-title'>
   Hello, <%= current_user.username %>
 </div>
-<div class="center">
-  <%= link_to 'Edit Profile', edit_user_registration_path, class:"btn btn-dark" %>
+<div class='center'>
+  <%= link_to 'Edit Profile', edit_user_registration_path, class:'btn btn-dark' %>
 </div>
 
 <br>
 <% if @user.bio == nil %>
-  <p class="center">
-    <%= link_to 'Add Bio', profile_edit_path(@user), class:"nav-link fs-3 underline" %>
-  </p>
+  <div class='center'>
+    <%= link_to 'Add Bio', profile_edit_path(@user), class:'btn btn-dark' %>
+  </div>
 <% else %>
-  <p class="center">
-    <%= link_to 'Edit Bio', profile_edit_path(@user), class:"nav-link fs-3 underline" %>
-  </p>
-  <p class="center fs-4">
+  <div class='center'>
+    <%= link_to 'Edit Bio', profile_edit_path(@user), class:'nav-link fs-3 underline' %>
+  </div>
+  <p class='center fs-4'>
     <%= render 'bio' %>
   </p>
 <% end %>

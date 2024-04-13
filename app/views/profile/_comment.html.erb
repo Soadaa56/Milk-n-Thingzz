@@ -1,6 +1,6 @@
-<div class="container">
-  <div class="single-comment-<%= comment.id %> container mx-1">
-    <%= link_to Craft.find(comment.craft_id).name, craft_path(comment.craft_id), class:"nav-link underline" %>
+<div class='container'>
+  <div class='single-comment-<%= comment.id %> container mx-1'>
+    <%= link_to Craft.find(comment.craft_id).name, craft_path(comment.craft_id), class:'nav-link underline' %>
     <hr />
 
     <%= comment.user.username %> <br/>
@@ -12,7 +12,7 @@
 
     <hr />
   
-    <div id="comment-body-<%= comment.id %>">
+    <div id='comment-body-<%= comment.id %>'>
       </br>
       <%= comment.body %>
     </div>
