@@ -48,6 +48,12 @@ body {
   background-color: var(--main-bg-color);
   --bs-btn-hover-color: var(--shade-light-color);
   --bs-btn-hover-border-color: var(--shade-dark-color);
+  filter: brightness(105%);
+}
+
+/* If using image tag, I cannot use fill. This makes it white and works for my purposes. */
+.profile-svg {
+  filter: invert(100%);
 }
 
 .btn-custom {
@@ -122,6 +128,16 @@ Figure out how to extend sidebar color without altering height (unknown). */
   font-size: 5rem;
   text-decoration: underline;
 }
+
+.index-title {
+  color: var(--shade-light-color);
+}
+
+.index-img:hover {
+  filter: brightness(108%);
+  transition: 0.5s ease;
+}
+
 
 .flex-item {
   width: 30rem;
@@ -278,11 +294,16 @@ Figure out how to extend sidebar color without altering height (unknown). */
   var(--dark-accent-color);
 }
 
-.sorted-image {
+.sorted-img {
   width: 100%;
   height: auto;
   max-width: 100%;
   max-height: 35rem;
   object-fit: cover;
+}
+
+.sorted-img:hover {
+  filter: brightness(105%);
+  transition: 0.5s ease;
 }
 

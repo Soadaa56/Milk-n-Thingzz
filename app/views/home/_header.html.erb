@@ -4,9 +4,9 @@
     </div>
     <% if user_signed_in? %>
         <div class="btn-group profile-button">
-            <button class="btn btn-secondary dropdown-toggle btn-profile" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Profile
-            </button>
+            <a class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <%= image_tag("svg/profile.svg", alt: "Profile Icon", class:'profile-svg' ) %>
+            </a>
             <ul class="dropdown-menu dropdown-menu-dark">
                 <li><%= link_to "My Profile", profile_path, type: "button", class:"dropdown-item" %></li>
                 <li><hr class="dropdown-divider"></li>
