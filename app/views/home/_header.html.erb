@@ -18,11 +18,11 @@
         </div>
     <% else %>
         <div class="btn-group profile-button">
-            <%= link_to 'Sign In', new_user_session_path, class:"btn btn-profile btn-lg" %>
-            <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split btn-lg" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="visually-hidden">Toggle Dropdown</span>
+            <button class="btn btn-secondary dropdown-toggle btn-profile" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Sign In
             </button>
             <ul class="dropdown-menu dropdown-menu-dark">
+                <li><%= link_to 'Sign In', new_user_session_path, class:"dropdown-item" %></li>
                 <li><%= link_to 'Sign Up', new_user_registration_path, class:"dropdown-item" %></li>
             </ul>
         </div>

@@ -17,6 +17,10 @@ body {
   width: 100vw;
  }
 
+ .notice {
+  position: absolute;
+ }
+
  .banner-container {
  }
 
@@ -146,6 +150,10 @@ Figure out how to extend sidebar color without altering height (unknown). */
 
 .indent {
   margin-left: 5rem;
+}
+
+.devise {
+  margin-top: 3rem;
 }
 
 .underline {
