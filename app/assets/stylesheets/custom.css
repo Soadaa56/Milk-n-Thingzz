@@ -142,6 +142,10 @@ Figure out how to extend sidebar color without altering height (unknown). */
   color: var(--light-accent-color)
 }
 
+.hover-light-accent-color:hover {
+  color: var(--light-accent-color);
+}
+
 .index-img:hover {
   filter: brightness(105%);
   transition: 0.5s ease;
@@ -253,10 +257,6 @@ Figure out how to extend sidebar color without altering height (unknown). */
   color: var(--shade-dark-color);
   font-size: 1.6rem;
   text-align: center;
-}
-
-.about-us-link:hover {
-  color: var(--light-accent-color);
 }
 
 .edit-craft-form {
