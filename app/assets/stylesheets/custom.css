@@ -56,6 +56,11 @@ body {
   filter: invert(100%);
 }
 
+.profile-svg:hover {
+  filter: invert(70%);
+  transition: 0.3s ease;
+}
+
 .btn-custom {
     --bs-btn-color: var(--shade-dark-color);
     --bs-btn-bg: var(--shade-light-color);
@@ -133,8 +138,12 @@ Figure out how to extend sidebar color without altering height (unknown). */
   color: var(--shade-light-color);
 }
 
+.index-title:hover {
+  color: var(--light-accent-color)
+}
+
 .index-img:hover {
-  filter: brightness(108%);
+  filter: brightness(105%);
   transition: 0.5s ease;
 }
 
@@ -184,15 +193,6 @@ Figure out how to extend sidebar color without altering height (unknown). */
   font-size: 1.5rem;
 }
 
-.about-us-paragraph {
-  display: block;
-  font-size: 1.75rem;
-  width: 120rem;
-  /* font-family: 'DotGothic16', sans-serif; */
-  font-family: 'Courier New', Courier, monospace;
-  color: var(--dark-accent-color);
-}
-
 #admin-dashboard {
   color: var(--dark-accent-color);
   font-family: 'Courier New', Courier, monospace;
@@ -209,9 +209,6 @@ Figure out how to extend sidebar color without altering height (unknown). */
   grid-template-columns: repeat(2, minmax(15rem, 1fr));
   grid-row: auto auto;
   gap: 20rem;
-}
-
-.social-item {
 }
 
 .social-logo {
@@ -238,6 +235,15 @@ Figure out how to extend sidebar color without altering height (unknown). */
   width: 25rem;
 }
 
+.about-us-paragraph {
+  display: block;
+  font-size: 1.75rem;
+  width: 120rem;
+  /* font-family: 'DotGothic16', sans-serif; */
+  font-family: 'Courier New', Courier, monospace;
+  color: var(--dark-accent-color);
+}
+
 .about-us-link-wrapper {
   text-align: center;
 }
@@ -250,7 +256,7 @@ Figure out how to extend sidebar color without altering height (unknown). */
 }
 
 .about-us-link:hover {
-  color: blue;
+  color: var(--light-accent-color);
 }
 
 .edit-craft-form {
