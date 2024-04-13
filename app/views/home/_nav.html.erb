@@ -9,4 +9,8 @@
   <%# link_to 'About', home_about_path, class:"nav-link" %>
   <%# link_to 'Contact Me', home_contact_path, class:"nav-link" %>
   <%# link_to 'Credit', home_credit_path, class:"nav-link" %>
+  <br>
+  <% if current_user&.admin? %>
+      <%= link_to 'Admin Dashboard', admin_index_path, class:"nav-link" %>
+  <% end %>
 </nav>

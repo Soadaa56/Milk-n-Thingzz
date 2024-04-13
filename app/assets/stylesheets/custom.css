@@ -39,11 +39,11 @@ body {
 }
 
 .btn-profile {
+  font-size: 1.4rem;
   color: var(--shade-dark-color);
-  background-color: var(--shade-light-color);
-  --bs-btn-hover-color: var(--dark-accent-color);
-  --bs-btn-border-color: var(--dark-accent-color);
-  --bs-btn-hover-border-color: var(--dark-accent-color);
+  background-color: var(--main-bg-color);
+  --bs-btn-hover-color: var(--shade-light-color);
+  --bs-btn-hover-border-color: var(--shade-dark-color);
 }
 
 .btn-custom {
