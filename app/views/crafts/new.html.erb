@@ -4,7 +4,7 @@
   <%= link_to "List all crafts", crafts_path, class: "btn btn-dark" %>
 </h4>
 
-<% if current_user.admin? %>
+<% if current_user&.admin? %>
   <%= render "form", craft: @craft %>
 <% else %>
   <p>You seem to be lost!</p>

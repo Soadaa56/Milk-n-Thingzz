@@ -1,5 +1,5 @@
 <h1>All Crafts</h1>
-<% if current_user.admin? %>
+<% if current_user&.admin? %>
   <div class="center fs-3 mb-5">
     <% if current_user.admin? %>
       <%= link_to 'Admin Dashboard', admin_index_path, class:"btn btn-dark" %>

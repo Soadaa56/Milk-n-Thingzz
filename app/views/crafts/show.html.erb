@@ -6,7 +6,7 @@
   <%= image_tag @craft.image_url, class: "max-size-image" %>
 </div>
 
-<% if current_user.admin? %>
+<% if current_user&.admin? %>
   <div class="center mt-3">
     <%= link_to "All Crafts - Admin", crafts_path, class: "btn btn-dark"%>
     <%= link_to "Edit Craft - Admin", edit_craft_path(@craft), class: "btn btn-primary" %>
