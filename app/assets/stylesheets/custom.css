@@ -183,6 +183,9 @@ Figure out how to extend sidebar color without altering height (unknown). */
 
 .devise {
   margin-top: 3rem;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-left: auto;
 }
 
 .underline {
