@@ -19,18 +19,3 @@
 # Craft.create(name: 'Scarf, Blue', category: 'Crotchet')
 # Craft.create(name: 'Ice King Crown', category: 'Embroidery')
 # Craft.create(name: 'Companion Cube', category: 'Embroidery')
-
-
-# CraftImage.create(craft_id: 1, image_path: "3d-print/1_1")
-# CraftImage.create(craft_id: 2, image_path: "3d-print/2_1")
-# CraftImage.create(craft_id: 3, image_path: "3d-print/3_1")
-# CraftImage.create(craft_id: 4, image_path: "3d-print/4_1")
-# CraftImage.create(craft_id: 5, image_path: "3d-print/5_1")
-# CraftImage.create(craft_id: 6, image_path: "crotchet/1_1")
-# CraftImage.create(craft_id: 7, image_path: "crotchet/2_1")
-# CraftImage.create(craft_id: 8, image_path: "crotchet/3_1")
-# CraftImage.create(craft_id: 9, image_path: "crotchet/4_1")
-# CraftImage.create(craft_id: 10, image_path: "embroidery/1_1")
-# CraftImage.create(craft_id: 11, image_path: "embroidery/2_1")
-
-# CraftImage.create(craft_id: 9, image_path: "crotchet/1_2")
