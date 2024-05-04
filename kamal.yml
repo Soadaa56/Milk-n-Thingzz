@@ -1,0 +1,5 @@
+builder:
+  args:
+    RUBY_VERSION: "<%= Pathname.pwd.join('.ruby-version').read.strip.delete_prefix('ruby-') %>"
+    BUNDLER_VERSION: "<%= Bundler::LockfileParser.new(Pathname.pwd.join('Gemfile.lock').read).bundler_version %>"
+    RAILS_MASTER_KEY: "<%= ENV['RAILS_MASTER_KEY'] %>"

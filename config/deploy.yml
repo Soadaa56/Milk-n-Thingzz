@@ -8,6 +8,9 @@ image: Soadaa56/milknthingzz
 servers:
   - 18.218.113.80
 
+ssh:
+  user: ubuntu
+
 # Credentials for your image host.
 registry:
   # Specify the registry server, if you're not using Docker Hub
