@@ -6,30 +6,50 @@ image: Soadaa56/milknthingzz
 
 # Deploy to these servers.
 servers:
-  - 18.218.113.80
+  web:
+    hosts:
+      - 18.218.113.80
+    labels:
+      traefik.http.routers.maildown-web.rule: 'Host(`<your domain name>`)'
+      traefik.http.routers.maildown-web.entrypoints: websecure
+      traefik.http.routers.maildown-web.tls.certresolver: letsencrypt
+
 
 ssh:
   user: ubuntu
 
-# Credentials for your image host.
 registry:
-  # Specify the registry server, if you're not using Docker Hub
-  # server: registry.digitalocean.com / ghcr.io / ...
-  username: Soadaa56
-
-  # Always use an access token rather than real password when possible.
+  username: soadaa56
   password:
-    - <%= ENV['KAMAL_REGISTRY_PASSWORD'] %>
+    - KAMAL_REGISTRY_PASSWORD
 
 aws:
   region: us-east-2
-  access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
-  secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+  access_key_id: 
+    - AWS_ACCESS_KEY_ID
+  secret_access_key: 
+    - AWS_SECRET_ACCESS_KEY
 
 env:
   secret:
-    - <%= ENV['RAILS_MASTER_KEY'] %>
+    - RAILS_MASTER_KEY
 
+traefik:
+  options:
+    publish:
+      - 443:443
+    volume:
+      - "letsencrypt:/letsencrypt"
+  args:
+    entrypoints.web.address: ':80'
+    entrypoints.websecure.address: ':443'
+    certificatesResolvers.letsencrypt.acme.httpchallenge: true
+    certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web
+    certificatesResolvers.letsencrypt.acme.email: soadhlh@gmail.com
+    certificatesResolvers.letsencrypt.acme.storage: /letsencrypt/acme.json
+
+volumes:
+  - "storage:/rails/storage"
 # Inject ENV variables into containers (secrets come from .env).
 # Remember to run `kamal env push` after making changes!
 # env:
