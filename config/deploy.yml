@@ -2,15 +2,15 @@
 service: milknthingzz
 
 # Name of the container image.
-image: Soadaa56/milknthingzz
+image: soadaa56/milknthingzz
 
 # Deploy to these servers.
 servers:
   web:
     hosts:
-      - 18.218.113.80
+      - 3.134.85.66
     labels:
-      traefik.http.routers.maildown-web.rule: 'Host(`<your domain name>`)'
+      traefik.http.routers.maildown-web.rule: 'Host(`milknthingzz.xyz`)'
       traefik.http.routers.maildown-web.entrypoints: websecure
       traefik.http.routers.maildown-web.tls.certresolver: letsencrypt
 
