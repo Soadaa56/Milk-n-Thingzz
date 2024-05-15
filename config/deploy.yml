@@ -50,6 +50,13 @@ traefik:
 
 volumes:
   - "storage:/rails/storage"
+
+healthcheck:
+  path: /healthz
+  port: 3000
+  max_attempts: 7
+  interval: 30s
+
 # Inject ENV variables into containers (secrets come from .env).
 # Remember to run `kamal env push` after making changes!
 # env:
@@ -57,10 +64,6 @@ volumes:
 #     DB_HOST: 192.168.0.2
 #   secret:
 #     - RAILS_MASTER_KEY
-
-# Use a different ssh user than root
-# ssh:
-#   user: app
 
 # Configure builder setup.
 # builder:
@@ -100,11 +103,6 @@ volumes:
 #   args:
 #     accesslog: true
 #     accesslog.format: json
-
-# Configure a custom healthcheck (default is /up on port 3000)
-# healthcheck:
-#   path: /healthz
-#   port: 4000
 
 # Bridge fingerprinted assets, like JS and CSS, between versions to avoid
 # hitting 404 on in-flight requests. Combines all files from new and old

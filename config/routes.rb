@@ -31,5 +31,7 @@ Rails.application.routes.draw do
   resources :crafts, only: [:index, :show, :edit, :new, :create, :update, :destroy] do
     resources :comments
   end
+
+  get "healthz" => "rails/health#show", as: :rails_health_check
   
 end
