@@ -1,19 +1,26 @@
-# Name of your application. Used to uniquely configure containers.
 service: milknthingzz
 
-# Name of the container image.
 image: soadaa56/milknthingzz
 
-# Deploy to these servers.
 servers:
   web:
     hosts:
       - 3.134.85.66
-    labels:
-      traefik.http.routers.maildown-web.rule: 'Host(`milknthingzz.xyz`)'
-      traefik.http.routers.maildown-web.entrypoints: websecure
-      traefik.http.routers.maildown-web.tls.certresolver: letsencrypt
+    # Treafik server config if not using nginx
+    # labels:
+    #   traefik.http.routers.maildown-web.rule: 'Host(`milknthingzz.xyz`)'
+    #   traefik.http.routers.maildown-web.entrypoints: websecure
+    #   traefik.http.routers.maildown-web.tls.certresolver: letsencrypt
 
+# Web server
+nginx:
+  options:
+    publish:
+      - 80:80
+      - 443:443
+  volumes:
+    - "nginx_config:/etc/nginx/conf.d"
+    - "letsencrypt:/etc/letsencrypt"
 
 ssh:
   user: ubuntu
