@@ -2,7 +2,7 @@
 service: milknthingzz
 
 # Name of the container image.
-image: soadaa56/milknthingzz:05-21-24
+image: soadaa56/milknthingzz
 
 # Deploy to these servers.
 servers:
