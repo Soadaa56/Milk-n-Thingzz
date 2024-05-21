@@ -41,6 +41,8 @@ env:
   secret:
     - RAILS_MASTER_KEY
 # Web server configuration if not using nginx
+traefik:
+  publish: false
 # traefik:
 #   options:
 #     publish:
