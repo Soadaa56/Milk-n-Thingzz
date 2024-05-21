@@ -37,13 +37,8 @@ RUN yarn install --frozen-lockfile
 # Copy application code
 COPY . .
 
-# Precompile assets
-RUN bundle exec rake assets:precompile
-
-
 # Expose the port on which your Rails app will run (e.g., 3000)
 EXPOSE 3000
-EXPOSE 3999
 
 # Start the Rails server
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
