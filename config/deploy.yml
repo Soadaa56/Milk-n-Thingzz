@@ -33,20 +33,20 @@ aws:
 env:
   secret:
     - RAILS_MASTER_KEY
-
-traefik:
-  options:
-    publish:
-      - 443:443
-    volume:
-      - "letsencrypt:/letsencrypt"
-  args:
-    entrypoints.web.address: ':80'
-    entrypoints.websecure.address: ':443'
-    certificatesResolvers.letsencrypt.acme.httpchallenge: true
-    certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web
-    certificatesResolvers.letsencrypt.acme.email: soadhlh@gmail.com
-    certificatesResolvers.letsencrypt.acme.storage: /letsencrypt/acme.json
+# Web server configuration if not using nginx
+# traefik:
+#   options:
+#     publish:
+#       - 443:443
+#     volume:
+#       - "letsencrypt:/letsencrypt"
+#   args:
+#     entrypoints.web.address: ':80'
+#     entrypoints.websecure.address: ':443'
+#     certificatesResolvers.letsencrypt.acme.httpchallenge: true
+#     certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web
+#     certificatesResolvers.letsencrypt.acme.email: soadhlh@gmail.com
+#     certificatesResolvers.letsencrypt.acme.storage: /letsencrypt/acme.json
 
 volumes:
   - "storage:/rails/storage"
