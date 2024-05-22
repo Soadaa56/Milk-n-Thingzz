@@ -9,6 +9,8 @@ ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development"
+    RAILS_SERVE_STATIC_FILES=true
+
 
 # Install packages need to build gems and node modules
 RUN apt-get update -qq && \
@@ -36,6 +38,9 @@ RUN yarn install --frozen-lockfile
 
 # Copy application code
 COPY . .
+
+# Secret Key
+ENV SECRET_KEY_BASE=30feeead978ebbc7992acffb245ea845c86ae2116a4309e2afb6f778dda1d14912e5560d2ea7939e5f0bcb7b64be01c2fe28470c328c69895406a3d90a62b325
 
 # Expose the port on which your Rails app will run (e.g., 3000)
 EXPOSE 3000
