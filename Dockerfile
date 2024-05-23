@@ -9,7 +9,6 @@ ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development"
-    RAILS_SERVE_STATIC_FILES=true
 
 
 # Install packages need to build gems and node modules
