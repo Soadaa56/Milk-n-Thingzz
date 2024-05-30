@@ -1,5 +1,6 @@
 # Use an official Ruby runtime as the base image
 FROM ruby:3.1.2
+FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 
 # Set the working directory inside the container
 WORKDIR /rails
