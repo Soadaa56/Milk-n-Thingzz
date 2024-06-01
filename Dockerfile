@@ -17,7 +17,7 @@ FROM base as build
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git libvips pkg-config
+    apt-get install --no-install-recommends -y build-essential git libvips pkg-config nodejs
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
@@ -28,12 +28,14 @@ RUN bundle install && \
 # Copy application code
 COPY . .
 
+# Ensure appropriate permissions are set for entrypoint script
+RUN chmod +x /rails/bin/docker-entrypoint
+
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 # RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
-
 
 # Final stage for app image
 FROM base
