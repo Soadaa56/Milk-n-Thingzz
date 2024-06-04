@@ -2,7 +2,7 @@
 FROM ruby:3.1.2
 
 # Set the working directory inside the container
-WORKDIR /app
+WORKDIR /rails
 
 # Set production environment
 ENV RAILS_ENV="production" \

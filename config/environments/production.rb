@@ -87,6 +87,10 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  # Custom Asset Pipeline settings.
+  config.assets.digest = true
+  config.assets.version = '1.0'
+
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
   #   "example.com",     # Allow requests from example.com
