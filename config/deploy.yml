@@ -10,6 +10,16 @@ servers:
       traefik.http.routers.maildown-web.rule: 'Host(`milknthingzz.xyz`)'
       traefik.http.routers.maildown-web.entrypoints: websecure
       traefik.http.routers.maildown-web.tls.certresolver: letsencrypt
+    accessories:
+      db:
+        image: postgres:latest
+        env:
+          clear:
+            POSTGRES_DB: soadaa
+            POSTGRES_USER: soadaa
+            POSTGRES_PASSWORD: POSTGRES_DB_PASSWORD
+        volumes:
+          - "postgres-data:/var/lib/postgresql/data"
 
 ssh:
   user: ubuntu
@@ -25,10 +35,6 @@ aws:
     - AWS_ACCESS_KEY_ID
   secret_access_key: 
     - AWS_SECRET_ACCESS_KEY
-
-env:
-  secret:
-    - RAILS_MASTER_KEY
 
 traefik:
   publish: true
@@ -57,7 +63,6 @@ healthcheck:
 # Inject ENV variables into containers (secrets come from .env).
 # Remember to run `kamal env push` after making changes!
 env:
-  clear:
     # Add any additional environment variables here
   secret:
     - RAILS_MASTER_KEY
@@ -86,6 +91,4 @@ asset_path: /rails/public/assets
 # Controls if we abort when see a role with no hosts. Disabling this may be
 # useful for more complex deploy configurations.
 #
-# allow_empty_roles: false
-
 # allow_empty_roles: false
