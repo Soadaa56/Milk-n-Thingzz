@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'health/show'
   root 'home#index'
   get 'home', to: 'home#index'
   
