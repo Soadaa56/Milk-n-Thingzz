@@ -7,7 +7,7 @@ gem 'rails', '~> 7.1'
 gem 'bootstrap', '~> 5.3.1'
 gem 'jquery-rails'
 gem "sprockets-rails"
-gem "sqlite3", "~> 1.4"
+
 gem 'puma', '~> 6.4'
 gem "jsbundling-rails"
 gem "turbo-rails"
@@ -35,6 +35,7 @@ end
 group :development do
   gem "web-console"
   gem 'bullet'
+  gem "sqlite3", "~> 1.4"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
