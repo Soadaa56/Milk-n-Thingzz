@@ -10,6 +10,8 @@ servers:
       traefik.http.routers.maildown-web.rule: 'Host(`milknthingzz.xyz`)'
       traefik.http.routers.maildown-web.entrypoints: websecure
       traefik.http.routers.maildown-web.tls.certresolver: letsencrypt
+    depends_on:
+      - db
     accessories:
       db:
         image: postgres:latest
@@ -19,10 +21,13 @@ servers:
           clear:
             POSTGRES_DB: soadaa_production
             POSTGRES_USER: soadaa
+            POSTGRES_HOST: db
           secret:
             - POSTGRES_PASSWORD
         volumes:
           - "postgres-data:/var/lib/postgresql/data"
+        networks:
+        - internal_network
 
 ssh:
   user: ubuntu
