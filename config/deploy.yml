@@ -13,11 +13,14 @@ servers:
     accessories:
       db:
         image: postgres:latest
+        host: 18.190.159.197
+        port: 5432
         env:
           clear:
             POSTGRES_DB: soadaa
             POSTGRES_USER: soadaa
-            POSTGRES_PASSWORD: POSTGRES_DB_PASSWORD
+          secret:
+            - POSTGRES_PASSWORD
         volumes:
           - "postgres-data:/var/lib/postgresql/data"
 
@@ -66,6 +69,7 @@ env:
     # Add any additional environment variables here
   secret:
     - RAILS_MASTER_KEY
+    - POSTGRES_PASSWORD
 
 asset_path: /rails/public/assets
 
