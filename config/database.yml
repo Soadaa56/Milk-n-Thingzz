@@ -19,14 +19,16 @@ default: &default
   port: 5432
 
 development:
-  <<: *default
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   database: db/development.sqlite3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
+adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   database: db/test.sqlite3
 
 # production:
@@ -43,7 +45,3 @@ test:
 production:
   <<: *default
   database: soadaa_production
-  username: soadaa
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
-  host: db
-  port: 5432

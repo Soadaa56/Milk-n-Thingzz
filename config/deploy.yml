@@ -17,7 +17,7 @@ servers:
         port: 5432
         env:
           clear:
-            POSTGRES_DB: soadaa
+            POSTGRES_DB: soadaa_production
             POSTGRES_USER: soadaa
           secret:
             - POSTGRES_PASSWORD
