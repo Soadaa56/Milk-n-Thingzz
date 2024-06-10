@@ -71,7 +71,10 @@ healthcheck:
 # Inject ENV variables into containers (secrets come from .env).
 # Remember to run `kamal env push` after making changes!
 env:
-    # Add any additional environment variables here
+  clear:
+    POSTGRES_DB: soadaa_production
+    POSTGRES_USER: soadaa
+    POSTGRES_HOST: db
   secret:
     - RAILS_MASTER_KEY
     - POSTGRES_PASSWORD
