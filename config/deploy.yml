@@ -26,9 +26,9 @@ servers:
             - POSTGRES_PASSWORD
         volumes:
           - "postgres-data:/var/lib/postgresql/data"
-        networks:
-          internal_network:
-            driver: bridge
+    networks:
+      internal_network:
+        driver: bridge
         
 
 ssh:
