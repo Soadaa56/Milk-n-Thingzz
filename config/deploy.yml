@@ -15,13 +15,13 @@ servers:
     accessories:
       db:
         image: postgres:latest
-        host: 18.190.159.197
+        host: db
         port: 5432
         env:
           clear:
             POSTGRES_DB: "soadaa_production"
             POSTGRES_USER: "soadaa"
-            POSTGRES_HOST: "localhost"
+            POSTGRES_HOST: "db"
           secret:
             - POSTGRES_PASSWORD
         volumes:
@@ -76,7 +76,7 @@ env:
   clear:
     POSTGRES_DB: "soadaa_production"
     POSTGRES_USER: "soadaa"
-    POSTGRES_HOST: "localhost"
+    POSTGRES_HOST: "db"
   secret:
     - RAILS_MASTER_KEY
     - POSTGRES_PASSWORD
