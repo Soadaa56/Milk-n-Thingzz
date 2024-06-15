@@ -10,14 +10,15 @@ servers:
       traefik.http.routers.maildown-web.rule: 'Host(`milknthingzz.xyz`)'
       traefik.http.routers.maildown-web.entrypoints: websecure
       traefik.http.routers.maildown-web.tls.certresolver: letsencrypt
-    depends_on:
-      - db
+    networks:
+      - mynetwork
     accessories:
       db:
         image: postgres:latest
-        host: db
-        port: 5432
-        env:
+        hostname: db  # corrected to hostname
+        ports:
+          - "5432:5432"
+        environment:
           clear:
             POSTGRES_DB: "soadaa_production"
             POSTGRES_USER: "soadaa"
@@ -26,11 +27,9 @@ servers:
             - POSTGRES_PASSWORD
         volumes:
           - "postgres-data:/var/lib/postgresql/data"
-    networks:
-      mynetwork:
-        driver: bridge
+        networks:
+          - mynetwork
         
-
 ssh:
   user: ubuntu
 
@@ -50,7 +49,8 @@ traefik:
   publish: true
   options:
     publish:
-      - 443:443
+      - "80:80"
+      - "443:443"
     volume:
       - "letsencrypt:/letsencrypt"
   args:
@@ -60,6 +60,9 @@ traefik:
     certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web
     certificatesResolvers.letsencrypt.acme.email: soadhlh@gmail.com
     certificatesResolvers.letsencrypt.acme.storage: /letsencrypt/acme.json
+  networks:
+    mynetwork:
+      driver: bridge
 
 volumes:
   - "storage:/rails/storage"
