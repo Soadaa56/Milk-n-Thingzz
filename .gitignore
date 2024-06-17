@@ -44,3 +44,8 @@
 # Ignore .env
 
 .env
+
+# Ignore deploy script with secret key
+
+deploy.sh
+setup.sh
