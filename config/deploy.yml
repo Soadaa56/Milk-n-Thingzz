@@ -49,7 +49,6 @@ traefik:
   publish: true
   options:
     publish:
-      - "80:80"
       - "443:443"
     volume:
       - "letsencrypt:/letsencrypt"
