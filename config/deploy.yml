@@ -20,6 +20,7 @@ env:
     POSTGRES_HOST: 18.190.159.197
   secret:
     - RAILS_MASTER_KEY
+    - POSTGRES_PASSWORD
 
 builder:
   args:
