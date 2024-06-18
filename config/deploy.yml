@@ -74,12 +74,6 @@ traefik:
 volumes:
   - "storage:/rails/storage"
 
-healthcheck:
-  path: /
-  port: 3000
-  max_attempts: 7
-  interval: 30s
-
 # Inject ENV variables into containers (secrets come from .env).
 # Remember to run `kamal env push` after making changes!
 
