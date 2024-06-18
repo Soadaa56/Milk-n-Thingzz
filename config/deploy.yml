@@ -1,5 +1,4 @@
 service: milknthingzz
-
 image: soadaa56/milknthingzz
 
 servers:
@@ -15,8 +14,7 @@ servers:
     accessories:
       db:
         image: postgres:latest
-        host: 18.190.159.197
-        port: 5432
+        container_name: postgres-db
         environment:
           secret:
             - POSTGRES_USER
