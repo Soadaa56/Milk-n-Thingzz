@@ -69,8 +69,6 @@ traefik:
     certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web
     certificatesResolvers.letsencrypt.acme.email: soadhlh@gmail.com
     certificatesResolvers.letsencrypt.acme.storage: /letsencrypt/acme.json
-  options:
-    network: "private"
 
 volumes:
   - "storage:/rails/storage"
