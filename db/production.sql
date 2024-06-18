@@ -1,3 +1,5 @@
+CREATE_DATABASE soadaa_production;
+
 -- Create crafts table
 CREATE TABLE crafts (
   id SERIAL PRIMARY KEY,
