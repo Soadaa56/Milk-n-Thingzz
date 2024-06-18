@@ -5,33 +5,48 @@ servers:
   web:
     hosts:
       - 18.190.159.197
-    options:
-      network: "private"
     labels:
       traefik.http.routers.maildown-web.rule: 'Host(`milknthingzz.xyz`)'
       traefik.http.routers.maildown-web.entrypoints: websecure
       traefik.http.routers.maildown-web.tls.certresolver: letsencrypt
-    accessories:
-      db:
-        image: postgres:latest
-        container_name: postgres-db
-        environment:
-          secret:
-            - POSTGRES_USER
-            - POSTGRES_PASSWORD
-            - POSTGRES_DB
-        options:
-          network: "private"
-        directories:
-          - data:/var/lib/postgresql/data
-        
-ssh:
-  user: ubuntu
 
 registry:
   username: "soadaa56"
   password:
     - KAMAL_REGISTRY_PASSWORD
+
+env:
+  clear:
+    POSTGRES_HOST: 18.190.159.197
+  secret:
+    - RAILS_MASTER_KEY
+
+builder:
+  args:
+    RUBY_VERSION: 3.1.2
+  remote:
+    arch: amd64
+
+asset_path: /rails/public/assets
+    
+accessories:
+  db:
+    image: postgres:15
+    host: 18.190.159.197
+    port: 543
+    env:
+      clear:
+        POSTGRES_USER: "soadaa"
+        POSTGRES_DB: "soadaa_production"
+      secret:
+        - POSTGRES_PASSWORD
+    files:
+      - db/production.sql:/docker-entrypoint-initdb.d/setup.sql
+    directories:
+      - data:/var/lib/postgresql/data
+        
+ssh:
+  user: ubuntu
 
 aws:
   region: us-east-2
@@ -68,16 +83,6 @@ healthcheck:
 
 # Inject ENV variables into containers (secrets come from .env).
 # Remember to run `kamal env push` after making changes!
-env:
-  clear:
-    POSTGRES_DB: "soadaa_production"
-    POSTGRES_USER: "soadaa"
-    POSTGRES_HOST: "db"
-  secret:
-    - RAILS_MASTER_KEY
-    - POSTGRES_PASSWORD
-
-asset_path: /rails/public/assets
 
 # Bridge fingerprinted assets, like JS and CSS, between versions to avoid
 # hitting 404 on in-flight requests. Combines all files from new and old
