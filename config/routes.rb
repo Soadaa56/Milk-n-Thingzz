@@ -33,6 +33,5 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  get "healthz" => "rails/health#show", as: :rails_health_check
-  
+   get '/up', to: 'health#up'
 end

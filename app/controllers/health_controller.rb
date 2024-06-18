@@ -1,7 +1,5 @@
 class HealthController < ApplicationController
-  rescue_from(Exception) { head :service_unavailable }
-
-  def show
+  def up
     head :ok
   end
 end
