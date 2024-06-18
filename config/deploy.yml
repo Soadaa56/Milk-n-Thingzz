@@ -6,26 +6,26 @@ servers:
   web:
     hosts:
       - 18.190.159.197
+    options:
+      network: "private"
     labels:
       traefik.http.routers.maildown-web.rule: 'Host(`milknthingzz.xyz`)'
       traefik.http.routers.maildown-web.entrypoints: websecure
       traefik.http.routers.maildown-web.tls.certresolver: letsencrypt
-    networks:
-      - mynetwork
     accessories:
       db:
         image: postgres:latest
         host: 18.190.159.197
-        port: 172.17.0.1:5432:5432
+        port: 5432
         environment:
           secret:
             - POSTGRES_USER
             - POSTGRES_PASSWORD
             - POSTGRES_DB
+        options:
+          network: "private"
         directories:
           - data:/var/lib/postgresql/data
-        networks:
-          - mynetwork
         
 ssh:
   user: ubuntu
@@ -56,9 +56,8 @@ traefik:
     certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web
     certificatesResolvers.letsencrypt.acme.email: soadhlh@gmail.com
     certificatesResolvers.letsencrypt.acme.storage: /letsencrypt/acme.json
-  networks:
-    mynetwork:
-      driver: bridge
+  options:
+    network: "private"
 
 volumes:
   - "storage:/rails/storage"
