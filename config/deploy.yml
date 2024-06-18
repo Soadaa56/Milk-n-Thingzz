@@ -33,7 +33,7 @@ accessories:
   db:
     image: postgres:15
     host: 18.190.159.197
-    port: 543
+    port: 5432
     env:
       clear:
         POSTGRES_USER: "soadaa"
