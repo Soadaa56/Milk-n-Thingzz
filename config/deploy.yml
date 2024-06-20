@@ -6,9 +6,27 @@ servers:
     hosts:
       - 18.190.159.197
     labels:
-      traefik.http.routers.maildown-web.rule: 'Host(`milknthingzz.xyz`)'
-      traefik.http.routers.maildown-web.entrypoints: websecure
-      traefik.http.routers.maildown-web.tls.certresolver: letsencrypt
+      traefik.http.routers.milknthingzz.entrypoints: websecure
+      traefik.http.routers.milknthingzz.rule: Host(`milknthingzz.xyz`)
+      traefik.http.routers.milknthingzz.tls.certresolver: letsencrypt
+
+traefik:
+  options:
+    publish:
+      - "443:443"
+    volume:
+      - "/letsencrypt/acme.json:/letsencrypt/acme.json"
+  args:
+    entryPoints.web.address: ":80"
+    entryPoints.websecure.address: ":443"
+    entryPoints.web.http.redirections.entryPoint.to: websecure
+    entryPoints.web.http.redirections.entryPoint.scheme: https
+    entryPoints.web.http.redirections.entrypoint.permanent: true
+    certificatesResolvers.letsencrypt.acme.email: "soadhlh@gmail.com"
+    certificatesResolvers.letsencrypt.acme.storage: "/letsencrypt/acme.json"
+    certificatesResolvers.letsencrypt.acme.httpchallenge: true
+    certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web
+
 
 registry:
   username: "soadaa56"
@@ -55,21 +73,6 @@ aws:
     - AWS_ACCESS_KEY_ID
   secret_access_key: 
     - AWS_SECRET_ACCESS_KEY
-
-traefik:
-  publish: true
-  options:
-    publish:
-      - "443:443"
-    volume:
-      - "letsencrypt:/letsencrypt"
-  args:
-    entrypoints.web.address: ':80'
-    entrypoints.websecure.address: ':443'
-    certificatesResolvers.letsencrypt.acme.httpchallenge: true
-    certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web
-    certificatesResolvers.letsencrypt.acme.email: soadhlh@gmail.com
-    certificatesResolvers.letsencrypt.acme.storage: /letsencrypt/acme.json
 
 volumes:
   - "storage:/rails/storage"
