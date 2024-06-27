@@ -22,8 +22,8 @@ class HomeController < ApplicationController
     @crafts = Craft.where(category: "3D-Print")
   end
 
-  def paint
-    @crafts = Craft.where(category: "Paint")
+  def painting
+    @crafts = Craft.where(category: "Painting")
   end
 
   def miscellaneous

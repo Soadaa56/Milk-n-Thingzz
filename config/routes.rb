@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get 'home/print'
   get 'home/crotchet'
   get 'home/embroidery'
-  get 'home/paint'
+  get 'home/painting'
   get 'home/miscellaneous'
   get 'home/social'
   get 'home/contact'
