@@ -37,6 +37,7 @@ body {
   font-size: 9rem;
   font-family: 'Silkscreen', cursive;
   position: relative;
+  text-align: center;
 }
 
 .profile-button {
@@ -113,6 +114,7 @@ Figure out how to extend sidebar color without altering height (unknown). */
   /* height: 120vh; */
   min-height: 95vh;
   font-size: 2.2rem;
+  padding-left: 2rem;
 }
 
 #sidebar > a, #sidebar > div {
@@ -190,8 +192,22 @@ Figure out how to extend sidebar color without altering height (unknown). */
 .devise {
   margin-top: 3rem;
   font-size: 1.6rem;
-  text-align: center;
-  margin-left: auto;
+  padding-left: 15rem;
+  padding-right: 15rem;
+}
+
+.devise > form,
+.devise > .field {
+  text-align: left;
+}
+
+.devise > h2 {
+  margin-bottom: 3rem;
+  text-decoration: underline;
+}
+
+.shared-actions {
+  margin-top: 3rem;
 }
 
 .underline {
