@@ -1,7 +1,10 @@
 <div class='grid-sorted mt-5'>
   <% @crafts.each do |craft| %>
-    <div class='sorted-image-container'>
-      <%= link_to image_tag(craft.image_url, class: 'sorted-img'), craft_path(craft) %>
-    </div>
+    <% if craft.image_url.present? %>
+      <div class='sorted-image-container'>
+        <%= link_to image_tag(craft.image_url, class: 'sorted-img'), craft_path(craft) %>
+      </div>
+    <% else %>
+    <% end %>
   <% end %>
 </div>
