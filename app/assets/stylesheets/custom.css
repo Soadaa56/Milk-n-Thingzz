@@ -21,9 +21,6 @@ body {
   position: absolute;
  }
 
- .banner-container {
- }
-
  #banner {
   background-color: var(--dark-accent-color);
   color: var(--shade-light-color);
@@ -37,7 +34,7 @@ body {
   font-size: 9rem;
   font-family: 'Silkscreen', cursive;
   position: relative;
-  text-align: center;
+  text-align: center !important;
 }
 
 .profile-button {
@@ -198,7 +195,7 @@ Figure out how to extend sidebar color without altering height (unknown). */
 
 .devise > form,
 .devise > .field {
-  text-align: left;
+  text-align: left !important;
 }
 
 .devise > h2 {
@@ -299,10 +296,6 @@ Figure out how to extend sidebar color without altering height (unknown). */
   grid-template-columns: 9fr 1fr;
 }
 
-.craft-show-image img {
-}
-
-
 .grid-sorted {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
@@ -312,9 +305,6 @@ Figure out how to extend sidebar color without altering height (unknown). */
   margin-bottom: 10rem;
   margin-left: 15rem;
   margin-right: 15rem;
-}
-
-.grid-sorted > * {
 }
 
 .sorted-image-container {
