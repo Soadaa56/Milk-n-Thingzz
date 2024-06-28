@@ -26,7 +26,7 @@ body {
   color: var(--shade-light-color);
 }
 
-#banner > a {
+#banner .banner-title {
   text-decoration: none;
   color: var(--shade-light-color);
   font-size: 9rem;
