@@ -3,7 +3,9 @@
 <h4 class='center'><%= @craft.category %></h4>
 
 <div class='center'>
-  <%= image_tag @craft.image_url, class: 'max-size-image' %>
+  <% if @craft.image_url.present? %>
+    <%= image_tag @craft.image_url, class: 'max-size-image' %>
+  <% end %>
 </div>
 
 <% if current_user&.admin? %>

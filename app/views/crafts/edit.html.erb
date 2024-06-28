@@ -9,15 +9,16 @@
   </div>
 
   <div class='center'>
-    <%= image_tag @craft.image_url, class: 'max-size-image' %>
+    <% if @craft.image_url.present? %>
+      <%= image_tag @craft.image_url, class: 'max-size-image' %>
+    <% end %>
   </div>
   
   <%= render 'form', craft: @craft %>
 
+<%= button_to 'Destroy Craft', craft_path(@craft), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', style: 'margin-left: 5rem; margin-bottom: 5rem' %>
+<%= link_to 'Back', :back, class:'btn btn-custom indent', style: 'margin-left: 5rem' %>
 <% else %>
   <p>You seem to be lost!</p>
 <% end %>
-
-<%= button_to 'Destroy Craft', craft_path(@craft), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', style: 'margin-left: 5rem; margin-bottom: 5rem' %>
-<%= link_to 'Back', :back, class:'btn btn-custom indent', style: 'margin-left: 5rem' %>
 
