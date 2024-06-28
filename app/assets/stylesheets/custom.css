@@ -32,6 +32,8 @@ body {
   font-size: 9rem;
   font-family: 'Silkscreen', cursive;
   text-align: center !important;
+  display: block !important;
+  width: 100%;
 }
 
 .profile-button {
