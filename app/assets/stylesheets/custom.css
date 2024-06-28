@@ -24,16 +24,16 @@ body {
  #banner {
   background-color: var(--dark-accent-color);
   color: var(--shade-light-color);
-  font-family: 'Silkscreen', cursive;
   display: flex;
   position: relative;
 }
 
-#banner a {
+#banner > a {
+  text-decoration: none;
+  border: 1px solid green;
   color: var(--shade-light-color);
   font-size: 9rem;
   font-family: 'Silkscreen', cursive;
-  position: relative;
   text-align: center !important;
 }
 
@@ -194,7 +194,7 @@ Figure out how to extend sidebar color without altering height (unknown). */
 }
 
 .devise > form,
-.devise > .field {
+.devise .field {
   text-align: left !important;
 }
 
