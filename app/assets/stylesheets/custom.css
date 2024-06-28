@@ -36,6 +36,10 @@ body {
   width: 100% !important;
 }
 
+#banner .banner-title:hover {
+  color: var(--light-accent-color);
+}
+
 .profile-button {
   margin: 0 auto;
   display: inline;
@@ -143,7 +147,7 @@ Figure out how to extend sidebar color without altering height (unknown). */
 }
 
 .index-title:hover {
-  color: var(--light-accent-color)
+  color: var(--light-accent-color);
 }
 
 .hover-light-accent-color:hover {
