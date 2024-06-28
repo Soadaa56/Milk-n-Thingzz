@@ -33,7 +33,7 @@ body {
   font-family: 'Silkscreen', cursive;
   text-align: center !important;
   display: block !important;
-  width: 100%;
+  width: 100% !important;
 }
 
 .profile-button {
