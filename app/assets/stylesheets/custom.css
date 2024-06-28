@@ -331,3 +331,15 @@ Figure out how to extend sidebar color without altering height (unknown). */
   transition: 0.5s ease;
 }
 
+.sorted-empty {
+  display: flex;
+  justify-content: center;
+}
+
+.sorted-empty-text {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 2rem;
+  margin-top: 0.5rem;
+}
+
