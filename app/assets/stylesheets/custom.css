@@ -343,3 +343,44 @@ Figure out how to extend sidebar color without altering height (unknown). */
   margin-top: 0.5rem;
 }
 
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    position: relative;
+  }
+  #sidebar {
+    display: none;
+  }
+  
+  #banner .banner-title {
+    font-size: 0.6em;
+    margin: 0.3em;
+  }
+
+  .profile-button {
+    display: none;
+  }
+
+  html #main-content {
+  }
+  body > div.grid-container-nav-main {
+    display: contents;
+  }
+
+  #main-content h1 {
+    font-size: 3rem;
+    border: 20 px solid gold;
+  }
+
+  #main-content img {
+    max-width: 10rem;
+  }
+  
+}
