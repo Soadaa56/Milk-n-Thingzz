@@ -351,10 +351,6 @@ Figure out how to extend sidebar color without altering height (unknown). */
 
 @media (max-width: 600px) {
 
-  html, body {
-    border: 10px solid blue;
-  }
-
   body {
     position: relative;
   }

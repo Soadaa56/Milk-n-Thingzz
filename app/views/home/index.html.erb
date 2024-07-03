@@ -18,7 +18,4 @@
     <%= link_to image_tag('3d-print/5_1.png', class: 'flex-item index-img'), craft_path(5) %>
 </div>
 
-<div class='about-us-link-wrapper'>
-  <%= link_to 'About Us', home_about_path, class:'about-us-link hover-light-accent-color' %>
-</div>
-  
+<%= render 'home/about' %>
