@@ -353,7 +353,6 @@ Figure out how to extend sidebar color without altering height (unknown). */
 
   body {
     position: relative;
-    border: 1px solid white;
   }
   #sidebar {
     display: none;
