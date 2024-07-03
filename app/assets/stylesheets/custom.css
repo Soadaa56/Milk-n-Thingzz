@@ -10,9 +10,13 @@ html {
   font-size: 62.5%;
 }
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background-color: var(--main-bg-color);
-  overflow-x: hidden !important;
   height: 100vh;
   width: 100vw;
  }
@@ -348,8 +352,7 @@ Figure out how to extend sidebar color without altering height (unknown). */
 @media (max-width: 600px) {
 
   html, body {
-    max-width: 100%;
-    overflow-x: hidden;
+    border: 10px solid blue;
   }
 
   body {
