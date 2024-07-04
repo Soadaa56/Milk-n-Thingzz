@@ -361,7 +361,7 @@ Figure out how to extend sidebar color without altering height (unknown). */
   }
   
   #banner .banner-title {
-    font-size: 0.6em;
+    font-size: 4.4rem;
     margin: 0.3em;
   }
 
@@ -369,8 +369,6 @@ Figure out how to extend sidebar color without altering height (unknown). */
     display: none;
   }
 
-  html #main-content {
-  }
   body > div.grid-container-nav-main {
     display: contents;
   }
@@ -412,5 +410,23 @@ Figure out how to extend sidebar color without altering height (unknown). */
     left: 30%;
     top: 20%;
     padding-top: 0;
+  }
+  
+  .devise {
+    margin-left: -5rem;
+    margin-top: 3rem;
+    font-size: 1.6rem;
+    padding-left: 15rem;
+    padding-right: 15rem;
+  }
+  
+  .devise > form,
+  .devise .field {
+    text-align: left !important;
+  }
+  
+  .devise > h2 {
+    margin-bottom: 3rem;
+    text-decoration: underline;
   }
 }
