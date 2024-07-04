@@ -429,4 +429,13 @@ Figure out how to extend sidebar color without altering height (unknown). */
     margin-bottom: 3rem;
     text-decoration: underline;
   }
+
+  .about-us-paragraph {
+    display: block;
+    font-size: 1.75rem;
+    max-width: 30rem;
+    /* font-family: 'DotGothic16', sans-serif; */
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--dark-accent-color);
+  }
 }
