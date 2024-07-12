@@ -6,30 +6,34 @@
         <%= link_to "Milk 'n' thingzz", root_path, class: "banner-title" %>
     </div>
     <% if user_signed_in? %>
-        <div class='btn-group profile-button'>
-            <a class='btn' type='button' id='dropdownMenuButton1' data-bs-toggle='dropdown' aria-expanded='false'>
-                <%= image_tag('svg/profile.svg', alt: 'Profile Icon', class:'profile-svg' ) %>
-            </a>
-            <ul class='dropdown-menu dropdown-menu-dark'>
-                <li><%= link_to 'My Profile', profile_path, type: 'button', class:'dropdown-item' %></li>
-                <li><hr class='dropdown-divider'></li>
-                <li><%= link_to 'Sign Out', destroy_user_session_path, data: { turbo_method: :delete },  class:'dropdown-item' %></li>
-                <% if current_user&.admin? %>
+        <div class="profile-button-container">
+            <div class='btn-group profile-button'>
+                <a class='btn' type='button' id='dropdownMenuButton1' data-bs-toggle='dropdown' aria-expanded='false'>
+                    <%= image_tag('svg/profile.svg', alt: 'Profile Icon', class:'profile-svg' ) %>
+                </a>
+                <ul class='dropdown-menu dropdown-menu-dark'>
+                    <li><%= link_to 'My Profile', profile_path, type: 'button', class:'dropdown-item' %></li>
                     <li><hr class='dropdown-divider'></li>
-                    <%= link_to 'Admin Dashboard', admin_index_path, class:'dropdown-item' %>
-                <% end %>
-            </ul>
+                    <li><%= link_to 'Sign Out', destroy_user_session_path, data: { turbo_method: :delete },  class:'dropdown-item' %></li>
+                    <% if current_user&.admin? %>
+                        <li><hr class='dropdown-divider'></li>
+                        <%= link_to 'Admin Dashboard', admin_index_path, class:'dropdown-item' %>
+                    <% end %>
+                </ul>
+            </div>
         </div>
     <% else %>
-        <div class='btn-group profile-button'>
-            <a class='btn' type='button' id='dropdownMenuButton1' data-bs-toggle='dropdown' aria-expanded='false'>
-                <%= image_tag('svg/profile.svg', alt: 'Profile icon', class:'profile-svg' ) %>
-            </a>
-            <ul class='dropdown-menu dropdown-menu-dark'>
-                <li><%= link_to 'Sign In', new_user_session_path, class:'dropdown-item' %></li>
-                <li><hr class='dropdown-divider'></li>
-                <li><%= link_to 'Sign Up', new_user_registration_path, class:'dropdown-item' %></li>
-            </ul>
+        <div class="profile-button-container">
+            <div class='btn-group profile-button'>
+                <a class='btn' type='button' id='dropdownMenuButton1' data-bs-toggle='dropdown' aria-expanded='false'>
+                    <%= image_tag('svg/profile.svg', alt: 'Profile icon', class:'profile-svg' ) %>
+                </a>
+                <ul class='dropdown-menu dropdown-menu-dark'>
+                    <li><%= link_to 'Sign In', new_user_session_path, class:'dropdown-item' %></li>
+                    <li><hr class='dropdown-divider'></li>
+                    <li><%= link_to 'Sign Up', new_user_registration_path, class:'dropdown-item' %></li>
+                </ul>
+            </div>
         </div>
     <% end %>
 </div>
