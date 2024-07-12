@@ -1,4 +1,7 @@
 <div class='banner-container'>
+    <div class='mobile mobile-menu-container'>
+        <%= image_tag('mobile-menu.png', alt: 'Menu icon', class: 'mobile mobile-menu') %>
+    </div>
     <div id='banner'>
         <%= link_to "Milk 'n' thingzz", root_path, class: "banner-title" %>
     </div>
@@ -20,7 +23,7 @@
     <% else %>
         <div class='btn-group profile-button'>
             <a class='btn' type='button' id='dropdownMenuButton1' data-bs-toggle='dropdown' aria-expanded='false'>
-                <%= image_tag('svg/profile.svg', alt: 'Profile Icon', class:'profile-svg' ) %>
+                <%= image_tag('svg/profile.svg', alt: 'Profile icon', class:'profile-svg' ) %>
             </a>
             <ul class='dropdown-menu dropdown-menu-dark'>
                 <li><%= link_to 'Sign In', new_user_session_path, class:'dropdown-item' %></li>

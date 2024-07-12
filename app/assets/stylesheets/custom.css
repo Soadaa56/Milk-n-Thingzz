@@ -349,6 +349,10 @@ Figure out how to extend sidebar color without altering height (unknown). */
   margin-top: 0.5rem;
 }
 
+.mobile {
+  display: none;
+}
+
 /* Mobile */
 
 @media (max-width: 600px) {
@@ -362,7 +366,10 @@ Figure out how to extend sidebar color without altering height (unknown). */
   
   #banner .banner-title {
     font-size: 4.4rem;
-    margin: 0.3em;
+    margin: 0.5em;
+    margin-left: 1.2em;
+    margin-right: 1.2em;
+    z-index: 1;
   }
 
   .profile-button {
@@ -438,4 +445,27 @@ Figure out how to extend sidebar color without altering height (unknown). */
     font-family: 'Courier New', Courier, monospace;
     color: var(--dark-accent-color);
   }
+
+  .mobile {
+    display: inline;
+  }
+
+  .banner-container {
+    position: relative;
+  }
+
+  .mobile-menu-container {
+    z-index: 2;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .mobile-menu {
+    filter: invert(100%);
+    z-index: 2;
+    width: 80%;
+  }
+
+  
 }
