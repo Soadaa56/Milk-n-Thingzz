@@ -500,4 +500,20 @@ body {
     top: 0;
     right: 0;
   }
+  
+  .social-wrapper {
+    display: grid;
+    margin: 1rem;
+    grid-template-columns: repeat(2, minmax(15rem, 1fr));
+    grid-row: auto auto;
+    gap: 2rem;
+  }
+  
+  .social-logo {
+    /* padding: 5rem; */
+    /* width: 10rem; */
+    height: auto;
+    width: 15rem;
+    margin-bottom: 1rem;
+  }
 }
