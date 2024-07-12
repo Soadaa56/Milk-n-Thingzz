@@ -1,0 +1,42 @@
+<div class="mobile-popup-menu">
+  <%= image_tag('close.svg', alt: 'Close icon', class: 'mobile-popup-close') %>
+  <div class='mobile-popup-div'>
+    <%= link_to 'Crotchet', home_crotchet_path, class:'mobile-popup-link'%>
+  </div>
+  <div class='mobile-popup-div'>
+    <%= link_to 'Embroidery', home_embroidery_path, class:'mobile-popup-link' %>
+  </div>
+  <div class='mobile-popup-div'>
+    <%= link_to '3-D Print', home_print_path, class:'mobile-popup-link' %>
+  </div>
+  <div class='mobile-popup-div'>
+    <%= link_to 'Painting', home_painting_path, class:'mobile-popup-link' %>
+  </div>
+  <div class='mobile-popup-div'>
+    <%= link_to 'Misc.', home_miscellaneous_path, class:'mobile-popup-link' %>
+  </div>
+  <div class='mobile-popup-div'>
+    <%= link_to 'Socials', home_social_path, class:'mobile-popup-link' %>
+  </div>
+
+  <% if user_signed_in? %>
+    <div class='mobile-popup-div'>
+      <%= link_to 'My Profile', profile_path, class: 'mobile-popup-link' %>
+    </div>
+    <div class='mobile-popup-div'>
+      <%= link_to 'Sign Out', destroy_user_session_path, data: { turbo_method: :delete }, class: 'mobile-popup-link' %>
+    </div>
+  <% else %>
+    <div class='mobile-popup-div'>
+      <%= link_to 'Sign In', new_user_session_path, class:'mobile-popup-link' %>
+    </div>
+    <div class='mobile-popup-div'>
+      <%= link_to 'Sign Up', new_user_registration_path, class:'mobile-popup-link' %>
+    </div>
+  <% end %>
+  <% if current_user&.admin? %>
+    <div class='mobile-popup-div'>
+      <%= link_to 'Admin Dashboard', admin_index_path, class: 'mobile-popup-link'  %>
+    </div>
+  <% end %>
+</div>

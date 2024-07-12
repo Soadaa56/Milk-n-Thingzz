@@ -19,7 +19,8 @@
 
   <body>
     <%= render 'home/header' %>
-    <div class='grid-container-nav-main'> 
+    <%= render 'home/popup' %>
+    <div class='grid-container-nav-main'>
       <%= render 'home/nav' %>
       <div id='main-content' class='grid-item-main-content'>
         <% if alert || notice%>

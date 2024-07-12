@@ -44,12 +44,15 @@ body {
   color: var(--light-accent-color);
 }
 
+.profile-button-container {
+  position: relative;
+}
+
 .profile-button {
-  margin: 0 auto;
-  display: inline;
+  z-index: 2;
   position: absolute;
-  right: 5rem;
-  margin-top: -3.1rem;
+  bottom: 0;
+  right: 0;
   color: var(--shade-dark-color);
 }
 
@@ -103,19 +106,11 @@ body {
   grid-template-columns: 20rem auto;
 }
 
-/* Nav height of 100vh causing slight horizontal scrolling. nav 100% doesn't, but green sidebar doesn't extend very far.
-This may be due to bootstrap and negative margins of navbar. Problem persisted before making sidebar and main-content grid items, thought it could fix issue.
-Setting navbar-nav margin/pad to 0 does nothing, could be a different selector.
-I can hide overflow-x but that will cause super slight shifting of what is 'center' for the flex items (easy fix, not perfect).
-Perhaps figure out if this problem occurs due to the sizing of the body or html elements (easy-medium, might not fix).
-Figure out how to extend sidebar color without altering height (unknown). */
 #sidebar {
   background-color: var(--shade-light-color);
   color: var(--shade-dark-color);
   font-family: 'DotGothic16', sans-serif;
   width: 20rem;
-  /* I should use a calc below so multiple pages can adjust size to main-content height */
-  /* height: 120vh; */
   min-height: 95vh;
   font-size: 2.2rem;
   padding-left: 2rem;
@@ -252,6 +247,12 @@ Figure out how to extend sidebar color without altering height (unknown). */
   margin-bottom: 1rem;
 }
 
+.social-logo:hover {
+  filter: brightness(110%);
+  transform: scale(1.08);
+  transition: 0.5s ease;
+}
+
 .comment-container {
   max-width: 100rem;
 }
@@ -350,6 +351,10 @@ Figure out how to extend sidebar color without altering height (unknown). */
 }
 
 .mobile {
+  display: none;
+}
+
+.mobile-popup-menu {
   display: none;
 }
 
@@ -467,5 +472,32 @@ Figure out how to extend sidebar color without altering height (unknown). */
     width: 80%;
   }
 
-  
+  .mobile-popup-menu-active {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    border: 5px solid black;
+    background-color: var(--shade-light-color);
+    color: var(--shade-dark-color);
+  }
+
+  .mobile-popup-div {
+    text-align: center;
+  }
+
+  .mobile-popup-link {
+    font-size: 4em;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    color: var(--shade-dark-color);
+  }
+
+  .mobile-popup-close {
+    width: 15%;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
 }
