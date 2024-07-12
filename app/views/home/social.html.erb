@@ -1,26 +1,36 @@
 <h1>Socials</h1>
 
-<% if false %>
+<% if true %>
 <div class='social-wrapper text-center'>
   <div class='social-item'>
-    <%= image_tag 'social/etsy-logo.svg', class: 'social-logo' %>
+    <%= link_to image_tag('social/etsy-logo.svg', class: 'social-logo'), 'https://milknthingz.etsy.com/' %>
     <p class='fs-1'>Etsy</p>
-    <a href='https://www.etsy.com' class='fs-5'>@MilksteakMami</a>
+    <a href='https://milknthingz.etsy.com/' class='fs-5'>Milknthingz</a>
   </div>
   <div class='social-item'>
-    <%= image_tag 'social/twitch-logo.svg', class: 'social-logo' %>
+    <%= link_to image_tag('social/twitch-logo.svg', class: 'social-logo'), 'https://twitch.tv/milksteakmami' %>
     <p class='fs-1'>Twitch</p>
-    <a href='https://www.Twitch.com' class='fs-5'>@MilksteakMami</a>
+    <a href='https://twitch.tv/milksteakmami' class='fs-5'>@Milksteakmami</a>
   </div>
   <div class='social-item'>
-    <%= image_tag 'social/youtube-logo.svg', class: 'social-logo' %>
+    <%= link_to image_tag('social/youtube-logo.svg', class: 'social-logo'), 'https://youtube.com/@honeyydripmami?si=kQb8iFrNOCDi6qpb' %>
     <p class='fs-1'>Youtube</p>
-    <a href='https://www.Youtube.com' class='fs-5'>@MilksteakMami</a>
+    <a href='https://youtube.com/@honeyydripmami?si=kQb8iFrNOCDi6qpb' class='fs-5'>@Honeyydripmami</a>
   </div>
   <div class='social-item'>
-    <%= image_tag 'social/tiktok-logo.svg', class: 'social-logo' %>
+    <%= link_to image_tag('social/tiktok-logo.svg', class: 'social-logo'), 'https://www.tiktok.com/@milknthingz?_t=8nxrIY3gPs7&_r=1' %>
     <p class='fs-1'>Tiktok</p>
-    <a href='https://www.Tiktok.com' class='fs-5'>@MilksteakMami</a>
+    <a href='https://www.tiktok.com/@milknthingz?_t=8nxrIY3gPs7&_r=1' class='fs-5'>@Milknthingz</a>
+  </div>
+  <div class='social-item'>
+    <%= link_to image_tag('social/instagram-logo.svg', class: 'social-logo'), 'https://www.instagram.com/milknthingzz?igsh=c3M1NXRwbnV2N3J3&utm_source=qr' %>
+    <p class='fs-1'>Instagram</p>
+    <a href='https://www.instagram.com/milknthingzz?igsh=c3M1NXRwbnV2N3J3&utm_source=qr' class='fs-5'>@Milknthingzz</a>
+  </div>
+  <div class='social-item'>
+    <%= link_to image_tag('social/venmo-logo.svg', class: 'social-logo'), 'https://venmo.com/u/Achaea-King' %>
+    <p class='fs-1'>Venmo</p>
+    <a href='https://venmo.com/u/Achaea-King' class='fs-5'>Achaea-King</a>
   </div>
 </div>
 <% else %>
@@ -29,27 +39,3 @@
 <% end %>
 
 <%= render 'home/about' %>
-<!--
-<div class='container text-center social-wrapper2'>
-  <div class='row justify-content-center'>
-    <div class='col-2'>
-      <%= image_tag 'social/etsy-logo.svg', class: 'img-fluid social-logo' %>
-      <p>Etsy</p>
-    </div>
-    <div class='col-2'>
-      <%= image_tag 'social/twitch-logo.svg', class: 'img-fluid social-logo' %>
-      <p>Twitch</p>
-    </div>
-  </div>
-  <div class='row justify-content-center'>
-    <div class='col-2'>
-      <%= image_tag 'social/youtube-logo.svg', class: 'img-fluid social-logo' %>
-      <p>Youtube</p>
-    </div>
-    <div class='col-2'>
-      <%= image_tag 'social/tiktok-logo.svg', class: 'img-fluid social-logo' %>
-      <p>Tiktok</p>
-    </div>
-  </div>
-</div>
--->
