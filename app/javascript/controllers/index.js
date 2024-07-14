@@ -5,4 +5,6 @@
 import { application } from "./application"
 
 import CommentController from "./comment_controller"
+import MenuController from "./menu_controller"
 application.register("comment", CommentController)
+application.register("menu", MenuController)
