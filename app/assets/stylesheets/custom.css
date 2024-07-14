@@ -354,9 +354,10 @@ body {
   display: none;
 }
 
-.mobile-popup-menu {
+/* Currently using bootstrap class d-none */
+/* .mobile-popup-menu {
   display: none;
-}
+} */
 
 /* Mobile */
 
@@ -466,13 +467,13 @@ body {
     left: 0;
   }
 
-  .mobile-menu {
+  .mobile-menu-button {
     filter: invert(100%);
     z-index: 2;
     width: 80%;
   }
 
-  .mobile-popup-menu-active {
+  .mobile-popup-menu {
     position: fixed;
     top: 50%;
     left: 50%;
