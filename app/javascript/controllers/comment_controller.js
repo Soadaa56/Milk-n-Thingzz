@@ -5,7 +5,6 @@ export default class extends Controller {
   initialize() {  }
   connect() {  }
   toggleForm(e) {
-    console.log("I clicked the edit button")
     e.preventDefault();
     e.stopPropagation();
     const formID = e.params["form"];
