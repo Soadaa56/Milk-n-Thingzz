@@ -18,7 +18,4 @@ export default class extends Controller {
     menuMobile.classList.toggle("d-none");
     console.log("test button")
   }
-
-
-
 }
