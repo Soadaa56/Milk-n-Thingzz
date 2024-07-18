@@ -37,7 +37,7 @@ body {
   font-family: 'Silkscreen', cursive;
   text-align: center !important;
   display: block !important;
-  width: 100% !important;
+  width: 100%;
 }
 
 #banner .banner-title:hover {
@@ -371,8 +371,10 @@ body {
   }
   
   #banner .banner-title {
-    font-size: 4.4rem;
+    font-size: 4.1rem;
     z-index: 1;
+    padding-left: 8rem;
+    padding-right: 8rem;
   }
 
   .profile-button {
@@ -513,5 +515,12 @@ body {
     height: auto;
     width: 15rem;
     margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 354px) {
+  #banner .banner-title {
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 }
