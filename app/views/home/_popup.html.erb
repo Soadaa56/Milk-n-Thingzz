@@ -1,5 +1,9 @@
 <div id="mobile-popup-menu", class="mobile-popup-menu d-none">
-  <%= image_tag('close.svg', alt: 'Close icon', id: 'mobile-popup-close', class: 'mobile-popup-close') %>
+  <%= image_tag('close.svg', alt: 'Close icon', id: 'mobile-popup-close', class: 'mobile-popup-close',
+  data: {
+    controller: "menu",
+    action: "menu#openMenu"
+  }) %>
   <div class='mobile-popup-div'>
     <%= link_to 'Crotchet', home_crotchet_path, class:'mobile-popup-link'%>
   </div>
