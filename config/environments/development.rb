@@ -87,5 +87,7 @@ Rails.application.configure do
 
   # custom
   # config.assets.debug = true
+  config.assets.compile = true
+  config.assets.digest = false
   # config.assets.check_precompiled_asset = false
 end
