@@ -7,4 +7,5 @@
 
 
 //= link controllers/comment_controller.js
+//= link controllers/menu_controller.js
 //= link controllers/index.js
