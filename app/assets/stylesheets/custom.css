@@ -481,10 +481,13 @@ body {
     border: 5px solid black;
     background-color: var(--shade-light-color);
     color: var(--shade-dark-color);
+    padding-top: 1rem;
+    z-index: 2;
   }
 
   .mobile-popup-div {
     text-align: center;
+    font-size: 0.6rem;
   }
 
   .mobile-popup-link {

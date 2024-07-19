@@ -3,12 +3,12 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   initialize() {  }
   connect() {  }
-
+  
   openMenu(e){
     e.preventDefault();
     e.stopPropagation();
-
-    const menuMobile = document.getElementById("mobile-popup-menu");
+    
+    const menuMobile = document.querySelector("#mobile-popup-menu");
     menuMobile.classList.toggle("d-none");
   }
 
@@ -16,8 +16,7 @@ export default class extends Controller {
     e.preventDefault();
     e.stopPropagation();
 
-    const menuMobile = document.getElementById("mobile-popup-menu");
+    const menuMobile = document.querySelector("#mobile-popup-menu");
     menuMobile.classList.add("d-none");
-    console.log("Menu Closed");
   }
 }
