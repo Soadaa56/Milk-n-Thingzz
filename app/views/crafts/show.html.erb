@@ -1,6 +1,6 @@
 <h1><%= @craft.name %></h1>
 </br>
-<h4><%= link_to @craft.category, home_craft_category_path(@craft), class:'center nav-link' %></h4>
+<h4><%= link_to @craft.category, home_craft_category_path(@craft), class:'center nav-link underline hover-light-accent-color' %></h4>
 
 <div class='center'>
   <% if @craft.image_url.present? %>
