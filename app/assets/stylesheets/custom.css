@@ -480,7 +480,6 @@ body {
     width: 50%;
     border: 5px solid black;
     background-color: var(--shade-light-color);
-    color: var(--shade-dark-color);
     padding-top: 1rem;
     z-index: 2;
   }
@@ -494,7 +493,11 @@ body {
     font-size: 4em;
     margin-bottom: 1rem;
     text-decoration: none;
-    color: var(--shade-dark-color);
+    color: var(--dark-accent-color);
+  }
+
+  .mobile-popup-link:hover {
+    color: hotpink;
   }
 
   .mobile-popup-close {
