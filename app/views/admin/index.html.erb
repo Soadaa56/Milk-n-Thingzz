@@ -17,7 +17,7 @@
         User <%= user.id %>: <%= link_to user.username, user_path(user.id) %>
         <div class='indent'>
           Email: <%= user.email %> |
-          Role: <%= user.role %> |
+          Role: <%= user.role.capitalize %> |
           <%# Need to add counter cahce to comments, for users and crafts %>
           Total Comments: ?<%# user.comments.count %>
         </div>
