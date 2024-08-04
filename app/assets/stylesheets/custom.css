@@ -350,6 +350,11 @@ body {
   margin-top: 0.5rem;
 }
 
+h2 {
+  text-align: center;
+  color:indigo
+}
+
 .mobile {
   display: none;
 }
