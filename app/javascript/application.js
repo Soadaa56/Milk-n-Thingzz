@@ -17,3 +17,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "trix";
 import "@rails/actiontext";
 import "./controllers"
+
+document.addEventListener("turbo:load", (event) => {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RBK38KTC2X');
+})
