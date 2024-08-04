@@ -13,7 +13,7 @@ class HomeController < ApplicationController
   def crotchet
     @crafts = Craft.where(category: "Crotchet")
   end
-  
+
   def embroidery
     @crafts = Craft.where(category: "Embroidery")
   end
@@ -24,6 +24,10 @@ class HomeController < ApplicationController
 
   def painting
     @crafts = Craft.where(category: "Painting")
+  end
+
+  def earring
+    @crafts = Craft.where(category: "Earring")
   end
 
   def miscellaneous
