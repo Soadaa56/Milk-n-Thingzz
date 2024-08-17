@@ -77,11 +77,6 @@ aws:
 volumes:
   - "storage:/rails/storage"
 
-hooks:
-  postdeploy:
-    - "./fix_permissions"
-    - "./post-deploy"
-
 # Inject ENV variables into containers (secrets come from .env).
 # Remember to run `kamal env push` after making changes!
 
