@@ -90,4 +90,8 @@ Rails.application.configure do
   config.assets.compile = true
   config.assets.digest = false
   # config.assets.check_precompiled_asset = false
+
+  # If your app is using the Sprockets gem, ensure it sets `config.assets.manifest`.
+  # See https://github.com/basecamp/kamal/issues/626 for details
+  config.assets.manifest = Rails.root.join('config', 'manifest.json')
 end
