@@ -15,6 +15,7 @@
   </div>
   
   <%= render 'form', craft: @craft %>
+  <br>
 
 <%= button_to 'Destroy Craft', craft_path(@craft), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', style: 'margin-left: 5rem; margin-bottom: 5rem' %>
 <%= link_to 'Back', :back, class:'btn btn-custom indent', style: 'margin-left: 5rem' %>
