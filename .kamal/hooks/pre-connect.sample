@@ -13,7 +13,7 @@
 # KAMAL_DESTINATION (if set)
 # KAMAL_RUNTIME
 
-ssh root@$KAMAL_HOSTS 'mkdir -p /test'
+# ssh root@$KAMAL_HOSTS 'mkdir -p /test'
 
 # hosts = ENV["KAMAL_HOSTS"].split(",")
 # results = nil
