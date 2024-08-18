@@ -12,7 +12,7 @@ export default class extends Controller {
   updateSubtype(event) {
     const category = event ? event.target.value : this.element.querySelector('select').value;
     const allSubtypes = {
-      "Earring": ["Floral", "Bear"]
+      "Earring": ["Flower", "Gummy Bear", "Jelly Fish", "Fruit", "Ice Cream", "Dairy", "Sushi" ]
     };
     const subtypeSelect = document.querySelector("#craft_subtype");
     const subtypes = allSubtypes[category] || [];

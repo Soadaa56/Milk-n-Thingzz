@@ -28,6 +28,7 @@ class HomeController < ApplicationController
 
   def earring
     @crafts = Craft.where(category: "Earring")
+    @subtypes = @crafts.pluck(:subtype).uniq
   end
 
   def miscellaneous
