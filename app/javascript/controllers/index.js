@@ -12,3 +12,6 @@ application.register("menu", MenuController)
 
 import SubtypeController from "./subtype_controller"
 application.register("subtype", SubtypeController)
+
+import SubtypeSortController from "./subtype_sort_controller"
+application.register ("subtypeSort", SubtypeSortController)
