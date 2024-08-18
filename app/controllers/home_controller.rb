@@ -30,11 +30,8 @@ class HomeController < ApplicationController
     @crafts = Craft.where(category: "Earring")
     @subtypes = @crafts.pluck(:subtype).uniq
 
-    @crafts = if params[:sort_by].present?
-      @crafts.where(subtype: params[:sort_by])
-    else
-      @crafts
-    end
+    @crafts = sort_crafts_by_subtype
+    @selected_subtype = params[:sort_by] || 'All'
   end
 
   def miscellaneous
@@ -46,6 +43,10 @@ class HomeController < ApplicationController
   private
 
   def sort_crafts_by_subtype
-
+    if params[:sort_by].present?
+      @crafts.where(subtype: params[:sort_by])
+    else
+      @crafts
+    end
   end
 end
