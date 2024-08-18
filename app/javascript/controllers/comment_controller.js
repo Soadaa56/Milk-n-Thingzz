@@ -1,5 +1,4 @@
 import { Controller } from "@hotwired/stimulus"
-import { Alert } from "bootstrap";
 
 // Connects to data-controller="comment"
 export default class extends Controller {

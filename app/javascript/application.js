@@ -16,7 +16,7 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "trix";
 import "@rails/actiontext";
-import "./controllers"
+import "./controllers";
 
 document.addEventListener("turbo:load", (event) => {
   window.dataLayer = window.dataLayer || [];
@@ -25,3 +25,5 @@ document.addEventListener("turbo:load", (event) => {
 
   gtag('config', 'G-RBK38KTC2X');
 })
+// import "controllers";
+  

@@ -5,6 +5,10 @@
 import { application } from "./application"
 
 import CommentController from "./comment_controller"
-import MenuController from "./menu_controller"
 application.register("comment", CommentController)
+
+import MenuController from "./menu_controller"
 application.register("menu", MenuController)
+
+import SubtypeController from "./subtype_controller"
+application.register("subtype", SubtypeController)

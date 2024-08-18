@@ -59,7 +59,7 @@ class CraftsController < ApplicationController
   end
 
   def craft_params
-    params.require(:craft).permit(:name, :category, :description, :image)
+    params.require(:craft).permit(:name, :category, :subtype, :description, :image)
   end
 
   def check_if_admin?

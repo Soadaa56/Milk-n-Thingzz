@@ -1,7 +1,9 @@
 <h1><%= @craft.name %></h1>
-</br>
-<h4><%= link_to @craft.category, home_craft_category_path(@craft), class:'center nav-link underline hover-light-accent-color' %></h4>
-
+<h3><%= link_to @craft.category, home_craft_category_path(@craft), class:'center nav-link underline hover-light-accent-color' %></h3>
+<% if @craft.subtype.present? %>
+  <div class="center"><%= @craft.subtype %></div>
+<% end %>
+<br>
 <div class='center'>
   <% if @craft.image_url.present? %>
     <%= image_tag @craft.image_url, class: 'max-size-image' %>
