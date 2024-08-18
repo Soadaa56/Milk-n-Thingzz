@@ -2,12 +2,13 @@
 
 <div class="center">
   <label for="sort_by">Sort by:</label>
-    <%= select_tag 'earring_sort_by', options_for_select([['All', 'all']] + @subtypes.map { |subtype| [subtype, subtype] }),
+    <%= select_tag 'earring_sort_by', options_for_select(@subtypes.map { |subtype| [subtype, subtype] }),
     prompt: 'Subtype',
     id: 'earring_sort_by',
     data: { 
-      controller: "subtypeSort",
-      action: "subtypeSort#update"
+      controller: "subtype-sort",
+      action: "subtype-sort#update",
+      subtype_sort_target: "select"
      } %>
 </div>
 

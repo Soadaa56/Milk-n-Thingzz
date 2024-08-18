@@ -2,11 +2,21 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="subtype-sort"
 export default class extends Controller {
+  static targets = ["select"];
   connect() {
-    console.log("subtype-sort controller connected");
   }
 
   update() {
-    console.log("Update Clicked");
+    this.sortCrafts();
+  }
+
+  sortCrafts() {
+    const sortBy = this.selectTarget.value;
+    const url = `/home/earring?sort_by=${sortBy}`;
+
+    console.log("sortby", sortBy);
+    console.log("url", url);
+
+    Turbo.visit(url);
   }
 }

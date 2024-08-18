@@ -29,6 +29,12 @@ class HomeController < ApplicationController
   def earring
     @crafts = Craft.where(category: "Earring")
     @subtypes = @crafts.pluck(:subtype).uniq
+
+    @crafts = if params[:sort_by].present?
+      @crafts.where(subtype: params[:sort_by])
+    else
+      @crafts
+    end
   end
 
   def miscellaneous
@@ -36,4 +42,10 @@ class HomeController < ApplicationController
   end
 
   def social; end
+
+  private
+
+  def sort_crafts_by_subtype
+
+  end
 end
