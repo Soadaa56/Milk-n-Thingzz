@@ -1,1 +1,0 @@
-ssh -i Milknthingzz-key.pem ubuntu@ec2-18-190-159-197.us-east-2.compute.amazonaws.com
