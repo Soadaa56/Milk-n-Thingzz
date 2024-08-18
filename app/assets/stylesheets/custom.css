@@ -316,13 +316,14 @@ body {
 }
 
 .sorted-image-container {
-  background: var(--shade-dark-color);
+  /* remove background box color; Plans to only upload with pictures with background removed */
+  /* background: var(--shade-dark-color); */
+  /* border: 3px solid var(--dark-accent-color); */
   width: 25rem;
   height: 30rem;
   margin: 2rem;
   padding: 3rem;
   display: grid;
-  border: 3px solid var(--dark-accent-color);
 }
 
 .sorted-img {
@@ -410,12 +411,12 @@ h2 {
   }
 
   .sorted-image-container {
-    background: var(--shade-dark-color);
+    /* remove background box color; Plans to only upload with pictures with background removed */
+    /* background: var(--shade-dark-color); */
+    /* border: 1px solid var(--dark-accent-color); */
     width: 13rem;
     height: 10rem;
     display: grid;
-    border: 1px solid
-    var(--dark-accent-color);
     position: relative;
   }
   
