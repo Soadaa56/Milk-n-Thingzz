@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
   private
 
   def set_subtypes
-    @earring_subtypes = Craft.where(category: "Earring").pluck(:subtype).uniq
+    @earring_subtypes = Rails.cache.fetch('earring_subtypes', expires_in: 12.hours) do
+      Craft.where(category: "Earring").pluck(:subtype).uniq
+    end
   end
 end
