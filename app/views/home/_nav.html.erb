@@ -4,6 +4,13 @@
   <%= link_to 'Embroidery', home_embroidery_path, class:'nav-link' %>
   <%= link_to '3-D Prints', home_print_path, class:'nav-link' %>
   <%= link_to 'Earrings', home_earring_path, class: 'nav-link'%>
+    <% if @earring_subtypes %>
+      <div class="navbar-subtypes-group">
+        <% @earring_subtypes.each do |earring_subtype| %>
+          <p class="navbar-subtypes"><%= earring_subtype %></p>
+        <% end %>
+      </div>
+    <% end %>
   <%= link_to 'Painting', home_painting_path, class:'nav-link' %>
   <%= link_to 'Misc.', home_miscellaneous_path, class:'nav-link' %>
   <%= link_to 'Socials', home_social_path, class:'nav-link' %>

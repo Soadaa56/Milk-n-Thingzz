@@ -365,6 +365,17 @@ h2 {
   display: none;
 } */
 
+#sidebar .navbar-subtypes-group {
+  display: none;
+}
+
+/* Only trigger over mobile sizes */
+@media (min-width: 601px) {
+  #sidebar .nav-link:hover + .navbar-subtypes-group {
+    display: block;
+  }
+}
+
 /* Mobile */
 
 @media (max-width: 600px) {
