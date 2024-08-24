@@ -124,7 +124,7 @@ body {
   width: 90%;
 }
 
-#sidebar > a:hover, #sidebar > div:hover {
+#sidebar .nav-link:hover {
   color: hotpink;
   font-size: 3rem;
 }
@@ -356,23 +356,36 @@ h2 {
   color:indigo
 }
 
+/* Reminder bootstrap class d-none does this as well */
 .mobile {
   display: none;
 }
-
-/* Currently using bootstrap class d-none */
-/* .mobile-popup-menu {
-  display: none;
-} */
 
 #sidebar .navbar-subtypes-group {
   display: none;
 }
 
-/* Only trigger over mobile sizes */
+/* Only trigger above mobile sizes */
 @media (min-width: 601px) {
-  .nav-link:hover + .navbar-subtypes-group {
+  #sidebar .navbar-subtypes-container:hover .navbar-subtypes-group {
     display: block;
+    font-size: 65%;
+    margin-left: 2rem;
+    outline: 2px;
+  }
+
+  .navbar-subtypes {
+    list-style: disc;
+  }
+
+  .navbar-subtype {
+    color: var(--shade-dark-color);
+    transition: all 0.22s ease-in-out;
+  }
+
+  .navbar-subtype:hover {
+    color: hotpink;
+    font-size: 150%;
   }
 }
 

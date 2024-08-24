@@ -8,7 +8,9 @@
     <% if @earring_subtypes %>
       <div class="navbar-subtypes-group">
         <% @earring_subtypes.each do |earring_subtype| %>
-          <p class="navbar-subtypes"><%= earring_subtype %></p>
+          <li class="navbar-subtypes">
+            <%= link_to earring_subtype, home_earring_path(sort_by: earring_subtype), class: 'navbar-subtype' %>
+          </li>
         <% end %>
       </div>
     <% end %>
