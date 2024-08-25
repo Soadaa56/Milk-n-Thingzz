@@ -447,11 +447,8 @@ h2 {
   
   .sorted-img {
     position: absolute;
-    width: 40%;
     height: auto;
     object-fit: cover;
-    left: 30%;
-    top: 20%;
     padding-top: 0;
   }
   
