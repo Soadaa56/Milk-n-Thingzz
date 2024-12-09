@@ -364,6 +364,10 @@ h2 {
   display: none;
 }
 
+.indigo {
+  color:indigo
+}
+
 /* Only trigger above mobile sizes */
 @media (min-width: 601px) {
 
