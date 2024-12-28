@@ -103,16 +103,16 @@ Rails.application.configure do
   config.assets.version = '1.0'
 
   # ==> Custom Mailer settings with AWS SES
-  config.action_mailer.default_url_options = { host: 'milknthingzz.xyz' }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :aws_sdk
+  config.action_mailer.default_url_options = { host: 'milknthingzz.xyz', protocol: 'https' }
   config.action_mailer.default_options = { from: 'do-not-reply@milknthingzz.xyz' }
 
-  # config.action_mailer.smtp_settings = {
-  #   region: '',
-  #   access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-  #   secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
-  #   smtp_server: 'email-smtp.us-east-1.amazonaws.com',
-  #   port: 587,
-  #   authentication: :login,
-  #   enable_starttls_auto: true
-  # }
+  config.action_mailer.aws_sdk_settings = {
+  credentials: Aws::Credentials.new(
+    Rails.application.credentials.dig(:aws, :access_key_id),
+    Rails.application.credentials.dig(:aws, :secret_access_key)
+  ),
+  region: Rails.application.credentials.dig(:aws, :region)
+  }
 end

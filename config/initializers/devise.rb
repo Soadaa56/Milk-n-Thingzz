@@ -312,6 +312,6 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   # ==> Custom Mailer settings AWS SES
-  config.action_mailer.delivery_method = :ses
-  config.action_mailer.default_url_options = { host: 'milknthingzz.xyz' }
+  # config.action_mailer.delivery_method = :ses
+  # config.action_mailer.default_url_options = { host: 'milknthingzz.xyz' }
 end
