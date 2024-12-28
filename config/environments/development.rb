@@ -1,4 +1,4 @@
-require "active_support/core_ext/integer/time"
+require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   config.after_initialize do
@@ -45,11 +45,6 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
-
-  config.action_mailer.perform_caching = false
-
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -80,10 +75,15 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  # If your app is using the Sprockets gem, ensure it sets `config.assets.manifest`.
+  # See https://github.com/basecamp/kamal/issues/626 for details
+  config.assets.manifest = Rails.root.join('config', 'manifest.json')
+
+  # Don't care if the mailer can't send.
+  config.action_mailer.perform_caching = false
 
   # custom
   # config.assets.debug = true
@@ -91,7 +91,21 @@ Rails.application.configure do
   config.assets.digest = false
   # config.assets.check_precompiled_asset = false
 
-  # If your app is using the Sprockets gem, ensure it sets `config.assets.manifest`.
-  # See https://github.com/basecamp/kamal/issues/626 for details
-  config.assets.manifest = Rails.root.join('config', 'manifest.json')
+
+  # ==> Custom Mailer settings with AWS SES using STMP
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_options = { from: 'do-not-reply@milknthingzz.xyz' }
+
+  config.action_mailer.smtp_settings = {
+    address: 'email-smtp.us-east-2.amazonaws.com',
+    port: 587,
+    domain: 'milknthingzz.xyz',
+    user_name: Rails.application.credentials.dig(:aws, :ses_access_key_id),
+    password: Rails.application.credentials.dig(:aws, :ses_secret_access_key),
+    authentication: :login,
+    enable_starttls_auto: true
+  }
 end
