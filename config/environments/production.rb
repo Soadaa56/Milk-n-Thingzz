@@ -90,10 +90,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  # Custom Asset Pipeline settings.
-  config.assets.digest = true
-  config.assets.version = '1.0'
-
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
   #   "example.com",     # Allow requests from example.com
@@ -101,4 +97,22 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+  # Custom Asset Pipeline settings.
+  config.assets.digest = true
+  config.assets.version = '1.0'
+
+  # ==> Custom Mailer settings with AWS SES
+  config.action_mailer.default_url_options = { host: 'milknthingzz.xyz' }
+  config.action_mailer.default_options = { from: 'do-not-reply@milknthingzz.xyz' }
+
+  # config.action_mailer.smtp_settings = {
+  #   region: '',
+  #   access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+  #   secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+  #   smtp_server: 'email-smtp.us-east-1.amazonaws.com',
+  #   port: 587,
+  #   authentication: :login,
+  #   enable_starttls_auto: true
+  # }
 end
