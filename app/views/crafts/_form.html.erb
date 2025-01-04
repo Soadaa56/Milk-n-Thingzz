@@ -27,15 +27,15 @@
       </div>
     </div>
     <div>
-
       <%= f.label :description, style: 'display: block' %>
       <%= f.text_area :description, rows: 5, cols: 40 %>
     </div>
     <div>
       <%= image_tag f.object.image_url if f.object.cached_image_data %>
-      <%= f.label :image, style: 'display: block' %>
-      <%= f.hidden_field :image, value: f.object.cached_image_data %>
-      <%= f.file_field :image %>
+      <%= f.fields_for :craft_images do |ci| %>
+        <%= ci.label :images, style: 'dispaly: block' %>
+        <%= ci.file_field :images, multiple: true %>
+      <% end %>
     </div>
     <br>
   
