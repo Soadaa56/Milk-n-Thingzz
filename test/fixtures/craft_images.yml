@@ -2,8 +2,8 @@
 
 one:
   craft: one
-  image_path: MyString
+  image_data: MyText
 
 two:
   craft: two
-  image_path: MyString
+  image_data: MyText
