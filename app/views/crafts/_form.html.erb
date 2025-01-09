@@ -1,5 +1,5 @@
 <div class='indent large-text edit-craft-form'>
-  <%= form_with(model: craft) do |f| %>
+  <%= form_with model: craft, local: true, html: { enctype: "multipart/form-data" } do |f| %>
     <% if craft.errors.any? %>
       <div style='color: red'>
         <h2><%= pluralize(craft.errors.count, 'error') %> prohibited this craft from being saved:</h2>
@@ -11,6 +11,7 @@
         </ul>
       </div>
     <% end %>
+
     <div>
       <%= f.label :name, style: 'display: block' %>
       <%= f.text_field :name %>
@@ -31,10 +32,19 @@
       <%= f.text_area :description, rows: 5, cols: 40 %>
     </div>
     <div>
-      <%= image_tag f.object.image_url if f.object.cached_image_data %>
-      <%= f.fields_for :craft_images do |ci| %>
-        <%= ci.label :images, style: 'dispaly: block' %>
-        <%= ci.file_field :images, multiple: true %>
+      <label for="files">Upload New Images:</label>
+      <%= file_field_tag "files[]", multiple: true %>
+    </div>
+    <div>
+      <% if craft.craft_images.present? %>
+        <%= f.fields_for :craft_images do |ci| %>
+          <div>
+            <%= image_tag ci.object.image_url, class: 'max-size-image' %>
+            <%= ci.hidden_field :image, value: ci.object.cached_image_data, id: nil %>
+            <%= ci.check_box :_destroy %>
+            <%= ci.label :_destroy %>
+          </div>
+        <% end %>
       <% end %>
     </div>
     <br>

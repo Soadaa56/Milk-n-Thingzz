@@ -7,10 +7,13 @@
 <div class='center'>
   <% if @craft.image_url.present? %>
     <%= image_tag @craft.image_url, class: 'max-size-image' %>
-  <% else %>
-    <div>
-      <p>There seems to be an issue with recent post uploads and images will be reuploaded soon.</p>
-    </div>
+  <% end %>
+</div>
+<div class="center">
+  <% if @craft.craft_images.present? %>
+    <% @craft.craft_images.each do |ci| %>
+      <%= image_tag ci.image_url, class: 'max-size-image' %>
+    <% end %>
   <% end %>
 </div>
 

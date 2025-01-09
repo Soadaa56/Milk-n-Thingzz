@@ -18,7 +18,16 @@ class CraftsController < ApplicationController
   end
 
   def create
-    @craft = Craft.new(craft_params)
+    # transform the list of uploaded files into a craft_images attributes hash
+    new_craft_images_attributes = params[:files].inject({}) do |hash, file|
+      hash.merge!(SecureRandom.hex => { image: file })
+    end
+
+    # merge new image attributes with existing images, if any
+    craft_images_attributes = craft_params[:craft_images_attributes].to_h.merge(new_craft_images_attributes)
+    craft_attributes = craft_params.merge(craft_images_attributes: craft_images_attributes)
+
+    @craft = Craft.new(craft_attributes)
 
     respond_to do |format|
       if @craft.save
@@ -59,7 +68,11 @@ class CraftsController < ApplicationController
   end
 
   def craft_params
-    params.require(:craft).permit(:name, :category, :subtype, :description, :image, craft_images_attributes: [:id, :image, :_destroy])
+    params
+    .require(:craft)
+    .permit(
+    :name, :category, :subtype, :description, :image,
+    craft_images_attributes: [:id, :image, :_destroy])
   end
 
   def check_if_admin?
