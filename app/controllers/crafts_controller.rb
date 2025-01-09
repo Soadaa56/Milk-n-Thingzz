@@ -41,8 +41,19 @@ class CraftsController < ApplicationController
   end
 
   def update
+    if params[:files].present?
+      new_craft_images_attributes = params[:files].inject({}) do |hash, file|
+        hash.merge!(SecureRandom.hex => { image: file })
+      end
+    else
+      new_craft_images_attributes = {}
+    end
+
+    craft_images_attributes = craft_params[:craft_images_attributes].to_h.merge(new_craft_images_attributes)
+    craft_attributes = craft_params.merge(craft_images_attributes: craft_images_attributes)
+
     respond_to do |format|
-      if @craft.update(craft_params)
+      if @craft.update(craft_attributes)
         format.html { redirect_to craft_url(@craft), notice: "Craft was successfully updated." }
         format.json { render :show, status: :ok, location: @craft }
       else
