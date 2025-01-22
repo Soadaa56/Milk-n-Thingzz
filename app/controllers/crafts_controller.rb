@@ -19,8 +19,12 @@ class CraftsController < ApplicationController
 
   def create
     # transform the list of uploaded files into a craft_images attributes hash
-    new_craft_images_attributes = params[:files].inject({}) do |hash, file|
-      hash.merge!(SecureRandom.hex => { image: file })
+    if params[:files].present?
+      new_craft_images_attributes = params[:files].inject({}) do |hash, file|
+        hash.merge!(SecureRandom.hex => { image: file })
+      end
+    else
+      new_craft_images_attributes = {}
     end
 
     # merge new image attributes with existing images, if any
