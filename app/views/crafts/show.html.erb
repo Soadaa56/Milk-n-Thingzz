@@ -18,10 +18,12 @@
     <%= image_tag @craft.image_url, class: 'max-size-image' %>
   <% end %>
 </div>
-<div class="center">
+<div class="center craft-images-wrapper" data-controller='sortable' >
   <% if @craft.craft_images.present? %>
     <% @craft.craft_images.each do |ci| %>
-      <%= image_tag ci.image_url, class: 'max-size-image' %>
+      <div class="craft-image-card">
+        <%= image_tag ci.image_url, class: 'max-size-image' %>
+      </div>
     <% end %>
   <% end %>
 </div>
