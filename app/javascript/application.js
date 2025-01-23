@@ -26,4 +26,4 @@ document.addEventListener("turbo:load", (event) => {
   gtag('config', 'G-RBK38KTC2X');
 })
 // import "controllers";
-  
+  import "@rails/request.js"
