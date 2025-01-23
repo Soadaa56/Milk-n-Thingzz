@@ -38,8 +38,8 @@
     <div>
       <% if craft.craft_images.present? %>
         <%= f.fields_for :craft_images do |ci| %>
-          <div>
-            <%= image_tag ci.object.image_url, class: 'max-size-image' %>
+          <div data-controller="sortable">
+            <%= image_tag ci.object.image_url, class: 'tiny-image' %>
             <%= ci.hidden_field :image, value: ci.object.cached_image_data, id: nil %>
             <%= ci.radio_button :main_image, ci.object.image_url , checked: craft.image == ci.object.image_url %>
             <%= ci.label :main_image, "Set as the main Image" %>
