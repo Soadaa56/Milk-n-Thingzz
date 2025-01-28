@@ -4,10 +4,16 @@
   <% end %>
   <h1>Admin Dashboard</h1>
   <div class='center'>
-    <%= link_to 'Create User', admin_create_path, class:'btn btn-dark' %>
-    <%= link_to 'Console', admin_console_path, class:'btn btn-dark' %>
-    <%= link_to 'All Crafts', crafts_path, class:'btn btn-dark' %>
-    <%= link_to 'New Craft', new_craft_path, class:'btn btn-primary' %>
+    <div>
+      <span style='font-size: 2rem'>Superuser:</span>
+      <%= link_to 'Create User', admin_create_path, class:'btn btn-dark' %>
+      <%= link_to 'Console', admin_console_path, class:'btn btn-dark' %>
+    </div>
+    <br><br>
+    <div>
+      <%= link_to 'All Crafts', crafts_path, class:'btn btn-primary' %>
+      <%= link_to 'New Craft', new_craft_path, class:'btn btn-primary' %>
+    </div>
   </div>
   </br></br>
   
