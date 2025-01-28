@@ -41,8 +41,6 @@
           <div class='craft-form-image-card'>
             <%= image_tag ci.object.image_url, class: 'tiny-image' %>
             <%= ci.hidden_field :image, value: ci.object.cached_image_data, id: nil %>
-            <%= ci.radio_button :main_image, ci.object.image_url , checked: craft.image == ci.object.image_url %>
-            <%= ci.label :main_image, 'Set as the main Image' %>
             <%= ci.check_box :_destroy %>
             <%= ci.label :_destroy %>
           </div>
