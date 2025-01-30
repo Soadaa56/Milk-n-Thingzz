@@ -93,6 +93,8 @@ GEM
     benchmark (0.3.0)
     bigdecimal (3.1.7)
     bindex (0.8.1)
+    bootsnap (1.18.4)
+      msgpack (~> 1.2)
     bootstrap (5.3.2)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.11.8, < 3)
@@ -130,11 +132,16 @@ GEM
     e2mmap (0.1.0)
     erubi (1.12.0)
     execjs (2.9.1)
+    ffi (1.17.1-aarch64-linux-gnu)
+    ffi (1.17.1-x86_64-linux-gnu)
     globalid (1.2.1)
       activesupport (>= 6.1)
     http_connection (1.4.4)
     i18n (1.14.4)
       concurrent-ruby (~> 1.0)
+    image_processing (1.13.0)
+      mini_magick (>= 4.9.5, < 5)
+      ruby-vips (>= 2.0.17, < 3)
     importmap-rails (1.2.3)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
@@ -144,12 +151,16 @@ GEM
       rdoc
       reline (>= 0.4.2)
     jaro_winkler (1.5.6)
+    jbuilder (2.12.0)
+      actionview (>= 5.0.0)
+      activesupport (>= 5.0.0)
     json (2.7.2)
     kramdown (2.4.0)
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
     language_server-protocol (3.17.0.3)
+    logger (1.6.0)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -160,8 +171,10 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
+    mini_magick (4.13.2)
     mini_mime (1.1.5)
     minitest (5.22.3)
+    msgpack (1.7.5)
     mutex_m (0.2.0)
     net-imap (0.4.10)
       date
@@ -187,6 +200,8 @@ GEM
     psych (5.1.2)
       stringio
     public_suffix (5.0.5)
+    puma (6.4.2)
+      nio4r (~> 2.0)
     racc (1.7.3)
     rack (3.0.10)
     rack-session (2.0.0)
@@ -233,6 +248,8 @@ GEM
     regexp_parser (2.9.0)
     reline (0.5.3)
       io-console (~> 0.5)
+    requestjs-rails (0.0.12)
+      railties (>= 6.1.0)
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
@@ -253,7 +270,18 @@ GEM
     rubocop-ast (1.31.2)
       parser (>= 3.3.0.4)
     ruby-progressbar (1.13.0)
+    ruby-vips (2.2.2)
+      ffi (~> 1.12)
+      logger
     rubyzip (2.3.2)
+    sassc (2.4.0)
+      ffi (~> 1.9)
+    sassc-rails (2.1.2)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     selenium-webdriver (4.10.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -277,6 +305,13 @@ GEM
       thor (~> 1.0)
       tilt (~> 2.0)
       yard (~> 0.9, >= 0.9.24)
+    sprockets (4.2.1)
+      concurrent-ruby (~> 1.0)
+      rack (>= 2.2.4, < 4)
+    sprockets-rails (3.5.2)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      sprockets (>= 3.0.0)
     sqlite3 (1.7.3-aarch64-linux)
     sqlite3 (1.7.3-x86_64-linux)
     stimulus-rails (1.3.3)
@@ -314,6 +349,7 @@ GEM
       rexml
     xpath (3.2.0)
       nokogiri (~> 1.8)
+    yaml (0.2.1)
     yard (0.9.36)
     zeitwerk (2.6.13)
 
@@ -324,22 +360,31 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   aws
+  bootsnap
   bootstrap (~> 5.3.1)
   bullet
   capybara
   debug
   devise (~> 4.9, >= 4.9.2)
+  image_processing (~> 1.2)
   importmap-rails (~> 1.2)
+  jbuilder
   pg (~> 1.2)
+  psych (~> 5.1)
+  puma (~> 6.4)
   rails (~> 7.1)
+  requestjs-rails
+  sassc-rails
   selenium-webdriver
   shrine (~> 3.5)
   solargraph (~> 0.49.0)
   sqlite3 (~> 1.4)
   stimulus-rails
   turbo-rails
+  tzinfo-data
   web-console
   webdrivers
+  yaml (~> 0.2.1)
 
 RUBY VERSION
    ruby 3.1.2p20

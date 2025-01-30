@@ -5,10 +5,17 @@ ruby "3.1.2"
 gem 'rails', '~> 7.1'
 
 gem 'bootstrap', '~> 5.3.1'
-gem 'turbo-rails'
-gem 'stimulus-rails'
 
-gem "importmap-rails", "~> 1.2"
+gem 'puma', '~> 6.4'
+gem "turbo-rails"
+gem "stimulus-rails"
+# gem "cssbundling-rails"
+gem "sassc-rails"
+gem "jbuilder"
+gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "bootsnap", require: false
+
+gem "image_processing", "~> 1.2"
 gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'shrine', '~> 3.5'
 
@@ -28,7 +35,11 @@ group :test do
   gem "webdrivers"
 end
 
+gem "importmap-rails", "~> 1.2"
 gem "solargraph", "~> 0.49.0"
+gem 'yaml', '~> 0.2.1'
+gem 'psych', '~> 5.1'
 gem 'pg', '~> 1.2'
 gem 'aws'
 gem 'acts_as_list'
+gem 'requestjs-rails'
