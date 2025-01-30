@@ -9,7 +9,7 @@
       <%= link_to 'Create User', admin_create_path, class:'btn btn-dark' %>
       <%= link_to 'Console', admin_console_path, class:'btn btn-dark' %>
     </div>
-    <br><br>
+    <br>
     <div>
       <%= link_to 'All Crafts', crafts_path, class:'btn btn-primary' %>
       <%= link_to 'New Craft', new_craft_path, class:'btn btn-primary' %>
@@ -24,8 +24,9 @@
         <div class='indent'>
           Email: <%= user.email %> |
           Role: <%= user.role.capitalize %> |
-          <%# Need to add counter cache to comments, for users and crafts %>
+          <%# Need to add counter cache for users and crafts %>
           Total Comments: ?<%# user.comments.count %>
+          Total Faovorites: ? <%# user.favorites.count %>
         </div>
       <div>
     <% end %>

@@ -5,7 +5,8 @@ import { FetchRequest } from '@rails/request.js'
 // Connects to data-controller="sortable"
 export default class extends Controller {
   connect() {
-    console.log("Sortable controller connected")
+    console.log("Sortable controller test connection updated")
+    
     this.sortable = Sortable.create(this.element, {
       animation: 150,
     })

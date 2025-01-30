@@ -10,6 +10,9 @@ application.register("comment", CommentController)
 import MenuController from "./menu_controller"
 application.register("menu", MenuController)
 
+import SortableController from "./sortable_controller"
+application.register("sortable", SortableController)
+
 import SubtypeController from "./subtype_controller"
 application.register("subtype", SubtypeController)
 
