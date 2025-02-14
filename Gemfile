@@ -3,12 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 gem 'rails', '~> 7.1'
-
 gem 'bootstrap', '~> 5.3.1'
-
 gem 'puma', '~> 6.4'
 gem "turbo-rails"
 gem "stimulus-rails"
+
 # gem "cssbundling-rails"
 gem "sassc-rails"
 gem "jbuilder"

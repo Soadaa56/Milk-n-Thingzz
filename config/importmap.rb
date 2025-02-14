@@ -6,8 +6,10 @@ pin "bootstrap", to: "https://ga.jspm.io/npm:bootstrap@5.3.2/dist/js/bootstrap.e
 pin "@popperjs/core", to: "https://ga.jspm.io/npm:@popperjs/core@2.11.8/lib/index.js"
 pin "trix"
 pin "@rails/actiontext", to: "https://ga.jspm.io/npm:@rails/actiontext@7.0.8/app/assets/javascripts/actiontext.js"
-pin "@hotwired/stimulus", to: "stimulus.min.js", preload: true
-pin "@hotwired/stimulus-loading", to: "stimulus-loading.js", preload: true
-pin_all_from "app/javascript/controllers", under: "controllers"
+pin "@hotwired/turbo-rails", to: "https://ga.jspm.io/npm:@hotwired/turbo-rails@7.1.4/dist/turbo.min.js"
 pin "@hotwired/stimulus", to: "stimulus.min.js"
 pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
+pin_all_from "app/javascript/controllers", under: "controllers"
+
+# pin "@hotwired/stimulus", to: "stimulus.min.js", preload: true
+# pin "@hotwired/stimulus-loading", to: "stimulus-loading.js", preload: true
