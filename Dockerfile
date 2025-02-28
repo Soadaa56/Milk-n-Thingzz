@@ -30,8 +30,12 @@ RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz
     npm install -g yarn@$YARN_VERSION && \
     rm -rf /tmp/node-build-master
 
+# Install required version of Bundler
+RUN gem install bundler -v 2.6.5
+
 # Install application gems
 COPY Gemfile Gemfile.lock ./
+RUN gem update --system 3.3.22
 RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
