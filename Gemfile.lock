@@ -412,6 +412,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   jsbundling-rails
+  nokogiri (~> 1.16, >= 1.16.7)
   pg (~> 1.2)
   psych (~> 5.1)
   puma (~> 6.4)
