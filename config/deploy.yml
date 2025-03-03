@@ -26,6 +26,7 @@ env:
   clear:
     POSTGRES_HOST: 18.190.159.197
     POSTGRES_USER: "soadaa"
+    POSTGRES_DB: "soadaa_production"
   secret:
     - RAILS_MASTER_KEY
     - POSTGRES_PASSWORD
