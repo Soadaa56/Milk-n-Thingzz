@@ -12,25 +12,31 @@
       </div>
     <% end %>
 
-    <div>
-      <%= f.label :name, style: 'display: block' %>
-      <%= f.text_field :name %>
+    
+    <div class="row align-items-start">
+      <div class="col">
+        <div>
+          <%= f.label :name, style: 'display: block' %>
+          <%= f.text_field :name %>
+        </div>
+        <div data-controller='subtype'>
+          <div data-action="change->subtype#updateSubtype">
+            <%= f.label :category, style: 'display: block' %>
+            <%= f.select :category, ['3D-Print', 'Crotchet', 'Embroidery', 'Earring', 'Painting', 'Miscellaneous'] %>
+          </div>
+          <div data-subtype-target='subtype'>
+            <%=  f.label :subtype, style: 'display: block' %>
+            <%=  f.select :subtype, [] %>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <%= f.label :description, style: 'display: block' %>
+        <%= f.text_area :description, rows: 5, cols: 40 %>
+      </div>
     </div>
+    <br>
 
-    <div data-controller='subtype'>
-      <div data-action="change->subtype#updateSubtype">
-        <%= f.label :category, style: 'display: block' %>
-        <%= f.select :category, ['3D-Print', 'Crotchet', 'Embroidery', 'Earring', 'Painting', 'Miscellaneous'] %>
-      </div>
-      <div data-subtype-target='subtype'>
-        <%=  f.label :subtype, style: 'display: block' %>
-        <%=  f.select :subtype, [] %>
-      </div>
-    </div>
-    <div>
-      <%= f.label :description, style: 'display: block' %>
-      <%= f.text_area :description, rows: 5, cols: 40 %>
-    </div>
     <div>
       <label for='files'>Upload New Images:</label>
       <%= file_field_tag 'files[]', multiple: true %>
