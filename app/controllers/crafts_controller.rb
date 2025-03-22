@@ -1,5 +1,5 @@
 class CraftsController < ApplicationController
-  before_action :set_craft, only: [:show, :edit, :update, :destroy]
+  before_action :set_craft, only: [:show, :edit, :update, :destroy, :move_image]
   before_action :check_if_admin?, only: [:new, :edit, :create, :update, :destroy]
 
   def index
@@ -74,6 +74,12 @@ class CraftsController < ApplicationController
       format.html { redirect_to crafts_path, notice: "Craft was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def move_image
+    @image = @craft.craft_images[params[:old_position].to_i - 1]
+    @image.insert_at[params[:new_position].to_i]
+    head :ok
   end
 
   private
