@@ -20,7 +20,7 @@
   <%= render 'form', craft: @craft %>
   <br>
 
-<span>This button is to remove this post all together!</span>
+<p>This button is to remove this post all together!</p>
 <%= button_to 'Destroy Craft', craft_path(@craft), method: :delete, data: { turbo: false}, onclick: "return confirm('Are you sure you want to delete this craft?');", class: 'btn btn-danger', style: 'margin-left: 5rem; margin-bottom: 5rem' %>
 <%= link_to 'Back', :back, class:'btn btn-custom indent', style: 'margin-left: 5rem' %>
 <% else %>
