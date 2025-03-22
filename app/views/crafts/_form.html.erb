@@ -41,7 +41,7 @@
           <div class='craft-form-image-card'>
             <%= image_tag ci.object.image_url, class: 'tiny-image' %>
             <%= ci.hidden_field :image, value: ci.object.cached_image_data, id: nil %>
-            <%#= ci.check_box :_destroy %>
+            <%= ci.check_box :_destroy %>
             <%# ci.label :_destroy %>
           </div>
         <% end %>
