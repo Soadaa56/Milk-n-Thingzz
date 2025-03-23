@@ -7,16 +7,11 @@ gem 'bootstrap', '~> 5.3.1'
 gem 'puma', '~> 6.4'
 gem "turbo-rails"
 gem "stimulus-rails"
-
 # gem "cssbundling-rails"
 gem "sassc-rails"
 gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
-
-gem "image_processing", "~> 1.2"
-gem 'devise', '~> 4.9', '>= 4.9.2'
-gem 'shrine', '~> 3.5'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -34,6 +29,12 @@ group :test do
   gem "webdrivers"
 end
 
+# Images
+gem "image_processing", "~> 1.2"
+gem 'devise', '~> 4.9', '>= 4.9.2'
+gem 'shrine', '~> 3.5'
+
+# Custom 
 gem "importmap-rails", "~> 1.2"
 gem "solargraph", "~> 0.49.0"
 gem 'yaml', '~> 0.2.1'

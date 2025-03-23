@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_22_234226) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_22_215949) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -27,7 +27,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_22_234226) do
     t.integer "record_id", null: false
     t.integer "blob_id", null: false
     t.datetime "created_at", null: false
-    t.integer "position"
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -64,6 +63,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_22_234226) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "image_data"
+    t.integer "position"
     t.index ["craft_id"], name: "index_craft_images_on_craft_id"
   end
 
