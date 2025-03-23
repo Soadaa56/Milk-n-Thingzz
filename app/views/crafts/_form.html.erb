@@ -38,10 +38,11 @@
     <br>
 
     <div>
-    <label for='files'>Upload New Images:</label>
-    <%= file_field_tag 'files[]', multiple: true %>
-    <p>To delete images, check the box next to the image then update craft.</p>
+      <label for='files'>Upload New Images:</label>
+      <%= file_field_tag 'files[]', multiple: true %>
+      <p>To delete images, check the box next to the image then update craft.</p>
     </div>
+    
     <div class='craft-images-wrapper' data-controller='sortable' >
       <% if craft.craft_images.present? %>
         <%= f.fields_for :craft_images do |ci| %>
