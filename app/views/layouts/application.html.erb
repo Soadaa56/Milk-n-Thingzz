@@ -15,9 +15,7 @@
     <%= javascript_include_tag "https://www.googletagmanager.com/gtag/js?id=G-RBK38KTC2X" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "custom", "data-turbo-track": "reload" %>
-
   </head>
-
   <body>
     <%= render 'home/header' %>
     <%= render 'home/popup' %>
@@ -27,7 +25,6 @@
         <% if alert || notice%>
           <%= render 'layouts/alerts' %>
         <% end %>
-
         <%= yield %>
       </div>
     </div>

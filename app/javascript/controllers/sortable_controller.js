@@ -11,7 +11,6 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log("Sortable controller connected")
     console.log("Testing Stumulus controller update")
     this.sortable = Sortable.create(this.element, {
       animation: 150,
