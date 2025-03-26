@@ -35,7 +35,7 @@ gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'shrine', '~> 3.5'
 
 # Custom 
-gem "importmap-rails", "~> 1.2"
+gem "jsbundling-rails"
 gem "solargraph", "~> 0.49.0"
 gem 'yaml', '~> 0.2.1'
 gem 'psych', '~> 5.1'
