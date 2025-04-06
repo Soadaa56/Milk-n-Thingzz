@@ -370,7 +370,18 @@ h2 {
 }
 
 .indigo {
-  color:indigo
+  color: indigo;
+}
+
+.carousel {
+}
+
+.carousel-img {
+  max-width:100%;
+  max-height: 400px;
+  object-fit: cover;
+  margin: 0 auto;
+  display: block;
 }
 
 /* Only trigger above mobile sizes */

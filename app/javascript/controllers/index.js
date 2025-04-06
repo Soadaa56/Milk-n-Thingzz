@@ -21,3 +21,6 @@ application.register("subtype", SubtypeController)
 
 import SubtypeSortController from "./subtype_sort_controller"
 application.register("subtype-sort", SubtypeSortController)
+
+import CarouselController from "./carousel_controller"
+application.register("carousel", CarouselController)
