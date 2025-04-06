@@ -31,4 +31,12 @@ class User < ApplicationRecord
       where(conditions.to_h).first
     end
   end
+
+  before_validation :set_default_role
+
+  private
+
+  def set_default_role
+    self.role ||= :standard
+  end
 end

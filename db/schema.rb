@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_17_215912) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_22_215949) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -60,9 +60,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_17_215912) do
 
   create_table "craft_images", force: :cascade do |t|
     t.integer "craft_id", null: false
-    t.string "image_path"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "image_data"
+    t.integer "position"
     t.index ["craft_id"], name: "index_craft_images_on_craft_id"
   end
 

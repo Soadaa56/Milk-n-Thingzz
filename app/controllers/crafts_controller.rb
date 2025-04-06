@@ -1,5 +1,5 @@
 class CraftsController < ApplicationController
-  before_action :set_craft, only: [:show, :edit, :update, :destroy]
+  before_action :set_craft, only: [:show, :edit, :update, :destroy, :move_image]
   before_action :check_if_admin?, only: [:new, :edit, :create, :update, :destroy]
 
   def index
@@ -18,7 +18,20 @@ class CraftsController < ApplicationController
   end
 
   def create
-    @craft = Craft.new(craft_params)
+    # transform the list of uploaded files into a craft_images attributes hash
+    if params[:files].present?
+      new_craft_images_attributes = params[:files].inject({}) do |hash, file|
+        hash.merge!(SecureRandom.hex => { image: file })
+      end
+    else
+      new_craft_images_attributes = {}
+    end
+
+    # merge new image attributes with existing images, if any
+    craft_images_attributes = craft_params[:craft_images_attributes].to_h.merge(new_craft_images_attributes)
+    craft_attributes = craft_params.merge(craft_images_attributes: craft_images_attributes)
+
+    @craft = Craft.new(craft_attributes)
 
     respond_to do |format|
       if @craft.save
@@ -32,8 +45,19 @@ class CraftsController < ApplicationController
   end
 
   def update
+    if params[:files].present?
+      new_craft_images_attributes = params[:files].inject({}) do |hash, file|
+        hash.merge!(SecureRandom.hex => { image: file })
+      end
+    else
+      new_craft_images_attributes = {}
+    end
+
+    craft_images_attributes = craft_params[:craft_images_attributes].to_h.merge(new_craft_images_attributes)
+    craft_attributes = craft_params.merge(craft_images_attributes: craft_images_attributes)
+
     respond_to do |format|
-      if @craft.update(craft_params)
+      if @craft.update(craft_attributes)
         format.html { redirect_to craft_url(@craft), notice: "Craft was successfully updated." }
         format.json { render :show, status: :ok, location: @craft }
       else
@@ -52,6 +76,12 @@ class CraftsController < ApplicationController
     end
   end
 
+  def move_image
+    @image = @craft.craft_images[params[:old_position].to_i]
+    @image.insert_at(params[:new_position].to_i + 1)
+    head :ok
+  end
+  
   private
 
   def set_craft
@@ -59,7 +89,11 @@ class CraftsController < ApplicationController
   end
 
   def craft_params
-    params.require(:craft).permit(:name, :category, :subtype, :description, :image)
+    params
+    .require(:craft)
+    .permit(
+    :name, :category, :subtype, :description, :image,
+    craft_images_attributes: [:id, :image, :_destroy])
   end
 
   def check_if_admin?

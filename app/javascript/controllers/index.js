@@ -7,8 +7,14 @@ import { application } from "./application"
 import CommentController from "./comment_controller"
 application.register("comment", CommentController)
 
+import HelloController from "./hello_controller"
+application.register("hello", HelloController)
+
 import MenuController from "./menu_controller"
 application.register("menu", MenuController)
+
+import SortableController from "./sortable_controller"
+application.register("sortable", SortableController)
 
 import SubtypeController from "./subtype_controller"
 application.register("subtype", SubtypeController)

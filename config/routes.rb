@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'health/show'
   root 'home#index'
   get 'home', to: 'home#index'
 
@@ -29,10 +28,13 @@ Rails.application.routes.draw do
   #   resources :comments
   # end
 
-
   resources :crafts, only: [:index, :show, :edit, :new, :create, :update, :destroy] do
     resources :comments
+    member do
+      patch :move_image
+    end
   end
 
-   get '/up', to: 'health#up'
+  get '/up', to: 'health#up'
+  get 'health/show'
 end

@@ -11,23 +11,23 @@ class HomeController < ApplicationController
   def credit; end
 
   def crotchet
-    @crafts = Craft.where(category: "Crotchet")
+    @crafts = Craft.includes(:craft_images).where(category: "Crotchet")
   end
 
   def embroidery
-    @crafts = Craft.where(category: "Embroidery")
+    @crafts = Craft.includes(:craft_images).where(category: "Embroidery")
   end
 
   def print
-    @crafts = Craft.where(category: "3D-Print")
+    @crafts = Craft.includes(:craft_images).where(category: "3D-Print")
   end
 
   def painting
-    @crafts = Craft.where(category: "Painting")
+    @crafts = Craft.includes(:craft_images).where(category: "Painting")
   end
 
   def earring
-    @crafts = Craft.where(category: "Earring")
+    @crafts = Craft.includes(:craft_images).where(category: "Earring")
     @subtypes = @crafts.pluck(:subtype).uniq
 
     @crafts = sort_crafts_by_subtype
@@ -35,7 +35,7 @@ class HomeController < ApplicationController
   end
 
   def miscellaneous
-    @crafts = Craft.where(category: "Miscellaneous")
+    @crafts = Craft.includes(:craft_images).where(category: "Miscellaneous")
   end
 
   def social; end

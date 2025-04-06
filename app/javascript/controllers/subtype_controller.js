@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ["subtype"]
 
   connect() {
-    console.log("Subtype Controller Connected");
     this.updateSubtype();
   }
 

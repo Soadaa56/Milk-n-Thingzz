@@ -1,18 +1,9 @@
 <h1><%= @craft.name %></h1>
-<h3><%= link_to @craft.category, home_craft_category_path(@craft), class:'center nav-link underline hover-light-accent-color' %></h3>
+<h3><%= link_to @craft.category, craft_category_path_helper(@craft), class:'center nav-link underline hover-light-accent-color' %></h3>
 <% if @craft.subtype.present? %>
   <div class="center"><%= @craft.subtype %></div>
 <% end %>
 <br>
-<div class='center'>
-  <% if @craft.image_url.present? %>
-    <%= image_tag @craft.image_url, class: 'max-size-image' %>
-  <% else %>
-    <div>
-      <p>There seems to be an issue with recent post uploads and images will be reuploaded soon.</p>
-    </div>
-  <% end %>
-</div>
 
 <% if current_user&.admin? %>
   <div class='center mt-3'>
@@ -20,6 +11,22 @@
     <%= link_to 'Edit Craft - Admin', edit_craft_path(@craft), class: 'btn btn-primary' %>
   </div>
 <% end %>
+<br>
+
+<div class='center'>
+  <% if @craft.image_url.present? %>
+    <%= image_tag @craft.image_url, class: 'max-size-image' %>
+  <% end %>
+</div>
+<div class="center" >
+  <% if @craft.craft_images.present? %>
+    <% @craft.craft_images.each do |ci| %>
+      <div class="">
+        <%= image_tag ci.image_url, class: 'max-size-image' %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
 
 <div class='container comment-container'>
   <p class='fs-2'>Comments: <%= @comments.all.count %></p>
