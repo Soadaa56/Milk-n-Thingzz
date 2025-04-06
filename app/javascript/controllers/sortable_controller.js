@@ -16,14 +16,23 @@ export default class extends Controller {
       ghostClass: "sortable-ghost",
       chosenClass: "sortable-chosen",
       dragClass: "sortable-drag",
+      draggable: ".sortable-item",
       onEnd: this.end.bind(this)
     })
   }
 
   async end(event) {
-    console.log("Sortable onEnd triggered")
+    console.log(event)
+    console.log(`oldIndex: ${event.oldDraggableIndex} newIndex: ${event.newDraggableIndex}`)
 
-    const request = new FetchRequest('patch', `${this.urlValue}?old_position=${event.oldIndex + 1}&new_position=${event.newIndex + 1}`)
+    if (event.oldIndex === event.newIndex) {
+      console.log("Same posistion, nothing changed")
+      return
+    }
+
+    // Keep in mind the indices start at 0, but position starts at 1
+    // example: Move first image to second position old_pos = 0, new_pos = 2
+    const request = new FetchRequest('patch', `${this.urlValue}?old_position=${event.oldDraggableIndex}&new_position=${event.newDraggableIndex}`)
     const response = await request.perform()
     console.log(response)
   }

@@ -1,8 +1,8 @@
-<div class='indent large-text edit-craft-form'>
-  <%= form_with model: craft, local: true, html: { enctype: 'multipart/form-data' } do |f| %>
+<div class="indent large-text edit-craft-form">
+  <%= form_with model: craft, local: true, html: { enctype: "multipart/form-data" } do |f| %>
     <% if craft.errors.any? %>
-      <div style='color: red'>
-        <h2><%= pluralize(craft.errors.count, 'error') %> prohibited this craft from being saved:</h2>
+      <div style="color: red">
+        <h2><%= pluralize(craft.errors.count, "error") %> prohibited this craft from being saved:</h2>
   
         <ul>
           <% craft.errors.each do |error| %>
@@ -16,22 +16,22 @@
     <div class="row align-items-start">
       <div class="col">
         <div>
-          <%= f.label :name, style: 'display: block' %>
+          <%= f.label :name, style: "display: block" %>
           <%= f.text_field :name %>
         </div>
-        <div data-controller='subtype'>
+        <div data-controller="subtype">
           <div data-action="change->subtype#updateSubtype">
-            <%= f.label :category, style: 'display: block' %>
-            <%= f.select :category, ['3D-Print', 'Crotchet', 'Embroidery', 'Earring', 'Painting', 'Miscellaneous'] %>
+            <%= f.label :category, style: "display: block" %>
+            <%= f.select :category, ["3D-Print", "Crotchet", "Embroidery", "Earring", "Painting", "Miscellaneous"] %>
           </div>
-          <div data-subtype-target='subtype'>
-            <%=  f.label :subtype, style: 'display: block' %>
+          <div data-subtype-target="subtype">
+            <%=  f.label :subtype, style: "display: block" %>
             <%=  f.select :subtype, [] %>
           </div>
         </div>
       </div>
       <div class="col">
-        <%= f.label :description, style: 'display: block' %>
+        <%= f.label :description, style: "display: block" %>
         <%= f.text_area :description, rows: 5, cols: 40 %>
       </div>
     </div>
@@ -43,26 +43,28 @@
       <p>To delete images, check the box next to the image then update craft.</p>
     </div>
     
-    <div class='craft-images-wrapper' data-controller='sortable' >
+    <div class="craft-images-wrapper" 
+          data-controller="sortable" 
+          data-sortable-url-value="<%= move_image_craft_path(craft) %>" >
       <% if craft.craft_images.present? %>
         <%= f.fields_for :craft_images do |ci| %>
-          <div class='craft-form-image-card'>
-            <%= image_tag ci.object.image_url, class: 'tiny-image' %>
+          <div class="craft-form-image-card sortable-item">
+            <%= image_tag ci.object.image_url, class: "tiny-image" %>
             <%= ci.hidden_field :image, value: ci.object.cached_image_data, id: nil %>
             <%= ci.check_box :_destroy %>
-            <%# ci.label :_destroy %>
+            <%= ci.label :_destroy? %>
           </div>
         <% end %>
       <% end %>
     </div>
     <br>
     
-    <% if @craft.new_record?%>
+    <% if @craft.new_record? %>
       <div>
-        <%= f.submit 'Create New Craft', class: 'btn btn-primary' %>
+        <%= f.submit "Create New Craft", class: "btn btn-primary" %>
       </div>
     <% else %>
-        <%= f.submit 'Update Craft', class: 'btn btn-primary' %>
+        <%= f.submit "Update Craft", class: "btn btn-primary" %>
     <% end %>
   <% end %>
 </div>

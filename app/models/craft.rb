@@ -15,7 +15,9 @@ class Craft < ApplicationRecord
 end
 
 
-# Might add these on admin page for small preview image of craft, change to image references
+# Might add this on admin page for small preview of craft image
+# Change to image references not video
+
 # class User < ApplicationRecord
 #   has_one_attached :video do |attachable|
 #     attachable.variant :thumb, resize_to_limit: [100, 100]

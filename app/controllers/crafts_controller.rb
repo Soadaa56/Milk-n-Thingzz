@@ -77,11 +77,11 @@ class CraftsController < ApplicationController
   end
 
   def move_image
-    @image = @craft.craft_images[params[:old_position].to_i - 1]
-    @image.insert_at[params[:new_position].to_i]
+    @image = @craft.craft_images[params[:old_position].to_i]
+    @image.insert_at(params[:new_position].to_i + 1)
     head :ok
   end
-
+  
   private
 
   def set_craft
