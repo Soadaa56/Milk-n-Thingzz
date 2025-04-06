@@ -30,6 +30,7 @@
 !/tmp/storage/.keep
 
 /public/assets
+/public/uploads/
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
@@ -41,11 +42,15 @@
 
 /config/credentials/production.key
 
-# Ignore .env
-
+# Ignore secrets
 .env
+.kamal/secrets
 
 # Ignore deploy script with secret key
-
 deploy.sh
 setup.sh
+/config/credentials/development.key
+
+# Ignore text files
+ideas.txt
+troubleshoot.txt
