@@ -38,5 +38,4 @@ Rails.application.routes.draw do
   # Health check routes for kamal
   get '/health', to: 'health#up'
   get '/up', to: 'health#up'
-  get 'health/show'
 end
