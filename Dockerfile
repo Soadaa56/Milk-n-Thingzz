@@ -21,7 +21,7 @@ RUN apt-get update -qq && \
     apt-get install -y build-essential curl default-libmysqlclient-dev git libpq-dev libyaml-dev libvips libxml2 libxml2-dev libxslt1-dev node-gyp pkg-config python-is-python3
 
 # Install JavaScript dependencies
-ARG NODE_VERSION=22.13.0
+ARG NODE_VERSION=19.7.0
 ARG YARN_VERSION=1.22.22
 
 ENV PATH=/usr/local/node/bin:$PATH
