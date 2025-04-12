@@ -15,6 +15,7 @@ proxy:
   ssl: true
   host: milknthingzz.xyz
   app_port: 3000
+  response_timeout: 90
 
 
 registry:
