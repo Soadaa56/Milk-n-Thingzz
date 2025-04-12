@@ -26,7 +26,7 @@ env:
   clear:
     POSTGRES_HOST: 3.128.20.226
     POSTGRES_USER: "soadaa"
-    POSTGRES_DB: "soadaa_production"
+    POSTGRES_DB: "soadaa_production"  
   secret:
     - RAILS_MASTER_KEY
     - POSTGRES_PASSWORD
@@ -58,6 +58,8 @@ accessories:
 ssh:
   user: ubuntu
   log_level: debug
+  keys:
+    - ~/.ssh/milknthingzz-key.pem
 
 
 volumes:
