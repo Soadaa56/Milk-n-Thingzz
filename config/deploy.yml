@@ -4,7 +4,7 @@ image: soadaa56/milknthingzz
 servers:
   web:
     hosts:
-      - 18.190.159.197
+      - 3.128.20.226
     labels:
       traefik.http.routers.milknthingzz.entrypoints: websecure
       traefik.http.routers.milknthingzz.rule: Host(`milknthingzz.xyz`)
