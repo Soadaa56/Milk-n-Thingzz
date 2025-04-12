@@ -24,7 +24,7 @@ registry:
 
 env:
   clear:
-    POSTGRES_HOST: 18.190.159.197
+    POSTGRES_HOST: 3.128.20.226
     POSTGRES_USER: "soadaa"
     POSTGRES_DB: "soadaa_production"
   secret:
@@ -33,7 +33,7 @@ env:
 
 builder:
   args:
-    RUBY_VERSION: 3.1.2
+    RUBY_VERSION: 3.2.7
   arch:
     - amd64
 
@@ -42,7 +42,7 @@ asset_path: /rails/public/assets
 accessories:
   db:
     image: postgres:15
-    host: 18.190.159.197
+    host: 3.128.20.226
     port: 5432
     env:
       clear:
@@ -57,12 +57,13 @@ accessories:
         
 ssh:
   user: ubuntu
+  log_level: debug
 
 
 volumes:
   - "storage:/rails/storage"
 
-#  Unknown key in Kamal 2 configs
+#  Unknown key (aws) in Kamal 2 configs
 # aws:
 #   region: us-east-2
 #   access_key_id: 
