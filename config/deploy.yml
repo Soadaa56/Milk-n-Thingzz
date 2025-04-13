@@ -4,7 +4,7 @@ image: soadaa56/milknthingzz
 servers:
   web:
     hosts:
-      - 3.128.20.226
+      - 3.145.3.254
     labels:
       traefik.http.routers.milknthingzz.entrypoints: websecure
       traefik.http.routers.milknthingzz.rule: Host(`milknthingzz.xyz`)
@@ -23,7 +23,7 @@ registry:
 
 env:
   clear:
-    POSTGRES_HOST: 3.128.20.226
+    POSTGRES_HOST: 3.145.3.254
     POSTGRES_USER: "soadaa"
     POSTGRES_DB: "soadaa_production"  
   secret:
@@ -47,7 +47,7 @@ asset_path: /rails/public/assets
 accessories:
   db: 
     image: postgres:15
-    host: 3.128.20.226
+    host: 3.145.3.254
     port: 5432
     env:
       clear:
