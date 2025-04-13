@@ -37,5 +37,5 @@ Rails.application.routes.draw do
 
   # Health check routes for kamal
   get '/up', to: 'health#up'
-  get '/health', to: 'health#show', as: :rails_health_check
+  get '/health', to: 'health#up', as: :rails_health_check
 end
