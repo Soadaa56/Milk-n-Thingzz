@@ -63,7 +63,7 @@ accessories:
 ssh:
   user: ubuntu
   keys:
-    - [ "~/.ssh/milknthingzz-key.pem" ]
+    - ~/.ssh/milknthingzz-key.pem
 
 #  Unknown key (aws) in Kamal 2 configs
 # aws:
