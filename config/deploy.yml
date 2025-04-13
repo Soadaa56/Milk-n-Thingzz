@@ -15,8 +15,6 @@ proxy:
   ssl: true
   host: milknthingzz.xyz
   app_port: 3000
-  healthcheck:
-    path: /health
 
 registry:
   username: "soadaa56"
@@ -65,7 +63,7 @@ accessories:
 ssh:
   user: ubuntu
   keys:
-    - ~/.ssh/milknthingzz-key.pem
+    - [ "~/.ssh/milknthingzz-key.pem" ]
 
 #  Unknown key (aws) in Kamal 2 configs
 # aws:

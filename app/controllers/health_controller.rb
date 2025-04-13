@@ -1,5 +1,5 @@
 class HealthController < ApplicationController
-  def up
+  def show
     head :ok
   end
 end
