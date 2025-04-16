@@ -22,8 +22,8 @@
       <div>
         User <%= user.id %>: <%= link_to user.username, user_path(user.id) %>
         <div class='indent'>
-          Email: <%= user.email %> |
-          Role: <%= user.role.capitalize %> |
+          Email: <%= user.email.present? user.email : 'nil' %> |
+          Role: <%= user.role.present? user.role.capitalize : 'nil' %> |
           <%# Need to add counter cache for users and crafts %>
           Total Comments: ?<%# user.comments.count %>
           Total Faovorites: ? <%# user.favorites.count %>
