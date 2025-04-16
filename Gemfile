@@ -7,7 +7,7 @@ gem 'bootstrap', '~> 5.3.1'
 gem 'puma', '~> 6.4'
 gem "turbo-rails"
 gem "stimulus-rails"
-# gem "cssbundling-rails"
+gem "cssbundling-rails"
 gem "sassc-rails"
 gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
