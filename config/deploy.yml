@@ -23,7 +23,7 @@ registry:
 
 env:
   clear:
-    POSTGRES_HOST: 3.128.20.226
+    POSTGRES_HOST: "milknthingzz-db"
     POSTGRES_USER: "soadaa"
     POSTGRES_DB: "soadaa_production"  
   secret:
@@ -53,6 +53,7 @@ accessories:
       clear:
         POSTGRES_USER: "soadaa"
         POSTGRES_DB: "soadaa_production"
+        POSTGRES_HOST: "milknthingzz-db"
       secret:
         - POSTGRES_PASSWORD
     files:
