@@ -1,0 +1,8 @@
+# eval SSH_AUTH_SOCK=/tmp/ssh-NpI6m5A7bqp0/agent.16305; export SSH_AUTH_SOCK;
+SSH_AGENT_PID=16306; export SSH_AGENT_PID;
+echo Agent pid 16306;
+# ssh-add ec2
+eval SSH_AUTH_SOCK=/tmp/ssh-XXXXXXygcsOR/agent.26973; export SSH_AUTH_SOCK;
+SSH_AGENT_PID=26974; export SSH_AGENT_PID;
+echo Agent pid 26974;
+
