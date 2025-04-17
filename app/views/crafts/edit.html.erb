@@ -1,10 +1,7 @@
 <h1 class>Edit Craft</h1>
 <% if current_user&.admin? %>
   <div class='center mb-3'>
-    <%= link_to 'Admin Dashboard', admin_index_path, class:'btn btn-dark' %>
     <%= link_to 'All Crafts', crafts_path, class:'btn btn-dark' %>
-  </div>
-  <div class='center mb-3'>
     <%= link_to 'View This Post', craft_path(@craft), class: 'btn btn-primary' %>
   </div>
 
