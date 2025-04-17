@@ -5,6 +5,7 @@
       <%= link_to 'Admin Dashboard', admin_index_path, class: 'btn btn-dark' %>
     </div>
     </br>
+    
     <%= form_with(model: @user, url: admin_create_path, method: :post) do |f| %>
       <div class='field'>
         <%= f.text_field :username, value: nil, placeholder: 'Username' %>
