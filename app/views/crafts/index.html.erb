@@ -12,6 +12,9 @@
         <%= craft.id %>
         <%= link_to craft.name, craft_path(craft) %> | 
         <%= link_to 'Edit', edit_craft_path(craft) %>
+        <% if craft.craft_images.first.image_url(:thumbnail) %>
+          <%= image_tag(craft.craft_images.first.image_url(:thumbnail)) %>
+        <% end %>
       </li>
     <% end %>
   </ul>
