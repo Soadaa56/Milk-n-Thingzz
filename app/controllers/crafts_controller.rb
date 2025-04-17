@@ -27,11 +27,16 @@ class CraftsController < ApplicationController
       new_craft_images_attributes = {}
     end
 
-    # merge new image attributes with existing images, if any
+    # Merge new image attributes with existing images, if any
     craft_images_attributes = craft_params[:craft_images_attributes].to_h.merge(new_craft_images_attributes)
     craft_attributes = craft_params.merge(craft_images_attributes: craft_images_attributes)
 
     @craft = Craft.new(craft_attributes)
+
+    # Create Shrine Derivatives
+    @craft.craft_images.each do |image|
+      image.image_derivatives!
+    end
 
     respond_to do |format|
       if @craft.save
@@ -53,8 +58,14 @@ class CraftsController < ApplicationController
       new_craft_images_attributes = {}
     end
 
+    # Merge new image attributes with existing images, if any
     craft_images_attributes = craft_params[:craft_images_attributes].to_h.merge(new_craft_images_attributes)
     craft_attributes = craft_params.merge(craft_images_attributes: craft_images_attributes)
+
+    # Create Shrine Derivatives
+    @craft.craft_images.each do |image|
+      image.image_derivatives!
+    end
 
     respond_to do |format|
       if @craft.update(craft_attributes)

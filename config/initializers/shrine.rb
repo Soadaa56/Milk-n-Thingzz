@@ -17,3 +17,7 @@ Shrine.plugin :cached_attachment_data # enables retaining cached file across for
 Shrine.plugin :restore_cached_data  # extracts metadata for assigned cached files
 Shrine.plugin :validation_helpers
 Shrine.plugin :validation
+Shrine.plugin :derivatives # Stores processed files alongside main file, such as small sizes
+
+# Needs configuration to work
+# Shrine.plugin :derivation_endpoint # Creates temporary URLS for derivatives on the fly without storign them
