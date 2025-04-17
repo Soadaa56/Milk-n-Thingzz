@@ -3,7 +3,7 @@ class CraftsController < ApplicationController
   before_action :check_if_admin?, only: [:new, :edit, :create, :update, :destroy]
 
   def index
-    @crafts = Craft.all
+    @crafts = Craft.order(:id)
   end
 
   def show
