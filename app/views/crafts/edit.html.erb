@@ -9,8 +9,8 @@
   </div>
 
   <div class='center'>
-    <% if @craft.image_url.present? %>
-      <%= image_tag @craft.image_url, class: 'max-size-image' %>
+    <% if @craft.craft_images.present? %>
+      <%= image_tag @craft.craft_images.first.image_url, class: 'max-size-image' %>
     <% end %>
   </div>
   
