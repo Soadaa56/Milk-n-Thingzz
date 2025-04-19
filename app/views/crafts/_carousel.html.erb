@@ -1,9 +1,9 @@
 <div id='carousel' class='carousel slide' data-controller='carousel'>
-  <ol class='carousel-indicators'>
+  <div class='carousel-indicators'>
     <% @craft.craft_images.each_with_index do |image, index| %>
-      <li data-bs-target="#carouselIndicators" data-bs-slide-to="<%= index %>" class='carousel-indicator'></li>
+      <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="<%= index %>" class='carousel-indicator'></button>
     <% end %>
-  </ol>
+  </div>
   <div class='carousel-inner'>
     <% @craft.craft_images.each do |ci| %>
       <div class='carousel-item'>
