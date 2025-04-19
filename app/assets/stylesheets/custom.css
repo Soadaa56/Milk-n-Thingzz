@@ -373,7 +373,8 @@ h2 {
   color: indigo;
 }
 
-.carousel {
+.carousel-indicator {
+  list-styler: none;
 }
 
 .carousel-img {

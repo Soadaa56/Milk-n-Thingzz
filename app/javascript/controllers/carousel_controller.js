@@ -3,7 +3,6 @@ import { Carousel } from "bootstrap"
 
 export default class extends Controller {
   connect() {
-    console.log(this.element )
     this.carousel = new Carousel(this.element, {
         interval: false,
         touch: true,
@@ -11,5 +10,6 @@ export default class extends Controller {
       })
 
     this.element.querySelector(".carousel-item").classList.add("active")
+    this.element.querySelector(".carousel-indicator").classList.add("active")
   }
 }
