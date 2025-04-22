@@ -18,7 +18,7 @@ FROM base AS build
 
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
-    apt-get install -y build-essential curl default-libmysqlclient-dev git libpq-dev libyaml-dev libvips libxml2 libxml2-dev libxslt1-dev node-gyp pkg-config python-is-python3
+    apt-get install -y build-essential curl default-libmysqlclient-dev git libpq-dev libyaml-dev libvips libxml2 libxml2-dev libxslt1-dev node-gyp pkg-config python-is-python3 imagemagick
 
 # Install JavaScript dependencies
 ARG NODE_VERSION=19.7.0
@@ -54,7 +54,7 @@ FROM base
 
 # Install packages needed for deployment
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libsqlite3-0 libpq-dev libvips nodejs git yarn && \
+    apt-get install --no-install-recommends -y curl libsqlite3-0 libpq-dev libvips nodejs git yarn imagemagick && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Copy built artifacts: gems, application
