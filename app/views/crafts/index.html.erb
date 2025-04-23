@@ -6,6 +6,7 @@
       <%= link_to 'Create craft posting', new_craft_path, class:'btn btn-primary' %>
     <% end %>
   </div>
+
   <ul>
     <% @crafts.each do |craft| %>
       <li class='fs-3 ms-5 mb-2'>
@@ -18,8 +19,10 @@
       </li>
     <% end %>
   </ul>
-  <%= link_to 'Back', :back, class:'btn btn-custom ms-5' %>
+
 <% else %>
   <p>You might be lost.</p>
-  <%= link_to 'Back', :back, class:'btn btn-custom ms-5' %>
 <% end %>
+
+<%= link_to 'Back', :back, class:'btn btn-custom ms-5' %>
+
