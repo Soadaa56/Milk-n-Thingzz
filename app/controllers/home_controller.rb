@@ -4,11 +4,6 @@ class HomeController < ApplicationController
     @crafts = Craft.all
   end
 
-  def about; end
-
-  def contact; end
-
-  def credit; end
 
   def crotchet
     @crafts = Craft.includes(:craft_images).where(category: "Crotchet")
@@ -34,9 +29,19 @@ class HomeController < ApplicationController
     @selected_subtype = params[:sort_by] || 'All'
   end
 
+  def necklace
+    @crafts = Craft.includes(:cragt_images).where(category: 'Necklace')
+  end
+
   def miscellaneous
     @crafts = Craft.includes(:craft_images).where(category: "Miscellaneous")
   end
+
+  def about; end
+
+  def contact; end
+
+  def credit; end
 
   def social; end
 

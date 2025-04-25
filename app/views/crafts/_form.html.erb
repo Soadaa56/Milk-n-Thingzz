@@ -12,7 +12,6 @@
       </div>
     <% end %>
 
-    
     <div class="row align-items-start">
       <div class="col">
         <div>
@@ -22,7 +21,7 @@
         <div data-controller="subtype">
           <div data-action="change->subtype#updateSubtype">
             <%= f.label :category, style: "display: block" %>
-            <%= f.select :category, ["3D-Print", "Crotchet", "Embroidery", "Earring", "Painting", "Miscellaneous"] %>
+            <%= f.select :category, ["3D-Print", "Crotchet", "Embroidery", "Earring", "Painting", "Necklace", "Miscellaneous"] %>
           </div>
           <div data-subtype-target="subtype">
             <%=  f.label :subtype, style: "display: block" %>
