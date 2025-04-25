@@ -7,18 +7,30 @@
     <% end %>
   </div>
 
-  <ul>
-    <% @crafts.each do |craft| %>
-      <li class='fs-3 ms-5 mb-2'>
-        <%= craft.id %>
-        <%= link_to craft.name, craft_path(craft) %> | 
-        <%= link_to 'Edit', edit_craft_path(craft) %>
-        <% if craft.craft_images.any? && craft.craft_images.first.image_url(:thumbnail) %>
-          <%= image_tag(craft.craft_images.first.image_url(:thumbnail)) %>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
+  <table class="table table-dark table-hover">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Image</th>
+        <th scope="col">Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @crafts.each do |craft| %>
+      <tr class="fs-5 mb-2">
+        <th scope="row"><%= craft.id %></th>
+        <td><%= craft.name %></td>
+        <td>
+          <% if craft.craft_images.any? && craft.craft_images.first.image_url(:thumbnail) %>
+            <%= image_tag(craft.craft_images.first.image_url(:thumbnail)) %>
+          <% end %>
+        </td>
+        <td><%= link_to 'Edit Craft', edit_craft_path(craft) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 
 <% else %>
   <p>You might be lost.</p>
