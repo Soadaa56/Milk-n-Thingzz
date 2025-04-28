@@ -5,7 +5,6 @@ class ProfileController < ApplicationController
   def index
     @user = current_user
     @comments = @user.comments.includes(:rich_text_body).order(created_at: :desc)
-    @craft = Craft.all
   end
 
   def show

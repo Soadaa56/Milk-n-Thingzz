@@ -25,8 +25,8 @@
           Email: <%= user.email.present? ? user.email : 'nil' %> |
           Role: <%= user.role.present? ? user.role.capitalize : 'nil' %> |
           <%# Need to add counter cache for users and crafts %>
-          Total Comments: ?<%# user.comments.count %>
-          Total Faovorites: ? <%# user.favorites.count %>
+          Total Comments: <%= user.comments_count  %> |
+          Total Faovorites: ?
         </div>
       <div>
     <% end %>
