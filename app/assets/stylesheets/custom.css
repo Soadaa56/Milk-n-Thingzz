@@ -464,7 +464,6 @@ h2 {
     /* border: 1px solid var(--dark-accent-color); */
     width: 13rem;
     height: 10rem;
-    display: grid;
     position: relative;
   }
   
