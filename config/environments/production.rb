@@ -115,8 +115,8 @@ Rails.application.configure do
     address: 'email-smtp.us-east-2.amazonaws.com',
     port: 587,
     domain: 'milknthingzz.xyz',
-    user_name: Rails.application.credentials.dig(:aws, :ses_access_key_id),
-    password: Rails.application.credentials.dig(:aws, :ses_secret_access_key),
+    user_name: Rails.application.credentials[:aws][:ses_access_key_id],
+    password: Rails.application.credentials[:aws][:ses_secret_access_key],
     authentication: :login,
     enable_starttls_auto: true
   }
