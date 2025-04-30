@@ -3,7 +3,7 @@
 <% if @craft.subtype.present? %>
   <div class="center"><%= @craft.subtype %></div>
 <% end %>
-<br>
+<h6 class="center">Uploaded: <%= @craft.created_at.strftime("%B %d, %Y") %></h4>
 
 <% if current_user&.admin? %>
   <div class='center mt-3'>
@@ -14,6 +14,7 @@
 <br>
 
 <%= render 'carousel' %>
+<br>
 
 <div class="container comment-container">
   <p class="fs-2">Comments: <%= @comments.all.count %></p>
