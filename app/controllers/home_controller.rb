@@ -30,7 +30,7 @@ class HomeController < ApplicationController
   end
 
   def necklace
-    @crafts = Craft.includes(:cragt_images).where(category: 'Necklace')
+    @crafts = Craft.includes(:craft_images).where(category: 'Necklace')
   end
 
   def miscellaneous
