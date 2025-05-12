@@ -1,20 +1,9 @@
 <nav id='sidebar' class='nav flex-column navbar-nav grid-item-nav'>
   <%= link_to 'Home', root_path, class:'nav-link' %>
-  <%= link_to 'Crotchet', home_crotchet_path, class:'nav-link'%>
+  <%= link_to 'Crotchet', home_crotchet_path, class:'nav-link' %>
   <%= link_to 'Embroidery', home_embroidery_path, class:'nav-link' %>
   <%= link_to '3-D Prints', home_print_path, class:'nav-link' %>
-  <div class="navbar-subtypes-container">
-    <%= link_to 'Earrings', home_earring_path, class: 'nav-link'%>
-    <% if @earring_subtypes %>
-      <div class="navbar-subtypes-group">
-        <% @earring_subtypes.each do |earring_subtype| %>
-          <li class="navbar-subtypes">
-            <%= link_to earring_subtype, home_earring_path(sort_by: earring_subtype), class: 'navbar-subtype' %>
-          </li>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+  <%= link_to 'Earrings', home_earring_path, class:'nav-link' %>
   <%= link_to 'Necklaces', home_necklace_path, class: 'nav-link' %>
   <%#= link_to 'Painting', home_painting_path, class:'nav-link' %>
   <%= link_to 'Misc.', home_miscellaneous_path, class:'nav-link' %>
