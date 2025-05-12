@@ -1,5 +1,5 @@
 class Craft < ApplicationRecord
-  has_many :comments, dependent: :destroy
+  has_many :comments, -> { reorder(nil) }, dependent: :destroy
   validates :name, presence: true
 
   include ImageUploader::Attachment(:image)

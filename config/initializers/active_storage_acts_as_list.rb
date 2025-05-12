@@ -3,7 +3,7 @@ module ActiveStorageAttachmentList
 
   included do
     acts_as_list scope: %i[record_id record_type name]
-    default_scope { order(:position) }
+    # default_scope { order(:position) }
   end
 end
 
