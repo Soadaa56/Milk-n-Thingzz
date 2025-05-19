@@ -232,11 +232,11 @@ body {
 
 .social-wrapper {
   display: grid;
-  margin: 7rem;
-  margin-right: 20rem;
+  margin: 1rem;
+  /* margin-right: 20rem; */
   grid-template-columns: repeat(2, minmax(15rem, 1fr));
   grid-row: auto auto;
-  gap: 20rem;
+  gap: 8rem 2rem;
 }
 
 .social-logo {
@@ -311,9 +311,9 @@ body {
 .grid-sorted {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
-  gap: 3rem;
-  justify-content: center;
+  gap: 1rem 3rem;
   align-items: center;
+  justify-content: center;
   margin-bottom: 10rem;
   margin-left: 15rem;
   margin-right: 15rem;
@@ -562,7 +562,9 @@ h2 {
     margin: 1rem;
     grid-template-columns: repeat(2, minmax(15rem, 1fr));
     grid-row: auto auto;
+    align-items: center;
     gap: 2rem;
+    border: 5px solid black;
   }
   
   .social-logo {
