@@ -9,6 +9,10 @@ module ApplicationHelper
       home_embroidery_path
     when 'painting'
       home_painting_path
+    when 'earrings'
+      home_earrings_path
+    when 'necklace'
+      home_necklace_path
     when 'miscellaneous'
       home_miscellaneous_path
     else
