@@ -4,13 +4,13 @@ image: soadaa56/milknthingzz
 servers:
   web:
     hosts:
-      - 3.16.156.219
+      - 52.70.89.193
     labels:
       traefik.http.routers.milknthingzz.entrypoints: websecure
       traefik.http.routers.milknthingzz.rule: Host(`milknthingzz.xyz`)
       traefik.http.routers.milknthingzz.tls.certresolver: letsencrypt
       # Redirect www -> main domain
-      raefik.http.routers.www-milknthingzz.rule: Host(`www.milknthingzz.xyz`)
+      traefik.http.routers.www-milknthingzz.rule: Host(`www.milknthingzz.xyz`)
       traefik.http.routers.www-milknthingzz.entrypoints: websecure
       traefik.http.routers.www-milknthingzz.tls.certresolver: letsencrypt
       traefik.http.routers.www-milknthingzz.middlewares: www-to-root
@@ -57,7 +57,7 @@ asset_path: /rails/public/assets
 accessories:
   db: 
     image: postgres:15
-    host: 3.16.156.219
+    host: 52.70.89.193
     port: 5432
     env:
       clear:
@@ -74,4 +74,4 @@ accessories:
 ssh:
   user: ubuntu
   keys:
-    - ~/.ssh/milknthingzz-key.pem
+    - ~/.ssh/lightsail-milknthingzz.pem
