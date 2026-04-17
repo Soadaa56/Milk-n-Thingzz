@@ -36,7 +36,6 @@ gem 'shrine', '~> 3.5'
 
 # Custom 
 gem "jsbundling-rails"
-gem "solargraph", "~> 0.49.0"
 gem 'yaml', '~> 0.2.1'
 gem 'psych', '~> 5.1'
 gem 'pg', '~> 1.2'
