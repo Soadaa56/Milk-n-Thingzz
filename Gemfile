@@ -42,3 +42,4 @@ gem 'pg', '~> 1.2'
 gem 'aws'
 gem 'acts_as_list'
 gem 'requestjs-rails'
+gem "rack-attack", "~> 6.8"
