@@ -4,7 +4,7 @@ image: soadaa56/milknthingzz
 servers:
   web:
     hosts:
-      - 52.70.89.193
+      - 3.94.55.110
     labels:
       traefik.http.routers.milknthingzz.entrypoints: websecure
       traefik.http.routers.milknthingzz.rule: Host(`milknthingzz.xyz`)
@@ -57,7 +57,7 @@ asset_path: /rails/public/assets
 accessories:
   db: 
     image: postgres:15
-    host: 52.70.89.193
+    host: 3.94.55.110
     port: 5432
     env:
       clear:
@@ -74,4 +74,4 @@ accessories:
 ssh:
   user: ubuntu
   keys:
-    - ~/.ssh/lightsail-milknthingzz.pem
+    - ~/.ssh/LightsailDefaultKey-us-east-1.pem
