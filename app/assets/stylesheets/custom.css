@@ -230,12 +230,16 @@ body {
   margin-top: 10rem;
 }
 
+.social-about-us-link {
+    margin-top: 10rem;
+  }
+
 .social-wrapper {
+  padding-top: 15rem;
   display: grid;
   margin: 1rem;
   /* margin-right: 20rem; */
-  grid-template-columns: repeat(2, minmax(15rem, 1fr));
-  grid-row: auto auto;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 2fr));
   gap: 8rem 2rem;
 }
 
