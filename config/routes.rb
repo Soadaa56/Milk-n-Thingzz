@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   get 'home', to: 'home#index'
 
   get 'profile', to: 'profile#index'
-  devise_for :users, skip: [:registrations]
-  get "signup", to: 'home#signup-freeze'
+  devise_for :users
   get 'profile/:id/edit', to: 'profile#edit', as: :profile_edit
   patch 'profile/:id', to: 'profile#update', as: :profile_update
   get 'u/:id', to: 'profile#show', as: 'user'
