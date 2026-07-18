@@ -3,7 +3,10 @@ class AdminController < ApplicationController
   before_action :authorize_admin!
 
   def index
-    @users = User.all
+    @users = User.
+      joins(:comments).
+      select("users.*", 'COUNT("comments.id") AS comments_count').
+      group('users.id')
   end
   
   def create

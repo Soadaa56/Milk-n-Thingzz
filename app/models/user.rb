@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   enum role: { standard:0, admin: 1 }
   has_many :comments, dependent: :destroy
+  before_validation :set_default_role
 
   attr_writer :login
 
@@ -32,7 +33,6 @@ class User < ApplicationRecord
     end
   end
 
-  before_validation :set_default_role
 
   private
 
