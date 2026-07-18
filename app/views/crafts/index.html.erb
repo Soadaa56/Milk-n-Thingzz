@@ -12,6 +12,7 @@
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Name</th>
+        <th class="col">Comments</th>
         <th scope="col">Image</th>
         <th scope="col">Edit</th>
       </tr>
@@ -21,6 +22,7 @@
       <tr class="fs-5 mb-2">
         <th scope="row"><%= craft.id %></th>
         <td><%= craft.name %></td>
+        <td><%= craft.comments_count.present? ? craft.comments_count : 0 %></td>
         <td>
           <% if craft.craft_images.any? && craft.craft_images.first.image_url(:thumbnail) %>
             <%= image_tag(craft.craft_images.first.image_url(:thumbnail)) %>

@@ -4,7 +4,7 @@ class AdminController < ApplicationController
 
   def index
     @users = User.
-      joins(:comments).
+      left_joins(:comments).
       select("users.*", 'COUNT("comments.id") AS comments_count').
       group('users.id')
   end
