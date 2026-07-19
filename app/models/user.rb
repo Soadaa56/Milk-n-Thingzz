@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   enum role: { standard:0, admin: 1 }
-  has_many :comments, dependent: :destroy
+  has_many :comments
   before_validation :set_default_role
 
   attr_writer :login
