@@ -16,14 +16,23 @@
   </br></br>
   
   <div class='container' style='font-size: 1.7rem' >
-    <% @users.each do |user| %>
-      <div>
-        User <%= user.id %>: <%= link_to user.username, user_path(user.id) %>
-        <div class='indent'>
-          Email: <%= user.email.present? ? user.email : 'nil' %> |
-          Role: <%= user.role.present? ? user.role.capitalize : 'nil' %>
-        </div>
-      <div>
-    <% end %>
+    <table class="table table-dark table-hover">
+      <thead>
+        <tr>
+          <th class="col">ID</th>
+          <th class="col">Email</th>
+          <th class="col">Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr class="fs-5 mb-2">
+          <th scope="row"><%= user.id %></th>
+          <td><%= user.email.present? ? user.email : nil %></td>
+          <td><%= user.role.present? ? user.role.capitalize : nil %></td>
+        </tr>
+        <% end %>
+        </tbody>
+      </table>
   </div>
 </div>
