@@ -18,8 +18,3 @@
     <%= render 'bio' %>
   </p>
 <% end %>
-
-<br>
-<% @comments.each do |comment| %>
-  <%= render 'profile/comment', user: @user, comment: comment, craft:@craft %>
-<% end %>
