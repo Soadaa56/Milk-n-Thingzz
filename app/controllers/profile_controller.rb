@@ -6,12 +6,8 @@ class ProfileController < ApplicationController
     @user = current_user
   end
 
-  def show ; end
-
   def edit
-    if current_user == @user
-      @bio = @user.bio
-    else
+    if current_user == !@user
       redirect_to root_path, alert: "That isn't your profile"
     end
   end
