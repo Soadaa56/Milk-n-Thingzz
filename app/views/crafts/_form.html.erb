@@ -28,14 +28,29 @@
             <%=  f.select :subtype, [] %>
           </div>
         </div>
+        <div>
+          <%= f.label :price, style: "display: block" %>
+          <%= f.number_field :price, step: "0.01" %>
+        </div>
+        <div>
+          <%= f.label :for_sale, style: "display: block" %>
+          <%= f.check_box :for_sale, {}, "true", "false" %>
+        </div>
       </div>
       <div class="col">
-        <%= f.label :description, style: "display: block" %>
-        <%= f.text_area :description, rows: 5, cols: 40 %>
+        <div>
+          <%= f.label :description, style: "display: block" %>
+          <%= f.text_area :description, rows: 5, cols: 40 %>
+        </div>
+        <div>
+          <%= f.label :dimensions, style: "display: block" %>
+          <%= f.text_area :dimensions, rows: 3, cols: 40 %>
+        </div>
       </div>
     </div>
     <br>
 
+    <br><br><br>
     <div>
       <label for='files'>Upload New Images:</label>
       <%= file_field_tag 'files[]', multiple: true %>
