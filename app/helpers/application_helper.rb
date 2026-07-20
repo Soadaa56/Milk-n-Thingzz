@@ -15,6 +15,8 @@ module ApplicationHelper
       home_necklace_path
     when 'miscellaneous'
       home_miscellaneous_path
+    when 'misc'
+      home_miscellaneous_path
     else
       '#'
     end
