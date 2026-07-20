@@ -93,7 +93,7 @@ class CraftsController < ApplicationController
   private
 
   def set_craft
-    @craft = Craft.find(params[:craft_id] || params[:id])
+    @craft = Craft.find_by!(slug: params[:id])
   end
 
   def craft_params

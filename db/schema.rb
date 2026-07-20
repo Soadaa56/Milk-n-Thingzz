@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_07_20_050644) do
+ActiveRecord::Schema[7.2].define(version: 2026_07_20_163005) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -66,6 +66,8 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_20_050644) do
     t.text "image_data"
     t.text "description"
     t.string "subtype"
+    t.string "slug"
+    t.index ["slug"], name: "index_crafts_on_slug", unique: true
   end
 
   create_table "users", force: :cascade do |t|
