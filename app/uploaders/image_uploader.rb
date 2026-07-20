@@ -8,19 +8,19 @@ class ImageUploader < Shrine
     magick = ImageProcessing::MiniMagick.source(original)
 
     {
-      thumbnail:    magick.resize_to_limit!(50, 50)
+      thumbnail:    magick.resize_to_limit(50, 50)
                       .convert("webp")
                       .saver(quality: 50)
                       .call,
-      small_card:   magick.resize_to_limit!(150, 150)
+      small_card:   magick.resize_to_limit(175, 175)
                       .convert("webp")
                       .saver(quality: 70)
                       .call,
-      card:         magick.resize_to_limit!(500,500)
+      card:         magick.resize_to_limit(500,500)
                       .convert("webp")
                       .saver(quality: 80)
                       .call,
-      detail:       magick.resize_to_limit!(1200, 1200)
+      detail:       magick.resize_to_limit(1200, 1200)
                       .convert("webp")
                       .saver(quality: 85)
                       .call
