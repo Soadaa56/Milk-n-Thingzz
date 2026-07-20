@@ -4,6 +4,7 @@ class Craft < ApplicationRecord
   before_create :generate_slug
 
   has_many :craft_images, -> { order(position: :asc) }, dependent: :destroy
+  has_many :craft_variants, dependent: :destroy
 
   accepts_nested_attributes_for :craft_images, allow_destroy: true
 
