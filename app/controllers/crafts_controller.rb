@@ -6,12 +6,9 @@ class CraftsController < ApplicationController
     @crafts = Craft.includes(:craft_images).order(:id)
   end
 
-  def show
-    @comments = @craft.comments.includes(:user, :rich_text_body).order(created_at: :desc)
-  end
+  def show ; end
 
-  def edit
-  end
+  def edit ; end
 
   def new
     @craft = Craft.new
@@ -100,8 +97,7 @@ class CraftsController < ApplicationController
   end
 
   def craft_params
-    params
-    .require(:craft)
+    params.require(:craft)
     .permit(
     :name, :category, :subtype, :description, :image,
     craft_images_attributes: [:id, :image, :_destroy])

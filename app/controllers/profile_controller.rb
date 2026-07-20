@@ -4,12 +4,9 @@ class ProfileController < ApplicationController
 
   def index
     @user = current_user
-    @comments = @user.comments.includes(:rich_text_body).order(created_at: :desc)
   end
 
-  def show
-    @comments = @user.comments.includes(:rich_text_body).order(created_at: :desc)
-  end
+  def show ; end
 
   def edit
     if current_user == @user

@@ -3,10 +3,7 @@ class AdminController < ApplicationController
   before_action :authorize_admin!
 
   def index
-    @users = User.
-      left_joins(:comments).
-      select("users.*", 'COUNT("comments.id") AS comments_count').
-      group('users.id')
+    @users = User.all
   end
   
   def create
@@ -20,7 +17,7 @@ class AdminController < ApplicationController
   private
 
   def user_params
-    params.permit(:username, :email, :password, :password_confirmation, :role)
+    params.permit(:email, :password, :password_confirmation, :role)
   end
 
   def authorize_admin!
