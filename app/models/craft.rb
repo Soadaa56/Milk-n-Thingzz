@@ -10,7 +10,6 @@ class Craft < ApplicationRecord
   validate :must_have_at_least_one_image
   validates :name, presence: true
 
-
   private
 
   def normalize_name
