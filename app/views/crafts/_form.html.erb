@@ -58,12 +58,12 @@
     </div>
     <br>
     
-    <% if @craft.new_record? %>
-      <div>
+    <div>
+      <% if @craft.new_record? %>
         <%= f.submit "Create New Craft", class: "btn btn-primary" %>
-      </div>
-    <% else %>
+      <% else %>
         <%= f.submit "Update Craft", class: "btn btn-primary" %>
-    <% end %>
+      <% end %>
+    </div>
   <% end %>
 </div>

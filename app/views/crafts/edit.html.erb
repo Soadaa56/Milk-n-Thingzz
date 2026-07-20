@@ -3,6 +3,7 @@
   <div class='center mb-3'>
     <%= link_to 'All Crafts', crafts_path, class:'btn btn-dark' %>
     <%= link_to 'View This Post', craft_path(@craft), class: 'btn btn-primary' %>
+    <%= link_to 'Add Variant', new_craft_craft_variant_path(@craft.id), class: "btn btn-primary" %>
   </div>
 
   <div class='center'>
@@ -14,6 +15,7 @@
   <% if @craft.subtype.present? %>
     <h4 class="center">Subtype: <%= @craft.subtype %></h4>
   <% end %>
+  
   <%= render 'form', craft: @craft %>
   <br>
 

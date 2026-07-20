@@ -1,0 +1,40 @@
+<div class="indent large-text edit-craft-form">
+  <%= form_with model: [@craft, @craft_variant], local: true, html: { enctype: "multipart/form-data" } do |f| %>
+
+    <% if craft_variant.errors.any? %>
+      <div style="color: red">
+        <h2>
+          <%= pluralize(craft_variant.errors.count, "error") %> prohibited this craft_variant from being saved:
+        </h2>
+        <ul>
+          <% craft_variant.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row align-items-start">
+      <div class="col">
+        <div>
+          <%= f.label :name, style: "display: block" %>
+          <%= f.text_field :name %>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <label for="files">Upload Image:</label>
+      <%= f.file_field :image %>
+    </div>
+
+    <div>
+      <% if @craft.new_record? %>
+        <%= f.submit "Create New Craft Variant", class: "btn btn-primary" %>
+      <% else %>
+        <%= f.submit "Update Craft Variant", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+
+  <% end %>
+</div>

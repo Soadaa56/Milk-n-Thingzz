@@ -47,7 +47,7 @@ class CraftVariantsController < ApplicationController
 
   def craft_variant_params
     params.require(:craft_variant)
-    .permit(:name, :price, :inventory_count, :dimensions,
+    .permit(:name, :price, :inventory_count, :dimensions, :image,
             craft_images_attributes: [:id, :image, :_destroy])
   end
 
