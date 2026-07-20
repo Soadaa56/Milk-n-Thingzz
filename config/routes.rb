@@ -7,10 +7,8 @@ Rails.application.routes.draw do
   get 'profile', to: 'profile#index'
   get 'profile/:id/edit', to: 'profile#edit', as: :profile_edit
   patch 'profile/:id', to: 'profile#update', as: :profile_update
-  get 'u/:id', to: 'profile#show', as: 'user'
   get 'admin', to: 'admin#index', as: 'admin'
   get 'admin/index', to: 'admin#index'
-  get 'admin/create', to: 'admin#create', as: 'admin_create'
 
   get 'home/about'
   get 'home/print'
