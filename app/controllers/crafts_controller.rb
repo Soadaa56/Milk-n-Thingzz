@@ -100,6 +100,7 @@ class CraftsController < ApplicationController
     params.require(:craft)
     .permit(
     :name, :category, :subtype, :description, :image,
+    :for_sale, :has_variants, :inventory, :price, :dimensions,
     craft_images_attributes: [:id, :image, :_destroy])
   end
 
