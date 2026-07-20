@@ -21,15 +21,16 @@ Rails.application.routes.draw do
   get 'home/social'
   get 'home/contact'
   get 'home/credit'
-
-  match '/' => 'errors#not_found', via: :all
-
+  
   resources :crafts, only: [:index, :show, :edit, :new, :create, :update, :destroy] do
     member do
       patch :move_image
     end
-  end
 
+    resources :craft_variants, except: [:show]
+  end
+  
+  match '/' => 'errors#not_found', via: :all
   # Health check routes for kamal
   get '/up', to: 'health#up'
   get '/health', to: 'health#up', as: :rails_health_check
