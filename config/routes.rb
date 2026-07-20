@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get 'admin/index', to: 'admin#index'
   get 'admin', to: 'admin#index', as: 'admin'
   get 'admin/create', to: 'admin#create', as: 'admin_create'
-  get 'admin/console', to: 'admin#console'
 
   get 'home/about'
   get 'home/print'
