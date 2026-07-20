@@ -3,8 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         
   enum role: { standard: 0, admin: 1 }
-  has_many :comments, dependent: :destroy
+
   before_validation :set_default_role
 
   private

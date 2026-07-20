@@ -1,11 +1,21 @@
 class Craft < ApplicationRecord
-  has_many :comments, -> { reorder(nil) }, dependent: :destroy
+  include ImageUploader::Attachment(:image)
+
+  has_many :craft_images, -> { order(position: :asc) }, dependent: :destroy
+
+  accepts_nested_attributes_for :craft_images, allow_destroy: true
+
+  before_validation :normalize_name
+
+  validate :must_have_at_least_one_image
   validates :name, presence: true
 
-  include ImageUploader::Attachment(:image)
-  has_many :craft_images, -> { order(position: :asc) }, dependent: :destroy
-  accepts_nested_attributes_for :craft_images, allow_destroy: true
-  validate :must_have_at_least_one_image
+
+  private
+
+  def normalize_name
+    self.name = name.squish if name.present?
+  end
 
   def must_have_at_least_one_image
     if craft_images.empty?
