@@ -43,7 +43,7 @@
       <tr class="fs-5 mb-2">
         <th scope="row"><%= cv.id %></th>
         <td><%= cv.name %></td>
-        <td><%= number_to_currency(cv.price) %></td>
+        <td><%= number_to_currency(cv.price) || "N/A" %></td>
         <td><%= cv.inventory_count %></td>
         <td></td>
         <td><%= link_to "Edit Variant", edit_craft_craft_variant_path(@craft.id, cv.id) %></td>
