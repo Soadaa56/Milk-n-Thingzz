@@ -586,3 +586,22 @@ h2 {
     padding-right: 5rem;
   }
 }
+
+/* 
+Custom
+*/
+.dark-accent-color {
+  color: var(--dark-accent-color);
+}
+
+.light-accent-color {
+  color: var(--light-accent-color);
+}
+
+.shade-light-color {
+  color: var(--shade-light-color);
+}
+
+.shade-dark-color {
+  color: var(--shade-dark-color);
+}
