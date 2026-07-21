@@ -12,7 +12,7 @@
       </div>
     <% end %>
 
-    <div class="row align-items-start">
+    <div class="row align-items-start dark-accent-color">
       <div class="col">
         <div>
           <%= f.label :name, style: "display: block" %>
@@ -51,10 +51,10 @@
     <br>
 
     <br><br><br>
-    <div>
+    <div class="dark-accent-color">
       <label for='files'>Upload New Images:</label>
       <%= file_field_tag 'files[]', multiple: true %>
-      <p>To delete images, check the box next to the image then update craft.</p>
+      <p class="light-accent-color mt-2">To delete images, check the box next to the image then update craft.</p>
     </div>
     
     <div class="craft-images-wrapper" 

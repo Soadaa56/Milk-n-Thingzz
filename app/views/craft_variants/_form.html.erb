@@ -16,20 +16,43 @@
 
     <div class="row align-items-start">
       <div class="col">
-        <div>
+        <p class="mb-1"><%= raw "&nbsp;" %></p>
+        <div class="dark-accent-color mb-5">
           <%= f.label :name, style: "display: block" %>
           <%= f.text_field :name %>
+          <p class="light-accent-color mb-5">Name displayed - Such as "Red"</p>
+        </div>
+        <div class="dark-accent-color mb-5">
+          <%= f.label :inventory_count, style: "display: block" %>
+          <%= f.number_field :inventory_count %>
+          <p class="light-accent-color">Can be 0</p>
+        </div>
+      </div>
+      <div class="col">
+        <p class="light-accent-color mb-1">These (below) will overide any defaults on the Craft when selected</p>
+        <div class="dark-accent-color">
+          <%= f.label :dimensions %>
+          <br>
+          <%= f.text_area :dimensions, rows: 3, cols: 40 %>
+        </div>
+        <div class="dark-accent-color">
+          <%= f.label :price, style: "display: block" %>
+          <%= f.number_field :price, step: "0.01" %>
         </div>
       </div>
     </div>
 
+    <br><br>
     <div>
       <label for="files">Upload Image:</label>
       <%= f.file_field :image %>
     </div>
 
+    <%= f.hidden_field :craft_id, value: @craft.id  %>
+
+    <br><br><br>
     <div>
-      <% if @craft.new_record? %>
+      <% if @craft_variant.new_record? %>
         <%= f.submit "Create New Craft Variant", class: "btn btn-primary" %>
       <% else %>
         <%= f.submit "Update Craft Variant", class: "btn btn-primary" %>

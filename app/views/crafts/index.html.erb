@@ -14,6 +14,7 @@
         <th scope="col">Name</th>
         <th scope="col">Image</th>
         <th scope="col">Edit</th>
+        <th scope="col">Variants?</th>
       </tr>
     </thead>
     <tbody>
@@ -27,14 +28,15 @@
           <% end %>
         </td>
         <td><%= link_to 'Edit Craft', edit_craft_path(craft) %></td>
+        <td>
+          <% if craft.has_variants %>
+            <%= link_to "Link To Variants", craft_craft_variants_path(craft.id) %>
+          <% end %>
+        </td>
       </tr>
       <% end %>
     </tbody>
   </table>
-
-<% else %>
-  <p>You might be lost.</p>
 <% end %>
 
 <%= link_to 'Back', :back, class:'btn btn-custom ms-5' %>
-

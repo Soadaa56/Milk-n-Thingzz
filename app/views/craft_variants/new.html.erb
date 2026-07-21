@@ -1,9 +1,22 @@
 <% if current_user&.admin? %>
-  <h1>New Craft Variant</h1>
-  <h4 class='center'>
-    <%= link_to 'Admin Dashboard', admin_index_path, class:'btn btn-dark' %>
-    <%= link_to 'List all crafts', crafts_path, class: 'btn btn-primary' %>
+  <h1>New Variant</h1>
+  <h3 class="center mb-3"><%= @craft.name %></h3>
+  <h4 class='center mb-3'>
+    <%= link_to 'List all crafts', crafts_path, class: 'btn btn-dark' %>
+    <%= link_to 'List all variants', craft_craft_variants_path(@craft.id), class: 'btn btn-dark' %>
   </h4>
+  <h4 class="center mb-3">
+    <%= link_to 'Show Craft Post', craft_path(@craft), class: 'btn btn-primary' %>
+    <%= link_to 'Back to Edit Craft', edit_craft_path(@craft), class: 'btn btn-primary' %>
+  </h4>
+  <h3 class="center">
+    
+  </h3>
+  <div class='center mb-5'>
+    <% if @craft.craft_images.present? %>
+      <%= image_tag @craft.craft_images.first.image_url(:card), class: 'max-size-image' %>
+    <% end %>
+  </div>
   <%= render 'form', craft_variant: @craft_variant %>
 <% else %>
   <p>You seem to be lost!</p>

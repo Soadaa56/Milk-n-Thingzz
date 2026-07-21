@@ -1,30 +1,49 @@
-<h1 class>Edit Craft</h1>
 <% if current_user&.admin? %>
+  <h1 class="mb-1">Edit Craft</h1>
+  <h3 class="center mb-3"><%= @craft.name %></h3>
   <div class='center mb-3'>
     <%= link_to 'All Crafts', crafts_path, class:'btn btn-dark' %>
-    <%= link_to 'View This Post', craft_path(@craft), class: 'btn btn-primary' %>
-    <%= link_to 'Add Variant', new_craft_craft_variant_path(@craft.id), class: "btn btn-primary" %>
+    <%= link_to 'View This Post', craft_path(@craft), class: 'btn btn-dark' %>
   </div>
+    <div class="center mb-4">
+      <%= link_to 'All Variants', craft_craft_variants_path(@craft.id), class: 'btn btn-primary' %>
+      <%= link_to 'Add Variant', new_craft_craft_variant_path(@craft.id), class: "btn btn-primary" %>
+    </div>
 
-  <div class='center'>
-    <% if @craft.craft_images.present? %>
-      <%= image_tag @craft.craft_images.first.image_url(:detail), class: 'max-size-image' %>
-    <% end %>
-  </div>
-  
   <% if @craft.subtype.present? %>
-    <h4 class="center">Subtype: <%= @craft.subtype %></h4>
+    <h4 class="center mb-1">Subtype: <%= @craft.subtype %></h4>
   <% end %>
+
+  <div class='center mb-5 row align-items-start'>
+    <div class="col">
+      <% if @craft.craft_images.present? %>
+        <%= image_tag @craft.craft_images.first.image_url(:detail), class: 'max-size-image' %>
+      <% end %>
+    </div>
+      <% if @craft.has_variants %>
+        <div class="col">
+          <h4 class="light-accent-color" >Variant Names:</h4>
+          <% @craft.craft_variants.each do |cv| %>
+            <p class="dark-accent-color" style="font-size: 1.5rem;">
+              <%= cv.name %>
+            </p>
+          <% end %>
+        </div>
+      <% end %>
+  </div>
   
   <%= render 'form', craft: @craft %>
   <br>
 
-<p>This button is to remove this post all together!</p>
+<p class="light-accent-color">This button is to remove this post all together!</p>
 <% if (1..11).exclude?(@craft.id)  %>
-  <%= button_to 'Destroy Craft', craft_path(@craft), method: :delete, data: { turbo: false}, onclick: "return confirm('Are you sure you want to delete this craft?');", class: 'btn btn-danger', style: 'margin-left: 5rem; margin-bottom: 5rem' %>
+  <%= button_to 'Destroy Craft', craft_path(@craft), 
+                                  method: :delete, data: { turbo: false }, 
+                                  onclick: "return confirm('Are you sure you want to delete this craft?');", 
+                                  class: 'btn btn-danger', 
+                                  style: 'margin-left: 5rem; margin-bottom: 5rem' %>
 <% end %>
 <%= link_to 'Back', :back, class:'btn btn-custom indent', style: 'margin-left: 5rem' %>
 <% else %>
   <p>You seem to be lost!</p>
 <% end %>
-

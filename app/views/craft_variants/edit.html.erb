@@ -1,0 +1,30 @@
+<% if current_user&.admin? %>
+  <h1 class="light-accent-color"><%= @craft_variant.name %></h1>
+  <h3 class="center mb-3">Craft: <%= @craft.name %></h3>
+
+  
+  <div class='center mb-3'>
+    <%= link_to 'List all crafts', crafts_path, class: 'btn btn-dark' %>
+    <%= link_to 'List all variants', craft_craft_variants_path(@craft.id), class: 'btn btn-dark' %>
+  </div>
+  <div class="center mb-3">
+    <%= link_to 'Back to Craft', edit_craft_path(@craft), class: 'btn btn-primary' %>
+  </div>
+  <h3 class="center">
+    
+  </h3>
+  <div class='center mb-5'>
+  </div>
+  <%= render 'form', craft_variant: @craft_variant %>
+<% end %>
+
+<%= button_to 'Destroy Variant', craft_craft_variant_path(@craft_variant), 
+                                  method: :delete,
+                                  data: { turbo: false },
+                                  onclick: "return confirm('Are you sure want to delete this variant?');",
+                                  class: 'btn btn-danger',
+                                  style: 'margin-left: 5rem; margin-bottom: 5rem' %>
+
+<%= link_to 'Back', :back, class:'btn btn-custom indent', style: 'margin-left: 5rem' %>
+
+<% console %>

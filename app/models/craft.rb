@@ -13,9 +13,9 @@ class Craft < ApplicationRecord
   validate :must_have_at_least_one_image
   validates :name, presence: true
 
-  def to_param
-    slug
-  end
+  # def to_param
+  #   slug
+  # end
 
   private
 

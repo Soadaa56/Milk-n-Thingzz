@@ -14,41 +14,45 @@ class CraftVariantsController < ApplicationController
   end
 
   def create
-    @craft_variant = CraftVariant.new(craft_variant_params)
+    craft_images_attributes = craft_variant_params[:craft_images_attributes].to_h
+
+    craft_attributes = craft_variant_params.merge(craft_images_attributes: craft_images_attributes, craft_id: @craft.id)    
+    
+    @craft_variant = CraftVariant.new(craft_attributes)
     if @craft_variant.save
-      redirect_to @craft, notice: "Variant created"
+      redirect_to edit_craft_path(@craft), notice: "Variant created"
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity, notice: "Error"
     end
   end
 
   def update
     if @craft_variant.update(craft_variant_params)
-      redirect_to @craft, notice: "Variant updated"
+      redirect_to edit_craft_path(@craft), notice: "Variant updated"
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity, notice: "Error"
     end
   end
 
   def destroy
     @craft_variant.destroy
-    redirect_to @craft, notice: "Craft variant deleted"
+    redirect_to craft_craft_variants_path(@craft.id), notice: "Craft variant deleted"
   end
 
   private 
 
   def set_craft
-    @craft = Craft.find_by!(params[:craft_id])
+    @craft = Craft.find(params[:craft_id])
   end
 
   def set_craft_variant
-    @craft_variant = @craft.craft_variants.find(params[:id])
+    @craft_variant = CraftVariant.find(params[:id])
   end
 
   def craft_variant_params
     params.require(:craft_variant)
-    .permit(:name, :price, :inventory_count, :dimensions, :image,
-            craft_images_attributes: [:id, :image, :_destroy])
+    .permit(:craft_id, :name, :price, :inventory_count, :dimensions,
+            craft_images_attributes: [:craft_id, :image, :_destroy])
   end
 
   def check_if_admin?
