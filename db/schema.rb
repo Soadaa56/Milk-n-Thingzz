@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_07_21_153316) do
+ActiveRecord::Schema[7.2].define(version: 2026_07_21_214245) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -82,7 +82,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_21_153316) do
     t.string "slug"
     t.boolean "for_sale", default: false, null: false
     t.boolean "has_variants", default: false, null: false
-    t.integer "inventory"
+    t.integer "inventory_count", default: 0, null: false
     t.decimal "price", precision: 5, scale: 2
     t.string "dimensions"
     t.index ["slug"], name: "index_crafts_on_slug", unique: true
