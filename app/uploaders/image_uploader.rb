@@ -8,7 +8,7 @@ class ImageUploader < Shrine
     magick = ImageProcessing::MiniMagick.source(original)
 
     {
-      thumbnail:    magick.resize_to_limit(50, 50)
+      thumbnail:    magick.resize_to_limit(80, 80)
                       .convert("webp")
                       .saver(quality: 50)
                       .call,
