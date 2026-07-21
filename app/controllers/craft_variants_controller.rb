@@ -14,23 +14,53 @@ class CraftVariantsController < ApplicationController
   end
 
   def create
-    craft_images_attributes = craft_variant_params[:craft_images_attributes].to_h
+    if params[:files].present?
+      new_craft_images_attributes = params[:files].inject({}) do |hash, file|
+        hash.merge!(SecureRandom.hex => { image: file })
+      end
+    else
+      new_craft_images_attributes = {}
+    end
 
-    craft_attributes = craft_variant_params.merge(craft_images_attributes: craft_images_attributes, craft_id: @craft.id)    
-    
+    craft_images_attributes = craft_variant_params[:craft_images_attributes].to_h.merge(new_craft_images_attributes)
+    craft_attributes = craft_variant_params.merge(
+      craft_images_attributes: craft_images_attributes,
+      craft_id: @craft.id
+    )
+
     @craft_variant = CraftVariant.new(craft_attributes)
+
+    @craft_variant.craft_images.each do |image|
+      image.image_derivatives!
+    end
+
     if @craft_variant.save
       redirect_to edit_craft_path(@craft), notice: "Variant created"
     else
-      render :new, status: :unprocessable_entity, notice: "Error"
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
-    if @craft_variant.update(craft_variant_params)
+    if params[:files].present?
+      new_craft_images_attributes = params[:files].inject({}) do |hash, file|
+        hash.merge!(SecureRandom.hex => { image: file })
+      end
+    else
+      new_craft_images_attributes = {}
+    end
+
+    craft_images_attributes = craft_variant_params[:craft_images_attributes].to_h.merge(new_craft_images_attributes)
+    craft_attributes = craft_variant_params.merge(craft_images_attributes: craft_images_attributes)
+
+    @craft_variant.craft_images.each do |image|
+      image.image_derivatives!
+    end
+
+    if @craft_variant.update(craft_attributes)
       redirect_to edit_craft_path(@craft), notice: "Variant updated"
     else
-      render :edit, status: :unprocessable_entity, notice: "Error"
+      render :edit, status: :unprocessable_entity
     end
   end
 
