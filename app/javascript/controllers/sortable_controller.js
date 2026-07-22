@@ -22,11 +22,7 @@ export default class extends Controller {
   }
 
   async end(event) {
-    console.log(event)
-    console.log(`oldIndex: ${event.oldDraggableIndex} newIndex: ${event.newDraggableIndex}`)
-
     if (event.oldIndex === event.newIndex) {
-      console.log("Same posistion, nothing changed")
       return
     }
 
@@ -34,7 +30,6 @@ export default class extends Controller {
     // example: Move first image to second position old_pos = 0, new_pos = 2
     const request = new FetchRequest('patch', `${this.urlValue}?old_position=${event.oldDraggableIndex}&new_position=${event.newDraggableIndex}`)
     const response = await request.perform()
-    console.log(response)
   }
   
 }
