@@ -4,7 +4,7 @@ class CraftVariantsController < ApplicationController
   before_action :check_if_admin?
 
   def index
-    @craft_variant = @craft.craft_variants.order(created_at: :desc)
+    @craft_variant = @craft.craft_variants.includes(:craft_images).order(created_at: :desc)
   end
 
   def edit ; end
@@ -66,7 +66,7 @@ class CraftVariantsController < ApplicationController
 
   def destroy
     @craft_variant.destroy
-    redirect_to craft_craft_variants_path(@craft.id), notice: "Craft variant deleted"
+    redirect_to craft_craft_variants_path(@craft), notice: "Craft variant deleted"
   end
 
   private 

@@ -39,14 +39,14 @@
       </tr>
     </thead>
     <tbody>
-      <% @craft.craft_variants.each do |cv| %>
+      <% @craft.craft_variants.includes(:craft_images).each do |cv| %>
       <tr class="fs-5 mb-2">
         <th scope="row"><%= cv.id %></th>
         <td><%= cv.name %></td>
         <td><%= number_to_currency(cv.price) || "N/A" %></td>
         <td><%= cv.inventory_count %></td>
         <td>
-          <% if cv.craft_images %>
+          <% if cv.craft_images.present? %>
             <% url = cv.craft_images.first.image_url(:thumbnail) || cv.craft_images.first.image_url %>
             <%= image_tag url, class: "max-thumbnail-size" %>
           <% end %>
