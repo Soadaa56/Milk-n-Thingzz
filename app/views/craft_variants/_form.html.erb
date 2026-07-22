@@ -45,7 +45,7 @@
     <br><br>
     <div>
       <label for="files">Upload Image:</label>
-      <%= f.file_field :image %>
+      <%= file_field_tag 'files[]', multiple: true %>
     </div>
 
     <%= f.hidden_field :craft_id, value: @craft.id  %>

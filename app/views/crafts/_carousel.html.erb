@@ -8,7 +8,7 @@
     <% @craft.craft_images.each do |ci| %>
       <div class='carousel-item'>
         <% url = ci.image_url(:detail) || ci.image_url %>
-          <%= image_tag url, class: 'carousel-img' %>
+        <%= image_tag url, class: 'carousel-img' %>
       </div>
     <% end %>
   </div>

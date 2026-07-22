@@ -605,3 +605,7 @@ Custom shorthands
 .shade-dark-color {
   color: var(--shade-dark-color);
 }
+
+.max-thumbnail-size {
+  max-width: 80px;
+}

@@ -45,7 +45,12 @@
         <td><%= cv.name %></td>
         <td><%= number_to_currency(cv.price) || "N/A" %></td>
         <td><%= cv.inventory_count %></td>
-        <td></td>
+        <td>
+          <% if cv.craft_images %>
+            <% url = cv.craft_images.first.image_url(:thumbnail) || cv.craft_images.first.image_url %>
+            <%= image_tag url, class: "max-thumbnail-size" %>
+          <% end %>
+        </td>
         <td><%= link_to "Edit Variant", edit_craft_craft_variant_path(@craft.id, cv.id) %></td>
       </tr>
       <% end %>
