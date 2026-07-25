@@ -36,6 +36,10 @@
           <%= f.label :for_sale, style: "display: block" %>
           <%= f.check_box :for_sale, {}, "true", "false" %>
         </div>
+        <div>
+          <%= f.label :inventory_count, style: "display: block" %>
+          <%= f.number_field :inventory_count, step: "1" %>
+        </div>
       </div>
       <div class="col">
         <div>
