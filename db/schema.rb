@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_07_20_163005) do
+ActiveRecord::Schema[7.2].define(version: 2026_07_25_062608) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -49,25 +49,29 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_20_163005) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "craft_images", force: :cascade do |t|
-    t.integer "craft_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "image_data"
-    t.integer "position"
-    t.index ["craft_id"], name: "index_craft_images_on_craft_id"
-  end
-
   create_table "crafts", force: :cascade do |t|
     t.string "name"
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "image_data"
     t.text "description"
     t.string "subtype"
     t.string "slug"
+    t.boolean "for_sale", default: false, null: false
+    t.boolean "has_variants", default: false, null: false
+    t.string "shopify_product_id"
+    t.decimal "default_price", precision: 6, scale: 2
+    t.string "default_dimensions"
     t.index ["slug"], name: "index_crafts_on_slug", unique: true
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "image_data"
+    t.integer "position"
+    t.integer "variant_id"
+    t.index ["variant_id"], name: "index_images_on_variant_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -83,7 +87,22 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_20_163005) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "variants", force: :cascade do |t|
+    t.integer "craft_id", null: false
+    t.string "name"
+    t.string "sku"
+    t.decimal "price", precision: 6, scale: 2
+    t.string "dimensions"
+    t.integer "inventory_count", default: 0, null: false
+    t.boolean "active", default: false, null: false
+    t.string "shopify_variant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["craft_id"], name: "index_variants_on_craft_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "craft_images", "crafts"
+  add_foreign_key "images", "variants"
+  add_foreign_key "variants", "crafts"
 end
