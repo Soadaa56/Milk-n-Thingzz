@@ -23,8 +23,8 @@
           </th>
         <th scope="col"><%= @craft.inventory_count %></th>
         <th scope="col">
-          <% if @craft.craft_images.any? && @craft.craft_images.first.image_url(:thumbnail) %>
-            <%= image_tag(@craft.craft_images.first.image_url(:thumbnail)) %>
+          <% if @craft.images.any? && @craft.images.first.image_url(:thumbnail) %>
+            <%= image_tag(@craft.images.first.image_url(:thumbnail)) %>
           <% end %>
         </th>
         <th scope="col"></th>
@@ -39,15 +39,15 @@
       </tr>
     </thead>
     <tbody>
-      <% @craft.craft_variants.includes(:craft_images).each do |cv| %>
+      <% @craft.craft_variants.includes(:images).each do |cv| %>
       <tr class="fs-5 mb-2">
         <th scope="row"><%= cv.id %></th>
         <td><%= cv.name %></td>
         <td><%= number_to_currency(cv.price) || "N/A" %></td>
         <td><%= cv.inventory_count %></td>
         <td>
-          <% if cv.craft_images.present? %>
-            <% url = cv.craft_images.first.image_url(:thumbnail) || cv.craft_images.first.image_url %>
+          <% if cv.images.present? %>
+            <% url = cv.images.first.image_url(:thumbnail) || cv.images.first.image_url %>
             <%= image_tag url, class: "max-thumbnail-size" %>
           <% end %>
         </td>

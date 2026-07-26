@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_07_21_214245) do
+ActiveRecord::Schema[7.2].define(version: 2026_07_26_211649) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -49,28 +49,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_21_214245) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "craft_images", force: :cascade do |t|
-    t.integer "craft_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "image_data"
-    t.integer "position"
-    t.integer "craft_variant_id"
-    t.index ["craft_id"], name: "index_craft_images_on_craft_id"
-    t.index ["craft_variant_id"], name: "index_craft_images_on_craft_variant_id"
-  end
-
-  create_table "craft_variants", force: :cascade do |t|
-    t.integer "craft_id", null: false
-    t.string "name"
-    t.decimal "price", precision: 5, scale: 2
-    t.integer "inventory_count"
-    t.string "dimensions"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["craft_id"], name: "index_craft_variants_on_craft_id"
-  end
-
   create_table "crafts", force: :cascade do |t|
     t.string "name"
     t.string "category"
@@ -83,9 +61,20 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_21_214245) do
     t.boolean "for_sale", default: false, null: false
     t.boolean "has_variants", default: false, null: false
     t.integer "inventory_count", default: 0, null: false
-    t.decimal "price", precision: 5, scale: 2
+    t.decimal "price", precision: 6, scale: 2
     t.string "dimensions"
     t.index ["slug"], name: "index_crafts_on_slug", unique: true
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.integer "craft_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "image_data"
+    t.integer "position"
+    t.integer "craft_variant_id"
+    t.index ["craft_id"], name: "index_images_on_craft_id"
+    t.index ["craft_variant_id"], name: "index_images_on_craft_variant_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -101,8 +90,19 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_21_214245) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "variants", force: :cascade do |t|
+    t.integer "craft_id", null: false
+    t.string "name"
+    t.decimal "price", precision: 5, scale: 2
+    t.integer "inventory_count"
+    t.string "dimensions"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["craft_id"], name: "index_variants_on_craft_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "craft_images", "crafts"
-  add_foreign_key "craft_variants", "crafts"
+  add_foreign_key "images", "crafts"
+  add_foreign_key "variants", "crafts"
 end

@@ -13,8 +13,8 @@
     
   </h3>
   <div class='center mb-5'>
-    <% if @craft.craft_images.present? %>
-      <%= image_tag @craft.craft_images.first.image_url(:card), class: 'max-size-image' %>
+    <% if @craft.images.present? %>
+      <%= image_tag @craft.images.first.image_url(:card), class: 'max-size-image' %>
     <% end %>
   </div>
   <%= render 'form', craft_variant: @craft_variant %>

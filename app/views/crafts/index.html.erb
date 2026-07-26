@@ -23,8 +23,8 @@
         <th scope="row"><%= craft.id %></th>
         <td><%= craft.name %></td>
         <td>
-          <% if craft.craft_images.any? && craft.craft_images.first.image_url(:thumbnail) %>
-            <%= image_tag(craft.craft_images.first.image_url(:thumbnail)) %>
+          <% if craft.images.any? && craft.images.first.image_url(:thumbnail) %>
+            <%= image_tag(craft.images.first.image_url(:thumbnail)) %>
           <% end %>
         </td>
         <td><%= link_to 'Edit Craft', edit_craft_path(craft) %></td>

@@ -1,8 +1,8 @@
-class CraftVariant < ApplicationRecord
+class Variant < ApplicationRecord
   belongs_to :craft
-  has_many :craft_images, dependent: :destroy
+  has_many :images, dependent: :destroy
 
-  accepts_nested_attributes_for :craft_images, allow_destroy: true
+  accepts_nested_attributes_for :images, allow_destroy: true
 
   after_save :craft_has_variants_check
   after_destroy :craft_has_variants_check
@@ -18,6 +18,6 @@ class CraftVariant < ApplicationRecord
   private
 
   def craft_has_variants_check
-    craft.update_column(:has_variants, craft.craft_variants.exists?)
+    craft.update_column(:has_variants, craft.variants.exists?)
   end
 end

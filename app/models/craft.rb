@@ -1,12 +1,12 @@
 class Craft < ApplicationRecord
-  include ImageUploader::Attachment(:image)
+  has_many :images, -> { order(position: :asc) }, dependent: :destroy
+  has_many :variants, dependent: :destroy
 
   before_create :generate_slug
+  
+  include ImageUploader::Attachment(:image)
 
-  has_many :craft_images, -> { order(position: :asc) }, dependent: :destroy
-  has_many :craft_variants, dependent: :destroy
-
-  accepts_nested_attributes_for :craft_images, allow_destroy: true
+  accepts_nested_attributes_for :images, allow_destroy: true
 
   before_validation :normalize_name
 
@@ -28,7 +28,7 @@ class Craft < ApplicationRecord
   end
 
   def must_have_at_least_one_image
-    if craft_images.empty?
+    if images.empty?
       errors.add(:base, "Craft must have at least one image")
     end
   end

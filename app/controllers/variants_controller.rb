@@ -1,10 +1,10 @@
-class CraftVariantsController < ApplicationController
+class VariantsController < ApplicationController
   before_action :set_craft
   before_action :set_craft_variant, only: [:edit, :update, :destroy]
   before_action :check_if_admin?
 
   def index
-    @craft_variant = @craft.craft_variants.includes(:craft_images).order(created_at: :desc)
+    @craft_variant = @craft.craft_variants.includes(:images).order(created_at: :desc)
   end
 
   def edit ; end
@@ -15,22 +15,22 @@ class CraftVariantsController < ApplicationController
 
   def create
     if params[:files].present?
-      new_craft_images_attributes = params[:files].inject({}) do |hash, file|
+      new_images_attributes = params[:files].inject({}) do |hash, file|
         hash.merge!(SecureRandom.hex => { image: file })
       end
     else
-      new_craft_images_attributes = {}
+      new_images_attributes = {}
     end
 
-    craft_images_attributes = craft_variant_params[:craft_images_attributes].to_h.merge(new_craft_images_attributes)
+    images_attributes = craft_variant_params[:images_attributes].to_h.merge(new_images_attributes)
     craft_attributes = craft_variant_params.merge(
-      craft_images_attributes: craft_images_attributes,
+      images_attributes: images_attributes,
       craft_id: @craft.id
     )
 
     @craft_variant = CraftVariant.new(craft_attributes)
 
-    @craft_variant.craft_images.each do |image|
+    @craft_variant.images.each do |image|
       image.image_derivatives!
     end
 
@@ -43,17 +43,17 @@ class CraftVariantsController < ApplicationController
 
   def update
     if params[:files].present?
-      new_craft_images_attributes = params[:files].inject({}) do |hash, file|
+      new_images_attributes = params[:files].inject({}) do |hash, file|
         hash.merge!(SecureRandom.hex => { image: file })
       end
     else
-      new_craft_images_attributes = {}
+      new_images_attributes = {}
     end
 
-    craft_images_attributes = craft_variant_params[:craft_images_attributes].to_h.merge(new_craft_images_attributes)
-    craft_attributes = craft_variant_params.merge(craft_images_attributes: craft_images_attributes)
+    images_attributes = craft_variant_params[:images_attributes].to_h.merge(new_images_attributes)
+    craft_attributes = craft_variant_params.merge(images_attributes: images_attributes)
 
-    @craft_variant.craft_images.each do |image|
+    @craft_variant.images.each do |image|
       image.image_derivatives!
     end
 
@@ -82,7 +82,7 @@ class CraftVariantsController < ApplicationController
   def craft_variant_params
     params.require(:craft_variant)
     .permit(:craft_id, :name, :price, :inventory_count, :dimensions, :image,
-            craft_images_attributes: [:craft_id, :image, :_destroy])
+            images_attributes: [:craft_id, :image, :_destroy])
   end
 
   def check_if_admin?
