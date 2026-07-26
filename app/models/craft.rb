@@ -1,19 +1,19 @@
 class Craft < ApplicationRecord
-  include ImageUploader::Attachment(:image)
+  has_many :variants, dependent: :destroy
+  has_many :images, through: :variants
 
   before_create :generate_slug
-
-  has_many :craft_images, -> { order(position: :asc) }, dependent: :destroy
-
-  accepts_nested_attributes_for :craft_images, allow_destroy: true
-
   before_validation :normalize_name
 
-  validate :must_have_at_least_one_image
   validates :name, presence: true
+  validate :must_have_at_least_one_variant
 
   def to_param
     slug
+  end
+
+  def cover_image
+    images.first
   end
 
   private
@@ -27,8 +27,8 @@ class Craft < ApplicationRecord
   end
 
   def must_have_at_least_one_image
-    if craft_images.empty?
-      errors.add(:base, "Craft must have at least one image")
+    if variants.empty?
+      errors.add(:base, "Craft must have at least one listing (variant)")
     end
   end
 end
