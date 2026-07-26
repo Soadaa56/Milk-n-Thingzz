@@ -43,27 +43,33 @@
     </div>
     
     <div class="craft-images-wrapper" 
-          data-controller="sortable" 
-          data-sortable-url-value="<%= craft.id.present? ? move_image_craft_path(craft) : '#' %>" >
-      <% if craft.images.present? %>
-        <%= f.fields_for :images do |ci| %>
-          <div class="craft-form-image-card sortable-item">
-            <%= image_tag ci.object.image_url, class: "tiny-image" %>
-            <%= ci.hidden_field :image, value: ci.object.cached_image_data, id: nil %>
-            <%= ci.check_box :_destroy %>
-            <%= ci.label :_destroy? %>
-          </div>
+      data-controller="sortable" 
+      data-sortable-url-value="<%= craft.id.present? ? move_image_craft_path(craft) : '#' %>" >
+      <% craft.variants.each do |variant| %>
+        <%= f.fields_for :variants, variant do |v| %>
+          <%= v.fields_for :images do |vi| %>
+            <% next unless vi.object.image_url.present? %>
+            <div class="craft-form-image-card sortable-item">
+              <%= image_tag vi.object.image_url, class: "tiny-image" %>
+              <%= vi.hidden_field :id %>
+              <%= vi.hidden_field :image_data %>
+              <%= vi.check_box :_destroy %>
+              <%= vi.label :_destroy? %>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
     </div>
-    <br>
+    <br><br>
     
     <% if @craft.new_record? %>
       <div>
         <%= f.submit "Create New Craft", class: "btn btn-primary" %>
       </div>
     <% else %>
+      <div>
         <%= f.submit "Update Craft", class: "btn btn-primary" %>
+      </div>
     <% end %>
   <% end %>
 </div>

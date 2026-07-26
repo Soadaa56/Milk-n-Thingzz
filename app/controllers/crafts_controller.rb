@@ -1,6 +1,6 @@
 class CraftsController < ApplicationController
   before_action :set_craft, only: [:show, :edit, :update, :destroy, :move_image]
-  before_action :check_if_admin?, only: [:new, :edit, :create, :update, :destroy]
+  before_action :check_if_admin?, except: [:show]
 
   def index
     @crafts = Craft.includes(:images).order(:id)
@@ -15,58 +15,60 @@ class CraftsController < ApplicationController
   end
 
   def create
-    # transform the list of uploaded files into a craft_images attributes hash
+    @craft = Craft.new(craft_params)
+
+    variant = @craft.variants.build(
+      name: "Default",
+      price: params[:price],
+      inventory_count: params[:inventory_count],
+      dimensions: params[:dimensions]
+    )
+
     if params[:files].present?
-      new_images_attributes = params[:files].inject({}) do |hash, file|
-        hash.merge!(SecureRandom.hex => { image: file })
+      params[:files].each do |file|
+        variant.images.build(image: file)
       end
+    end
+
+    @craft.variants.each do |v|
+      v.images.each(&:image_derivatives!)
+    end
+
+    if @craft.save
+      redirect_to craft_url(@craft), notice: "Craft posted."
     else
-      new_images_attributes = {}
+      render :new, status: :unprocessable_entity
     end
+  end
 
-    # Merge new image attributes with existing images, if any
-    images_attributes = craft_params[:images_attributes].to_h.merge(new_images_attributes)
-    craft_attributes = craft_params.merge(images_attributes: images_attributes)
+  # GET /crafts/new_with_variants
+  def new_with_variants
+    @craft = Craft.new
+  end
 
-    @craft = Craft.new(craft_attributes)
+  # POST /crafts/create_with_variants
+  def create_with_variants
+    @craft = Craft.new(craft_params)
 
-    # Create Shrine Derivatives
-    @craft.craft_images.each do |image|
-      image.image_derivatives!
-    end
-
-    respond_to do |format|
-      if @craft.save
-        format.html { redirect_to craft_url(@craft), notice: "Craft was successfully posted." }
-        format.json { render :show, status: :created, location: @craft }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @craft.errors, status: :unprocessable_entity }
-      end
+    if @craft.save
+      redirect_to new_craft_variant_path(@craft), notice: "Craft created, now add your first variant."
+    else
+      render :new_with_variants, status: :unprocessable_entity
     end
   end
 
   def update
     if params[:files].present?
-      new_images_attributes = params[:files].inject({}) do |hash, file|
-        hash.merge!(SecureRandom.hex => { image: file })
+      default_variant = @craft.variants.first
+      params[:files].each do |file|
+        default_variant.images.build(image: file)
       end
-    else
-      new_images_attributes = {}
-    end
-
-    # Merge new image attributes with existing images, if any
-    images_attributes = craft_params[:images_attributes].to_h.merge(new_images_attributes)
-    craft_attributes = craft_params.merge(images_attributes: images_attributes)
-
-    # Create Shrine Derivatives
-    @craft.craft_images.each do |image|
-      image.image_derivatives!
+      default_variant.images.each(&:image_derivatives!)
     end
 
     respond_to do |format|
-      if @craft.update(craft_attributes)
-        format.html { redirect_to craft_url(@craft), notice: "Craft was successfully updated." }
+      if @craft.update(craft_params)
+        format.html { redirect_to craft_url(@craft), notice: "Craft updated." }
         format.json { render :show, status: :ok, location: @craft }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -97,10 +99,14 @@ class CraftsController < ApplicationController
   end
 
   def craft_params
-    params.require(:craft)
-    .permit(
-    :name, :category, :subtype, :description, :image,
-    images_attributes: [:id, :image, :_destroy])
+    params.require(:craft).permit(
+      :name, :description, :category, :subtype, :for_sale,
+      :default_price, :default_dimensions,
+      variants_attributes: [
+        :id, :name, :sku, :price, :dimensions, :inventory_count, :active, :_destroy,
+        images_attributes: [:id, :image, :image_data, :_destroy]
+      ]
+    )
   end
 
   def check_if_admin?

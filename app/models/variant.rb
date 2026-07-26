@@ -4,6 +4,8 @@ class Variant < ApplicationRecord
 
   accepts_nested_attributes_for :images, allow_destroy: true
 
+  before_validation :set_default_inventory_count
+
   validate :must_have_at_least_one_image
 
   after_save :craft_has_two_or_more_variants
@@ -18,6 +20,10 @@ class Variant < ApplicationRecord
   end
 
   private
+
+  def set_default_inventory_count
+    self.inventory_count ||= 0
+  end
 
   def must_have_at_least_one_image
     if images.empty?

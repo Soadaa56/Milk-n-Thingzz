@@ -1,0 +1,19 @@
+<h1>New Craft With Variants</h1>
+
+<div class='center'>
+  <%= link_to 'Admin Dashboard', admin_index_path, class:'btn btn-dark' %>
+  <%= link_to 'List all crafts', crafts_path, class: 'btn btn-primary' %>
+</div>
+
+<%= form_with model: @craft, url: create_with_variants_crafts_path do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_area :description %>
+  <%= f.select :category, ["3D-Print", "Crotchet", "Embroidery", "Earring", "Painting", "Necklace", "Miscellaneous"] %>
+  <%= f.check_box :for_sale %>
+
+  <h3>Defaults (used by variants unless overridden)</h3>
+  <%= f.number_field :default_price %>
+  <%= f.text_field :default_dimensions %>
+<% end %>
+
+<%= link_to 'Back', :back, class:'btn btn-custom indent', style: 'margin-left: 5rem' %>

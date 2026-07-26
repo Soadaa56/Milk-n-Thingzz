@@ -25,9 +25,16 @@ Rails.application.routes.draw do
   match '/' => 'errors#not_found', via: :all
 
   resources :crafts, only: [:index, :show, :edit, :new, :create, :update, :destroy] do
+    collection do
+      get :new_with_variants
+      post :create_with_variants
+    end
+
     member do
       patch :move_image
     end
+    
+    resources :variants, only: [:new, :create, :edit, :update, :destroy]
   end
 
   # Health check routes for kamal
