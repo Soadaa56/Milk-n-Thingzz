@@ -45,8 +45,8 @@
     <div class="craft-images-wrapper" 
           data-controller="sortable" 
           data-sortable-url-value="<%= craft.id.present? ? move_image_craft_path(craft) : '#' %>" >
-      <% if craft.craft_images.present? %>
-        <%= f.fields_for :craft_images do |ci| %>
+      <% if craft.images.present? %>
+        <%= f.fields_for :images do |ci| %>
           <div class="craft-form-image-card sortable-item">
             <%= image_tag ci.object.image_url, class: "tiny-image" %>
             <%= ci.hidden_field :image, value: ci.object.cached_image_data, id: nil %>

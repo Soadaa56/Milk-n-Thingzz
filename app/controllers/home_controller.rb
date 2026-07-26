@@ -5,23 +5,23 @@ class HomeController < ApplicationController
   end
 
   def crotchet
-    @crafts = Craft.includes(:craft_images).where(category: "Crotchet")
+    @crafts = Craft.includes(:images).where(category: "Crotchet")
   end
 
   def embroidery
-    @crafts = Craft.includes(:craft_images).where(category: "Embroidery")
+    @crafts = Craft.includes(:images).where(category: "Embroidery")
   end
 
   def print
-    @crafts = Craft.includes(:craft_images).where(category: "3D-Print")
+    @crafts = Craft.includes(:images).where(category: "3D-Print")
   end
 
   def painting
-    @crafts = Craft.includes(:craft_images).where(category: "Painting")
+    @crafts = Craft.includes(:images).where(category: "Painting")
   end
 
   def earring
-    @crafts = Craft.includes(:craft_images).where(category: "Earring")
+    @crafts = Craft.includes(:images).where(category: "Earring")
     @subtypes = @crafts.pluck(:subtype).uniq
 
     @crafts = sort_crafts_by_subtype
@@ -29,11 +29,11 @@ class HomeController < ApplicationController
   end
 
   def necklace
-    @crafts = Craft.includes(:craft_images).where(category: 'Necklace')
+    @crafts = Craft.includes(:images).where(category: 'Necklace')
   end
 
   def miscellaneous
-    @crafts = Craft.includes(:craft_images).where(category: "Miscellaneous")
+    @crafts = Craft.includes(:images).where(category: "Miscellaneous")
   end
 
   def about; end

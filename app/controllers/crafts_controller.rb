@@ -3,7 +3,7 @@ class CraftsController < ApplicationController
   before_action :check_if_admin?, only: [:new, :edit, :create, :update, :destroy]
 
   def index
-    @crafts = Craft.includes(:craft_images).order(:id)
+    @crafts = Craft.includes(:images).order(:id)
   end
 
   def show ; end
@@ -17,16 +17,16 @@ class CraftsController < ApplicationController
   def create
     # transform the list of uploaded files into a craft_images attributes hash
     if params[:files].present?
-      new_craft_images_attributes = params[:files].inject({}) do |hash, file|
+      new_images_attributes = params[:files].inject({}) do |hash, file|
         hash.merge!(SecureRandom.hex => { image: file })
       end
     else
-      new_craft_images_attributes = {}
+      new_images_attributes = {}
     end
 
     # Merge new image attributes with existing images, if any
-    craft_images_attributes = craft_params[:craft_images_attributes].to_h.merge(new_craft_images_attributes)
-    craft_attributes = craft_params.merge(craft_images_attributes: craft_images_attributes)
+    images_attributes = craft_params[:images_attributes].to_h.merge(new_images_attributes)
+    craft_attributes = craft_params.merge(images_attributes: images_attributes)
 
     @craft = Craft.new(craft_attributes)
 
@@ -48,16 +48,16 @@ class CraftsController < ApplicationController
 
   def update
     if params[:files].present?
-      new_craft_images_attributes = params[:files].inject({}) do |hash, file|
+      new_images_attributes = params[:files].inject({}) do |hash, file|
         hash.merge!(SecureRandom.hex => { image: file })
       end
     else
-      new_craft_images_attributes = {}
+      new_images_attributes = {}
     end
 
     # Merge new image attributes with existing images, if any
-    craft_images_attributes = craft_params[:craft_images_attributes].to_h.merge(new_craft_images_attributes)
-    craft_attributes = craft_params.merge(craft_images_attributes: craft_images_attributes)
+    images_attributes = craft_params[:images_attributes].to_h.merge(new_images_attributes)
+    craft_attributes = craft_params.merge(images_attributes: images_attributes)
 
     # Create Shrine Derivatives
     @craft.craft_images.each do |image|
@@ -85,7 +85,7 @@ class CraftsController < ApplicationController
   end
 
   def move_image
-    @image = @craft.craft_images[params[:old_position].to_i]
+    @image = @craft.images[params[:old_position].to_i]
     @image.insert_at(params[:new_position].to_i + 1)
     head :ok
   end
@@ -100,7 +100,7 @@ class CraftsController < ApplicationController
     params.require(:craft)
     .permit(
     :name, :category, :subtype, :description, :image,
-    craft_images_attributes: [:id, :image, :_destroy])
+    images_attributes: [:id, :image, :_destroy])
   end
 
   def check_if_admin?
