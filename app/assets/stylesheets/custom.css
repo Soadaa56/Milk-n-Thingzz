@@ -65,7 +65,7 @@ body {
   filter: brightness(105%);
 }
 
-/* If using image tag, I cannot use fill. This makes it white and works for my purposes. */
+/* If using image tag, I cannot use fill. This makes it white. */
 .profile-svg {
   filter: invert(100%);
 }
@@ -91,15 +91,6 @@ body {
     --bs-btn-disabled-bg: #6c757d;
     --bs-btn-disabled-border-color: #6c757d;
 }
-
-/* #banner > p, #banner > a {
-  text-align: center;
-  justify-content: center;
-  vertical-align: middle;
-  flex: 1 0 30%;
-  text-decoration: inherit;
-  color: var(--shade-light-color);
-} */
 
 .grid-container-nav-main {
   display: grid;
@@ -378,7 +369,7 @@ h2 {
 }
 
 .carousel-indicator {
-  list-styler: none;
+  list-style: none;
 }
 
 .carousel-img {
@@ -572,8 +563,6 @@ h2 {
   }
   
   .social-logo {
-    /* padding: 5rem; */
-    /* width: 10rem; */
     height: auto;
     width: 15rem;
     margin-bottom: 1rem;
@@ -585,4 +574,11 @@ h2 {
     padding-left: 5rem;
     padding-right: 5rem;
   }
+}
+
+/******
+        Custom Classes
+******/
+.thumbnail-image {
+  max-height: 70px;
 }

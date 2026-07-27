@@ -14,6 +14,7 @@
         <th scope="col">Name</th>
         <th scope="col">Image</th>
         <th scope="col">Edit</th>
+        <th scope="col">Variants?</th>
         <th scope="col">Delete</th>
       </tr>
     </thead>
@@ -23,8 +24,8 @@
         <th scope="row"><%= craft.id %></th>
         <td><%= craft.name %></td>
         <td>
-          <% if craft.images.any? && craft.images.first.image_url(:thumbnail) %>
-            <%= image_tag(craft.images.first.image_url(:thumbnail)) %>
+          <% if craft.images.any? && craft.images.first.image_url(:small) %>
+            <%= image_tag craft.images.first.image_url(:small), class: "thumbnail-image" %>
           <% end %>
         </td>
         <td><%= link_to 'Edit Craft', edit_craft_path(craft) %></td>
@@ -44,4 +45,6 @@
 <% end %>
 
 <%= link_to 'Back', :back, class:'btn btn-custom ms-5' %>
+
+<% console %>
 
