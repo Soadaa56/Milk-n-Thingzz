@@ -582,6 +582,19 @@ h2 {
 .debug {
   outline: 2px solid red;
 }
+
+.dark-accent-color {
+  color: var(--dark-accent-color);
+}
+
+.light-accent-color {
+  color: var(--light-accent-color);
+}
+
+.hidden {
+  display: none;
+}
+
 .thumbnail-image {
   max-height: 70px;
 }
