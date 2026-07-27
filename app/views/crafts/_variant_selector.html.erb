@@ -10,7 +10,7 @@
     <% @variants.each do |variant| %>
       <div data-variant-selector-target="carousel"
          data-variant-id="<%= variant.id %>"
-         style="display: none;">
+         style="">
         <%= render 'carousel', images: variant.images %>
       </div>
     <% end %>

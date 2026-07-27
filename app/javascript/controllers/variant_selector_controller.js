@@ -4,12 +4,7 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
     static targets = ["select", "carousel"]
 
-    initialize() {
-        console.log("initialize")
-    }
-
     connect() {
-        console.log("connected")
         console.log("var connect: ", this.selectTarget.value)
         this.showVariant(this.selectTarget.value)
     }
@@ -20,7 +15,7 @@ export default class extends Controller {
 
     showVariant(variantId) {
         this.carouselTargets.forEach(carousel => {
-            carousel.hidden = carousel.dataset.variantId !== variantId
+            carousel.hidden = carousel.dataset.variantId !== String(variantId)
         })
     }
 }
