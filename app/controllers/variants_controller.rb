@@ -38,7 +38,7 @@ class VariantsController < ApplicationController
       @variant.images.each(&:image_derivatives!)
     end
 
-    if @variant.update
+    if @variant.update(variant_params)
       redirect_to craft_variants_path(@craft), notice: "Variant Edited"
     else
       render :edit, status: :unprocessable_entity 

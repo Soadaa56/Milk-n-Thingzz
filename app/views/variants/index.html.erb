@@ -1,4 +1,45 @@
 <h1>All Variants of: <%= @craft.name %></h1>
-<p>Find me in app/views/variants/index.html.erb</p>
+<%= link_to 'View Craft', craft_path(@craft), class: 'btn btn-dark fs-5' %>
+
+<table class="table table-dark table-hover">
+  <thead>
+    <tr class="center">
+      <th scope="col">Name</th>
+      <th scope="col">SKU</th>
+      <th scope="col">Inventory Count</th>
+      <th scope="col">Price</th>
+      <th scope="col">Image</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Active</th>
+      <th scope="col">Shopify-var-id</th>
+    </tr>
+  </thead>
+  <tbody class="center">
+    <% @variants.each do |v| %>
+    <tr class="fs-5 mb-2">
+      <th scope="row"><%= v.name %></th>
+      <td><%= v.sku %></td>
+      <td><%= v.inventory_count || "X" %></td>
+      <td><%= v.price || "X" %></td>
+      <td>
+        <% if v.images.any? && v.images.first.image_url(:small) %>
+          <%= image_tag v.images.first.image_url(:small), class: "thumbnail-image" %>
+        <% end %>
+      </td>
+      <td><%= link_to 'Edit Variant',  edit_craft_variant_path(@craft, v.id) %></td>
+      <td>
+        <% if v.active? %>
+          <span>Yes</span>
+        <% else %>
+          <span>X</span>
+        <% end %>
+      </td>
+      <td><%= v.shopify_variant_id %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
 
 <%= render 'shared/back' %>
+
+<% console %>
