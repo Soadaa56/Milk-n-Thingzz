@@ -1,13 +1,13 @@
 <div id='carousel' class='carousel slide' data-controller='carousel'>
   <div class='carousel-indicators'>
-    <% @craft.images.each_with_index do |image, index| %>
+    <% images.each_with_index do |image, index| %>
       <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="<%= index %>" class='carousel-indicator'></button>
     <% end %>
   </div>
   <div class='carousel-inner'>
-    <% @craft.images.each do |ci| %>
+    <% images.each do |img| %>
       <div class='carousel-item'>
-        <% url = ci.image_url(:detail) || ci.image_url %>
+        <% url = img.image_url(:show) || img.image_url %>
           <%= image_tag url, class: 'carousel-img' %>
       </div>
     <% end %>

@@ -6,7 +6,7 @@
 
 <div class='center'>
   <% if @craft.images.present? %>
-    <%= image_tag @craft.images.first.image_url(:detail), class: 'max-size-image' %>
+    <%= image_tag @craft.images.first.image_url(:card), class: 'max-size-image' %>
   <% end %>
 </div>
 
