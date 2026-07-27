@@ -10,67 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_07_25_062608) do
-  create_table "action_text_rich_texts", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "body"
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
-  end
-
-  create_table "active_storage_attachments", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
-    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
-  end
-
-  create_table "active_storage_blobs", force: :cascade do |t|
-    t.string "key", null: false
-    t.string "filename", null: false
-    t.string "content_type"
-    t.text "metadata"
-    t.string "service_name", null: false
-    t.bigint "byte_size", null: false
-    t.string "checksum"
-    t.datetime "created_at", null: false
-    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
-  end
-
-  create_table "active_storage_variant_records", force: :cascade do |t|
-    t.bigint "blob_id", null: false
-    t.string "variation_digest", null: false
-    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
-  end
-
+ActiveRecord::Schema[7.2].define(version: 2026_07_27_150117) do
   create_table "crafts", force: :cascade do |t|
-    t.string "name"
-    t.string "category"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name", null: false
     t.text "description"
+    t.string "category"
     t.string "subtype"
-    t.string "slug"
+    t.string "slug", null: false
     t.boolean "for_sale", default: false, null: false
-    t.boolean "has_variants", default: false, null: false
-    t.string "shopify_product_id"
+    t.boolean "has_many_variants", default: false, null: false
     t.decimal "default_price", precision: 6, scale: 2
     t.string "default_dimensions"
+    t.string "shopify_product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["slug"], name: "index_crafts_on_slug", unique: true
   end
 
   create_table "images", force: :cascade do |t|
+    t.integer "variant_id"
+    t.text "image_data"
+    t.integer "position", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "image_data"
-    t.integer "position"
-    t.integer "variant_id"
     t.index ["variant_id"], name: "index_images_on_variant_id"
   end
 
@@ -92,17 +54,14 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_25_062608) do
     t.string "name"
     t.string "sku"
     t.decimal "price", precision: 6, scale: 2
-    t.string "dimensions"
-    t.integer "inventory_count", default: 0, null: false
-    t.boolean "active", default: false, null: false
+    t.integer "inventory_count"
+    t.boolean "active", default: true, null: false
     t.string "shopify_variant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["craft_id"], name: "index_variants_on_craft_id"
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "images", "variants"
   add_foreign_key "variants", "crafts"
 end
