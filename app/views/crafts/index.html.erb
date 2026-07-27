@@ -9,7 +9,7 @@
 
   <table class="table table-dark table-hover">
     <thead>
-      <tr>
+      <tr class="center">
         <th scope="col">ID</th>
         <th scope="col">Name</th>
         <th scope="col">Image</th>
@@ -18,7 +18,7 @@
         <th scope="col">Delete</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="center">
       <% @crafts.each do |craft| %>
       <tr class="fs-5 mb-2">
         <th scope="row"><%= craft.id %></th>
@@ -29,6 +29,13 @@
           <% end %>
         </td>
         <td><%= link_to 'Edit Craft', edit_craft_path(craft) %></td>
+        <td>
+          <% if craft.has_many_variants? %>
+            <span>yes</span>
+          <% else %>
+            <span>X</span>
+          <% end %>
+        </td>
         <td>
           <%= button_to 'Destroy Craft', craft_path(craft), method: :delete, 
           data: { turbo: false}, 
