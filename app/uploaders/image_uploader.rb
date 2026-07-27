@@ -8,7 +8,7 @@ class ImageUploader < Shrine
     magick = ImageProcessing::MiniMagick.source(original)
 
     {
-      small_card:   magick.resize_to_limit(175, 175)
+      small:   magick.resize_to_limit(175, 175)
                       .convert("webp")
                       .saver(quality: 70)
                       .call,
