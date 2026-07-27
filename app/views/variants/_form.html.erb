@@ -1,0 +1,99 @@
+<div class="indent large-text edit-craft-form">
+  <%= form_with model: [@craft, @variant], html: {enctype: "multipart/form-data"} do |f| %>
+    <% if @variant.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(@variant.errors.count, "error") %> prohibited this variant from being saved:</h2>
+        <ul>
+          <% @variant.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row align-items-start mt-4 mb-4 dark-accent-color">
+      <div class="col d-grid gap-4">
+        <div>
+          <p>&nbsp;</p>
+        </div>
+        <div>
+          <%= f.label :name, style: "display: block" %>
+          <%= f.text_field :name %>
+        </div>
+        <div>
+          <%= f.label :inventory_count, style: "display: block" %>
+          <%= number_field_tag :inventory_count %>
+          <p class="light-accent-color">
+            Blank is valid
+          </p>
+        </div>
+      </div>
+      <div class="col d-grid gap-4">
+        <h3 class="light-accent-color">
+          Overrides Defaults on Base Craft (Blank means use defaults)
+        </h3>
+        <div>
+          <%= f.label :price, style: "display: block" %>
+          <%= number_field_tag :price %>
+          <p class="light-accent-color">
+            <% if @craft.default_price %>
+              Base craft price = <%= @craft.default_price %>
+            <% else %>
+              There is no base craft price.
+            <% end %>
+          </p>
+        </div>
+        <div>
+          <%= f.label :dimensions, style: "display: block" %>
+          <%= f.text_area :dimensions, rows: 5, cols: 40 %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-items-start mt-5 mb-5">
+    <h3 style="font-size: 3rem;">Back-end Info</h3>
+      <div class="col d-grid gap-4 dark-accent-color">
+        <div>
+          <%= f.label :sku, style: "display: block" %>
+          <%= f.text_field :name%>
+          <p class="light-accent-color">
+            We make this up how we like
+          </p>
+        </div>
+        <div>
+          <%= f.label :shopify_variant_id, style: "display: block" %>
+          <%= f.text_field :shopify_variant_id %>
+          <p class="light-accent-color">
+            Supplied to us
+          </p>
+        </div>
+        <div>
+          <%= f.label :active %>
+          <%= f.check_box :active %>
+          <p class="light-accent-color">
+            Disable Variant being seen (Instead of deleting)
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5 mb-5">
+      <label for='files'>Upload New Images:</label>
+      <%= file_field_tag 'files[]', multiple: true %>
+      <p>To delete images, check the box next to the image then update craft.</p>
+    </div>
+
+    <% if @variant.new_record? %>
+      <div class="mt-4 mb-4">
+        <%= f.submit "Add New Variant", class: "btn btn-primary fs-3" %>
+      </div>
+    <% else %>
+      <div>
+        <%= f.submit "Update Variant", class: "btn btn-primary fs-3" %>
+      </div>
+    <% end %>
+    
+  <% end %>
+</div>
+
+
