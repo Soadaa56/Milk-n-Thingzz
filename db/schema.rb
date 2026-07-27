@@ -55,6 +55,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_150117) do
     t.string "sku"
     t.decimal "price", precision: 6, scale: 2
     t.integer "inventory_count"
+    t.string "dimensions"
     t.boolean "active", default: true, null: false
     t.string "shopify_variant_id"
     t.datetime "created_at", null: false

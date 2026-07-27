@@ -21,6 +21,7 @@ class RecreateSchemeTablesForCraftsImagesVariants < ActiveRecord::Migration[7.2]
       t.string :sku
       t.decimal :price,               precision: 6, scale: 2
       t.integer :inventory_count,     null: true
+      t.string :dimensions,           null: true
       t.boolean :active,              default: true, null: false
       t.string :shopify_variant_id
       t.timestamps
