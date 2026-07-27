@@ -16,10 +16,10 @@ class ImageUploader < Shrine
                       .convert("webp")
                       .saver(quality: 80)
                       .call,
-      detail:       magick.resize_to_limit(1200, 1200)
-                      .convert("webp")
-                      .saver(quality: 85)
-                      .call
+      # detail:       magick.resize_to_limit(1200, 1200)
+      #                 .convert("webp")
+      #                 .saver(quality: 85)
+      #                 .call
     }
   end
 end
