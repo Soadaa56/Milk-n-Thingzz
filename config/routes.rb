@@ -34,8 +34,15 @@ Rails.application.routes.draw do
       patch :move_image
     end
     
-    resources :variants, only: [:new, :create, :edit, :update, :destroy]
+    resources :variants, only: [:index, :new, :create, :edit, :update, :destroy]
   end
+
+  # get "variants/index"
+  # get "variants/show"
+  # get "variants/new"
+  # get "variants/create"
+  # get "variants/update"
+  # get "variants/destroy"
 
   # Health check routes for kamal
   get '/up', to: 'health#up'
