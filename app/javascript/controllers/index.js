@@ -10,9 +10,6 @@ application.register("carousel", CarouselController)
 import CommentController from "./comment_controller"
 application.register("comment", CommentController)
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
-
 import MenuController from "./menu_controller"
 application.register("menu", MenuController)
 
