@@ -4,11 +4,11 @@
 
 import { application } from "./application"
 
+import CarouselController from "./carousel_controller"
+application.register("carousel", CarouselController)
+
 import CommentController from "./comment_controller"
 application.register("comment", CommentController)
-
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
 
 import MenuController from "./menu_controller"
 application.register("menu", MenuController)
@@ -21,6 +21,3 @@ application.register("subtype", SubtypeController)
 
 import SubtypeSortController from "./subtype_sort_controller"
 application.register("subtype-sort", SubtypeSortController)
-
-import CarouselController from "./carousel_controller"
-application.register("carousel", CarouselController)
