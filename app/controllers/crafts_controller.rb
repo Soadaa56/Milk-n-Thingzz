@@ -62,7 +62,7 @@ class CraftsController < ApplicationController
   end
 
   def destroy
-    @craft.destroy! if current_user.admin?
+    @craft.destroy! if current_user&.admin?
 
     respond_to do |format|
       format.html { redirect_to crafts_path, notice: "Craft was successfully destroyed." }
@@ -94,6 +94,6 @@ class CraftsController < ApplicationController
   end
 
   def check_if_admin?
-    redirect_to root_path unless current_user.admin?
+    redirect_to root_path unless current_user&.admin?
   end
 end
