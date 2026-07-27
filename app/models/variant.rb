@@ -4,34 +4,32 @@ class Variant < ApplicationRecord
 
   accepts_nested_attributes_for :images, allow_destroy: true
 
-  before_validation :set_default_inventory_count
+  after_save :craft_has_many_variants
+  after_destroy :craft_has_many_variants
 
-  validate :must_have_at_least_one_image
-
-  after_save :craft_has_two_or_more_variants
-  after_destroy :craft_has_two_or_more_variants
-
-  def craft_price
+  def effective_price
     price.presence || craft.default_price
   end
 
-  def craft_dimensions
+  def effective_dimensions
     dimensions.presence || craft.default_dimensions
+  end
+
+  def in_stock?
+    inventory_count.nil? || inventory_count > 0
+  end
+
+  def tracks_inventory?
+    inventory_count.present?
+  end
+
+  def for_sale?
+    craft.for_sale? && active?
   end
 
   private
 
-  def set_default_inventory_count
-    self.inventory_count ||= 0
-  end
-
-  def must_have_at_least_one_image
-    if images.empty?
-      errors.add(:base, "Craft must have at least one Image (can be changed if you'd like)")
-    end
-  end
-
-  def craft_has_two_or_more_variants
-    craft.update_column(:has_variants, craft.variants.many?)
+  def craft_has_many_variants
+    craft.update_column(:has_many_variants, craft.variants.many?)
   end
 end

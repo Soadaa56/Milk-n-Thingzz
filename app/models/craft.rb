@@ -8,14 +8,16 @@ class Craft < ApplicationRecord
   before_validation :normalize_name
 
   validates :name, presence: true
-
-  def to_param
-    slug
-  end
+  validates :slug, presence: true, uniqueness: true
 
   def cover_image
     images.first
   end
+
+  # Causing bugs with params with variants
+  # def to_param
+  #   slug
+  # end
 
   private
 
