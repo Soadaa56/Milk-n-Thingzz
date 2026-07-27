@@ -4,7 +4,7 @@ class Craft < ApplicationRecord
 
   accepts_nested_attributes_for :variants, allow_destroy: true
 
-  before_create :generate_slug
+  before_validation :generate_slug
   before_validation :normalize_name
 
   validates :name, presence: true
@@ -14,10 +14,9 @@ class Craft < ApplicationRecord
     images.first
   end
 
-  # Causing bugs with params with variants
-  # def to_param
-  #   slug
-  # end
+  def to_param
+    slug
+  end
 
   private
 

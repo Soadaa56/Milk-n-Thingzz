@@ -41,22 +41,6 @@ class CraftsController < ApplicationController
     end
   end
 
-  # GET /crafts/new_with_variants
-  def new_with_variants
-    @craft = Craft.new
-  end
-
-  # POST /crafts/create_with_variants
-  def create_with_variants
-    @craft = Craft.new(craft_params)
-
-    if @craft.save
-      redirect_to new_craft_variant_path(@craft), notice: "Craft created, now add your first variant."
-    else
-      render :new_with_variants, status: :unprocessable_entity
-    end
-  end
-
   def update
     if params[:files].present?
       default_variant = @craft.variants.first
@@ -95,7 +79,7 @@ class CraftsController < ApplicationController
   private
 
   def set_craft
-    @craft = Craft.find_by!(slug: params[:id])
+    @craft = Craft.includes(variants: :images).find_by!(slug: params[:id])
   end
 
   def craft_params
@@ -104,7 +88,7 @@ class CraftsController < ApplicationController
       :default_price, :default_dimensions,
       variants_attributes: [
         :id, :name, :sku, :price, :dimensions, :inventory_count, :active, :_destroy,
-        images_attributes: [:id, :image, :image_data, :_destroy]
+        images_attributes: [:id, :variant_id, :image, :image_data, :_destroy]
       ]
     )
   end
