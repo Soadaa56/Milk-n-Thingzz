@@ -14,7 +14,7 @@ class ImageUploader < Shrine
                       .call,
       card:         magick.resize_to_limit(500,500)
                       .convert("webp")
-                      .saver(quality: 80)
+                      .saver(quality: 85)
                       .call,
       # detail:       magick.resize_to_limit(1200, 1200)
       #                 .convert("webp")
