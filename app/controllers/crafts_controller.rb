@@ -30,6 +30,7 @@ class CraftsController < ApplicationController
       end
     end
 
+    # should only be one variant
     @craft.variants.each do |v|
       v.images.each(&:image_derivatives!)
     end
