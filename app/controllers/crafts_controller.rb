@@ -6,7 +6,11 @@ class CraftsController < ApplicationController
     @crafts = Craft.includes(:images).order(:id)
   end
 
-  def show ; end
+  def show
+    if @craft.has_variants?
+      @variants = @craft.variants.includes(:images)
+    end
+  end
 
   def edit ; end
 
@@ -101,7 +105,7 @@ class CraftsController < ApplicationController
     .permit(
     :name, :category, :subtype, :description, :image,
     :for_sale, :has_variants, :inventory_count, :price, :dimensions,
-    images_attributes: [:id, :image, :_destroy])
+    images_attributes: [:craft_id, :image, :_destroy])
   end
 
   def check_if_admin?

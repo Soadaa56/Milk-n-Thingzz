@@ -1,23 +1,34 @@
 <h1><%= @craft.name %></h1>
-<h3><%= link_to @craft.category, craft_category_path_helper(@craft), class:"center nav-link underline hover-light-accent-color" %></h3>
+<h3>
+  <%= link_to @craft.category, craft_category_path_helper(@craft), 
+  class:"center nav-link underline hover-light-accent-color" %>
+</h3>
+
 <% if @craft.subtype.present? %>
   <div class="center"><%= @craft.subtype %></div>
 <% end %>
-<h6 class="center">Uploaded: <%= @craft.created_at.strftime("%B %d, %Y") %></h4>
+<h5 class="center">Uploaded: <%= @craft.created_at.strftime("%B %d, %Y") %></h5>
 
 <% if current_user&.admin? %>
   <div class='center mt-3'>
     <%= link_to "List all crafts", crafts_path, class: "btn btn-dark"%>
-    <%= link_to 'List all variants', craft_craft_variants_path(@craft.id), class: 'btn btn-dark' %>
+    <%= link_to 'List all variants', craft_variants_path(@craft.id), class: 'btn btn-dark' %>
   </div>
   <div class="center mt-3">
     <%= link_to "Edit Craft", edit_craft_path(@craft), class: "btn btn-primary" %>
-    <%= link_to 'Add Variant', new_craft_craft_variant_path(@craft.id), class: "btn btn-primary" %>
+    <%= link_to 'Add Variant', new_craft_variant_path(@craft.id), class: "btn btn-primary" %>
   </div>
+<% end %>
+
+<% if @craft.has_variants? %>
+  <%= render 'variant_selector', craft: @variants %>
+<% else %>
+  <%= render 'carousel', images: @craft.images %>
 <% end %>
 <br>
 
-<%= render 'carousel' %>
 
 <br><br>
 <%= link_to "Back", :back, class: "btn btn-custom indent" %>
+
+<% console %>

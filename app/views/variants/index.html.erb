@@ -12,7 +12,7 @@
     <thead>
       <tr>
         <th colspan="5" style="font-size: 1.2rem;">Variants</th>
-        <th scope="col"><%= link_to 'Add Variant', new_craft_craft_variant_path(@craft.id), class: "btn btn-primary" %></th>
+        <th scope="col"><%= link_to 'Add Variant', new_craft_variant_path(@craft.id), class: "btn btn-primary" %></th>
       </tr>
       <tr>
         <th colspan="2" style="font-size: 1.2rem;">Original Craft</th>
@@ -39,7 +39,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @craft.craft_variants.includes(:images).each do |cv| %>
+      <% @craft.variants.includes(:images).each do |cv| %>
       <tr class="fs-5 mb-2">
         <th scope="row"><%= cv.id %></th>
         <td><%= cv.name %></td>
@@ -47,11 +47,11 @@
         <td><%= cv.inventory_count %></td>
         <td>
           <% if cv.images.present? %>
-            <% url = cv.images.first.image_url(:thumbnail) || cv.images.first.image_url %>
+            <% url = cv.images.first.image_url(:small) || cv.images.first.image_url %>
             <%= image_tag url, class: "max-thumbnail-size" %>
           <% end %>
         </td>
-        <td><%= link_to "Edit Variant", edit_craft_craft_variant_path(@craft.id, cv.id) %></td>
+        <td><%= link_to "Edit Variant", edit_craft_variant_path(@craft.id, cv.id) %></td>
       </tr>
       <% end %>
     </tbody>

@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import CarouselController from "./carousel_controller"
+application.register("carousel", CarouselController)
+
 import CommentController from "./comment_controller"
 application.register("comment", CommentController)
 
@@ -22,5 +25,5 @@ application.register("subtype", SubtypeController)
 import SubtypeSortController from "./subtype_sort_controller"
 application.register("subtype-sort", SubtypeSortController)
 
-import CarouselController from "./carousel_controller"
-application.register("carousel", CarouselController)
+import VariantSelectorController from "./variant_selector_controller"
+application.register("variant-selector", VariantSelectorController)

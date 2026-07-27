@@ -3,8 +3,8 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="subtype-sort"
 export default class extends Controller {
   static targets = ["select"];
-  connect() {
-  }
+
+  connect() {}
 
   update() {
     this.sortCrafts();

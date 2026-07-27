@@ -1,16 +1,16 @@
 class VariantsController < ApplicationController
   before_action :set_craft
-  before_action :set_craft_variant, only: [:edit, :update, :destroy]
+  before_action :set_variant, only: [:edit, :update, :destroy]
   before_action :check_if_admin?
 
   def index
-    @craft_variant = @craft.craft_variants.includes(:images).order(created_at: :desc)
+    @variant = @craft.variants.includes(:images).order(created_at: :desc)
   end
 
   def edit ; end
 
   def new
-    @craft_variant = CraftVariant.new
+    @variant = Variant.new
   end
 
   def create
@@ -22,20 +22,20 @@ class VariantsController < ApplicationController
       new_images_attributes = {}
     end
 
-    images_attributes = craft_variant_params[:images_attributes].to_h.merge(new_images_attributes)
-    craft_attributes = craft_variant_params.merge(
+    images_attributes = variant_params[:images_attributes].to_h.merge(new_images_attributes)
+    craft_attributes = variant_params.merge(
       images_attributes: images_attributes,
       craft_id: @craft.id
     )
 
-    @craft_variant = CraftVariant.new(craft_attributes)
+    @variant = Variant.new(craft_attributes)
 
-    @craft_variant.images.each do |image|
+    @variant.images.each do |image|
       image.image_derivatives!
     end
 
-    if @craft_variant.save
-      redirect_to edit_craft_path(@craft), notice: "Variant created"
+    if @variant.save
+      redirect_to craft_variants_path(@craft), notice: "Variant created"
     else
       render :new, status: :unprocessable_entity
     end
@@ -50,23 +50,23 @@ class VariantsController < ApplicationController
       new_images_attributes = {}
     end
 
-    images_attributes = craft_variant_params[:images_attributes].to_h.merge(new_images_attributes)
-    craft_attributes = craft_variant_params.merge(images_attributes: images_attributes)
+    images_attributes = variant_params[:images_attributes].to_h.merge(new_images_attributes)
+    craft_attributes = variant_params.merge(images_attributes: images_attributes)
 
-    @craft_variant.images.each do |image|
+    @variant.images.each do |image|
       image.image_derivatives!
     end
 
-    if @craft_variant.update(craft_attributes)
-      redirect_to edit_craft_path(@craft), notice: "Variant updated"
+    if @variant.update(craft_attributes)
+      redirect_to craft_variants_path(@craft), notice: "Variant updated"
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @craft_variant.destroy
-    redirect_to craft_craft_variants_path(@craft), notice: "Craft variant deleted"
+    @variant.destroy
+    redirect_to craft_variants_path(@craft), notice: "Craft variant deleted"
   end
 
   private 
@@ -75,12 +75,12 @@ class VariantsController < ApplicationController
     @craft = Craft.find(params[:craft_id])
   end
 
-  def set_craft_variant
-    @craft_variant = CraftVariant.find(params[:id])
+  def set_variant
+    @variant = Variant.find(params[:id])
   end
 
-  def craft_variant_params
-    params.require(:craft_variant)
+  def variant_params
+    params.require(:variant)
     .permit(:craft_id, :name, :price, :inventory_count, :dimensions, :image,
             images_attributes: [:craft_id, :image, :_destroy])
   end

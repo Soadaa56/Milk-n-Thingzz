@@ -27,7 +27,7 @@ Rails.application.routes.draw do
       patch :move_image
     end
 
-    resources :craft_variants, except: [:show]
+    resources :variants, except: [:show]
   end
   
   match '/' => 'errors#not_found', via: :all

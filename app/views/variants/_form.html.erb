@@ -1,13 +1,13 @@
 <div class="indent large-text edit-craft-form">
-  <%= form_with model: [@craft, @craft_variant], local: true, html: { enctype: "multipart/form-data" } do |f| %>
+  <%= form_with model: [@craft, @variant], local: true, html: { enctype: "multipart/form-data" } do |f| %>
 
-    <% if craft_variant.errors.any? %>
+    <% if @variant.errors.any? %>
       <div style="color: red">
         <h2>
-          <%= pluralize(craft_variant.errors.count, "error") %> prohibited this craft_variant from being saved:
+          <%= pluralize(@variant.errors.count, "error") %> prohibited this variant from being saved:
         </h2>
         <ul>
-          <% craft_variant.errors.each do |error| %>
+          <% @variant.errors.each do |error| %>
           <li><%= error.full_message %></li>
           <% end %>
         </ul>
@@ -50,7 +50,7 @@
     </div>
 
     <div class="craft-images-wrapper mb-2">
-      <% if craft_variant.images.present? %>
+      <% if @variant.images.present? %>
         <%= f.fields_for :images do |ci| %>
           <div class="craft-form-image-card sortable-item">
             <%= image_tag ci.object.image_url(:card) || co.object.image_url %>
@@ -67,10 +67,10 @@
 
     <br><br><br>
     <div>
-      <% if @craft_variant.new_record? %>
-        <%= f.submit "Create New Craft Variant", class: "btn btn-primary" %>
+      <% if @variant.new_record? %>
+        <%= f.submit "Create New Variant", class: "btn btn-primary" %>
       <% else %>
-        <%= f.submit "Update Craft Variant", class: "btn btn-primary" %>
+        <%= f.submit "Update Variant", class: "btn btn-primary" %>
       <% end %>
     </div>
 

@@ -1,0 +1,18 @@
+<div class="center mt-5 variant-selector"
+      data-controller="variant-selector">
+  <%= select_tag 'variant_selector',
+      options_for_select(@variants.map { |v| [v.name, v.id]}),
+      data: {
+        action: "variant-selector#select",
+        variant_selector_target: "select"
+      } %>
+
+    <% @variants.each do |variant| %>
+      <div data-variant-selector-target="carousel"
+         data-variant-id="<%= variant.id %>"
+         style="display: none;">
+        <%= render 'carousel', images: variant.images %>
+      </div>
+    <% end %>
+
+</div>

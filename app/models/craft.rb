@@ -3,8 +3,6 @@ class Craft < ApplicationRecord
   has_many :variants, dependent: :destroy
 
   before_create :generate_slug
-  
-  include ImageUploader::Attachment(:image)
 
   accepts_nested_attributes_for :images, allow_destroy: true
 

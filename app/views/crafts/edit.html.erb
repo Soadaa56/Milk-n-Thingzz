@@ -6,8 +6,8 @@
     <%= link_to 'View This Post', craft_path(@craft), class: 'btn btn-dark' %>
   </div>
     <div class="center mb-4">
-      <%= link_to 'All Variants', craft_craft_variants_path(@craft.id), class: 'btn btn-primary' %>
-      <%= link_to 'Add Variant', new_craft_craft_variant_path(@craft.id), class: "btn btn-primary" %>
+      <%= link_to 'All Variants', craft_variants_path(@craft.id), class: 'btn btn-primary' %>
+      <%= link_to 'Add Variant', new_craft_variant_path(@craft.id), class: "btn btn-primary" %>
     </div>
 
   <% if @craft.subtype.present? %>
@@ -23,7 +23,7 @@
       <% if @craft.has_variants %>
         <div class="col">
           <h4 class="light-accent-color" >Variant Names:</h4>
-          <% @craft.craft_variants.each do |cv| %>
+          <% @craft.variants.each do |cv| %>
             <p class="dark-accent-color" style="font-size: 1.5rem;">
               <%= cv.name %>
             </p>

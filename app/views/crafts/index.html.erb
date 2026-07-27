@@ -23,14 +23,14 @@
         <th scope="row"><%= craft.id %></th>
         <td><%= craft.name %></td>
         <td>
-          <% if craft.images.any? && craft.images.first.image_url(:thumbnail) %>
-            <%= image_tag(craft.images.first.image_url(:thumbnail)) %>
+          <% if craft.images.any? && craft.images.first.image_url(:small) %>
+            <%= image_tag(craft.images.first.image_url(:small), class: "max-thumbnail-size") %>
           <% end %>
         </td>
         <td><%= link_to 'Edit Craft', edit_craft_path(craft) %></td>
         <td>
           <% if craft.has_variants %>
-            <%= link_to "Link To Variants", craft_craft_variants_path(craft.id) %>
+            <%= link_to "Link To Variants", craft_variants_path(craft.id) %>
           <% end %>
         </td>
       </tr>

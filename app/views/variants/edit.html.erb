@@ -1,11 +1,11 @@
 <% if current_user&.admin? %>
-  <h1 class="light-accent-color"><%= @craft_variant.name %></h1>
+  <h1 class="light-accent-color"><%= @variant.name %></h1>
   <h3 class="center mb-3">Craft: <%= @craft.name %></h3>
 
   
   <div class='center mb-3'>
     <%= link_to 'List all crafts', crafts_path, class: 'btn btn-dark' %>
-    <%= link_to 'List all variants', craft_craft_variants_path(@craft.id), class: 'btn btn-dark' %>
+    <%= link_to 'List all variants', craft_variants_path(@craft.id), class: 'btn btn-dark' %>
   </div>
   <div class="center mb-3">
     <%= link_to 'Back to Craft', edit_craft_path(@craft), class: 'btn btn-primary' %>
@@ -15,10 +15,10 @@
   </h3>
   <div class='center mb-5'>
   </div>
-  <%= render 'form', craft_variant: @craft_variant %>
+  <%= render 'form', variant: @variant %>
 <% end %>
 
-<%= button_to 'Destroy Variant', craft_craft_variant_path(@craft_variant), 
+<%= button_to 'Destroy Variant', craft_variant_path(@variant), 
                                   method: :delete,
                                   data: { turbo: false },
                                   onclick: "return confirm('Are you sure want to delete this variant?');",
