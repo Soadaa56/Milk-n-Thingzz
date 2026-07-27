@@ -1,57 +1,52 @@
 <h1>All Crafts</h1>
-<% if current_user&.admin? %>
-  <div class='center fs-3 mb-5'>
-    <% if current_user.admin? %>
-      <%= link_to 'Admin Dashboard', admin_index_path, class:'btn btn-dark' %>
-      <%= link_to 'Create craft posting', new_craft_path, class:'btn btn-primary' %>
+<div class='center fs-3 mb-5'>
+  <% if current_user.admin? %>
+    <%= link_to 'Admin Dashboard', admin_index_path, class:'btn btn-dark fs-5' %>
+    <%= link_to 'Create craft posting', new_craft_path, class:'btn btn-primary fs-4' %>
+  <% end %>
+</div>
+
+<table class="table table-dark table-hover">
+  <thead>
+    <tr class="center">
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Image</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Variants?</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody class="center">
+    <% @crafts.each do |craft| %>
+    <tr class="fs-5 mb-2">
+      <th scope="row"><%= craft.id %></th>
+      <td><%= craft.name %></td>
+      <td>
+        <% if craft.images.any? && craft.images.first.image_url(:small) %>
+          <%= image_tag craft.images.first.image_url(:small), class: "thumbnail-image" %>
+        <% end %>
+      </td>
+      <td><%= link_to 'Edit Craft', edit_craft_path(craft) %></td>
+      <td>
+        <% if craft.has_many_variants? %>
+          <span>yes</span>
+        <% else %>
+          <span>X</span>
+        <% end %>
+      </td>
+      <td>
+        <%= button_to 'Destroy Craft', craft_path(craft), method: :delete, 
+        data: { turbo: false}, 
+        onclick: "return confirm('Are you sure you want to delete this craft?');", 
+        class: 'btn btn-danger ms-1' %>
+      </td>
+    </tr>
     <% end %>
-  </div>
+  </tbody>
+</table>
 
-  <table class="table table-dark table-hover">
-    <thead>
-      <tr class="center">
-        <th scope="col">ID</th>
-        <th scope="col">Name</th>
-        <th scope="col">Image</th>
-        <th scope="col">Edit</th>
-        <th scope="col">Variants?</th>
-        <th scope="col">Delete</th>
-      </tr>
-    </thead>
-    <tbody class="center">
-      <% @crafts.each do |craft| %>
-      <tr class="fs-5 mb-2">
-        <th scope="row"><%= craft.id %></th>
-        <td><%= craft.name %></td>
-        <td>
-          <% if craft.images.any? && craft.images.first.image_url(:small) %>
-            <%= image_tag craft.images.first.image_url(:small), class: "thumbnail-image" %>
-          <% end %>
-        </td>
-        <td><%= link_to 'Edit Craft', edit_craft_path(craft) %></td>
-        <td>
-          <% if craft.has_many_variants? %>
-            <span>yes</span>
-          <% else %>
-            <span>X</span>
-          <% end %>
-        </td>
-        <td>
-          <%= button_to 'Destroy Craft', craft_path(craft), method: :delete, 
-          data: { turbo: false}, 
-          onclick: "return confirm('Are you sure you want to delete this craft?');", 
-          class: 'btn btn-danger ms-1' %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-<% else %>
-  <p>You might be lost.</p>
-<% end %>
-
-<%= link_to 'Back', :back, class:'btn btn-custom ms-5' %>
+<%= render 'shared/back' %>
 
 <% console %>
 

@@ -7,13 +7,13 @@
 
 <% if current_user&.admin? %>
   <div class='center mt-3'>
-    <%= link_to "All Crafts - Admin", crafts_path, class: "btn btn-dark"%>
-    <%= link_to "Edit Craft - Admin", edit_craft_path(@craft), class: "btn btn-primary" %>
+    <%= link_to "All Crafts - Admin", crafts_path, class: "btn btn-dark fs-5"%>
+    <%= link_to "Edit Craft - Admin", edit_craft_path(@craft), class: "btn btn-primary fs-4" %>
   </div>
 <% end %>
 <br>
 
 <%= render 'carousel', images: @craft.images %>
-
 <br><br>
-<%= link_to "Back", :back, class: "btn btn-custom indent" %>
+
+<%= render 'shared/back' %>

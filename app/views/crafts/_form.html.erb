@@ -35,8 +35,8 @@
           <%= f.text_area :description, rows: 5, cols: 40 %>
         </div>
         <div>
-          <%= f.label :dimensions, style: "display: block" %>
-          <%= f.text_area :dimensions, rows: 5, cols: 40 %>
+          <%= f.label :default_dimensions, style: "display: block" %>
+          <%= f.text_area :default_dimensions, rows: 5, cols: 40 %>
         </div>
       </div>
     </div>
@@ -49,8 +49,8 @@
           <%= f.check_box :for_sale %>
         </div>
         <div>
-          <%= f.label :price %>
-          <%= number_field_tag :price %>
+          <%= f.label :default_price %>
+          <%= number_field_tag :default_price %>
         </div>
         <div>
           <%= f.label :inventory_count %>
@@ -87,11 +87,11 @@
     
     <% if @craft.new_record? %>
       <div class="mt-4 mb-4">
-        <%= f.submit "Create New Craft", class: "btn btn-primary" %>
+        <%= f.submit "Create New Craft", class: "btn btn-primary fs-3" %>
       </div>
     <% else %>
       <div class="mt-4 mb-4">
-        <%= f.submit "Update Craft", class: "btn btn-primary" %>
+        <%= f.submit "Update Craft", class: "btn btn-primary fs-3" %>
       </div>
     <% end %>
   <% end %>
