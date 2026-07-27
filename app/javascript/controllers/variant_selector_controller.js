@@ -4,8 +4,12 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
     static targets = ["select", "carousel"]
 
+    initialize() {
+        console.log("initialize")
+    }
+
     connect() {
-        console.log("test")
+        console.log("connected")
         console.log("var connect: ", this.selectTarget.value)
         this.showVariant(this.selectTarget.value)
     }
