@@ -7,6 +7,12 @@ class Craft < ApplicationRecord
   accepts_nested_attributes_for :craft_images, allow_destroy: true
   validate :must_have_at_least_one_image
 
+  def display_category
+    category.downcase == "crotchet" ? "Crochet" : category
+  end
+
+  private 
+
   def must_have_at_least_one_image
     if craft_images.empty?
       errors.add(:base, "Craft must have at least one image")

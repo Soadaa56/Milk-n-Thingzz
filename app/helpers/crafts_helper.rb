@@ -1,7 +1,7 @@
 module CraftsHelper
   def craft_category_path_helper(craft)
     case craft.category
-    when 'Crotchet'
+    when 'Crochet', 'crochet', 'crotchet', 'Crotchet'
       home_crotchet_path
     when 'Embroidery'
       home_embroidery_path

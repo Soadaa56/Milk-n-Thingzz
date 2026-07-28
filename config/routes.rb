@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   get 'home/about'
   get 'home/print'
+  get 'home/crochet'
   get 'home/crotchet'
   get 'home/embroidery'
   get 'home/earring'
@@ -25,10 +26,6 @@ Rails.application.routes.draw do
   get 'home/contact'
   get 'home/credit'
   match '/' => 'errors#not_found', via: :all
-
-  # resources :crafts do
-  #   resources :comments
-  # end
 
   resources :crafts, only: [:index, :show, :edit, :new, :create, :update, :destroy] do
     resources :comments

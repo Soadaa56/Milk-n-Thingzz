@@ -3,7 +3,7 @@ module ApplicationHelper
     case craft.category.downcase
     when 'print'
       home_print_path
-    when 'crotchet'
+    when 'crotchet', "crochet"
       home_crotchet_path
     when 'embroidery'
       home_embroidery_path

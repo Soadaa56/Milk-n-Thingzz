@@ -4,6 +4,9 @@ class HomeController < ApplicationController
     @crafts = Craft.all
   end
 
+  def crochet
+    @crafts = Craft.includes(:craft_images).where(category: "Crotchet")
+  end
 
   def crotchet
     @crafts = Craft.includes(:craft_images).where(category: "Crotchet")
