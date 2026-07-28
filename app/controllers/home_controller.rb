@@ -8,10 +8,6 @@ class HomeController < ApplicationController
     @crafts = Craft.includes(:craft_images).where(category: "Crotchet")
   end
 
-  def crotchet
-    @crafts = Craft.includes(:craft_images).where(category: "Crotchet")
-  end
-
   def embroidery
     @crafts = Craft.includes(:craft_images).where(category: "Embroidery")
   end
