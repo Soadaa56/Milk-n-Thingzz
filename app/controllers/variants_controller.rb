@@ -66,7 +66,8 @@ class VariantsController < ApplicationController
 
   def variant_params
     params.require(:variant).permit(
-      :name, :sku, :price, :dimensions, :inventory_count, :active,
+      :name, :sku, :price, :dimensions, :inventory_count, 
+      :active, :shopify_variant_id,
       images_attributes: [
         :id, :variant_id, :image, :image_data, :_destroy
       ]
