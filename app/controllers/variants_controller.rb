@@ -1,6 +1,7 @@
 class VariantsController < ApplicationController
   before_action :check_if_admin?, :set_craft
-  before_action :set_variant, only: [:edit, :update, :destroy]
+  before_action :set_variant, only: [ :edit, :update, :destroy ]
+
   def index
     @variants = @craft.variants.includes(:images)
   end
@@ -57,11 +58,11 @@ class VariantsController < ApplicationController
   private 
 
   def set_craft
-    @craft = Craft.find_by!(slug: params[:craft_id])
+    @craft = Craft.find(params[:craft_id])
   end
 
   def set_variant
-    @variant = Variant.find(params[:id])
+    @variant = @craft.variants.find(params[:id])
   end
 
   def variant_params
