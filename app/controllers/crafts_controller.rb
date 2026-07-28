@@ -20,7 +20,7 @@ class CraftsController < ApplicationController
     @craft = Craft.new(craft_params)
 
     variant = @craft.variants.build(
-      name: "Default",
+      name: "default",
       price: params[:price],
       inventory_count: params[:inventory_count],
       dimensions: params[:dimensions]
