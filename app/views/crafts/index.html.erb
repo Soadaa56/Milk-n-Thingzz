@@ -22,7 +22,7 @@
       <tr>
         <th scope="row" class="align-middle fs-5"><%= craft.id %></th>
         <td class="align-middle fs-5">
-          <%= craft.name %>
+          <%= link_to craft.name, craft_path(craft.slug) %>
         </td>
         <td class="align-middle fs-5">
           <% if craft.images.any? && craft.images.first.image_url(:small) %>
@@ -35,7 +35,12 @@
         </td>
         <td class="align-middle fs-5">
           <% if craft.has_many_variants? %>
-            <span>yes</span>
+            <span>
+              <%= link_to "Yes - #{craft.variants.size - 1}", 
+                  craft_variants_path(craft),
+                  class: "fs-4",
+                  style: "text-decoration: none" %>
+            </span>
           <% else %>
             <span>X</span>
           <% end %>
