@@ -7,9 +7,18 @@
 
 <% if current_user&.admin? %>
   <div class='center mt-3'>
-    <%= link_to "All Crafts - Admin", crafts_path, class: "btn btn-dark fs-5"%>
-    <%= link_to "Edit Craft - Admin", edit_craft_path(@craft), class: "btn btn-primary fs-4" %>
+    <%= link_to "All Crafts", crafts_path, class: "btn btn-dark fs-5"%>
   </div>
+  <% if @craft.has_many_variants? %>
+    <div class="center mt-3">
+      <%= link_to "Edit Craft", edit_craft_path(@craft), class: "btn btn-primary fs-4" %>
+      <%= link_to "All Variants", craft_variants_path(@craft), class: "btn btn-primary fs-4" %>
+    </div>
+  <% else %>
+    <div class="center mt -3">
+      <%= link_to "Edit Craft", edit_craft_path(@craft), class: "btn btn-primary fs-4" %>
+    </div>
+  <% end %>
 <% end %>
 <br>
 
