@@ -68,7 +68,7 @@
     
     <div class="craft-images-wrapper mt-4 mb-4" 
       data-controller="sortable" 
-      data-sortable-url-value="<%= craft.variants.id.present? ? move_image_craft_path(craft) : '#' %>" >
+      data-sortable-url-value="<%= craft.id.present? ? move_image_craft_path(craft) : '#' %>" >
       <% craft.variants.each do |variant| %>
         <%= f.fields_for :variants, variant do |v| %>
           <%= v.fields_for :images do |vi| %>
