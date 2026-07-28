@@ -6,9 +6,9 @@
   <% end %>
 </div>
 
-<table class="table table-dark table-hover">
+<table class="table table-dark table-hover m-2">
   <thead>
-    <tr class="center">
+    <tr class="center fs-3">
       <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Image</th>
@@ -19,29 +19,35 @@
   </thead>
   <tbody class="center">
     <% @crafts.each do |craft| %>
-    <tr class="fs-5 mb-2">
-      <th scope="row"><%= craft.id %></th>
-      <td><%= craft.name %></td>
-      <td>
-        <% if craft.images.any? && craft.images.first.image_url(:small) %>
-          <%= image_tag craft.images.first.image_url(:small), class: "thumbnail-image" %>
-        <% end %>
-      </td>
-      <td><%= link_to 'Edit Craft', edit_craft_path(craft) %></td>
-      <td>
-        <% if craft.has_many_variants? %>
-          <span>yes</span>
-        <% else %>
-          <span>X</span>
-        <% end %>
-      </td>
-      <td>
-        <%= button_to 'Destroy Craft', craft_path(craft), method: :delete, 
-        data: { turbo: false}, 
-        onclick: "return confirm('Are you sure you want to delete this craft?');", 
-        class: 'btn btn-danger ms-1' %>
-      </td>
-    </tr>
+      <tr>
+        <th scope="row" class="align-middle fs-5"><%= craft.id %></th>
+        <td class="align-middle fs-5">
+          <%= craft.name %>
+        </td>
+        <td class="align-middle fs-5">
+          <% if craft.images.any? && craft.images.first.image_url(:small) %>
+            <%= image_tag craft.images.first.image_url(:small), 
+                class: "thumbnail-image" %>
+          <% end %>
+        </td>
+        <td class="align-middle fs-5">
+          <%= link_to 'Edit Craft', edit_craft_path(craft) %>
+        </td>
+        <td class="align-middle fs-5">
+          <% if craft.has_many_variants? %>
+            <span>yes</span>
+          <% else %>
+            <span>X</span>
+          <% end %>
+        </td>
+        <td class="align-middle fs-5">
+          <%= button_to 'Destroy Craft', craft_path(craft), 
+              method: :delete, 
+              data: { turbo: false}, 
+              onclick: "return confirm('Are you sure you want to delete this craft?');", 
+              class: 'btn btn-danger ms-1' %>
+        </td>
+      </tr>
     <% end %>
   </tbody>
 </table>
