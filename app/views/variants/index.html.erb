@@ -11,9 +11,12 @@
       <th scope="col">Inventory Count</th>
       <th scope="col">Price</th>
       <th scope="col">Image</th>
-      <th scope="col">Edit</th>
+      <th scope="col">
+        <%= link_to "Add Variant", new_craft_variant_path(@craft), class: "btn btn-primary fs-4" %>
+      </th>
       <th scope="col">Active</th>
       <th scope="col">Shopify-var-id</th>
+      <th scope="col">Delete</th>
     </tr>
   </thead>
   <tbody class="center">
@@ -37,6 +40,13 @@
         <% end %>
       </td>
       <td class="align-middle fs-4"><%= v.shopify_variant_id %></td>
+      <td class="align-middle fs-4">
+        <%= button_to 'Delete Variant', craft_variant_path([@craft, v.id]), 
+            method: :delete,
+            data: { turbo: false },
+            onclick: "return confirm('Are you sure you want to delete this variant?');",
+            class: "btn btn-danger ms-1" %>
+      </td>
     </tr>
     <% end %>
   </tbody>
