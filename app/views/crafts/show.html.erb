@@ -1,5 +1,10 @@
 <h1><%= @craft.name %></h1>
-<h3><%= link_to @craft.category, craft_category_path_helper(@craft), class:"center nav-link underline hover-light-accent-color" %></h3>
+<h3>
+  <%= link_to @craft.display_category, 
+      craft_category_path_helper(@craft), 
+      class:"center nav-link underline hover-light-accent-color" %>
+</h3>
+
 <% if @craft.subtype.present? %>
   <div class="center"><%= @craft.subtype %></div>
 <% end %>
@@ -22,7 +27,17 @@
 <% end %>
 <br>
 
-<%= render 'carousel', images: @craft.images %>
-<br><br>
+<%= render 'carousel' %>
+<br>
 
+<div class="container comment-container">
+  <p class="fs-2">Comments: <%= @comments.all.count %></p>
+  <%= render "comments/form", craft: @craft, comment: @craft.comments.build %>
+  <% @comments.each do |comment| %>
+    <%= render "comments/comment", craft: @craft, comment: comment %>
+  <% end %>
+</div>
+
+<br><br>
 <%= render 'shared/back' %>
+
