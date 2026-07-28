@@ -14,9 +14,9 @@ class Craft < ApplicationRecord
     images.first
   end
 
-  def to_param
-    slug
-  end
+  # def to_param
+  #   slug
+  # end
 
   private
 

@@ -1,12 +1,14 @@
 class CraftsController < ApplicationController
-  before_action :set_craft, only: [:show, :edit, :update, :destroy, :move_image]
+  before_action :set_craft, only: [:edit, :update, :destroy, :move_image]
   before_action :check_if_admin?, except: [:show]
 
   def index
     @crafts = Craft.includes(:images).order(:id)
   end
 
-  def show ; end
+  def show 
+    @craft = Craft.includes(:images).find_by!(slug: params[:id])
+  end
 
   def edit ; end
 
@@ -36,7 +38,7 @@ class CraftsController < ApplicationController
     end
 
     if @craft.save
-      redirect_to craft_url(@craft), notice: "Craft posted"
+      redirect_to craft_url(@craft.slug), notice: "Craft posted"
     else
       render :new, status: :unprocessable_entity
     end
@@ -53,7 +55,7 @@ class CraftsController < ApplicationController
 
     respond_to do |format|
       if @craft.update(craft_params)
-        format.html { redirect_to craft_url(@craft), notice: "Craft updated" }
+        format.html { redirect_to craft_url(@craft.slug), notice: "Craft updated" }
         format.json { render :show, status: :ok, location: @craft }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -80,7 +82,7 @@ class CraftsController < ApplicationController
   private
 
   def set_craft
-    @craft = Craft.includes(variants: :images).find_by!(slug: params[:id])
+    @craft = Craft.includes(variants: :images).find(params[:id])
   end
 
   def craft_params

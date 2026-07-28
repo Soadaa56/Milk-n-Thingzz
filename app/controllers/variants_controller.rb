@@ -1,6 +1,6 @@
 class VariantsController < ApplicationController
   before_action :check_if_admin?, :set_craft
-  before_action :set_variant, only: [ :edit, :update, :destroy ]
+  before_action :set_variant, only: [:edit, :update, :destroy]
 
   def index
     @variants = @craft.variants.includes(:images)
@@ -25,7 +25,7 @@ class VariantsController < ApplicationController
     @variant.images.each(&:image_derivatives!)
 
     if @variant.save
-      redirect_to craft_variants_path(@craft), notice: "Variant Added"
+      redirect_to craft_variants_path(@craft.id), notice: "Variant Added"
     else
       render :new, status: :unprocessable_entity
     end
@@ -40,7 +40,7 @@ class VariantsController < ApplicationController
     end
 
     if @variant.update(variant_params)
-      redirect_to craft_variants_path(@craft), notice: "Variant Edited"
+      redirect_to craft_variants_path(@craft.id), notice: "Variant Edited"
     else
       render :edit, status: :unprocessable_entity 
     end
@@ -50,7 +50,7 @@ class VariantsController < ApplicationController
     @variant.destroy! if current_user&.admin?
 
     respond_to do |format|
-      format.html { redirect_to craft_variants_path(@craft), notice: "Variant Deleted" }
+      format.html { redirect_to craft_variants_path(@craft.id), notice: "Variant Deleted" }
       format.json { head :no_content }
     end
   end
