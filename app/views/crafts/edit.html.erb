@@ -1,15 +1,18 @@
 <h1 class>Edit Craft</h1>
-<div class='center mb-3'>
-  <div class="mt-3">
-    <%= link_to 'All Crafts', crafts_path, class:'btn btn-dark fs-5' %>
-    <%= link_to 'View This Post', craft_path(@craft), class: 'btn btn-dark fs-5' %>
+<div class="center d-grid gap-3 m-3">
+  <div>
+    <%= link_to "All Crafts", crafts_path, class:'btn btn-dark fs-5' %>
+    <%= link_to "View This Post", craft_path(@craft), class: 'btn btn-dark fs-5' %>
   </div>
-  <div class="mt-3">
-    <%= link_to 'Add Variant', new_craft_variant_path(@craft), class: 'btn btn-primary fs-4' %>
+  <div>
+    <% if @craft.variants %>
+      <%= link_to "View All Variants", craft_variants_path(@craft.id), class: 'btn btn-primary fs-4' %>
+    <% end %>
+    <%= link_to "Add Variant", new_craft_variant_path(@craft), class: 'btn btn-primary fs-4' %>
   </div>
 </div>
 
-<div class='center'>
+<div class="center">
   <% if @craft.images.present? %>
     <%= image_tag @craft.images.first.image_url(:card), class: 'max-size-image' %>
   <% end %>
