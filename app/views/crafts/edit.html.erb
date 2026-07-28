@@ -23,9 +23,11 @@
 
 <div class="ms-5 mb-5">
   <p class="large-text ms-1">This button is to remove this post all together!</p>
-  <%= button_to 'Destroy Craft', craft_path(@craft), method: :delete, data: { turbo: false}, 
+  <%= button_to 'Destroy Craft', craft_path(@craft), 
+      method: :delete, 
+      data: { turbo: false }, 
       onclick: "return confirm('Are you sure you want to delete this craft?');", 
-      class: 'btn btn-danger ms-1' %>
+      class: "btn btn-danger ms-1" %>
 </div>
 
 <%= render 'shared/back' %>

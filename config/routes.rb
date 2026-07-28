@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   get 'home/about'
   get 'home/print'
-  get 'home/crotchet'
+  get 'home/crochet'
   get 'home/embroidery'
   get 'home/earring'
   get 'home/necklace'
@@ -36,13 +36,6 @@ Rails.application.routes.draw do
     
     resources :variants, only: [:index, :new, :create, :edit, :update, :destroy]
   end
-
-  # get "variants/index"
-  # get "variants/show"
-  # get "variants/new"
-  # get "variants/create"
-  # get "variants/update"
-  # get "variants/destroy"
 
   # Health check routes for kamal
   get '/up', to: 'health#up'

@@ -21,7 +21,7 @@
         <div data-controller="subtype">
           <div data-action="change->subtype#updateSubtype">
             <%= f.label :category, style: "display: block" %>
-            <%= f.select :category, ["3D-Print", "Crotchet", "Embroidery", "Earring", "Painting", "Necklace", "Miscellaneous"] %>
+            <%= f.select :category, ["3D-Print", "Crochet", "Embroidery", "Earring", "Painting", "Necklace", "Miscellaneous"] %>
           </div>
           <div data-subtype-target="subtype">
             <%=  f.label :subtype, style: "display: block" %>
@@ -68,7 +68,7 @@
     
     <div class="craft-images-wrapper mt-4 mb-4" 
       data-controller="sortable" 
-      data-sortable-url-value="<%= craft.id.present? ? move_image_craft_path(craft) : '#' %>" >
+      data-sortable-url-value="<%= craft.variants.id.present? ? move_image_craft_path(craft) : '#' %>" >
       <% craft.variants.each do |variant| %>
         <%= f.fields_for :variants, variant do |v| %>
           <%= v.fields_for :images do |vi| %>
