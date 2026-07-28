@@ -1,18 +1,22 @@
 module CraftsHelper
   def craft_category_path_helper(craft)
-    case craft.category
-    when 'Crochet'
-      home_crotchet_path
-    when 'Embroidery'
-      home_embroidery_path
-    when '3D-Print'
-      home_print_path
-    when 'Earring'
+    case craft.category.downcase
+    when 'crochet'
+      home_crochet_path
+    when 'earring'
       home_earring_path
-    when 'Painting'
+    when 'embroidery'
+      home_embroidery_path
+    when '3d-print', 'print'
+      home_print_path
+    when 'miscellaneous', 'misc', 'misc.'
+      home_miscellaneous_path
+    when 'necklace'
+      home_necklace_path
+    when 'painting'
       home_painting_path
     else
-      home_craft_category_path(craft)
+      '#'
     end
   end
 end
