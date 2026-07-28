@@ -36,7 +36,7 @@ class CraftsController < ApplicationController
     end
 
     if @craft.save
-      redirect_to craft_url(@craft), notice: "Craft posted."
+      redirect_to craft_url(@craft), notice: "Craft posted"
     else
       render :new, status: :unprocessable_entity
     end
@@ -53,7 +53,7 @@ class CraftsController < ApplicationController
 
     respond_to do |format|
       if @craft.update(craft_params)
-        format.html { redirect_to craft_url(@craft), notice: "Craft updated." }
+        format.html { redirect_to craft_url(@craft), notice: "Craft updated" }
         format.json { render :show, status: :ok, location: @craft }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -66,7 +66,7 @@ class CraftsController < ApplicationController
     @craft.destroy! if current_user&.admin?
 
     respond_to do |format|
-      format.html { redirect_to crafts_path, notice: "Craft was successfully destroyed." }
+      format.html { redirect_to crafts_path, notice: "Craft was successfully destroyed" }
       format.json { head :no_content }
     end
   end
