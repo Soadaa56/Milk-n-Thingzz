@@ -18,12 +18,13 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_150117) do
     t.string "subtype"
     t.string "slug", null: false
     t.boolean "for_sale", default: false, null: false
-    t.boolean "has_many_variants", default: false, null: false
-    t.decimal "default_price", precision: 6, scale: 2
+    t.boolean "has_variants", default: false, null: false
+    t.decimal "default_price", precision: 7, scale: 2
     t.string "default_dimensions"
     t.string "shopify_product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["for_sale"], name: "index_crafts_on_for_sale"
     t.index ["slug"], name: "index_crafts_on_slug", unique: true
   end
 
@@ -37,30 +38,41 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_150117) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.integer "role", default: 0
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "role"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
   create_table "variants", force: :cascade do |t|
     t.integer "craft_id", null: false
     t.string "name"
     t.string "sku"
-    t.decimal "price", precision: 6, scale: 2
-    t.integer "inventory_count"
+    t.decimal "price", precision: 7, scale: 2
+    t.integer "stock"
     t.string "dimensions"
     t.boolean "active", default: true, null: false
     t.string "shopify_variant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["active"], name: "index_variants_on_active"
     t.index ["craft_id"], name: "index_variants_on_craft_id"
+    t.index ["sku"], name: "index_variants_on_sku", unique: true, where: "sku IS NOT NULL"
   end
 
   add_foreign_key "images", "variants"
