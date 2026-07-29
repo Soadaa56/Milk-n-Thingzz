@@ -202,14 +202,6 @@ body {
   width: 25rem;
 }
 
-.about-us-paragraph {
-  display: block;
-  font-size: 1.75rem;
-  width: 120rem;
-  font-family: 'Courier New', Courier, monospace;
-  color: var(--dark-accent-color);
-}
-
 .about-us-link-wrapper {
   text-align: center;
 }
@@ -221,11 +213,38 @@ body {
   text-align: center;
 }
 
-.edit-craft-form {
-  margin-left: 5rem;
-  margin-bottom: 5rem;
+.prose p {
+  font-family: 'Courier New', Courier, monospace;
+  color: var(--dark-accent-color);
+  font-size: 2rem;
+  max-width: 70ch;
+  text-align: start;
+  margin-inline: auto;
+  line-height: 1.6;
+  overflow-wrap: break-word;
 }
 
+.prose section {
+  margin-top: 5rem;
+}
+
+.prose h1, 
+.prose h2, 
+.prose h3 {
+  text-decoration: underline;
+  margin-bottom: 2rem;
+  overflow-wrap: break-word;
+}
+
+.prose a {
+  color: var(--light-accent-color)
+}
+
+.prose a:hover {
+  color: var(--shade-light-color);
+}
+
+/* Probably need to rework how images displayed on _sorted pages */
 .max-size-image {
   max-width: 500px;
   max-height: 500px;
@@ -331,6 +350,12 @@ Devise Section End (Non-Mobile)
     margin-left: 2rem;
   }
 
+  /* Reminder: Bootstrap class d-none does this as well */
+  /* Hidden on 601+, then mobile media query makes it inline */
+  .mobile {
+    display: none;
+  }
+
   .navbar-subtypes {
     margin-top: 0.5rem;
   }
@@ -405,21 +430,17 @@ Devise Section End (Non-Mobile)
     object-fit: cover;
     padding-top: 0;
   }
+
+  .prose {
+    margin: 0 5rem;
+  }
   
   .devise {
     padding-left: 2rem;
     padding-right: 2rem;
   }
 
-  .about-us-paragraph {
-    display: block;
-    font-size: 1.75rem;
-    max-width: 30rem;
-    /* font-family: 'DotGothic16', sans-serif; */
-    font-family: 'Courier New', Courier, monospace;
-    color: var(--dark-accent-color);
-  }
-
+  /* Makes hamburger menu visible */
   .mobile {
     display: inline;
   }
@@ -511,6 +532,10 @@ Devise Section End (Non-Mobile)
   color: var(--light-accent-color);
 }
 
+.h2-color {
+  color: var(--temp-h2-color);
+}
+
 .debug {
   outline: 1px solid red;
 }
@@ -535,21 +560,20 @@ Devise Section End (Non-Mobile)
   max-height: 70px;
 }
 
-.notice {
-  position: absolute;
-}
-
 .fs-0 {
   font-size: 3rem;
 }
 
-.width-30 {
-  max-width: 30rem;
+.prose > * + * {
+  margin-block-start: var(--prose-flow, 3rem);
 }
 
-/* Reminder: Bootstrap class d-none does this as well */
-.mobile {
-  display: none;
+.notice {
+  position: absolute;
+}
+
+.width-30 {
+  max-width: 30rem;
 }
 
 /* Replace with boostrap fs-4 */
@@ -562,3 +586,22 @@ Devise Section End (Non-Mobile)
   width: 30rem;
   height: auto;
 }
+
+/* Maybe violates google cloaking policy?
+.crawler-container {
+  position: relative;
+}
+
+.crawlers {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  font-size: 0.01rem;
+  color: #ccc;
+}
+
+.crawlers a {
+  color: #ccc;
+}
+*/
