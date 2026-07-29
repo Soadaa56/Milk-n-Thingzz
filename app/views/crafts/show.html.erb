@@ -15,7 +15,7 @@
     <div>
       <%= link_to "All Crafts", crafts_path, class: "btn btn-dark fs-5"%>
     </div>
-    <% if @craft.has_many_variants? %>
+    <% if @craft.has_variants? %>
       <div>
         <%= link_to "Edit Craft", edit_craft_path(@craft), class: "btn btn-primary fs-4" %>
         <%= link_to "All Variants", craft_variants_path(@craft), class: "btn btn-primary fs-4" %>
