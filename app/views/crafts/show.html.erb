@@ -23,6 +23,7 @@
     <% else %>
       <div>
         <%= link_to "Edit Craft", edit_craft_path(@craft), class: "btn btn-primary fs-4" %>
+        <%= link_to "Add Variant?", new_craft_variant_path(@craft), class: "btn btn-primary fs-4" %>
       </div>
     <% end %>
   </div>
