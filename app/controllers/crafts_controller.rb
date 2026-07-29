@@ -22,7 +22,8 @@ class CraftsController < ApplicationController
     variant = @craft.variants.build(
       name: "default",
       price: @craft.default_price,
-      dimensions: @craft.default_dimensions
+      dimensions: @craft.default_dimensions,
+      stock: @craft.stock
     )
 
     if params[:files].present?
