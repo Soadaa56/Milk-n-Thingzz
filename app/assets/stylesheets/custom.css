@@ -164,33 +164,6 @@ body {
   margin-right: auto;
 }
 
-/************************
-Devise Section Start (Non-Mobile)
-************************/
-.devise {
-  font-size: 1.6rem;
-  margin-top: 3rem;
-  padding-left: 15rem;
-  padding-right: 15rem;
-}
-
-.devise > form,
-.devise .field {
-  text-align: left !important;
-}
-
-.devise > h2 {
-  margin-bottom: 3rem;
-  text-decoration: underline;
-}
-
-.shared-actions {
-  margin-top: 3rem;
-}
-/************************
-Devise Section End (Non-Mobile)
-************************/
-
 #admin-dashboard {
   color: var(--dark-accent-color);
   font-family: 'Courier New', Courier, monospace;
@@ -315,7 +288,37 @@ Devise Section End (Non-Mobile)
   display: block;
 }
 
-/* Only trigger above mobile sizes */
+/************************
+Devise Section Start (Non-Mobile)
+************************/
+.devise {
+  font-size: 1.6rem;
+  margin-top: 3rem;
+  padding-left: 15rem;
+  padding-right: 15rem;
+}
+
+.devise > form,
+.devise .field {
+  text-align: left !important;
+}
+
+.devise > h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-decoration: underline;
+}
+
+.shared-actions {
+  margin-top: 3rem;
+}
+/************************
+Devise Section End (Non-Mobile)
+************************/
+
+/******************************
+        Tablet + Desktop
+******************************/
 @media (min-width: 601px) {
 
   #sidebar .navbar-subtypes-container:hover {
