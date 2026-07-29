@@ -8,8 +8,10 @@
   --temp-h2-color: indigo; /* rare use; color of category on show pages */
 }
 
+/* Makes bootstrap fs-[1-6] less potent */
 html {
-  font-size: 62.5%;
+  /* Base font-size 10px */
+  font-size: 62.5%; 
 }
 
 html, body {
