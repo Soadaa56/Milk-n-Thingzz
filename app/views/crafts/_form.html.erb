@@ -42,7 +42,7 @@
     </div>
 
     <h3 style="font-size: 3rem;">Back-end Info</h3>
-    <div class="row align-items-start">
+    <div class="row align-items-start d-grid gap-3">
       <div class="col">
         <div>
           <%= f.label :for_sale %>
@@ -61,6 +61,9 @@
         <div>
           <%= f.label :stock %>
           <%= number_field_tag :stock, craft.variants.first&.stock, step: 1, min: 0 %>
+          <p class="dark-accent-color">
+            Leave blank if this is going to have variants.
+          </p>
           <p class="light-accent-color">
             Blank is valid (isn't stocked)
           </p>
