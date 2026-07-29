@@ -28,12 +28,32 @@
     <% end %>
   </div>
 <% end %>
-<br>
 
-<%#= render 'gallery', craft: @craft %>
+<%# Will need to show info about product & sell button, ect %>
+<% if @craft.has_variants? %>
+  <div class="row">
+    <div class="col">
+      <%#= render "gallery", craft: @craft %>
+      <%= render "carousel", craft: @craft %>
+    </div>
+    <div class="col">
+      <%= render "variant_selector", variant: @craft.variants %>
+    </div>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col">
+      <%#= render "gallery", craft: @craft %>
+      <%= render "carousel", craft: @craft %>
+    </div>
+    <div class="col">
+      <div>
+        <%= render "craft_info" %>
+      </div>
+    </div>
+  </div>
+<% end %>
 
-<%= render 'carousel', craft: @craft %>
-
-<%= render 'shared/back' %>
+<%= render "shared/back" %>
 
 <% console %>

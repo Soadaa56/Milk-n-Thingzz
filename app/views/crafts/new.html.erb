@@ -1,10 +1,10 @@
 <h1>New Craft</h1>
 
-<div class='center'>
-  <%= link_to 'Admin Dashboard', admin_index_path, class:'btn btn-dark fs-5' %>
-  <%= link_to 'List all crafts', crafts_path, class: 'btn btn-primary fs-4' %>
+<div class="center">
+  <%= link_to "Admin Dashboard", admin_index_path, class: "btn btn-dark fs-5" %>
+  <%= link_to "List all crafts", crafts_path, class: "btn btn-primary fs-4" %>
 </div>
 
-<%= render 'form', craft: @craft %>
+<%= render "form", craft: @craft %>
 
-<%= render 'shared/back' %>
+<%= render "shared/back" %>
