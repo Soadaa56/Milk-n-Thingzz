@@ -8,7 +8,7 @@
     <tr class="center fs-3">
       <th scope="col">Name</th>
       <th scope="col">SKU</th>
-      <th scope="col">Inventory Count</th>
+      <th scope="col">Stock</th>
       <th scope="col">Price</th>
       <th scope="col">Image</th>
       <th scope="col">
@@ -24,7 +24,7 @@
       <tr class="fs-4">
         <th scope="row" class="align-middle fs-4"><%= v.name %></th>
         <td class="align-middle fs-4"><%= v.sku || "X" %></td>
-        <td class="align-middle fs-4"><%= v.inventory_count || "X" %></td>
+        <td class="align-middle fs-4"><%= v.stock || "X" %></td>
         <td class="align-middle fs-4"><%= v.effective_price || "X" %></td>
         <td class="align-middle fs-4">
           <% if v.images.any? && v.images.first.image_url(:small) %>

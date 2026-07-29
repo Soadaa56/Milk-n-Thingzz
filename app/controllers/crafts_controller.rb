@@ -21,9 +21,8 @@ class CraftsController < ApplicationController
 
     variant = @craft.variants.build(
       name: "default",
-      price: params[:price],
-      inventory_count: params[:inventory_count],
-      dimensions: params[:dimensions]
+      price: @craft.default_price,
+      dimensions: @craft.default_dimensions
     )
 
     if params[:files].present?
@@ -90,7 +89,7 @@ class CraftsController < ApplicationController
       :name, :description, :category, :subtype, :for_sale,
       :default_price, :default_dimensions,
       variants_attributes: [
-        :id, :name, :sku, :price, :dimensions, :inventory_count, :active, :_destroy,
+        :id, :name, :sku, :price, :dimensions, :stock, :active, :_destroy,
         images_attributes: [:id, :variant_id, :image, :image_data, :_destroy]
       ]
     )
