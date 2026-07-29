@@ -42,19 +42,31 @@
     </div>
 
     <h3 style="font-size: 3rem;">Back-end Info</h3>
-    <div class="row align-items-start mt-4 mb-4">
+    <div class="row align-items-start">
       <div class="col">
         <div>
           <%= f.label :for_sale %>
           <%= f.check_box :for_sale %>
+          <p class="light-accent-color">
+            If Craft (and any variants) should be marked for sale or not
+          </p>
         </div>
         <div>
           <%= f.label :default_price %>
-          <%= number_field_tag :default_price %>
+          <%= f.number_field :default_price, step: 0.01, min: 0 %>
+          <p class="light-accent-color">
+            Blank is valid (better than 0)
+          </p>
         </div>
         <div>
           <%= f.label :stock %>
-          <%= number_field_tag :stock %>
+          <%= number_field_tag :stock, craft.variants.first&.stock, step: 1, min: 0 %>
+          <p class="light-accent-color">
+            Blank is valid (isn't stocked)
+          </p>
+          <p class="light-accent-color">
+            0 means we would like to stock, but its currently 0.
+          </p>
         </div>
       </div>
     </div>
