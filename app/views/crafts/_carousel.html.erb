@@ -10,7 +10,7 @@
   <div class='carousel-inner'>
     <% craft.images.each do |img| %>
       <div class='carousel-item'>
-        <% url = img.image_url(:show) || img.image_url %>
+        <% url = img.image_url(:card) || img.image_url %>
           <%= image_tag url, class: 'carousel-img' %>
       </div>
     <% end %>
