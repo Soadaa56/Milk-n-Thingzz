@@ -180,8 +180,8 @@ body {
 }
 
 .devise {
-  margin-top: 3rem;
   font-size: 1.6rem;
+  margin-top: 3rem;
   padding-left: 15rem;
   padding-right: 15rem;
 }
@@ -470,21 +470,8 @@ h2 {
   }
   
   .devise {
-    margin-left: -5rem;
-    margin-top: 3rem;
-    font-size: 1.6rem;
-    padding-left: 15rem;
-    padding-right: 15rem;
-  }
-  
-  .devise > form,
-  .devise .field {
-    text-align: left !important;
-  }
-  
-  .devise > h2 {
-    margin-bottom: 3rem;
-    text-decoration: underline;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
   .about-us-paragraph {
