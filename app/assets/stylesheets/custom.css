@@ -4,6 +4,8 @@
   --light-accent-color: #CBEFB6;
   --shade-light-color: #FAF8F8;
   --shade-dark-color: #292747;
+  --nav-hover-color: hotpink;
+  --temp-h2-color: indigo; /* rare use; color of category on show pages */
 }
 
 html {
@@ -21,9 +23,9 @@ body {
   width: 100vw;
  }
 
- .notice {
-  position: absolute;
- }
+ h2 {
+  color: var(--temp-h2-color);
+}
 
  #banner {
   background-color: var(--dark-accent-color);
@@ -65,14 +67,14 @@ body {
   filter: brightness(105%);
 }
 
-/* If using image tag, I cannot use fill. This makes it white. */
 .profile-svg {
+/* Makes white; erb image_tag doesnt like fill */
   filter: invert(100%);
 }
 
 .profile-svg:hover {
   filter: invert(50%);
-  transition: 0.3s ease;
+  transition: 0.3s ease-out;
 }
 
 .btn-custom {
@@ -116,12 +118,11 @@ body {
 }
 
 #sidebar .nav-link:hover {
-  color: hotpink;
+  color: var(--nav-hover-color);
   font-size: 3rem;
 }
 
 #main-content {
-  /* display: grid; */
   font-family: 'Silkscreen', cursive;
   color: var(--shade-light-color);
 }
@@ -149,23 +150,9 @@ body {
   transition: 0.5s ease;
 }
 
-
-.flex-item {
-  width: 30rem;
-  height: auto;
-}
-
 .alert {
   max-width: 20rem;
   max-height: 10rem;
-  text-align: center;
-}
-
-.width-30 {
-  max-width: 30rem;
-}
-
-.center {
   text-align: center;
 }
 
@@ -175,10 +162,9 @@ body {
   margin-right: auto;
 }
 
-.indent {
-  margin-left: 5rem;
-}
-
+/************************
+Devise Section Start (Non-Mobile)
+************************/
 .devise {
   font-size: 1.6rem;
   margin-top: 3rem;
@@ -199,18 +185,9 @@ body {
 .shared-actions {
   margin-top: 3rem;
 }
-
-.underline {
-  text-decoration: underline;
-}
-
-.profile-title {
-  font-size: 4.7rem;
-}
-
-.large-text {
-  font-size: 1.5rem;
-}
+/************************
+Devise Section End (Non-Mobile)
+************************/
 
 #admin-dashboard {
   color: var(--dark-accent-color);
@@ -229,14 +206,11 @@ body {
   padding-top: 15rem;
   display: grid;
   margin: 1rem;
-  /* margin-right: 20rem; */
   grid-template-columns: repeat(auto-fit, minmax(15rem, 2fr));
   gap: 8rem 2rem;
 }
 
 .social-logo {
-  /* padding: 5rem; */
-  /* width: 10rem; */
   height: auto;
   width: 15rem;
   margin-bottom: 1rem;
@@ -246,17 +220,6 @@ body {
   filter: brightness(110%);
   transform: scale(1.08);
   transition: 0.5s ease;
-}
-
-.comment-container {
-  max-width: 100rem;
-}
-
-[class^="single-comment-"] {
-  background: var(--shade-dark-color);
-  border: 1px solid black;
-  padding: 1em;
-  margin: 1em;
 }
 
 .craft-edit-image-size {
@@ -315,14 +278,11 @@ body {
 }
 
 .sorted-image-container {
-  /* remove background box color; Plans to only upload with pictures with background removed */
-  /* background: var(--shade-dark-color); */
-  /* border: 3px solid var(--dark-accent-color); */
+  display: grid;
   width: 25rem;
   height: 30rem;
   margin: 2rem;
   padding: 3rem;
-  display: grid;
 }
 
 .sorted-img {
@@ -350,22 +310,8 @@ body {
   margin-top: 0.5rem;
 }
 
-h2 {
-  text-align: center;
-  color:indigo
-}
-
-/* Reminder: Bootstrap class d-none does this as well */
-.mobile {
-  display: none;
-}
-
 #sidebar .navbar-subtypes-group {
   display: none;
-}
-
-.indigo {
-  color: indigo;
 }
 
 .carousel-indicator {
@@ -403,13 +349,14 @@ h2 {
   }
 
   .navbar-subtype:hover {
-    color: hotpink;
+    color: var(--nav-hover-color);
     font-size: 150%;
   }
 }
 
-/* Mobile */
-
+/******************************
+            Mobile 
+******************************/
 @media (max-width: 600px) {
 
   body {
@@ -454,9 +401,6 @@ h2 {
   }
 
   .sorted-image-container {
-    /* remove background box color; Plans to only upload with pictures with background removed */
-    /* background: var(--shade-dark-color); */
-    /* border: 1px solid var(--dark-accent-color); */
     width: 13rem;
     height: 10rem;
     position: relative;
@@ -529,7 +473,7 @@ h2 {
   }
 
   .mobile-popup-link:hover {
-    color: hotpink;
+    color: var(--nav-hover-color);
   }
 
   .mobile-popup-close {
@@ -563,13 +507,9 @@ h2 {
   }
 }
 
-/******
+/******************************
         Custom Classes
-******/
-.debug {
-  outline: 1px solid red;
-}
-
+******************************/
 .dark-accent-color {
   color: var(--dark-accent-color);
 }
@@ -578,10 +518,50 @@ h2 {
   color: var(--light-accent-color);
 }
 
+.debug {
+  outline: 1px solid red;
+}
+
+.center {
+  text-align: center;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
 .hidden {
   display: none;
 }
 
+.indent {
+  margin-left: 5rem;
+}
+
 .thumbnail-image {
   max-height: 70px;
+}
+
+.notice {
+  position: absolute;
+}
+
+.width-30 {
+  max-width: 30rem;
+}
+
+/* Reminder: Bootstrap class d-none does this as well */
+.mobile {
+  display: none;
+}
+
+/* Replace with boostrap fs-4 */
+.large-text {
+  font-size: 1.5rem;
+}
+
+/* replace with boostrap d-flex or d-grid */
+.flex-item {
+  width: 30rem;
+  height: auto;
 }
