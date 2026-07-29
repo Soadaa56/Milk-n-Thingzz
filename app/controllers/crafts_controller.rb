@@ -23,7 +23,7 @@ class CraftsController < ApplicationController
       name: "default",
       price: @craft.default_price,
       dimensions: @craft.default_dimensions,
-      stock: @craft.stock
+      stock: params[:stock]
     )
 
     if params[:files].present?
