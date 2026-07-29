@@ -307,6 +307,17 @@ body {
   display: block;
 }
 
+.craft-table-head tr,
+.craft-table-head th
+.craft-table-body td,
+.craft-table-body th,
+.variant-table-head tr,
+.variant-table-head th,
+.variant-table-body td,
+.variant-table-body th {
+  outline: 1px solid black;
+}
+
 /************************
 Devise Section Start (Non-Mobile)
 ************************/
