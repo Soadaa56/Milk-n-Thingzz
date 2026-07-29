@@ -536,6 +536,10 @@ Devise Section End (Non-Mobile)
   position: absolute;
 }
 
+.fs-0 {
+  font-size: 3rem;
+}
+
 .width-30 {
   max-width: 30rem;
 }
