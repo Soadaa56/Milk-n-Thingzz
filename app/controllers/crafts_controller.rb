@@ -45,16 +45,27 @@ class CraftsController < ApplicationController
   end
 
   def update
+    default_variant = @craft.variants.first
+
     if params[:files].present?
-      default_variant = @craft.variants.first
       params[:files].each do |file|
         default_variant.images.build(image: file)
       end
       default_variant.images.each(&:image_derivatives!)
     end
 
+    default_variant.update(
+      price: params[:default_price],
+      dimensions: params[:default_dim],
+      stock: params[:stock]
+    )
+
     respond_to do |format|
-      if @craft.update(craft_params)
+      if @craft.update(craft_params) && default_variant.update(
+          price: params[:default_price],
+          dimensions: params[:default_dimensions],
+          stock: params[:stock]
+      )
         format.html { redirect_to craft_url(@craft.slug), notice: "Craft updated" }
         format.json { render :show, status: :ok, location: @craft }
       else
