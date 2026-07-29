@@ -16,11 +16,11 @@ class Variant < ApplicationRecord
   end
 
   def in_stock?
-    inventory_count.nil? || inventory_count > 0
+    stock.nil? || inventory_count > 0
   end
 
   def tracks_inventory?
-    inventory_count.present?
+    stock.present?
   end
 
   def for_sale?
@@ -30,6 +30,6 @@ class Variant < ApplicationRecord
   private
 
   def craft_has_many_variants
-    craft.update_column(:has_many_variants, craft.variants.many?)
+    craft.update_column(:has_variants, craft.variants.many?)
   end
 end
