@@ -1,16 +1,18 @@
 <main>
   <article>
-    <h1><%= @craft.name %></h1>
-    <h2>
-      <%= link_to @craft.category,
-            craft_category_path_helper(@craft),
-            class:"center nav-link underline hover-light-accent-color fs-0" %>
-    </h2>
-    
-    <% if @craft.subtype.present? %>
-      <div class="center"><%= @craft.subtype %></div>
-    <% end %>
-    <h4 class="center">Uploaded: <%= @craft.created_at.strftime("%B %d, %Y") %></h4>
+    <header>
+      <h1><%= @craft.name %></h1>
+      <h2>
+        <%= link_to @craft.category,
+              craft_category_path_helper(@craft),
+              class:"center nav-link underline hover-light-accent-color fs-0" %>
+      </h2>
+      
+      <% if @craft.subtype.present? %>
+        <div class="center"><%= @craft.subtype %></div>
+      <% end %>
+      <h4 class="center">Uploaded: <%= @craft.created_at.strftime("%B %d, %Y") %></h4>
+    </header>
     
     <% if current_user&.admin? %>
       <div class="center d-grid gap-3 m-3">

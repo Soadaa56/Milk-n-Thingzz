@@ -1,25 +1,50 @@
 <%# :for sale | :in_stock | :active  %>
-<p class="fs-1">
-  <%= cv.inspect %>
-</p>
+<h1 class="debug">Single Craft Debug</h1>
 
 <div class="row">
   <div class="col">
       <%#= render "gallery", craft: @craft %>
       <%= render "carousel", craft: @craft %>
   </div>
-  <div class="col fs-2">
-    <h2 class="underline fs-1">Information</h2>
-    <% if cv.craft.description %>
-      <div><%= cv.craft.description %></div>
-    <% end %>
-    <% if cv.craft.for_sale? %>
-      <%= number_to_currency(cv.effective_price) %>
-    <% end %>
-    <div>
-      <% if cv.effective_price != 0 || nil %>
-        <%= number_to_currency(cv.effective_price) %>
+
+  <div class="col">
+    <section class="fs-2">
+      <h3 class="fs-0 underline">Craft Information</h3>
+        <% if cv.craft.description && cv.craft.description != "" %>
+          <div class="d-flex flex-row p-2">
+            <p class="p-2">Description: </p>
+            <p class="p-2"><%= cv.craft.description %></p>
+          </div>
+        <% end %>
+        
+        <% if cv.effective_dimensions && cv.effective_dimensions != "" %>
+          <div class="d-flex flex-row p-2">
+            <p class="p-2">Dimensions: </p>
+            <p class="p-2"><%= cv.effective_dimensions %></p>
+          </div>
+        <% end %>
+    </section>
+
+    <section class="debug">
+      <% if cv.craft.for_sale? && cv.in_stock? %>
+        <div>
+          <div><%= number_to_currency(cv.effective_price) %></div>
+          <span><%= button_to "Add To Cart", type: "button" %></span>
+        </div>
+
+      <% elsif cv.craft.for_sale? && cv.stock = 0 %>
+        <div>
+          <div><%= number_to_currency(cv.effective_price) %></div>
+        </div>
+      <% else %>
+        <div>
+          <p>
+            Sorry! This craft isn't being sold right now, but if you're interested I would love to
+            make you a custom order.
+          </p>
+          <span><%= button_to "Email Me", type: "button" %></span>
+        </div>
       <% end %>
-    </div>
+    </section>
   </div>
 </div>
