@@ -1,14 +1,21 @@
 <%# :for sale | :in_stock | :active  %>
+<p class="fs-1">
+  <%= cv.inspect %>
+</p>
 
 <div class="row">
   <div class="col">
       <%#= render "gallery", craft: @craft %>
       <%= render "carousel", craft: @craft %>
   </div>
-  <div class="col">
-    <h2>Craft Info</h2>
-    <%= cv.name %>
-    <%= cv.inspect %>
+  <div class="col fs-2">
+    <h2 class="underline fs-1">Information</h2>
+    <% if cv.craft.description %>
+      <div><%= cv.craft.description %></div>
+    <% end %>
+    <% if cv.for_sale? %>
+      <%= cv.for_sale %>
+    <% end %>
     <div>
       <% if cv.effective_price != 0 || nil %>
         <%= number_to_currency(cv.effective_price) %>

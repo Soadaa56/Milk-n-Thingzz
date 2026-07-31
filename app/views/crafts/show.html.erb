@@ -1,44 +1,48 @@
-<h1><%= @craft.name %></h1>
-<h2>
-  <%= link_to @craft.category, 
-      craft_category_path_helper(@craft), 
-      class:"center nav-link underline hover-light-accent-color" %>
-</h2>
-
-<% if @craft.subtype.present? %>
-  <div class="center"><%= @craft.subtype %></div>
-<% end %>
-<h6 class="center">Uploaded: <%= @craft.created_at.strftime("%B %d, %Y") %></h4>
-
-<% if current_user&.admin? %>
-  <div class="center d-grid gap-3 m-3">
-    <div>
-      <%= link_to "All Crafts", crafts_path, class: "btn btn-dark fs-5"%>
-    </div>
-    <% if @craft.has_variants? %>
-      <div>
-        <%= link_to "Edit Craft", edit_craft_path(@craft), class: "btn btn-primary fs-4" %>
-        <%= link_to "All Variants", craft_variants_path(@craft), class: "btn btn-primary fs-4" %>
-      </div>
-    <% else %>
-      <div>
-        <%= link_to "Edit Craft", edit_craft_path(@craft), class: "btn btn-primary fs-4" %>
-        <%= link_to "Add Variant?", new_craft_variant_path(@craft), class: "btn btn-primary fs-4" %>
+<main>
+  <article>
+    <h1><%= @craft.name %></h1>
+    <h2>
+      <%= link_to @craft.category,
+            craft_category_path_helper(@craft),
+            class:"center nav-link underline hover-light-accent-color fs-0" %>
+    </h2>
+    
+    <% if @craft.subtype.present? %>
+      <div class="center"><%= @craft.subtype %></div>
+    <% end %>
+    <h4 class="center">Uploaded: <%= @craft.created_at.strftime("%B %d, %Y") %></h4>
+    
+    <% if current_user&.admin? %>
+      <div class="center d-grid gap-3 m-3">
+        <div>
+          <%= link_to "All Crafts", crafts_path, class: "btn btn-dark fs-5"%>
+        </div>
+        <% if @craft.has_variants? %>
+          <div>
+            <%= link_to "Edit Craft", edit_craft_path(@craft), class: "btn btn-primary fs-4" %>
+            <%= link_to "All Variants", craft_variants_path(@craft), class: "btn btn-primary fs-4" %>
+          </div>
+        <% else %>
+          <div>
+            <%= link_to "Edit Craft", edit_craft_path(@craft), class: "btn btn-primary fs-4" %>
+            <%= link_to "Add Variant?", new_craft_variant_path(@craft), class: "btn btn-primary fs-4" %>
+          </div>
+        <% end %>
       </div>
     <% end %>
-  </div>
-<% end %>
-
-<% if @craft.has_variants? %>
-  <div class="center">
-    <%= render "craft_multiple_variants", craft_variants: @craft.variants %>
-  </div>
-<% else %>
-  <div class="center">
-    <%= render "craft_single_variant", cv: @craft.variants.first %>
-  </div>
-<% end %>
-
-<%= render "shared/back" %>
-
-<% console %>
+    
+    <% if @craft.has_variants? %>
+      <div class="center">
+        <%= render "craft_multiple_variants", craft_variants: @craft.variants %>
+      </div>
+    <% else %>
+      <div class="center">
+        <%= render "craft_single_variant", cv: @craft.variants.first %>
+      </div>
+    <% end %>
+    
+    <%= render "shared/back" %>
+    
+    <% console %>
+  </article>
+</main>
