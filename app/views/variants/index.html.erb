@@ -21,29 +21,29 @@
   </thead>
   <tbody class="center variant-table-body">
     <% @variants.each do |v| %>
-      <tr class="fs-4">
-        <th scope="row" class="align-middle fs-4"><%= v.name %></th>
-        <td class="align-middle fs-4"><%= v.sku || "X" %></td>
-        <td class="align-middle fs-4"><%= v.stock || "X" %></td>
-        <td class="align-middle fs-4"><%= v.effective_price || "X" %></td>
-        <td class="align-middle fs-4">
+      <tr class="fs-5">
+        <th scope="row" class="align-middle"><%= v.name %></th>
+        <td class="align-middle"><%= v.sku || "X" %></td>
+        <td class="align-middle"><%= v.stock || "X" %></td>
+        <td class="align-middle"><%= number_to_currency(v.effective_price) || "X" %></td>
+        <td class="align-middle">
           <% if v.images.any? && v.images.first.image_url(:small) %>
             <%= image_tag v.images.first.image_url(:small), 
                 class: "thumbnail-image" %>
           <% end %>
         </td>
-        <td class="align-middle fs-4">
+        <td class="align-middle">
           <% if v.active? %>
             <span>Yes</span>
           <% else %>
             <span>X</span>
           <% end %>
         </td>
-        <td class="align-middle fs-4">
+        <td class="align-middle">
           <%= link_to 'Edit Variant', edit_craft_variant_path(@craft, v) %>
         </td>
-        <td class="align-middle fs-4"><%= v.shopify_variant_id %></td>
-        <td class="align-middle fs-4">
+        <td class="align-middle"><%= v.shopify_variant_id %></td>
+        <td class="align-middle">
           <%= button_to 'Delete', craft_variant_path(@craft, v), 
               method: :delete,
               data: { turbo: false },
