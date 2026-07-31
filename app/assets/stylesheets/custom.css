@@ -588,6 +588,12 @@ Devise Section End (Non-Mobile)
   text-align: center;
 }
 
+.warning {
+  font-size: 100%;
+  color: red;
+  outline: 3px dotted red;
+}
+
 .width-30 {
   max-width: 30rem;
 }

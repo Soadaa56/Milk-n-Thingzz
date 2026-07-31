@@ -1,15 +1,19 @@
 <h1>Edit Variant</h1>
 <h2 class="center mt-3 mb-3"><%= @craft.name %> [<%= @craft.category %>]</h2>
 
+<% if @craft.variants.first == @variant %>
+  <%= render "first_variant_warning" %>
+<% end %>
+
 <div class='center d-grid gap-3'>
   <div>
-    <%= link_to 'List all crafts', crafts_path, class: 'btn btn-dark fs-5' %>
+    <%= link_to "List all crafts", crafts_path, class: "btn btn-dark fs-5" %>
   </div>
   <div>
-    <%= link_to 'Back to Base Craft', crafts_path(@craft), class: 'btn btn-primary fs-4' %>
+    <%= link_to "Back to Base Craft", crafts_path(@craft.id), class: "btn btn-primary fs-4" %>
   </div>
 </div>
 
-<%= render 'form' %>
+<%= render "form" %>
 
-<%= render 'shared/back' %>
+<%= render "shared/back" %>
