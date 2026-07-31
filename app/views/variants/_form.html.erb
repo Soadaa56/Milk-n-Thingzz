@@ -22,7 +22,7 @@
         </div>
         <div>
           <%= f.label :stock, style: "display: block" %>
-          <%= number_field_tag :stock %>
+          <%= f.number_field :stock, step: 1 %>
           <p class="light-accent-color">
             Blank is valid
           </p>
@@ -34,10 +34,10 @@
         </h3>
         <div>
           <%= f.label :price, style: "display: block" %>
-          <%= number_field_tag :price %>
+          <%= f.number_field :price, step: 0.01 %>
           <p class="light-accent-color">
             <% if @craft.default_price %>
-              Base craft price = <%= @craft.default_price %>
+              Base craft price = <%= number_to_currency(@craft.default_price) %>
             <% else %>
               There is no base craft price.
             <% end %>
@@ -71,7 +71,7 @@
           <%= f.label :active %>
           <%= f.check_box :active %>
           <p class="light-accent-color">
-            Disable Variant being seen (Instead of deleting)
+            Uncheck means Variant not seen (Instead of deleting variant).
           </p>
         </div>
       </div>
