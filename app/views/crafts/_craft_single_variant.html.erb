@@ -13,8 +13,8 @@
     <% if cv.craft.description %>
       <div><%= cv.craft.description %></div>
     <% end %>
-    <% if cv.for_sale? %>
-      <%= cv.for_sale %>
+    <% if cv.craft.for_sale? %>
+      <%= number_to_currency(cv.effective_price) %>
     <% end %>
     <div>
       <% if cv.effective_price != 0 || nil %>
