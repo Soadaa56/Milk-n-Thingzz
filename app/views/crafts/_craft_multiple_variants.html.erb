@@ -1,0 +1,22 @@
+<%# :for sale | :in_stock | :active  %>
+
+<% craft_variants.each do |cv| %>
+  <%= cv.name %>
+  <%= cv.inspect %>
+<% end %>
+
+<div class="row">
+  <div class="col">
+      <%#= render "gallery", craft: @craft %>
+      <%#= render "carousel", craft: @craft %>
+  </div>
+  <div class="col">
+    <h2>Craft Info</h2>
+      <%#= render "variant_selector", variant: @craft.variants %>
+    <div>
+      <%# if cv.effective_price != 0 || nil %>
+        <%#= number_to_currency(cv.effective_price) %>
+      <%# end %>
+    </div>
+  </div>
+</div>

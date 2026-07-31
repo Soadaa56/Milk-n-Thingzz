@@ -29,28 +29,13 @@
   </div>
 <% end %>
 
-<%# Will need to show info about product & sell button, ect %>
 <% if @craft.has_variants? %>
-  <div class="row">
-    <div class="col">
-      <%#= render "gallery", craft: @craft %>
-      <%= render "carousel", craft: @craft %>
-    </div>
-    <div class="col">
-      <%= render "variant_selector", variant: @craft.variants %>
-    </div>
+  <div class="center">
+    <%= render "craft_multiple_variants", craft_variants: @craft.variants %>
   </div>
 <% else %>
-  <div class="row">
-    <div class="col">
-      <%#= render "gallery", craft: @craft %>
-      <%= render "carousel", craft: @craft %>
-    </div>
-    <div class="col">
-      <div>
-        <%= render "single_craft", cv: @craft.variants.first %>
-      </div>
-    </div>
+  <div class="center">
+    <%= render "craft_single_variant", cv: @craft.variants.first %>
   </div>
 <% end %>
 
