@@ -36,6 +36,10 @@ body {
   color: var(--temp-h2-color);
 }
 
+h3 {
+  color: var(--dark-accent-color);
+}
+
  #banner {
   background-color: var(--dark-accent-color);
   color: var(--shade-light-color);
