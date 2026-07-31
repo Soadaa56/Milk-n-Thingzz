@@ -11,7 +11,8 @@
 /* Makes bootstrap fs-[1-6] less potent */
 html {
   /* Base font-size 10px */
-  font-size: 62.5%; 
+  font-size: 62.5%;
+  font-family: 'Silkscreen', cursive;
 }
 
 html, body {
@@ -24,6 +25,12 @@ body {
   height: 100vh;
   width: 100vw;
  }
+
+ h1 {
+  text-align: center;
+  font-size: 5rem;
+  text-decoration: underline;
+}
 
  h2 {
   color: var(--temp-h2-color);
@@ -46,6 +53,38 @@ body {
 
 #banner .banner-title:hover {
   color: var(--light-accent-color);
+}
+
+#sidebar {
+  background-color: var(--shade-light-color);
+  color: var(--shade-dark-color);
+  font-family: 'DotGothic16', sans-serif;
+  width: 20rem;
+  min-height: 95vh;
+  font-size: 2.2rem;
+  padding-left: 2rem;
+}
+
+#sidebar .nav-link {
+  display: grid;
+  grid-template-rows: repeat(auto-fill, minmax(5rem, 1fr));
+  padding-top: 1.5rem;
+  transition: all 0.22s ease-in-out;
+  width: 90%;
+}
+
+#sidebar .nav-link:hover {
+  color: var(--nav-hover-color);
+  font-size: 3rem;
+}
+
+#main-content {
+  color: var(--shade-light-color);
+}
+
+#admin-dashboard {
+  color: var(--dark-accent-color);
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .profile-button-container {
@@ -101,39 +140,6 @@ body {
   grid-template-columns: 20rem auto;
 }
 
-#sidebar {
-  background-color: var(--shade-light-color);
-  color: var(--shade-dark-color);
-  font-family: 'DotGothic16', sans-serif;
-  width: 20rem;
-  min-height: 95vh;
-  font-size: 2.2rem;
-  padding-left: 2rem;
-}
-
-#sidebar .nav-link {
-  display: grid;
-  grid-template-rows: repeat(auto-fill, minmax(5rem, 1fr));
-  padding-top: 1.5rem;
-  transition: all 0.22s ease-in-out;
-  width: 90%;
-}
-
-#sidebar .nav-link:hover {
-  color: var(--nav-hover-color);
-  font-size: 3rem;
-}
-
-#main-content {
-  font-family: 'Silkscreen', cursive;
-  color: var(--shade-light-color);
-}
-
-#main-content h1 {
-  text-align: center;
-  font-size: 5rem;
-  text-decoration: underline;
-}
 
 .index-title {
   color: var(--shade-light-color);
@@ -152,21 +158,10 @@ body {
   transition: 0.5s ease;
 }
 
-.alert {
-  max-width: 20rem;
-  max-height: 10rem;
-  text-align: center;
-}
-
 .center-img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-}
-
-#admin-dashboard {
-  color: var(--dark-accent-color);
-  font-family: 'Courier New', Courier, monospace;
 }
 
 .social-wrapper2 {
@@ -388,6 +383,10 @@ Devise Section End (Non-Mobile)
 ******************************/
 @media (max-width: 600px) {
 
+  h1 {
+    font-size: 3rem;
+  }
+
   body {
     position: relative;
   }
@@ -410,15 +409,6 @@ Devise Section End (Non-Mobile)
     display: contents;
   }
 
-  #main-content h1 {
-    font-size: 3rem;
-    border: 20 px solid gold;
-  }
-
-  #main-content img {
-    max-width: 10rem;
-  }
-  
   .grid-sorted {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(35%, 1fr));
@@ -581,6 +571,13 @@ Devise Section End (Non-Mobile)
 
 .notice {
   position: absolute;
+}
+
+.alert {
+  outline: 10px solid red;
+  /* max-width: 20rem;
+  max-height: 10rem;
+  text-align: center; */
 }
 
 .width-30 {
