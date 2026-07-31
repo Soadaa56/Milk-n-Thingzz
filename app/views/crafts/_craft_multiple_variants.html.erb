@@ -1,14 +1,14 @@
 <%# :for sale | :in_stock | :active  %>
 
-<% craft_variants.each do |cv| %>
-  <%= cv.name %>
-  <%= cv.inspect %>
-<% end %>
 
 <div class="row">
   <div class="col">
-      <%#= render "gallery", craft: @craft %>
-      <%#= render "carousel", craft: @craft %>
+    <% craft_variants.each do |cv| %>
+      <%= cv.name %>
+      <%= cv.inspect %>
+      <%#= render "gallery", craft: cv %>
+      <%= render "carousel", craft: @craft %>
+    <% end %>
   </div>
   <div class="col">
     <h2>Craft Info</h2>
