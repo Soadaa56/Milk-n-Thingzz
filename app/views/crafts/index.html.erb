@@ -27,7 +27,7 @@
           <%= link_to craft.name, craft_path(craft.slug) %>
         </td>
         <td class="align-middle">
-          <%= craft.variants.first.effective_price || "X" %>
+          <%= number_to_currency(craft.variants.first.effective_price) || "X" %>
         </td>
         <td class="align-middle">
           <%= craft.variants.first.stock || "X" %>
