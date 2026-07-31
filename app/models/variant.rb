@@ -1,4 +1,6 @@
 class Variant < ApplicationRecord
+  include ActiveSupport::NumberHelper
+
   belongs_to :craft
   has_many :images, -> { order(position: :asc) }, dependent: :destroy
 
@@ -8,7 +10,7 @@ class Variant < ApplicationRecord
   after_destroy :craft_has_many_variants
 
   def effective_price
-    price.presence || craft.default_price
+    number_to_currency(price.presence) || number_to_currency(craft.default_price)
   end
 
   def effective_dimensions
