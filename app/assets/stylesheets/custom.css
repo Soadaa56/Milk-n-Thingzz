@@ -573,6 +573,10 @@ Devise Section End (Non-Mobile)
   font-size: 3rem;
 }
 
+.cross-out {
+  text-decoration: line-through;
+}
+
 .prose > * + * {
   margin-block-start: var(--prose-flow, 3rem);
 }
