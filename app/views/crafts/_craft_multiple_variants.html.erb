@@ -1,22 +1,36 @@
 <%# :for sale | :in_stock | :active  %>
 <h1 class="debug">Multiple Var Page</h1>
 
+<div class="center fs-1">
+  <label for="variant_selector">Variant:</label>
+  <%= select_tag "variant_selector",
+      options_for_select([''] + craft_variants.drop(1).map { |variant| [variant.name, variant] }),
+      id: "variant_selector",
+      data: {
+        controller: "variant-selector",
+        action: "variant-selector#update",
+        variant_selector_target: "select"
+      } %>
+</div>
+
 <div class="row">
   <div class="col">
     <% craft_variants.each do |cv| %>
       <%= cv.name %>
-      <%= cv.inspect %>
+      <p class="fs-2"><%= cv.inspect %></p>
+      <p class="fs-2"><%= cv.craft.inspect %></p>
       <%#= render "gallery", craft: cv %>
       <%= render "carousel", craft: @craft %>
     <% end %>
   </div>
-  <div class="col">
-    <h2>Craft Info</h2>
-      <%#= render "variant_selector", variant: @craft.variants %>
-    <div>
+
+  <section class="col">
+    <h2 class="fs-1 underline">Craft Information</h2>
+
+    <div id="craft-purchase">
       <%# if cv.effective_price != 0 || nil %>
         <%#= number_to_currency(cv.effective_price) %>
       <%# end %>
     </div>
-  </div>
+  </section>
 </div>
