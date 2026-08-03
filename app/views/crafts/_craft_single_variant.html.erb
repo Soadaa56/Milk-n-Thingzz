@@ -8,8 +8,8 @@
   </div>
 
   <div class="col">
-    <section class="fs-2">
-      <h3 class="fs-0 underline">Craft Information</h3>
+    <section id="craft-info" class="fs-2">
+      <h2 class="fs-1 underline">Craft Information</h2>
         <% if cv.craft.description && cv.craft.description != "" %>
           <div class="d-flex flex-row p-2">
             <p class="p-2">Description: </p>
@@ -25,31 +25,39 @@
         <% end %>
     </section>
 
-    <section class="debug">
+    <section id="craft-purchase">
       <% if cv.craft.for_sale? && cv.in_stock? %>
         <div>
-          <div><%= number_to_currency(cv.effective_price) %></div>
-          <span><%= button_to "Add To Cart", type: "button" %></span>
+          <%= number_to_currency(cv.effective_price) %>
+          <%= button_to "Add To Cart", type: "button" %>
           <%# Will need to connect to a cart model/object %>
           <%= select_tag :quantity, options_for_select(1..cv.stock)  %>
         </div>
 
       <% elsif cv.craft.for_sale? && cv.stock = 0 %>
         <div>
-          <p>
-            Sorry! I'm out of stock for the current item. Hopefully it will come back in stock soon
-            but feel free to email me for inquiries.
-          <span><%= button_to "Email Me", type: "button" %></span>
-          </p>
-          <div><%= number_to_currency(cv.effective_price) %></div>
+            <p>
+              Sorry! I'm out of stock for the current item. Hopefully it will come back in stock soon
+              but feel free to email me for inquiries.
+            </p>
+            <%= mail_to "soadaablog@gmail.com", 
+                      "Contact Me", 
+                      subject: "Milknthingzz #{cv.craft.name} out of stock",
+                      class: "btn light-accent-color" %>
+            <p>
+              <span class="cross-out"><%= number_to_currency(cv.effective_price) %></span>
+            </p>
         </div>
       <% else %>
         <div>
           <p>
-            Sorry! This craft isn't being sold right now, but if you're interested I would love to
+            Sorry, This craft isn't being sold right now! but if you're interested I would love to
             make you a custom order.
-            <span><%= button_to "Email Me", type: "button" %></span>
           </p>
+          <%= mail_to "soadaablog@gmail.com", 
+                      "Contact Me", 
+                      subject: "Milknthingzz #{cv.craft.name} Inquiry",
+                      class: "btn light-accent-color" %>
         </div>
       <% end %>
     </section>
