@@ -24,3 +24,6 @@ application.register("subtype", SubtypeController)
 
 import SubtypeSortController from "./subtype_sort_controller"
 application.register("subtype-sort", SubtypeSortController)
+
+import VariantSelectorController from "./variant_selector_controller"
+application.register("variant-selector", VariantSelectorController)
