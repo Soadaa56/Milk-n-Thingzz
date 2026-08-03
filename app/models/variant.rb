@@ -5,6 +5,8 @@ class Variant < ApplicationRecord
 
   accepts_nested_attributes_for :images, allow_destroy: true
 
+  before_validation :normalize_sku
+
   after_save :craft_has_many_variants
   after_destroy :craft_has_many_variants
 
@@ -32,5 +34,9 @@ class Variant < ApplicationRecord
 
   def craft_has_many_variants
     craft.update_column(:has_variants, craft.variants.many?)
+  end
+
+  def normalize_sku
+    self.sku = nil if sku.blank?
   end
 end
