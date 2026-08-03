@@ -7,8 +7,8 @@
       <%= render "carousel", craft: @craft %>
   </div>
 
-  <div class="col">
-    <section id="craft-info" class="fs-2">
+  <section class="col">
+    <div id="craft-info" class="fs-2">
       <h2 class="fs-1 underline">Craft Information</h2>
         <% if cv.craft.description && cv.craft.description != "" %>
           <div class="d-flex flex-row p-2">
@@ -23,9 +23,9 @@
             <p class="p-2"><%= cv.effective_dimensions %></p>
           </div>
         <% end %>
-    </section>
+    </div>
 
-    <section id="craft-purchase">
+    <div id="craft-purchase">
       <% if cv.craft.for_sale? && cv.in_stock? %>
         <div>
           <%= number_to_currency(cv.effective_price) %>
@@ -60,6 +60,6 @@
                       class: "btn light-accent-color" %>
         </div>
       <% end %>
-    </section>
-  </div>
+    </div>
+  </section>
 </div>
