@@ -6,8 +6,8 @@ class CraftsController < ApplicationController
     @crafts = Craft.includes(:images).order(:id)
   end
 
-  def show 
-    @craft = Craft.includes(:images).find_by!(slug: params[:id])
+  def show
+    @craft = Craft.includes(variants: :images).find_by!(slug: params[:id])
   end
 
   def edit ; end
