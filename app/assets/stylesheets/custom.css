@@ -24,15 +24,15 @@ body {
   background-color: var(--main-bg-color);
   height: 100vh;
   width: 100vw;
- }
+}
 
- h1 {
+h1 {
   text-align: center;
   font-size: 5rem;
   text-decoration: underline;
 }
 
- h2 {
+h2 {
   color: var(--temp-h2-color);
 }
 
@@ -40,7 +40,7 @@ h3 {
   color: var(--dark-accent-color);
 }
 
- #banner {
+#banner {
   background-color: var(--dark-accent-color);
   color: var(--shade-light-color);
 }
