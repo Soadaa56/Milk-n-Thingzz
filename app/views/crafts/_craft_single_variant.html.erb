@@ -31,7 +31,6 @@
           <%= number_to_currency(cv.effective_price) %>
           <%= button_to "Add To Cart", type: "button" %>
           <%# Will need to connect to a cart model/object %>
-          <%= select_tag :quantity, options_for_select(1..cv.stock)  %>
         </div>
 
       <% elsif cv.craft.for_sale? && cv.stock == 0 %>
@@ -48,7 +47,7 @@
               <span class="cross-out"><%= number_to_currency(cv.effective_price) %></span>
             </p>
         </div>
-        
+
       <%# craft not for sale %>
       <% else %>
         <div>
