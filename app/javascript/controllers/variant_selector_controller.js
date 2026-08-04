@@ -4,10 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = [ "select", "display" ];
 
-  connect() {
-    const default_variant_id = this.selectTarget.value
-    this.show_images(default_variant_id)
-  }
+  connect() {}
 
   update() {
     const selected_variant_id = this.selectTarget.value
