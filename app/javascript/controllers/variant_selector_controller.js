@@ -3,9 +3,11 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="variant-selector"
 export default class extends Controller {
   static targets = [ "select", "display" ];
-  // static values = { id: Number };
 
-  connect() {}
+  connect() {
+    const default_variant_id = this.selectTarget.value
+    this.show_images(default_variant_id)
+  }
 
   update() {
     const selected_variant_id = this.selectTarget.value
