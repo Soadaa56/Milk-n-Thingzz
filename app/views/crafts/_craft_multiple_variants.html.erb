@@ -1,36 +1,78 @@
+<%# Needs accesbility editing %>
 <h1 class="debug">Multiple Var Page</h1>
 
 <div data-controller="variant-selector">
-  <div class="center fs-1">
+  <div>
     <label for="variant_selector">Variant:</label>
     <%= select_tag "variant_selector",
-        options_for_select(craft_variants.map { |variant| [variant.name.capitalize, variant.id] }),
+        options_for_select(craft_variants.map { |variant| [variant.name, variant.id] }),
         id: "variant_selector",
-        class: "m-3 p-1",
+        class: "text-capitalize",
         data: {
           action: "variant-selector#update",
           variant_selector_target: "select"
         } %>
   </div>
   
-  <div class="row">
-    <div class="col">
-      <% craft_variants.each do |cv| %>
+  <% craft_variants.each do |cv| %>
+    <div 
+      data-variant-selector-target="display" 
+      data-id="<%= cv.id %>"
+      <%= "hidden" unless cv.id == craft_variants.first.id %>
+    >
+      <div class="craft-gallery">
         <%#= render "gallery", craft: cv %>
-        <div class="" data-variant-selector-target="display" data-id="<%= cv.id %>">
-          <%= render "carousel", craft: cv %>
-        </div>
-      <% end %>
+        <%= render "carousel", craft: cv %>
+      </div>
+
+      <div class="craft-info">
+        <h2 class="text-capitalize"><%= cv.name.capitalize %></h2>
+        <% if cv.craft.description %>
+          <p><%= cv.craft.description %></p>
+        <% end %>
+      </div>
+      
+      <div class="craft-variable">
+        <% if cv.craft.for_sale? && cv.in_stock? %>
+          <%= number_to_currency(cv.effective_price) %>
+          <%= button_to "Add To Cart" %>
+          <%# Connect to cart model %>
+
+        <% elsif cv.for_sale? && cv.stock == 0 %>
+          <p>
+            Sorry, we are currently out of stock for this current item!. Hopefully
+            it comes back into stock shortly, but feel free to email me any questions.
+          </p>
+          <%= mail_to "soadaablog@gmail.com",
+                      "Contact Me",
+                      subject: "Milknthingzz #{cv.craft.name}- #{cv.name}: Out of Stock",
+                      class: "btn light-accent-color" %>
+
+        <%# craft not for sale %>
+        <% else %>
+          <p>
+            Sorry, this isn't being sold right now! But if you're interested
+            feel free to email me about custom orders!
+          </p>
+        <%= mail_to "soadaablog@gmail.com",
+                      "Contact Me",
+                      subject: "Milknthingzz #{cv.craft.name}- #{cv.name}: Inquiry",
+                      class: "btn light-accent-color" %>
+        <% end %>
+      </div>
+
+      <div class="craft-details">
+        <span>Craft Details</span>
+        <%= image_tag("svg/right-thin-chevron.svg", class: "chevron")%>
+      </div>
+      
     </div>
+    <%=%>
+  <% end %>
+
   
-    <section class="col">
-      <h2 class="fs-1 underline">Craft Information</h2>
-  
-      <div id="craft-purchase">
         <%# if cv.effective_price != 0 || nil %>
           <%#= number_to_currency(cv.effective_price) %>
         <%# end %>
-      </div>
-    </section>
-  </div>
+  
 </div>
