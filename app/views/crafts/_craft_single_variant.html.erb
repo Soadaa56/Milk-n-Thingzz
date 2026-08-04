@@ -34,7 +34,7 @@
           <%= select_tag :quantity, options_for_select(1..cv.stock)  %>
         </div>
 
-      <% elsif cv.craft.for_sale? && cv.stock = 0 %>
+      <% elsif cv.craft.for_sale? && cv.stock == 0 %>
         <div>
             <p>
               Sorry! I'm out of stock for the current item. Hopefully it will come back in stock soon
