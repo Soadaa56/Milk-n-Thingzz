@@ -91,6 +91,12 @@ h3 {
   font-family: 'Courier New', Courier, monospace;
 }
 
+.craft-details .chevron{
+  max-width: 0.6rem;
+  margin: 0.25rem;
+  transform: rotate(90deg);
+}
+
 .profile-button-container {
   position: relative;
 }
