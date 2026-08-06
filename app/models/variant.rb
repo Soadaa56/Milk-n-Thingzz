@@ -2,6 +2,8 @@ class Variant < ApplicationRecord
   belongs_to :craft
   
   has_many :images, -> { order(position: :asc) }, dependent: :destroy
+  has_many :cart_items, dependent: :restrict_with_error
+  has_many :carts, through: :cart_items
 
   accepts_nested_attributes_for :images, allow_destroy: true
 

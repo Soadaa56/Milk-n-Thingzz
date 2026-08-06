@@ -6,6 +6,9 @@ class User < ApplicationRecord
          
   enum role: { standard: 0, admin: 1 }
 
+  has_one :cart
+  has_many :cart_items, through: :cart
+
   before_validation :set_default_role
 
   private

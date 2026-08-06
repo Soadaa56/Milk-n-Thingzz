@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_07_27_150117) do
+ActiveRecord::Schema[7.2].define(version: 2026_08_06_204022) do
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "cart_id", null: false
+    t.integer "variant_id", null: false
+    t.integer "quantity", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+    t.index ["variant_id"], name: "index_cart_items_on_variant_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
   create_table "crafts", force: :cascade do |t|
     t.string "name", null: false
     t.text "description"
@@ -75,6 +92,9 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_150117) do
     t.index ["sku"], name: "index_variants_on_sku", unique: true, where: "sku IS NOT NULL"
   end
 
+  add_foreign_key "cart_items", "carts"
+  add_foreign_key "cart_items", "variants"
+  add_foreign_key "carts", "users"
   add_foreign_key "images", "variants"
   add_foreign_key "variants", "crafts"
 end
