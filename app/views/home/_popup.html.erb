@@ -1,31 +1,34 @@
 <div id="mobile-popup-menu", class="mobile-popup-menu d-none">
-  <%= image_tag('close.svg', alt: 'Close icon', id: 'mobile-popup-close', class: 'mobile-popup-close',
+  <%= image_tag("close.svg", alt: "Close icon", 
+        id: "mobile-popup-close", 
+        class: "mobile-popup-close",
         data: {
         controller: "menu",
         action: "click->menu#closeMenu"
         }) %>
-  <div class='mobile-popup-div'>
-    <%= link_to 'Crochet', home_crochet_path, class:'mobile-popup-link'%>
+  <div class="mobile-popup-div">
+    <%= link_to "Crochet", home_crochet_path, class: "mobile-popup-link"%>
   </div>
-  <div class='mobile-popup-div'>
-    <%= link_to 'Embroidery', home_embroidery_path, class:'mobile-popup-link' %>
+  <div class="mobile-popup-div">
+    <%= link_to "Earrings", home_earring_path, class: "mobile-popup-link" %>
   </div>
-  <div class='mobile-popup-div'>
-    <%= link_to '3-D Prints', home_print_path, class:'mobile-popup-link' %>
+  <div class="mobile-popup-div">
+    <%= link_to "Embroidery", home_embroidery_path, class: "mobile-popup-link" %>
   </div>
-  <div class='mobile-popup-div'>
-    <%= link_to 'Earrings', home_earring_path, class:'mobile-popup-link' %>
+  <div class="mobile-popup-div">
+    <%= link_to "Necklaces", home_necklace_path, class: "mobile-popup-link" %>
   </div>
-  <div class='mobile-popup-div'>
-    <%= link_to 'Necklaces', home_necklace_path, class:'mobile-popup-link' %>
+  <%#= link_to "Painting", home_painting_path, class: "nav-link" %>
+  <div class="mobile-popup-div">
+    <%= link_to "3-D Prints", home_print_path, class: "mobile-popup-link" %>
   </div>
-  <div class='mobile-popup-div'>
-    <%= link_to 'Misc.', home_miscellaneous_path, class:'mobile-popup-link' %>
+  <div class="mobile-popup-div">
+    <%= link_to "Misc.", home_miscellaneous_path, class: "mobile-popup-link" %>
   </div>
 
-  <br>
-  <div class='mobile-popup-div'>
-    <%= link_to 'Socials', home_social_path, class:'mobile-popup-link' %>
+  <br><br>
+  <div class="mobile-popup-div">
+    <%= link_to "Socials", home_social_path, class: "mobile-popup-link" %>
   </div>
 
   <br>
