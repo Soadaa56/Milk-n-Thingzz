@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get "carts/show"
   root 'home#index'
   get 'home', to: 'home#index'
 
@@ -38,7 +37,8 @@ Rails.application.routes.draw do
     resources :variants, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
-  resource :cart, only: [:show]
+  resource  :cart, only: [:show]
+  resources :cart_items, only: [:create, :destroy]
 
   # Health check routes for kamal
   get '/up', to: 'health#up'
