@@ -12,6 +12,7 @@
       <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Price</th>
+      <th scope="col">For Sale?</th>
       <th scope="col">Stock</th>
       <th scope="col">Image</th>
       <th scope="col">Edit</th>
@@ -23,24 +24,33 @@
     <% @crafts.each do |craft| %>
       <tr class="fs-5">
         <th scope="row" class="align-middle"><%= craft.id %></th>
+
         <td class="align-middle">
           <%= link_to craft.name, craft_path(craft.slug) %>
         </td>
+
         <td class="align-middle">
           <%= number_to_currency(craft.variants.first.effective_price) || "X" %>
         </td>
+
+        <td class="align-middle text-capitalize">
+          <%= craft.for_sale? || "false" %>
+        </td>
+
         <td class="align-middle">
           <%= craft.variants.first.stock || "X" %>
         </td>
+
         <td class="align-middle">
           <% if craft.images.any? && craft.images.first.image_url(:small) %>
             <%= image_tag craft.images.first.image_url(:small), 
                 class: "thumbnail-image" %>
           <% end %>
-        </td>
+          
         <td class="align-middle">
           <%= link_to 'Edit Craft', edit_craft_path(craft) %>
         </td>
+
         <td class="align-middle">
           <% if craft.has_variants? %>
             <span>
@@ -53,6 +63,7 @@
             <span>X</span>
           <% end %>
         </td>
+
         <td class="align-middle">
           <%= button_to 'Destroy Craft', craft_path(craft), 
               method: :delete, 
