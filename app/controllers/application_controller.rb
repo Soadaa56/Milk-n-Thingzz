@@ -2,6 +2,15 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_subtypes
 
+  def current_cart
+    if current_user
+      current_user.cart || current_user.create_cart
+    else
+      Cart.find_by(id: session[cart_id]) ||
+      Cart.create.tap { |cart| session[:cart_id] = cart.id }
+    end
+  end
+
   protected
 
   def configure_permitted_parameters

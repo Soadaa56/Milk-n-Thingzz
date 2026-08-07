@@ -9,8 +9,16 @@
     <div id='banner'>
         <%= link_to "Milk 'n' thingzz", root_path, class: "banner-title" %>
     </div>
-    <% if user_signed_in? %>
-        <div class="profile-button-container">
+
+
+
+    <div class="profile-button-container">
+        <div class="btn-group profile-button shopping-cart-icon-container">
+            <%= link_to cart_path do %>
+                <%= image_tag "svg/cart.svg", class: "me-5" %>
+            <% end %>
+        </div>
+        <% if user_signed_in? %>
             <div class='btn-group profile-button'>
                 <a class='btn' type='button' id='dropdownMenuButton1' data-bs-toggle='dropdown' aria-expanded='false'>
                     <%= image_tag('svg/profile.svg', alt: 'Profile Icon', class:'profile-svg' ) %>
@@ -25,9 +33,7 @@
                     <% end %>
                 </ul>
             </div>
-        </div>
-    <% else %>
-        <div class="profile-button-container">
+        <% else %>
             <div class='btn-group profile-button'>
                 <a class='btn' type='button' id='dropdownMenuButton1' data-bs-toggle='dropdown' aria-expanded='false'>
                     <%= image_tag('svg/profile.svg', alt: 'Profile icon', class:'profile-svg' ) %>
@@ -38,6 +44,6 @@
                     <li><%= link_to 'Sign Up', new_user_registration_path, class:'dropdown-item' %></li>
                 </ul>
             </div>
-        </div>
-    <% end %>
+        <% end %>
+    </div>
 </header>
