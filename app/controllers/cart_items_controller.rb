@@ -1,8 +1,7 @@
 class CartItemsController < ApplicationController
-  def create
-    @cart = current_cart
-    @variant = Variant.find(params[:variant_id])
+  before_action :current_cart, :set_variant
 
+  def create
     cart_item = @cart.cart_items.find_or_create_by(variant: @variant)
     cart_item.quantity = (cart_item.quantity || 0) + 1
 
@@ -17,5 +16,22 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
+    cart_item = @cart.cart_items.find(variant: @variant)
+    cart_item.destroy!
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to cart_path }
+    end
+  end
+
+  private
+
+  def current_cart
+    @cart = current_cart
+  end
+
+  def set_variant
+    @variant = Variant.find(params[:variant_id])
   end
 end
