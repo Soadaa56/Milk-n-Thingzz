@@ -27,12 +27,7 @@
 
     <div id="craft-purchase">
       <% if cv.craft.for_sale? && cv.in_stock? %>
-        <div>
-          <%= number_to_currency(cv.effective_price) %>
-          <%= button_to "Add To Cart", type: "button" %>
-          <%# Will need to connect to a cart model/object %>
-        </div>
-
+        <%= render "for_sale", cv: cv %>
       <% elsif cv.craft.for_sale? && cv.stock == 0 %>
         <div>
             <p>

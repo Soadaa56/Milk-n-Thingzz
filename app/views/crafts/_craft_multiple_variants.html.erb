@@ -34,10 +34,7 @@
       
       <div class="craft-variable">
         <% if cv.craft.for_sale? && cv.in_stock? %>
-          <%= number_to_currency(cv.effective_price) %>
-          <%= button_to "Add To Cart" %>
-          <%# Connect to cart model %>
-
+          <%= render "for_sale", cv: cv %>
         <% elsif cv.for_sale? && cv.stock == 0 %>
           <p>
             Sorry, we are currently out of stock for this current item!. Hopefully
