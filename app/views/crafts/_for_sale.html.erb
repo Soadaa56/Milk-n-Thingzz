@@ -1,0 +1,8 @@
+<div>
+  <%= number_to_currency(cv.effective_price) %>
+  <%= button_to "Add to Cart",
+      cart_cart_items_path,
+      method: :post,
+      params: { variant_id: cv.id },
+      class: "btn btn-primary" %>
+</div>

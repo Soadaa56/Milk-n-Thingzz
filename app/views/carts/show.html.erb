@@ -1,9 +1,24 @@
 <h1>Cart</h1>
 
 <div class="center fs-1">
-  <%= @cart.inspect %>
+  <p>cart_id: <%= @cart.id %>  to user_id: <%= @cart.user_id %></p>
   <br>
-  <%= @cart.item_count %>
+  <p>total items in cart: <%= @cart.item_count %></p>
+
+  <%# Need logic to handle if craft has variants  %>
+  <% @cart.cart_items.each do |ci| %>
+    <%= ci.variant.craft.name %>: <%= ci.quantity %> @ <%= number_to_currency(ci.variant.effective_price)%>
+      <% if ci.quantity > 1 %>
+        <div>
+          <%= number_to_currency(ci.item_subtotal) %>
+        </div>
+      <% end %>
+  <% end %>
+
+  <div>
+    Cart Subtotal (Before Any Applicable Taxes or Fees)
+    <div><%= number_to_currency(@cart.subtotal) %></div>
+  </div>
 </div>
 
 <% console %>

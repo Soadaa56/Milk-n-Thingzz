@@ -7,7 +7,7 @@ class Cart < ApplicationRecord
     cart_items.sum(:quantity)
   end
 
-  def total
-    cart_items.sum(&:subtotal)
+  def subtotal
+    cart_items.sum(&:item_subtotal)
   end
 end
