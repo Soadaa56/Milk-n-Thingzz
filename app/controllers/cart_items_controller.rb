@@ -1,8 +1,9 @@
 class CartItemsController < ApplicationController
-  before_action :current_cart, :set_variant
+  before_action :set_variant
 
   def create
-    cart_item = @cart.cart_items.find_or_create_by(variant: @variant)
+    # current_cart found in application_controller
+    cart_item = current_cart.cart_items.find_or_create_by(variant: @variant)
     cart_item.quantity = (cart_item.quantity || 0) + 1
 
     if cart_item.save
@@ -16,7 +17,7 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
-    cart_item = @cart.cart_items.find(variant: @variant)
+    cart_item = current_cart.cart_items.find(variant: @variant)
     cart_item.destroy!
 
     respond_to do |format|
@@ -26,10 +27,6 @@ class CartItemsController < ApplicationController
   end
 
   private
-
-  def current_cart
-    @cart = current_cart
-  end
 
   def set_variant
     @variant = Variant.find(params[:variant_id])
