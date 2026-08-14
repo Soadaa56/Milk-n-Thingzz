@@ -1,0 +1,18 @@
+<div class="cart_item">
+  <%= image_tag ci.variant.images.first.image_url(:small) %>
+
+  <%= link_to ci.variant.craft.name, craft_path(ci.variant.craft.slug) %>
+  :
+  <%= ci.quantity %> @ <%= number_to_currency(ci.variant.effective_price)%>
+
+  <%= button_to "Remove Item", 
+        cart_cart_item_path(ci),
+        method: :delete,
+        class: "btn btn-sm btn-danger" %>
+
+  <% if ci.quantity > 1 %>
+    <div>
+      <%= number_to_currency(ci.item_subtotal) %>
+    </div>
+  <% end %>
+</div>
