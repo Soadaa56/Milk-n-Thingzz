@@ -1,10 +1,13 @@
 class CartItemsController < ApplicationController
   before_action :set_variant, only: [:create]
+  before_action :set_cart
 
   def create
-    # current_cart found in application_controller
-    cart_item = current_cart.cart_items.find_or_create_by(variant: @variant)
-    cart_item.quantity = (cart_item.quantity || 0) + 1
+    cart_item = @cart.cart_items.find_or_initialize_by(variant: @variant)
+
+    if cart_item.persisted?
+      cart_item.quantity += 1
+    end
 
     if cart_item.save
       redirect_to request.referer || cart_path, notice: "Added to cart"
@@ -17,7 +20,6 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
-    @cart = current_cart
     @cart_item = @cart.cart_items.find(params[:id])
 
     @cart_item.destroy!
@@ -32,5 +34,10 @@ class CartItemsController < ApplicationController
 
   def set_variant
     @variant = Variant.find(params[:variant_id])
+  end
+
+  # current_cart found in application_controller
+  def set_cart
+    @cart = current_cart
   end
 end
