@@ -8,6 +8,8 @@
   <%# Need logic to handle if craft has variants  %>
   <div class="cart-container">
     <% @cart.cart_items.each do |ci| %>
+      <% variant = Variant.find(ci.variant_id) %>
+      <%= image_tag variant.images.first.image_url(:small) %>
       <%= link_to ci.variant.craft.name, craft_path(ci.variant.craft.slug) %>
        : 
       <%= ci.quantity %> @ <%= number_to_currency(ci.variant.effective_price)%>
