@@ -34,7 +34,9 @@
         </td>
 
         <td class="align-middle text-capitalize">
-          <%= craft.for_sale? || "false" %>
+          <span class="badge <%= craft.for_sale? ? 'bg-success' : 'bg-danger' %>">
+            <%= craft.for_sale? || "false" %>
+          </span>
         </td>
 
         <td class="align-middle">
