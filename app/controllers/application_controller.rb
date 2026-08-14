@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  helper_method :current_cart, :cart_item_count
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_subtypes
 
@@ -9,6 +10,10 @@ class ApplicationController < ActionController::Base
       Cart.find_by(id: session[cart_id]) ||
       Cart.create.tap { |cart| session[:cart_id] = cart.id }
     end
+  end
+
+  def cart_item_count
+    @current_item_count || current_cart.item_count
   end
 
   protected

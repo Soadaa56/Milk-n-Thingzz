@@ -15,6 +15,7 @@
     <div class="profile-button-container">
         <div class="btn-group profile-button shopping-cart-icon-container">
             <%= link_to cart_path do %>
+                <%= cart_item_count %>
                 <%= image_tag "svg/cart.svg", class: "me-5" %>
             <% end %>
         </div>
