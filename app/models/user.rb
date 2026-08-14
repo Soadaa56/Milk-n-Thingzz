@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  enum role: { standard: 0, admin: 1 }
+  enum :role, { standard: 0, admin: 1 }
 
   has_one :cart
   has_many :cart_items, through: :cart
