@@ -1,5 +1,5 @@
 class CartItemsController < ApplicationController
-  before_action :set_variant
+  before_action :set_variant, only: [:create]
 
   def create
     # current_cart found in application_controller
@@ -17,8 +17,10 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
-    cart_item = current_cart.cart_items.find(variant: @variant)
-    cart_item.destroy!
+    @cart = current_cart
+    @cart_item = @cart.cart_items.find(params[:id])
+
+    @cart_item.destroy!
 
     respond_to do |format|
       format.turbo_stream

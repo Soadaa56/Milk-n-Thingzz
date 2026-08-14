@@ -14,7 +14,7 @@
       :
       <%= ci.quantity %> @ <%= number_to_currency(ci.variant.effective_price)%>
 
-      <%= button_to "Remove Item", cart_cart_item_path(@cart, ci),
+      <%= button_to "Remove Item", cart_cart_item_path(ci),
           method: :delete,
           class: "btn btn-sm btn-danger" %>
 
