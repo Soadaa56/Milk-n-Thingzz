@@ -21,7 +21,7 @@ class Variant < ApplicationRecord
   end
 
   def in_stock?
-    stock.nil? || stock > 0
+    !stock.nil? && stock > 0
   end
 
   def tracks_inventory?
