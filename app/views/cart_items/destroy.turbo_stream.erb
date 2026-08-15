@@ -1,1 +1,5 @@
 <%= turbo_stream.remove dom_id(@cart_item) %>
+
+<%= turbo_stream.update "cart-subtotal" do %>
+  <%= render "carts/subtotal", cart: @cart %>
+<% end %>

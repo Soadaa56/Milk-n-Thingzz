@@ -1,24 +1,24 @@
 <h1>Your Cart</h1>
 
 <div class="center fs-1">
-  <p>cart_id: <%= @cart.id %>  to user_id: <%= @cart.user_id %></p>
-  <br>
-  <p>total items in cart: <%= @cart.item_count %></p>
+  <div id="cart-item-count">
+    Total Cart Items: <%= @cart.item_count %>
+  </div>
 
   <%# Need logic to handle if craft has variants  %>
   <div class="cart-container">
-    <% @cart_items.each do |ci| %>
-      <%= turbo_frame_tag dom_id(ci) do %>
-        <%= render "cart_item", ci: ci %>
+    <% @cart_items.each do |cart_item| %>
+      <%= turbo_frame_tag dom_id(cart_item) do %>
+        <%= render "cart_item", cart_item: cart_item %>
       <% end %>
     <% end %>
   </div>
 
   <br><br><br>
+  <div id="cart-subtotal">
+    <%= render "subtotal", cart: @cart %>
+  </div>
   <div>
-    Cart Subtotal (Before Any Applicable Taxes or Fees)
-    <%= number_to_currency(@cart.subtotal) %>
-    <br>
     <%= button_to "Checkout With Shopify/Stripe", {}, disabled: true %>
   </div>
 </div>

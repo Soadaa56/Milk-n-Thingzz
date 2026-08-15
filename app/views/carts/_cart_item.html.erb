@@ -1,18 +1,22 @@
-<div class="cart_item">
-  <%= image_tag ci.variant.images.first.image_url(:small) %>
+<%# Need logic to handle if craft has variants %>
 
-  <%= link_to ci.variant.craft.name, craft_path(ci.variant.craft.slug) %>
+<div class="cart_item">
+  <%= image_tag cart_item.variant.images.first.image_url(:small) %>
+
+  <%= link_to cart_item.variant.craft.name,
+        craft_path(cart_item.variant.craft.slug),
+        data: { turbo_frame: "_top" } %>
   :
-  <%= ci.quantity %> @ <%= number_to_currency(ci.variant.effective_price)%>
+  <%= cart_item.quantity %> @ <%= number_to_currency(cart_item.variant.effective_price)%>
 
   <%= button_to "Remove Item", 
-        cart_cart_item_path(ci),
+        cart_cart_item_path(cart_item),
         method: :delete,
         class: "btn btn-sm btn-danger" %>
 
-  <% if ci.quantity > 1 %>
+  <% if cart_item.quantity > 1 %>
     <div>
-      <%= number_to_currency(ci.item_subtotal) %>
+      <%= number_to_currency(cart_item.item_subtotal) %>
     </div>
   <% end %>
 </div>

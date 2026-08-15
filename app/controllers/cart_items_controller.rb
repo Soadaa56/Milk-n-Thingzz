@@ -17,12 +17,20 @@ class CartItemsController < ApplicationController
   end
 
   def update
+    @cart_item = @cart.cart_items.find(params[:id])
+ 
+    if @cart_item.update(cart_item_params)
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to cart_path }
+      end
+    end
   end
 
   def destroy
     @cart_item = @cart.cart_items.find(params[:id])
-
     @cart_item.destroy!
+    @cart.reload
 
     respond_to do |format|
       format.turbo_stream
