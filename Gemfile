@@ -37,7 +37,7 @@ gem 'shrine', '~> 3.5'
 # Custom 
 gem "jsbundling-rails"
 gem 'pg', '~> 1.2'
-gem 'aws'
+gem 'aws-sdk-rails', '~> 5'
 gem 'acts_as_list'
 gem 'requestjs-rails'
 gem "rack-attack", "~> 6.8"
