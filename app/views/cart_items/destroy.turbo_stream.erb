@@ -3,3 +3,7 @@
 <%= turbo_stream.update "cart-subtotal" do %>
   <%= render "carts/subtotal", cart: @cart %>
 <% end %>
+
+<%= turbo_stream.update "cart-count" do %>
+  <%= render "carts/cart_count", cart: @cart %>
+<% end %>

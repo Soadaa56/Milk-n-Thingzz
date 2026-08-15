@@ -1,11 +1,10 @@
 <h1>Your Cart</h1>
 
 <div class="center fs-1">
-  <div id="cart-item-count">
-    Total Cart Items: <%= @cart.item_count %>
+  <div id="cart-count">
+    <%= render "cart_count", cart: @cart %>
   </div>
 
-  <%# Need logic to handle if craft has variants  %>
   <div class="cart-container">
     <% @cart_items.each do |cart_item| %>
       <%= turbo_frame_tag dom_id(cart_item) do %>

@@ -1,7 +1,11 @@
 <%= turbo_stream.update dom_id(@cart_item) do %>
-  <%= render "cart_item", cart_item: @cart_item %>
+  <%= render "carts/cart_item", cart_item: @cart_item %>
 <% end %>
 
 <%= turbo_stream.update "cart-subtotal" do %>
-  <%= render "subtotal", cart: @cart %>
+  <%= render "carts/subtotal", cart: @cart %>
+<% end %>
+
+<%= turbo_stream.update "cart-count" do %>
+  <%= render "carts/cart_count", cart: @cart %>
 <% end %>
