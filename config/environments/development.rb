@@ -84,14 +84,13 @@ Rails.application.configure do
 # Might not need below code
   # If your app is using the Sprockets gem, ensure it sets `config.assets.manifest`.
   # See https://github.com/basecamp/kamal/issues/626 for details
-  config.assets.manifest = Rails.root.join('config', 'manifest.json')
+  # config.assets.manifest = Rails.root.join('config', 'manifest.json')
 
   # custom
-  config.assets.debug = true
-  config.assets.compile = true
-  config.assets.digest = false
+  # config.assets.debug = true
+  # config.assets.compile = true
+  # config.assets.digest = false
   # config.assets.check_precompiled_asset = false
-
 
   # ==> Custom Mailer settings with AWS SES using STMP
   config.action_mailer.perform_deliveries = true

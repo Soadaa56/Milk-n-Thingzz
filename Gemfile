@@ -3,8 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.4.7"
 gem 'rails', '~> 8.1'
-gem 'bootstrap', '~> 5.3.1'
 gem 'puma', '~> 6.4'
+gem "propshaft"
 gem "turbo-rails"
 gem "stimulus-rails"
 gem "cssbundling-rails"
@@ -20,7 +20,7 @@ end
 group :development do
   gem "web-console"
   gem 'bullet'
-  gem "sqlite3", "~> 1.4"
+  gem "sqlite3", ">= 2.1"
 end
 
 group :test do
