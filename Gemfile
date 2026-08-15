@@ -2,19 +2,19 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.4.7"
-gem 'rails', '~> 7.1'
+gem 'rails', '~> 8.1'
 gem 'bootstrap', '~> 5.3.1'
 gem 'puma', '~> 6.4'
 gem "turbo-rails"
 gem "stimulus-rails"
 gem "cssbundling-rails"
-gem "sassc-rails"
+gem "dartsass-rails"
 gem "jbuilder"
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 
 group :development, :test do
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "debug", platforms: %i[ mri windows ]
 end
 
 group :development do
@@ -36,8 +36,6 @@ gem 'shrine', '~> 3.5'
 
 # Custom 
 gem "jsbundling-rails"
-gem 'yaml', '~> 0.2.1'
-gem 'psych', '~> 5.1'
 gem 'pg', '~> 1.2'
 gem 'aws'
 gem 'acts_as_list'
