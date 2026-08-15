@@ -9,6 +9,20 @@
   :
   <%= cart_item.quantity %> @ <%= number_to_currency(cart_item.variant.effective_price)%>
 
+  <%= button_to cart_cart_item_path(cart_item),
+      method: :patch,
+      params: { cart_item: { quantity: cart_item.quantity - 1 } } do %>
+    <%= image_tag "svg/minus-circle.svg",
+        style: "max-width: 24px;" %>
+  <% end %>
+
+  <%= button_to cart_cart_item_path(cart_item),
+      method: :patch,
+      params: { cart_item: { quantity: cart_item.quantity + 1 } } do %>
+    <%= image_tag "svg/plus-circle.svg",
+        style: "max-width: 24px;" %>
+  <% end %>
+
   <%= button_to "Remove Item", 
         cart_cart_item_path(cart_item),
         method: :delete,
