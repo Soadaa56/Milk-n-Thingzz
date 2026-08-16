@@ -7,8 +7,8 @@ import { application } from "./application"
 import CarouselController from "./carousel_controller"
 application.register("carousel", CarouselController)
 
-import CommentController from "./comment_controller"
-application.register("comment", CommentController)
+import CartQuantityController from "./cart_quantity_controller"
+application.register("cart-quantity", CartQuantityController)
 
 import GalleryController from "./gallery_controller"
 application.register("gallery", GalleryController)
