@@ -3,9 +3,16 @@
 <div class="cart_item">
   <%= image_tag cart_item.variant.images.first.image_url(:small) %>
 
-  <%= link_to cart_item.variant.craft.name,
+  <% if cart_item.variant.craft.has_variants? %>
+    <%= link_to cart_item.variant.craft.name,
         craft_path(cart_item.variant.craft.slug),
         data: { turbo_frame: "_top" } %>
+    : <%= cart_item.variant.name %>
+  <% else %>
+    <%= link_to cart_item.variant.craft.name,
+          craft_path(cart_item.variant.craft.slug),
+          data: { turbo_frame: "_top" } %>
+  <% end %>
 
   <div
     data-controller="cart-quantity"
@@ -25,7 +32,7 @@
     <% end %>
 
     <%= cart_item.quantity %> @ <%= number_to_currency(cart_item.variant.effective_price)%>
-    
+
     <%= button_to cart_cart_item_path(cart_item),
         method: :patch,
         params: { cart_item: { quantity: cart_item.quantity + 1 } },
