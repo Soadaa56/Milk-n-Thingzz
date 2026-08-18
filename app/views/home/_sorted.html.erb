@@ -2,7 +2,10 @@
   <% @crafts.each do |craft| %>
     <% if craft.images.present? %>
       <div class='sorted-image-container'>
-        <%= link_to image_tag(craft.images.first.image_url(:card) || craft.images.first.image_url, class: 'sorted-img'), craft_path(craft.slug) %>
+        <%= link_to craft_path(craft.slug) do %>
+          <%= image_tag(craft.images.first.image_url(:card) || craft.images.first.image_url, class: 'sorted-img') %>
+          <span><%= craft.name %></span>
+        <% end %>
       </div>
     <% else %>
     <% end %>
