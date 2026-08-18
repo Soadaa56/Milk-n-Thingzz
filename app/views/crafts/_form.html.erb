@@ -28,15 +28,26 @@
             <%=  f.select :subtype, [] %>
           </div>
         </div>
-      </div>
-      <div class="col">
         <div>
           <%= f.label :description, style: "display: block" %>
           <%= f.text_area :description, rows: 5, cols: 40 %>
         </div>
+      </div>
+      <div class="col">
+
+        <div>
+          <%= f.label :details, style: "display: block" %>
+          <%= f.text_area :details, rows: 5, cols: 40 %>
+        </div>
         <div>
           <%= f.label :default_dimensions, style: "display: block" %>
           <%= f.text_area :default_dimensions, rows: 5, cols: 40 %>
+          <p class="light-accent-color">
+            Might use details over dimensions (which could include the crafts dimensions as well).
+          </p>
+          <p class="light-accent-color">
+            Or keep both; use dimensions for back-end calculate shipping cost with size/weight.
+          </p>
         </div>
       </div>
     </div>

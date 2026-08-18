@@ -99,7 +99,7 @@ class CraftsController < ApplicationController
   def craft_params
     params.require(:craft).permit(
       :name, :description, :category, :subtype, :for_sale,
-      :default_price, :default_dimensions,
+      :details, :default_price, :default_dimensions,
       variants_attributes: [
         :id, :name, :sku, :price, :dimensions, :stock, :active, :_destroy,
         images_attributes: [:id, :variant_id, :image, :image_data, :_destroy]
