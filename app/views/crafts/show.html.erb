@@ -43,10 +43,21 @@
       </div>
     <% end %>
 
-      <div class="craft-details">
+    <% if @craft.details %>
+      <div class="center craft-details"
+           data-controller="craft-details">
         <span>Craft Details</span>
-        <%= image_tag("svg/right-thin-chevron.svg", class: "chevron")%>
+        <%= image_tag("svg/right-thin-chevron.svg", 
+                      class: "chevron",
+                      data: {
+                        action: "click->craft-details#toggleDetails"
+                      })%>
+        <div hidden
+             data-craft-details-target="details">
+          <%= @craft.details %>
+        </div>
       </div>
+    <% end %>
     
     <%= render "shared/back" %>
   </article>

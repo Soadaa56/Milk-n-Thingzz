@@ -10,6 +10,9 @@ application.register("carousel", CarouselController)
 import CartQuantityController from "./cart_quantity_controller"
 application.register("cart-quantity", CartQuantityController)
 
+import CraftDetailsController from "./craft_details_controller"
+application.register("craft-details", CraftDetailsController)
+
 import GalleryController from "./gallery_controller"
 application.register("gallery", GalleryController)
 
