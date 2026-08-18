@@ -22,7 +22,7 @@ class HomeController < ApplicationController
 
   def earring
     @crafts = Craft.includes(:images).where(category: "Earring")
-    @subtypes = @crafts.pluck(:subtype).uniq
+    @subtypes = @crafts.where.not(subtype: [nil, ""]).pluck(:subtype).uniq
 
     @crafts = sort_crafts_by_subtype
     @selected_subtype = params[:sort_by] || 'All'
