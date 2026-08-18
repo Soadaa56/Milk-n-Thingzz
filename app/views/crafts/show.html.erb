@@ -42,6 +42,11 @@
         <%= render "craft_single_variant", cv: @craft.variants.first %>
       </div>
     <% end %>
+
+      <div class="craft-details">
+        <span>Craft Details</span>
+        <%= image_tag("svg/right-thin-chevron.svg", class: "chevron")%>
+      </div>
     
     <%= render "shared/back" %>
   </article>
