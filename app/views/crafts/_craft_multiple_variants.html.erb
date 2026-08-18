@@ -33,8 +33,11 @@
       </div>
       
       <div class="craft-variable">
+        <%# For sale and in stock %>
         <% if cv.craft.for_sale? && cv.in_stock? %>
           <%= render "for_sale", cv: cv %>
+
+        <%# For sale but out of stock %>
         <% elsif cv.for_sale? && cv.stock == 0 %>
           <p>
             Sorry, we are currently out of stock for this current item!. Hopefully
@@ -45,7 +48,7 @@
                       subject: "Milknthingzz #{cv.craft.name}- #{cv.name}: Out of Stock",
                       class: "btn light-accent-color" %>
 
-        <%# craft not for sale %>
+        <%# Not for sale %>
         <% else %>
           <p>
             Sorry, this isn't being sold right now! But if you're interested
