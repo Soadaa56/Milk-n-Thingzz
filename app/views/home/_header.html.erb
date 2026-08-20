@@ -9,7 +9,9 @@
     }) %>
   </div>
     <div id='banner'>
-      <%= link_to "Milk 'n' thingzz", root_path, class: "banner-title" %>
+      <%= link_to root_path do %>
+        <span class="banner-title">Milk 'N' <br class="mobile-break"> Thingzz</span>
+      <% end %>
     </div>
 
     <div class="profile-button-container">
