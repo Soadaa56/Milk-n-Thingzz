@@ -100,7 +100,7 @@
           <%= v.fields_for :images do |vi| %>
             <% next unless vi.object.image_url.present? %>
             <div class="craft-form-image-card sortable-item">
-              <%= image_tag vi.object.image_url, class: "tiny-image" %>
+              <%= image_tag vi.object.image_url(:small), class: "" %>
               <%= vi.hidden_field :id %>
               <%= vi.hidden_field :image_data %>
               <%= vi.check_box :_destroy %>
