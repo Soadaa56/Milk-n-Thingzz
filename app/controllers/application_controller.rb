@@ -3,7 +3,10 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_subtypes
 
+  # Needs cleanup
   def current_cart
+    return unless current_user
+
     if current_user
       current_user.cart || current_user.create_cart
     else
@@ -13,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def cart_item_count
-    @current_item_count || current_cart.item_count
+    @current_item_count ||= current_cart.item_count
   end
 
   protected

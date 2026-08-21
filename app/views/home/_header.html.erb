@@ -21,7 +21,9 @@
       <div class="btn-group profile-button shopping-cart-icon-container">
         <%= link_to cart_path do %>
           <span id="cart-svg-count">
-            <%= cart_item_count %>
+            <% if current_cart %>
+              <%= cart_item_count unless cart_item_count == 0 %>
+            <% end %>
           </span>
           <%= image_tag "svg/cart.svg", class: "me-5" %>
         <% end %>
