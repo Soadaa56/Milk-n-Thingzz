@@ -2,10 +2,10 @@
   <article>
     <header>
       <h1><%= @craft.name %></h1>
-      <h2>
+      <h2 class="craft-show-category">
         <%= link_to @craft.category,
               craft_category_path_helper(@craft),
-              class:"center nav-link underline hover-light-accent-color fs-0" %>
+              class:"center nav-link" %>
       </h2>
       
       <% if @craft.subtype.present? %>
