@@ -78,8 +78,8 @@
     </div>
 
     <div class="mt-5 mb-5">
-      <label for='files'>Upload New Images:</label>
-      <%= file_field_tag 'files[]', multiple: true %>
+      <%= file_field_tag "files[]", id: "files", multiple: true %>
+      <%= label_tag "files", "Upload New Images" %>
       <p>To delete images, check the box next to the image then update craft.</p>
     </div>
 
