@@ -22,14 +22,17 @@
   <body>
     <%= render "home/header" %>
     <%= render "home/popup" %>
+    
     <div class="grid-container-nav-main">
       <%= render "home/nav" %>
+      
       <div id="main-content">
-        <% if alert || notice%>
+        <% if alert || notice %>
           <%= render "layouts/alerts" %>
         <% end %>
         <%= yield %>
       </div>
+      
     </div>
   </body>
 </html>
