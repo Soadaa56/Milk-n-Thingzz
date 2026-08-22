@@ -20,11 +20,11 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true, type: "module" %>
   </head>
   <body>
-    <%= render "home/header" %>
+    <%= render "shared/header" %>
     <%= render "home/popup" %>
     
     <div class="grid-container-nav-main">
-      <%= render "home/nav" %>
+      <%= render "shared/nav" %>
       <%= render "home/sidebar" %>
       
       <div id="main-content">
