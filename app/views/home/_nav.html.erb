@@ -1,19 +1,15 @@
-<nav id="sidebar" class="nav navbar-nav">
-  <%= link_to "Home", root_path, class:"nav-link" %>
-  <%= link_to "Crochet", home_crochet_path, class:"nav-link" %>
-  <%= link_to "Earrings", home_earring_path, class:"nav-link" %>
-  <%= link_to "Embroidery", home_embroidery_path, class:"nav-link" %>
-  <%= link_to "Necklaces", home_necklace_path, class: "nav-link" %>
-  <%#= link_to "Painting", home_painting_path, class:"nav-link" %>
-  <%= link_to "3-D Prints", home_print_path, class:"nav-link" %>
-  <%= link_to "Misc.", home_miscellaneous_path, class:"nav-link" %>
-  <%= link_to "Socials", home_social_path, class:"nav-link" %>
-  
-  <% if current_user&.admin? %>
-    <div class="navbar-admin">
-      <%= link_to "Admin Dashboard", admin_index_path, class:"nav-link" %>
-      <%= link_to "New Craft", new_craft_path, class:"nav-link" %>
-      <%= link_to "All Crafts", crafts_path, class:"nav-link" %>
-    </div>
-  <% end %>
+<nav>
+  <ul>
+    <li><%= link_to "Home", root_path, class:"nav-item" %></li>
+    <li><%= link_to "Crochet", home_crochet_path, class:"nav-item" %></li>
+    <li><%= link_to "Earrings", home_earring_path, class:"nav-item" %></li>
+    <li><%= link_to "Embroidery", home_embroidery_path, class:"nav-item" %></li>
+    <li><%= link_to "Necklaces", home_necklace_path, class: "nav-item" %></li>
+    <li><%= link_to "3-D Prints", home_print_path, class:"nav-item" %></li>
+    <%# Perhaps conditional for misc path if misc crafts active %>
+    <%# and/or show number of crafts in each ctaegory? %>
+    <li><%= link_to "Misc.", home_miscellaneous_path, class:"nav-item" %></li>
+
+    <li><%= link_to "Socials", home_social_path, class:"nav-item" %></li>
+  </ul>
 </nav>
