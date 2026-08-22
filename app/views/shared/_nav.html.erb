@@ -1,6 +1,13 @@
 <nav>
+  <%= image_tag("close.svg", 
+        alt: "Close icon",
+        class: "close-svg",
+        data: {
+        controller: "nav",
+        action: "click->nav#closeNav"
+        }) 
+  %>
   <ul>
-    <li><%= link_to "Home", root_path, class:"nav-item" %></li>
     <li><%= link_to "Crochet", home_crochet_path, class:"nav-item" %></li>
     <li><%= link_to "Earrings", home_earring_path, class:"nav-item" %></li>
     <li><%= link_to "Embroidery", home_embroidery_path, class:"nav-item" %></li>

@@ -19,6 +19,9 @@ application.register("gallery", GalleryController)
 import MenuController from "./menu_controller"
 application.register("menu", MenuController)
 
+import NavController from "./nav_controller"
+application.register("nav", NavController)
+
 import SortableController from "./sortable_controller"
 application.register("sortable", SortableController)
 
