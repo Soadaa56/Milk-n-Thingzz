@@ -374,6 +374,11 @@ nav a {
         font-size: 2.5rem;
       }
     }
+
+    .navbar-admin {
+      margin-top: 1rem;
+      border-top: 4px solid black;
+    }
   }
 }
 
@@ -613,6 +618,7 @@ nav a {
 
 // #region CART
 
+
 .cart-quantity-button {
   border: 0;
   background: none;
@@ -621,3 +627,5 @@ nav a {
 }
 
 // #endregion
+
+// EOL
