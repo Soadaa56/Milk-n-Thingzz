@@ -1,23 +1,24 @@
-<h1>Your Cart</h1>
-
-<div class="center fs-1">
-  <div id="cart-count">
-    <%= render "cart_count", cart: @cart %>
-  </div>
-
-  <div class="cart-container">
-    <% @cart_items.each do |cart_item| %>
-      <%= turbo_frame_tag dom_id(cart_item) do %>
-        <%= render "cart_item", cart_item: cart_item %>
+<main class="cart">
+  <h1>Your Cart</h1>
+  
+  <div class="center">
+    <div class="cart-container">
+      <% @cart_items.each do |cart_item| %>
+        <%= turbo_frame_tag dom_id(cart_item) do %>
+          <%= render "cart_item", cart_item: cart_item %>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
 
-  <br><br><br>
-  <div id="cart-subtotal">
-    <%= render "subtotal", cart: @cart %>
+    <div class="cart-checkout">
+      <div class="cart-subtotal">
+        <p>Subtotal</p>
+        <p><%= render "subtotal", cart: @cart %></p>
+      </div>
+      <%= button_to "Shopify Checkout",
+                    {},
+                    disabled: true,
+                    class: "cart-checkout-button" %>
+    </div>
   </div>
-  <div>
-    <%= button_to "Checkout With Shopify/Stripe", {}, disabled: true %>
-  </div>
-</div>
+</main>
