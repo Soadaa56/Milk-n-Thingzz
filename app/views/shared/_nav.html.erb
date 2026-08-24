@@ -17,6 +17,16 @@
     <%# and/or show number of crafts in each ctaegory? %>
     <li><%= link_to "Misc.", home_miscellaneous_path, class:"nav-item" %></li>
 
-    <li><%= link_to "Socials", home_social_path, class:"nav-item" %></li>
+    <li class="social-links">
+      <%= link_to image_tag('social/etsy-logo.svg', class: 'social-link-img'), 
+                            'https://milknthingz.etsy.com/',
+                            target: :_blank %>
+      <%= link_to image_tag('social/youtube-logo.svg', class: 'social-link-img'), 
+                            'https://www.youtube.com/@chaicuterie',
+                            target: :_blank %>
+      <%= link_to image_tag('social/instagram-logo.svg', class: 'social-link-img'), 
+                            'https://www.instagram.com/milknthingzz?igsh=c3M1NXRwbnV2N3J3&utm_source=qr',
+                            target: :_blank %>
+    </li>
   </ul>
 </nav>

@@ -320,6 +320,19 @@ nav {
     top: 0;
     left: 0;
   }
+
+  .social-links {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+
+    .social-link-img {
+      width: 80%;
+    }
+  }
 }
 
 nav ul {
@@ -332,6 +345,10 @@ nav ul {
   justify-content: space-evenly;
   align-items: center;
   background-color: var(--shade-light-color);
+
+  &:hover {
+    background-color: var(--shade-light-color);
+  }
 }
 
 nav li:hover {
@@ -350,6 +367,18 @@ nav a {
 .nav-is-open {
   nav {
     transform: translateX(0);
+  }
+  
+  &::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    // nav is 100; set 1 below
+    z-index: 99;
   }
 }
 
