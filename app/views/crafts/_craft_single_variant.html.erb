@@ -1,5 +1,5 @@
-<%# :for sale | :in_stock | :active  %>
-<h1 class="debug m-2 p-2">Single Craft Debug</h1>
+<%# Needs accesbility editing %>
+<h1 class="debug desktop">Single Craft Debug</h1>
 
 <div class="row">
   <div class="col">
@@ -34,8 +34,8 @@
       <% elsif cv.craft.for_sale? && cv.stock == 0 %>
         <div>
             <p>
-              Sorry! I'm out of stock for the current item. Hopefully it will come back in stock soon
-              but feel free to email me for inquiries.
+              Sorry! I'm out of stock for the current item. Hopefully it 
+              will come back in stock soon but feel free to email me for inquiries.
             </p>
             <%= mail_to "soadaablog@gmail.com", 
                       "Contact Me", 
@@ -50,8 +50,8 @@
       <% else %>
         <div>
           <p>
-            Sorry, This craft isn't being sold right now! but if you're interested I would love to
-            make you a custom order.
+            Sorry, This craft isn't being sold right now! but if you're 
+            interested I would love to make you a custom order.
           </p>
           <%= mail_to "soadaablog@gmail.com", 
                       "Contact Me", 
