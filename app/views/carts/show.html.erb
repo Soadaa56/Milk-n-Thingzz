@@ -11,9 +11,8 @@
     </div>
 
     <div class="cart-checkout">
-      <div class="cart-subtotal">
-        <p>Subtotal</p>
-        <p><%= render "subtotal", cart: @cart %></p>
+      <div id="cart-subtotal" class="cart-subtotal">
+        <%= render "subtotal", cart: @cart %>
       </div>
       <%= button_to "Shopify Checkout",
                     {},
