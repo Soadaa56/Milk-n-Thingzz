@@ -9,5 +9,5 @@
 <% end %>
 
 <%= turbo_stream.update "cart-svg-count" do %>
-  <%= cart_item_count %>
+  <%= cart_item_count unless cart_item_count == 0 %>
 <% end %>
