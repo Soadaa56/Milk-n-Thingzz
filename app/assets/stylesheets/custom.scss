@@ -144,11 +144,12 @@ h3 {
 
 h1 {
   margin-top: 0.5rem;
+  text-transform: capitalize;
 }
 
 main {
   margin: 0 1rem;
-  
+
   .prose {
     margin: 0 1rem;
   }
@@ -164,8 +165,17 @@ main {
   color: var(--shade-light-color);
 }
 
-@media (min-width: 601px) {
+.btn-back {
+  margin-top: 5rem;
+}
 
+@media (max-width: 600px) {
+  .desktop {
+    display: none !important;
+  }
+}
+
+@media (min-width: 601px) {
   nav {
     display: none;
   }
