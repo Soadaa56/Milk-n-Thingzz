@@ -8,10 +8,16 @@ export default class extends Controller {
     itemMaxQuantity: Number
   }
 
-  initialize() {}
   connect() {
-    console.log("Current:", this.itemQuantityValue)
-    console.log("Max:", this.itemMaxQuantityValue)
+    if (this.itemQuantityValue >= this.itemMaxQuantityValue) {
+      this.plusTarget.disabled = true
+      this.plusTarget.classList.add("disabled")
+    }
+    
+    if (this.itemQuantityValue <= 1) {
+      this.minusTarget.disabled = true
+      this.minusTarget.classList.add("disabled")
+    }
   }
 
   increment() {
