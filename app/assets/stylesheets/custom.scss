@@ -674,11 +674,13 @@ nav a {
 // #region CART
 
 main.cart {
-  h1 {
+  h2 {
+    font-size: 2rem;
     color: var(--temp-h2-color);
     text-decoration: none;
     text-align: start;
-    margin-bottom: 1rem;
+    margin: 1rem 0.5rem;
+    margin-bottom: 2rem;
   }
 }
 
