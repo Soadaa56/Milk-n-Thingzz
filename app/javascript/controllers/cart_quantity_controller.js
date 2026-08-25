@@ -17,12 +17,14 @@ export default class extends Controller {
   increment() {
     if (this.itemQuantityValue >= this.itemMaxQuantityValue) {
       this.plusTarget.disabled = true
+      this.plusTarget.classList.add("disabled")
     }
   }
 
   decrement() {
     if (this.itemQuantityValue <= 1) {
       this.minusTarget.disabled = true
+      this.minusTarget.classList.add("disabled")
     }
   }
 }
