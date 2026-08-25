@@ -150,6 +150,7 @@ main {
   .prose {
     margin: 0 1rem;
   }
+
   .prose p {
     margin: 0 2rem;
     font-size: 1.25rem;
@@ -261,10 +262,6 @@ main {
   right: 0;
 }
 
-.profile-button-container {
-  position: relative;
-}
-
 .profile-svg {
   /* White; erb image_tag doesnt like fill */
   filter: invert(100%);
@@ -275,12 +272,35 @@ main {
   }
 }
 
-.profile-button {
+.shopping-cart-svg-container {
   z-index: 2;
   position: absolute;
   bottom: 0;
   right: 0;
-  color: var(--shade-dark-color);
+  margin-inline-end: 1.1rem;
+
+  a {
+    position: relative;
+    display: inline-block;
+  }
+
+  .shopping-cart-svg {
+    display: block;
+
+    &:hover {
+      filter: invert(50%);
+      transition: 0.3s ease-out;
+    }
+  }
+
+  .cart-svg-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-inline-end: -0.85rem;
+    margin-top: 0.25rem;
+    color: var(--shade-light-color);
+  }
 }
 
 .btn-profile {
@@ -750,7 +770,7 @@ main.cart {
   border-top: 1px solid var(--shade-dark-color);
   box-shadow: 0 1px 4px 2px var(--shade-dark-color);
 
-  &> * {
+  &>* {
     margin-bottom: 0.35rem;
   }
 }
