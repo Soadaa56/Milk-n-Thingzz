@@ -4,7 +4,7 @@
       <div class='sorted-image-container'>
         <%= link_to craft_path(craft.slug) do %>
           <%= image_tag(craft.images.first.image_url(:card) || 
-              craft.images.first.image_url, class: 'sorted-img') %>
+                        craft.images.first.image_url, class: 'sorted-img') %>
         <% end %>
       </div>
     <% else %>
