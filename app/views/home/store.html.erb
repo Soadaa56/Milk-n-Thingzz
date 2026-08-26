@@ -1,0 +1,8 @@
+<main class="store">
+  <h1>Store stuff Here</h1>
+  <div class="craft-card-container">
+    <% @crafts.each do |craft| %>
+      <%= render 'craft_card', craft: craft %>
+    <% end %>
+  </div>
+</main>

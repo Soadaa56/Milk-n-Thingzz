@@ -4,6 +4,12 @@ class HomeController < ApplicationController
     @crafts = Craft.all
   end
 
+  def store
+    @crafts = Craft.includes(:images).all
+
+    @crafts = @crafts.where(category: params[:category]) if params[:category].present?
+  end
+
   def crochet
     @crafts = Craft.includes(:images).where(category: "Crochet")
   end
