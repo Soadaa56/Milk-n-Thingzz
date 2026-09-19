@@ -289,7 +289,7 @@ main {
   position: absolute;
   bottom: 0;
   right: 0;
-  margin-inline-end: 1.1rem;
+  margin-inline-end: 1.25rem;
 
   a {
     position: relative;
@@ -309,7 +309,7 @@ main {
     position: absolute;
     top: 0;
     right: 0;
-    margin-inline-end: -0.85rem;
+    margin-inline-end: -0.82rem;
     margin-top: 0.25rem;
     color: var(--shade-light-color);
   }
@@ -807,5 +807,10 @@ main.cart {
 }
 
 // #endregion
+
+// #region STORE
+
+// #endregion
+
 
 // EOL
