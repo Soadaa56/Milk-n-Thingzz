@@ -809,6 +809,12 @@ main.cart {
 // #endregion
 
 // #region STORE
+.filter-trigger-wrapper {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
 
 // #endregion
 
