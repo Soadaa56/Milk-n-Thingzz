@@ -7,15 +7,28 @@
         action: "click->nav#closeNav"
         }) 
   %>
-  <ul>
-    <li><%= link_to "Crochet", home_crochet_path, class:"nav-item" %></li>
-    <li><%= link_to "Earrings", home_earring_path, class:"nav-item" %></li>
-    <li><%= link_to "Embroidery", home_embroidery_path, class:"nav-item" %></li>
-    <li><%= link_to "Necklaces", home_necklace_path, class: "nav-item" %></li>
-    <li><%= link_to "3-D Prints", home_print_path, class:"nav-item" %></li>
+
+  <ul data-controller="nav">
+    <li><%= link_to "Crochet", home_store_path(category: "Crochet"), class:"nav-item",
+              data: { turbo_frame: "crafts-list",
+                      action: "click->nav#closeNav" } %></li>
+    <li><%= link_to "Earrings", home_store_path(category: "Earrings"), class:"nav-item",
+              data: { turbo_frame: "crafts-list",
+                      action: "click->nav#closeNav" } %></li>
+    <li><%= link_to "Embroidery", home_store_path(category: "Embroidery"), class:"nav-item",
+              data: { turbo_frame: "crafts-list",
+                      action: "click->nav#closeNav" } %></li>
+    <li><%= link_to "Necklaces", home_store_path(category: "Necklaces"), class: "nav-item",
+              data: { turbo_frame: "crafts-list",
+                      action: "click->nav#closeNav" } %></li>
+    <li><%= link_to "3-D Prints", home_store_path(category: "3D-Print"), class:"nav-item",
+              data: { turbo_frame: "crafts-list",
+                      action: "click->nav#closeNav" } %></li>
     <%# Perhaps conditional for misc path if misc crafts active %>
     <%# and/or show number of crafts in each ctaegory? %>
-    <li><%= link_to "Misc.", home_miscellaneous_path, class:"nav-item" %></li>
+    <li><%= link_to "Miscellaneous", home_store_path(category: "Miscellaneous"), class:"nav-item",
+              data: { turbo_frame: "crafts-list",
+                      action: "click->nav#closeNav" } %></li>
 
     <li class="social-links">
       <%= link_to image_tag('social/etsy-logo.svg', class: 'social-link-img'), 
