@@ -812,6 +812,7 @@ main.cart {
 main.store {
   margin: 1rem 0.5rem;
 }
+
 .craft-card-container {
   // for debugging
   display: flex;
@@ -908,6 +909,12 @@ main.store {
   .grid-submit {
     grid-column: 1 / span 3;
     grid-row: 4 / span 1;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  main.store {
+    display: none;
   }
 }
 
