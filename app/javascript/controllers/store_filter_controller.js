@@ -14,7 +14,11 @@ export default class extends Controller {
     this.filterBarTarget.classList.remove("active")
   }
 
+  change() {
+    console.log("change triggered")
+  }
+
   submit() {
-    console.log(this.craftsTarget)
+    this.close()
   }
 }

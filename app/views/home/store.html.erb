@@ -33,9 +33,8 @@
       <div class="grid-category">
         <%= f.label :category, "Category" %>
         <%= f.select :category,
-          @categories.map { |category| [category, category] },
-          include_blank: "All",
-          data: { action: "change->store-filter#submit" } %>
+            @categories.map { |category| [category, category] },
+            include_blank: "All" %>
       </div>
       <div class="grid-checkboxes">
         <%= f.check_box :for_sale %>
@@ -44,7 +43,8 @@
         <%= f.label :in_stock, "In Stock" %>
       </div>
       <div class="grid-submit">
-        <%= f.submit "Search", class: "btn btn-light form-submit" %>
+        <%= f.submit "Search", class: "btn btn-light form-submit",
+            data: { action: "click->store-filter#submit" } %>
       </div>
     <% end %>
 
