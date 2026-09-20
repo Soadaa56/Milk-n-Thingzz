@@ -28,7 +28,7 @@
   <div class="filter-bar active"
     data-store-filter-target="filterBar">
 
-    <%= form_with url: home_path, method: :get, 
+    <%= form_with url: home_store_path, method: :get, 
         data: { turbo_frame: "crafts-list" } do |f| %>
       <div class="grid-category">
         <%= f.label :category, "Category" %>

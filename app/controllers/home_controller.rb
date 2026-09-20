@@ -6,8 +6,14 @@ class HomeController < ApplicationController
 
   def store
     @crafts = Craft.includes(:images)
-    # @crafts = @crafts.where(category: params[:category]) if params[:category].present?
-    @categories = Craft.distinct.pluck(:category)
+    @categories = Craft.distinct.pluck(:category).sort
+
+    # filters
+    @crafts = @crafts.where(category: params[:category]) if params[:category].present?
+    @crafts = @crafts.where(for_sale: true) if params[:for_sale] == "1"
+    if params[:in_stock] == "1"
+      @crafts = @crafts.joins(:variants).merge(Variant.in_stock).distinct
+    end
   end
 
   def crochet

@@ -32,6 +32,8 @@ class Variant < ApplicationRecord
     craft.for_sale? && active?
   end
 
+  scope :in_stock, -> { where("variants.stock > 0") }
+
   private
 
   def craft_has_many_variants
