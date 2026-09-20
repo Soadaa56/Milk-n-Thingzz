@@ -25,6 +25,9 @@ application.register("nav", NavController)
 import SortableController from "./sortable_controller"
 application.register("sortable", SortableController)
 
+import StoreFilterController from "./store_filter_controller"
+application.register("store-filter", StoreFilterController)
+
 import SubtypeController from "./subtype_controller"
 application.register("subtype", SubtypeController)
 

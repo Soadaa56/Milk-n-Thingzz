@@ -5,9 +5,9 @@ class HomeController < ApplicationController
   end
 
   def store
-    @crafts = Craft.includes(:images).all
-
-    @crafts = @crafts.where(category: params[:category]) if params[:category].present?
+    @crafts = Craft.includes(:images)
+    # @crafts = @crafts.where(category: params[:category]) if params[:category].present?
+    @categories = Craft.distinct.pluck(:category)
   end
 
   def crochet

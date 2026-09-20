@@ -1,8 +1,59 @@
-<main class="store">
-  <h1>Store stuff Here</h1>
-  <div class="craft-card-container">
-    <% @crafts.each do |craft| %>
-      <%= render 'craft_card', craft: craft %>
+<main class="store" data-controller="store-filter">
+
+  <%= turbo_frame_tag "crafts-list" do %>
+    <div class="craft-card-container"
+      data-store-filter-target="crafts">
+      <% @crafts.each do |craft| %>
+        <div class="craft-card">
+          <%= render 'craft_card', craft: craft %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="search-filter-wrapper">
+    <%= button_tag class: "btn btn-dark search-trigger",
+      data: { 
+        action: "click->store-filter#open"
+      } do %>
+      <i class="bi bi-search"></i>
     <% end %>
+  </div>
+
+  <div class="filter-overlay"
+    data-store-filter-target="overlay"
+    data-action="click->store-filter#close"
+  ></div>
+
+  <div class="filter-bar active"
+    data-store-filter-target="filterBar">
+
+    <%= form_with url: home_path, method: :get, 
+        data: { turbo_frame: "crafts-list" } do |f| %>
+      <div class="grid-category">
+        <%= f.label :category, "Category" %>
+        <%= f.select :category,
+          @categories.map { |category| [category, category] },
+          include_blank: "All",
+          data: { action: "change->store-filter#submit" } %>
+      </div>
+      <div class="grid-checkboxes">
+        <%= f.check_box :for_sale %>
+        <%= f.label :for_sale, "For Sale" %>
+        <%= f.check_box :in_stock %>
+        <%= f.label :in_stock, "In Stock" %>
+      </div>
+      <div class="grid-submit">
+        <%= f.submit "Search", class: "btn btn-light form-submit" %>
+      </div>
+    <% end %>
+
+    <%= image_tag("close.svg", 
+      alt: "Close icon",
+      class: "close-svg",
+      data: {
+      action: "click->store-filter#close"
+      }) 
+    %>
   </div>
 </main>

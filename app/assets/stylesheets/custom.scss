@@ -809,11 +809,106 @@ main.cart {
 // #endregion
 
 // #region STORE
-.filter-trigger-wrapper {
+main.store {
+  margin: 1rem 0.5rem;
+}
+.craft-card-container {
+  // for debugging
+  display: flex;
+  max-width: 1000px;
+}
+
+.search-filter-wrapper {
   position: fixed;
   bottom: 1rem;
   right: 1rem;
   z-index: 10;
+}
+
+.search-trigger {
+  border-radius: 50%;
+  width: 3.5rem;
+  height: 3.5rem;
+  font-size: 1.5rem;
+}
+
+.filter-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 11;
+}
+
+.filter-overlay.active {
+  display: block;
+}
+
+.filter-bar {
+  // display: none;
+  position: fixed;
+  background-color: var(--shade-dark-color);
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  padding: 1.5rem;
+  box-shadow: -2px -2px 10px rgba(0, 0, 0, 0.3);
+  z-index: 12;
+
+  .close-svg {
+    position: absolute;
+    top: 0.3rem;
+    right: 0.3rem;
+    width: 2rem;
+    height: 2rem;
+
+    &:hover {
+      filter: brightness(120%);
+      transition: 0.3s ease-out;
+    }
+  }
+
+  .form-submit {
+    display: block;
+    margin-top: 1rem;
+    width: 100%;
+    background-color: var(--shade-light-color);
+    color: var(--shade-dark-color);
+    border: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--light-accent-color);
+      transition: 0.3s ease-out;
+    }
+  }
+}
+
+.filter-bar.active {
+  // might switch to template-areas
+  form {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(4, auto);
+  }
+
+  .grid-category {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 3;
+  }
+
+  .grid-checkboxes {
+    grid-column: 3 / span 1;
+    grid-row: 1 / span 3;
+  }
+
+  .grid-submit {
+    grid-column: 1 / span 3;
+    grid-row: 4 / span 1;
+  }
 }
 
 // #endregion
