@@ -846,7 +846,7 @@ main.store {
 }
 
 .filter-bar {
-  // display: none;
+  display: none;
   position: fixed;
   background-color: var(--shade-dark-color);
   bottom: 0;
@@ -888,7 +888,8 @@ main.store {
 }
 
 .filter-bar.active {
-  // might switch to template-areas
+  display: block;
+  
   form {
     display: grid;
     gap: 1rem;
