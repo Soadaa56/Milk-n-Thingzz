@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'home#index'
   get 'home', to: 'home#index'
 
@@ -22,6 +23,8 @@ Rails.application.routes.draw do
   get 'home/social'
   get 'home/contact'
   get 'home/credit'
+
+  get 'checkout', to: 'checkout#show'
 
   match '/' => 'errors#not_found', via: :all
 

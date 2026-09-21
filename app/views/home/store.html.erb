@@ -1,7 +1,5 @@
 <main class="store" data-controller="store-filter">
 
-  <%# WiP: each approach has a problem %>
-
   <%# Doesnt center text on else case %>
   <%= turbo_frame_tag "crafts-list" do %>
     <div class="craft-card-container"
@@ -16,22 +14,6 @@
         <div>No crafts found!</div>
       <% end %>
     </div>
-  <% end %>
-
-  <%# turbo-frame missing content on certain requests  %>
-  <% if @crafts.any? %>
-    <%= turbo_frame_tag "crafts-list" do %>
-      <div class="craft-card-container"
-        data-store-filter-target="crafts">
-        <% @crafts.each do |craft| %>
-          <div class="craft-card">
-            <%= render 'craft_card', craft: craft %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  <% else %>
-    <p class="center">No crafts found!</p>
   <% end %>
 
   <div class="search-filter-wrapper">
