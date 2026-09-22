@@ -11,13 +11,13 @@
     <li><%= link_to "Crochet", home_store_path(category: "Crochet"), class:"nav-item",
               data: { turbo_frame: "crafts-list",
                       action: "click->nav#closeNav" } %></li>
-    <li><%= link_to "Earrings", home_store_path(category: "Earrings"), class:"nav-item",
+    <li><%= link_to "Earrings", home_store_path(category: "Earring"), class:"nav-item",
               data: { turbo_frame: "crafts-list",
                       action: "click->nav#closeNav" } %></li>
     <li><%= link_to "Embroidery", home_store_path(category: "Embroidery"), class:"nav-item",
               data: { turbo_frame: "crafts-list",
                       action: "click->nav#closeNav" } %></li>
-    <li><%= link_to "Necklaces", home_store_path(category: "Necklaces"), class: "nav-item",
+    <li><%= link_to "Necklaces", home_store_path(category: "Necklace"), class: "nav-item",
               data: { turbo_frame: "crafts-list",
                       action: "click->nav#closeNav" } %></li>
     <li><%= link_to "3-D Prints", home_store_path(category: "3D-Print"), class:"nav-item",
@@ -42,3 +42,8 @@
     </li>
   </ul>
 </nav>
+
+<div class="filter-overlay"
+  data-nav-filter-target="overlay"
+  data-action="click->nav#close">
+</div>
