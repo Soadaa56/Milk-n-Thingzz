@@ -44,6 +44,10 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:create, :update, :destroy]
   end
 
+  scope "pay/webhooks" do
+    post ':provider', to: 'webhooks#receive', as: :webhook_endpoint
+  end
+
   # Health check routes for kamal
   get '/up', to: 'health#up'
   get '/health', to: 'health#up', as: :rails_health_check

@@ -54,3 +54,6 @@ setup.sh
 # Ignore text files
 ideas.txt
 troubleshoot.txt
+# Ignore key files for decrypting credentials and more.
+/config/credentials/*.key
+
