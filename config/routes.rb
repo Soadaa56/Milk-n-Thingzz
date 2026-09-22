@@ -13,20 +13,19 @@ Rails.application.routes.draw do
 
   get 'home/store'
   get 'home/about'
-  get 'home/print'
-  get 'home/crochet'
-  get 'home/embroidery'
-  get 'home/earring'
-  get 'home/necklace'
-  get 'home/painting'
-  get 'home/miscellaneous'
   get 'home/social'
   get 'home/contact'
   get 'home/credit'
+  # craft categories sorted - alphabetized
+  get 'home/crochet'
+  get 'home/earring'
+  get 'home/embroidery'
+  get 'home/miscellaneous'
+  get 'home/necklace'
+  get 'home/painting'
+  get 'home/print'
 
   get 'checkout', to: 'checkout#show'
-
-  match '/' => 'errors#not_found', via: :all
 
   resources :crafts, only: [:index, :show, :edit, :new, :create, :update, :destroy] do
     collection do
@@ -48,4 +47,6 @@ Rails.application.routes.draw do
   # Health check routes for kamal
   get '/up', to: 'health#up'
   get '/health', to: 'health#up', as: :rails_health_check
+
+  match '/' => 'errors#not_found', via: :all
 end
