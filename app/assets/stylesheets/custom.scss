@@ -1,5 +1,4 @@
 // #region BASELINE 
-
 :root {
   --main-bg-color: #A9AFD1;
   --dark-accent-color: #22181C;
@@ -40,7 +39,6 @@ h3 {
 }
 
 // #endregion
-
 
 // #region UTILITIES 
 .dark-accent-color {
@@ -139,9 +137,7 @@ h3 {
 
 // #endregion
 
-
 // #region SITEWIDE 
-
 h1 {
   margin-top: 0.5rem;
   text-transform: capitalize;
@@ -198,7 +194,6 @@ main {
 
 
 // #region BANNER 
-
 #banner {
   background-color: var(--dark-accent-color);
 
@@ -292,7 +287,6 @@ main {
 // #endregion
 
 // #region NAV
-
 #sidebar {
   display: none;
 }
@@ -420,7 +414,6 @@ nav a {
 // #endregion
 
 // #region ADMIN
-
 #admin-dashboard {
   color: var(--dark-accent-color);
   font-family: 'Courier New', Courier, monospace;
@@ -439,7 +432,6 @@ nav a {
 // #endregion
 
 // #region SOCIAL
-
 .social-wrapper2 {
   margin-top: 10rem;
 }
@@ -482,7 +474,6 @@ nav a {
 // #endregion
 
 // #region DEVISE
-
 .devise {
   font-size: 1.6rem;
   margin-top: 3rem;
@@ -516,7 +507,6 @@ nav a {
 // #endregion
 
 // #region About 
-
 .about-us-link-wrapper {
   text-align: center;
 }
@@ -567,7 +557,6 @@ nav a {
 // #endregion
 
 // #region SORTED 
-
 .sorted-img:hover {
   filter: brightness(105%);
   transition: 0.5s ease;
@@ -626,7 +615,6 @@ nav a {
 // #endregion
 
 // #region CRAFT_SHOW
-
 .craft-show-category {
   &:hover {
     color: var(--light-accent-color);
@@ -649,7 +637,6 @@ nav a {
 // #endregion
 
 // #region CART
-
 main.cart {
   margin: 0 0.25rem;
   h2 {
