@@ -362,21 +362,22 @@ nav a {
   padding: 1rem 2rem;
 }
 
+.nav-filter-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  // nav is 12; set 1 below
+  z-index: 11;
+}
+
 .nav-is-open {
   nav {
     transform: translateX(0);
   }
 
-  &::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    // nav is 100; set 1 below
-    z-index: 99;
+  .nav-filter-overlay {
+    display: block;
   }
 }
 
