@@ -41,3 +41,7 @@ gem 'aws-sdk-rails', '~> 5'
 gem 'acts_as_list'
 gem 'requestjs-rails'
 gem "rack-attack", "~> 6.8"
+
+# Pay-rails and checkout
+gem "pay", "~> 11.5"
+gem "stripe", "~> 19.0"
