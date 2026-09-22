@@ -1,14 +1,13 @@
-<nav>
+<nav data-controller="nav">
   <%= image_tag("close.svg", 
         alt: "Close icon",
         class: "close-svg",
         data: {
-        controller: "nav",
         action: "click->nav#closeNav"
         }) 
   %>
 
-  <ul data-controller="nav">
+  <ul>
     <li><%= link_to "Crochet", home_store_path(category: "Crochet"), class:"nav-item",
               data: { turbo_frame: "crafts-list",
                       action: "click->nav#closeNav" } %></li>
