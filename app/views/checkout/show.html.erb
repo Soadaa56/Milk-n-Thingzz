@@ -1,6 +1,11 @@
 <main class="checkout">
-  <%= form_with url: checkout_path, method: :post do |f| %>
+  <%= form_with url: checkout_path, id: "payment-form", method: :post do |f| %>
+    <%= f.label :email %>
 
+    <label>Credit or Debit Card</label>
+    <div id="card-element" class="field"></div>
+
+    <%= f.submit %>
   <% end %>
 </main>
 
