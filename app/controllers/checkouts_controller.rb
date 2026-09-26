@@ -1,11 +1,13 @@
 class CheckoutsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_cart
+
   def new
-    @cart = current_cart
     @cart_items = @cart.cart_items.includes(variant: [:craft, :images])  
   end
 
   def create
-    cart_items = cart_params[:cart_items].map do |item|
+    cart_items = @cart.cart_items.map do |item|
       product = Variant.find(item[:variant_id])
 
       {
@@ -40,11 +42,13 @@ class CheckoutsController < ApplicationController
     })
 
     redirect_to session.url, allow_other_host: true
+  rescue Stripe::StripeError => e
+    redirect_to cart_path, alert: e.message
   end
 
   private
 
-  def cart_params
-    params.require(:checkout).permit(cart_items: [])
+  def set_cart
+    @cart = current_cart
   end
 end
