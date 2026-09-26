@@ -8,6 +8,7 @@ class Variant < ApplicationRecord
   accepts_nested_attributes_for :images, allow_destroy: true
 
   before_validation :normalize_sku
+  before_validation :set_default_price_from_craft
 
   after_save :craft_has_many_variants
   after_destroy :craft_has_many_variants
@@ -42,5 +43,9 @@ class Variant < ApplicationRecord
 
   def normalize_sku
     self.sku = nil if sku.blank?
+  end
+
+  def set_default_price_from_craft
+    self.price ||= craft.default_price
   end
 end

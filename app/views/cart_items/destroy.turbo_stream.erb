@@ -1,11 +1,11 @@
 <%= turbo_stream.remove dom_id(@cart_item) %>
 
 <%= turbo_stream.update "cart-subtotal" do %>
-  <%= render "carts/subtotal", cart: @cart %>
+  <%= render "checkouts/subtotal", cart: @cart %>
 <% end %>
 
 <%= turbo_stream.update "cart-count" do %>
-  <%= render "carts/cart_count", cart: @cart %>
+  <%= render "checkouts/cart_count", cart: @cart %>
 <% end %>
 
 <%= turbo_stream.update "cart-svg-count" do %>

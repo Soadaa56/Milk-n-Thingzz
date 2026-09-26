@@ -10,7 +10,7 @@ class CartItemsController < ApplicationController
     end
 
     if cart_item.save
-      redirect_to request.referer || cart_path, notice: "Added to cart"
+      redirect_to request.referer || new_checkout_path, notice: "Added to cart"
     else
       redirect_to request.referer || root_path, notice: "Could not add to cart"
     end
@@ -22,7 +22,7 @@ class CartItemsController < ApplicationController
     if @cart_item.update(cart_item_params)
       respond_to do |format|
         format.turbo_stream
-        format.html { redirect_to cart_path }
+        format.html { redirect_to new_checkout_path }
       end
     end
   end
@@ -34,7 +34,7 @@ class CartItemsController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_to cart_path }
+      format.html { redirect_to new_checkout_path }
     end
   end
 
