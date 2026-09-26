@@ -1,4 +1,4 @@
-class CheckoutController < ApplicationController
+class CheckoutsController < ApplicationController
   def new
     @cart = current_cart
     @cart_items = @cart.cart_items.includes(variant: [:craft, :images])  
@@ -35,7 +35,6 @@ class CheckoutController < ApplicationController
       },
 
       metadata: {
-        order_id: @order.id.to_s,
         user_id: current_user.id.to_s
       }
     })
