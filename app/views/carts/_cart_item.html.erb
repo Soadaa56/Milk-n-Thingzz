@@ -6,11 +6,13 @@
 
   <div class="cart-item-name">
     <% if cart_item.variant.craft.has_variants? %>
+      <%# variants - craftName : variantName %>
       <%= link_to cart_item.variant.craft.name,
           craft_path(cart_item.variant.craft.slug),
           data: { turbo_frame: "_top" } %>
       : <%= cart_item.variant.name %>
     <% else %>
+      <%# no variants - craftName %>
       <%= link_to cart_item.variant.craft.name,
             craft_path(cart_item.variant.craft.slug),
             data: { turbo_frame: "_top" } %>
