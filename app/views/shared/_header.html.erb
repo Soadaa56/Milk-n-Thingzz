@@ -15,7 +15,7 @@
     </div>
 
     <div class="shopping-cart-svg-container">
-      <%= link_to cart_path do %>
+      <%= link_to new_checkout_path do %>
         <%= image_tag "svg/cart.svg", class: "shopping-cart-svg" %>
           <% if current_cart %>
             <span id="cart-svg-count" class="cart-svg-count">
