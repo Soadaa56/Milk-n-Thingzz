@@ -16,7 +16,8 @@
       </div>
       <%= button_to "Checkout securely with Stripe", 
         checkout_path,
-        method: :post
+        method: :post,
+        data: { turbo: false }
       %>
     </div>
   </div>
