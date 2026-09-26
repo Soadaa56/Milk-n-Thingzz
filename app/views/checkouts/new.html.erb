@@ -14,9 +14,10 @@
       <div id="cart-subtotal" class="cart-subtotal">
         <%= render "subtotal", cart: @cart %>
       </div>
-      <%= link_to checkout_path do %>
-        <button class="cart-checkout-button">Proceed to Checkout</button>
-      <% end %>
+      <%= button_to "Checkout securely with Stripe", 
+        checkout_path,
+        method: :post
+      %>
     </div>
   </div>
 </main>

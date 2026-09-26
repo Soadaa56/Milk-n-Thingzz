@@ -44,6 +44,8 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:create, :update, :destroy]
   end
 
+  resource :checkout, only: [:new, :create]
+
   scope "pay/webhooks" do
     post ':provider', to: 'webhooks#receive', as: :webhook_endpoint
   end
