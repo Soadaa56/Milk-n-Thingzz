@@ -28,6 +28,7 @@ class CheckoutsController < ApplicationController
       cancel_url: root_url,
       line_items: cart_items,
       mode: "payment",
+      currency: "usd",
       
       customer_email: current_user.email,
       client_reference_id: current_user.id.to_s,
@@ -40,7 +41,7 @@ class CheckoutsController < ApplicationController
       shipping_options: [
         shipping_rate_data: {
           type: "fixed_amount",
-          fixed_amount: { amount: 999, currency: "usd" },
+          fixed_amount: { amount: 500, currency: "usd" },
           display_name: "Standard Shipping (5-10 business days)",
           tax_behavior: "exclusive"
         }
