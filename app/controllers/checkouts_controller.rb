@@ -28,16 +28,27 @@ class CheckoutsController < ApplicationController
       cancel_url: root_url,
       line_items: cart_items,
       mode: "payment",
-
+      
       customer_email: current_user.email,
       client_reference_id: current_user.id.to_s,
-
+      
+      automatic_tax: { enabled: true },
       shipping_address_collection: {
         allowed_countries: ["US"]
       },
+      billing_address_collection: "required",
+      shipping_options: [
+        shipping_rate_data: {
+          type: "fixed_amount",
+          fixed_amount: { amount: 999, currency: "usd" },
+          display_name: "Standard Shipping (5-10 business days)",
+          tax_behavior: "exclusive"
+        }
+      ],
 
       metadata: {
-        user_id: current_user.id.to_s
+        user_id: current_user.id.to_s,
+        cart_id: @cart.id.to_s
       }
     })
 
