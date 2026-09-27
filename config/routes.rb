@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get "orders/index"
+    get "orders/show"
+  end
+  get "orders/index"
+  get "orders/show"
 
   root 'home#index'
   get 'home', to: 'home#index'

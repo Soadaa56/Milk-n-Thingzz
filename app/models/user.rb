@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   has_one :cart
   has_many :cart_items, through: :cart
+  has_many :orders
 
   before_validation :set_default_role
 

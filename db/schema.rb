@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_22_193312) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_26_225647) do
   create_table "cart_items", force: :cascade do |t|
     t.integer "cart_id", null: false
     t.datetime "created_at", null: false
@@ -53,6 +53,37 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_22_193312) do
     t.datetime "updated_at", null: false
     t.integer "variant_id"
     t.index ["variant_id"], name: "index_images_on_variant_id"
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "craft_id", null: false
+    t.string "craft_name", null: false
+    t.datetime "created_at", null: false
+    t.integer "order_id", null: false
+    t.decimal "price", precision: 7, scale: 2, null: false
+    t.integer "quantity", null: false
+    t.string "sku"
+    t.datetime "updated_at", null: false
+    t.integer "variant_id", null: false
+    t.string "variant_name"
+    t.index ["craft_id"], name: "index_order_items_on_craft_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["variant_id"], name: "index_order_items_on_variant_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "fulfilled_at"
+    t.decimal "shipping_total", precision: 7, scale: 2
+    t.string "status", default: "pending", null: false
+    t.string "stripe_checkout_session_id"
+    t.string "stripe_payment_intent_id"
+    t.decimal "subtotal", precision: 7, scale: 2, null: false
+    t.decimal "tax_total", precision: 7, scale: 2
+    t.decimal "total", precision: 7, scale: 2, null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "pay_charges", force: :cascade do |t|
@@ -196,6 +227,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_22_193312) do
   add_foreign_key "cart_items", "variants"
   add_foreign_key "carts", "users"
   add_foreign_key "images", "variants"
+  add_foreign_key "order_items", "crafts"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "variants"
+  add_foreign_key "orders", "users", on_delete: :nullify
   add_foreign_key "pay_charges", "pay_customers", column: "customer_id"
   add_foreign_key "pay_charges", "pay_subscriptions", column: "subscription_id"
   add_foreign_key "pay_payment_methods", "pay_customers", column: "customer_id"
