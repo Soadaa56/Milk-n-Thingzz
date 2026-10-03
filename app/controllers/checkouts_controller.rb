@@ -6,6 +6,7 @@ class CheckoutsController < ApplicationController
     @cart_items = @cart.cart_items.includes(variant: [:craft, :images])  
   end
 
+  # Assume stripe checkout for now; could refactor for google pay later
   def create
     cart_items = @cart.cart_items.map do |item|
       product = Variant.find(item[:variant_id])
@@ -32,6 +33,15 @@ class CheckoutsController < ApplicationController
       
       customer_email: current_user.email,
       client_reference_id: current_user.id.to_s,
+
+      excluded_payment_method_types: [
+        # Disable all just in case I open up international payments in the future
+        "us_bank_account",  # ACH Direct Debit
+        "sepa_debit",       # SEPA Direct Debit
+        "au_becs_debit",    # BECS Direct Debit (Australia)
+        "acss_debit",       # Pre-authorized debit (Canada)
+        "bacs_debit",       # Bacs Direct Debit (UK)
+      ],
       
       automatic_tax: { enabled: true },
       shipping_address_collection: {
