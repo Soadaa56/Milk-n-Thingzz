@@ -52,10 +52,6 @@ Rails.application.routes.draw do
 
   resource :checkout, only: [:new, :create]
 
-  scope "pay/webhooks" do
-    post ':provider', to: 'webhooks#receive', as: :webhook_endpoint
-  end
-
   # Health check routes for kamal
   get '/up', to: 'health#up'
   get '/health', to: 'health#up', as: :rails_health_check
