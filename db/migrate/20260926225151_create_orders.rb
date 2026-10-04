@@ -3,7 +3,7 @@ class CreateOrders < ActiveRecord::Migration[8.1]
     create_table :orders do |t|
       t.references :user, null: true, foreign_key: { on_delete: :nullify }
 
-      t.string :status, null: false, default: "pending"
+      t.integer :status, null: false, default: 0
       t.datetime :fulfilled_at
 
       t.decimal :subtotal, precision: 7, scale: 2, null: false

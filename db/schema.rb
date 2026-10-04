@@ -75,7 +75,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_26_225647) do
     t.datetime "created_at", null: false
     t.datetime "fulfilled_at"
     t.decimal "shipping_total", precision: 7, scale: 2
-    t.string "status", default: "pending", null: false
+    t.integer "status", default: 0, null: false
     t.string "stripe_checkout_session_id"
     t.string "stripe_payment_intent_id"
     t.decimal "subtotal", precision: 7, scale: 2, null: false
