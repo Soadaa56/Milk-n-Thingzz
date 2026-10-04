@@ -80,7 +80,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_26_225647) do
     t.string "stripe_payment_intent_id"
     t.decimal "subtotal", precision: 7, scale: 2, null: false
     t.decimal "tax_total", precision: 7, scale: 2
-    t.decimal "total", precision: 7, scale: 2, null: false
+    t.decimal "total", precision: 7, scale: 2
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
