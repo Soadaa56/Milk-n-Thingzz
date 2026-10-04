@@ -72,8 +72,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_26_225647) do
   end
 
   create_table "orders", force: :cascade do |t|
+    t.datetime "completed_at"
     t.datetime "created_at", null: false
     t.datetime "fulfilled_at"
+    t.datetime "paid_at"
+    t.string "shipping_carrier"
     t.decimal "shipping_total", precision: 7, scale: 2
     t.integer "status", default: 0, null: false
     t.string "stripe_checkout_session_id"
@@ -81,6 +84,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_26_225647) do
     t.decimal "subtotal", precision: 7, scale: 2, null: false
     t.decimal "tax_total", precision: 7, scale: 2
     t.decimal "total", precision: 7, scale: 2
+    t.string "tracking_number"
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
