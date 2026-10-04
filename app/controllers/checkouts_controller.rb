@@ -1,6 +1,7 @@
 class CheckoutsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_cart
+  before_action :verify_cart
 
   def new
     @cart_items = @cart.cart_items.includes(variant: [:craft, :images])  
@@ -76,5 +77,27 @@ class CheckoutsController < ApplicationController
 
   def set_cart
     @cart = current_cart
+  end
+
+  def verify_cart
+    cart_items_adjusted = false
+
+    @cart.cart_items.each do |item|
+      unless item.variant.for_sale? && item.variant.in_stock?
+        item.destroy
+        cart_items_adjusted = true
+        next
+      end
+
+      # Assumes stock is > 0 due to above check
+      unless item.variant.stock >= item.quantity
+        item.update!(quantity: 1)
+        cart_items_adjusted = true
+      end
+    end
+
+    if cart_items_adjusted
+      redirect_to new_checkout_path, notice: "Cart adjusted due to stock mismatch!"
+    end
   end
 end
