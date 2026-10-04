@@ -10,4 +10,8 @@ class Cart < ApplicationRecord
   def subtotal
     cart_items.sum(&:item_subtotal)
   end
+
+  def empty_cart
+    cart_items.destroy_all
+  end
 end
