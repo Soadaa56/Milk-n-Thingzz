@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get "orders/index"
-    get "orders/show"
-  end
-  get "orders/index"
-  get "orders/show"
-
   root 'home#index'
   get 'home', to: 'home#index'
 
@@ -51,6 +44,11 @@ Rails.application.routes.draw do
   end
 
   resource :checkout, only: [:new, :create]
+
+  resources :orders, only: [:index, :show]
+  namespace :admin do
+    resources :orders
+  end
 
   # Health check routes for kamal
   get '/up', to: 'health#up'
