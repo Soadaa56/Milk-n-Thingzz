@@ -24,6 +24,8 @@ class CheckoutsController < ApplicationController
     }
     end
 
+    order = Order.createOrderFromCart!(@cart)
+
     session = Stripe::Checkout::Session.create({
       success_url: root_url(success: true),
       cancel_url: root_url,
@@ -62,6 +64,8 @@ class CheckoutsController < ApplicationController
         cart_id: @cart.id.to_s
       }
     })
+
+    order.update!(stripe_checkout_session_id: session.id)
 
     redirect_to session.url, allow_other_host: true
   rescue Stripe::StripeError => e
