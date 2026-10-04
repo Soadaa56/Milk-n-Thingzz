@@ -1,0 +1,25 @@
+<div class="order-container">
+  <div class="info">
+    <p>Status: <%= order.status %></p>
+    <p>Shipping carrier: <%= order.shipping_carrier %></p>
+    <p>Tracking number: <%= order.tracking_number %></p>
+    <p>Paid: <%= order.paid_at %></p>
+    <% if order.fulfilled_at %>
+      <p>Order sent: <%= order.fulfilled_at %></p>
+    <% end %>
+    <% if order.completed_at %>
+      <p>Order completed: <%= order.completed_at %></p>
+    <% end %>
+  </div>
+  <div class="order-items">
+    <% order.order_items.each do |item| %>
+      <%= render "order_item", order_item: item, class: "p-4" %>
+    <% end %>
+  </div>
+  <div class="totals">
+    <p>Subtotal: <%= order.subtotal %> </p>
+    <p>Shipping: <%= order.shipping_total || "N/A" %></p>
+    <p>Taxes: <%= order.tax_total || "N/A" %></p>
+    <p>Total: <%= order.total || "N/A" %></p>
+  </div>
+</div>
