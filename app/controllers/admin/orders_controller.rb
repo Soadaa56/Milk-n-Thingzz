@@ -3,6 +3,11 @@ class Admin::OrdersController < ApplicationController
 
   def index
     @orders = Order.all
+    @paid = @orders.where(status: :paid)
+    @processing = @orders.where(status: :processing)
+    @fulfilled = @orders.where(status: :fulfilled)
+    @cancelled = @orders.where(status: :cencelled)
+    @pending = @orders.where(status: :pending)
   end
 
   def show

@@ -1,3 +1,59 @@
-<h1>Admin::Orders#index</h1>
+<main class="admin-orders-index">
+  <h1>Admin::Orders#index</h1>
+  
+  <div class="orders-container">
+    <div class="orders-paid">
+      <h2>Paid <bold>(Needs Shipment/update!)</bold></h3>
+      <% @paid.each do |order| %>
+        <div>
+          <%= order.paid_at&.to_date %> - 
+          <%= link_to "Order #{order.id}", admin_order_path(order) %>
+          <%= number_to_currency(order.total/100) || number_to_currency(order.subtotal/100) %>
+        </div>
+      <% end %>
+    </div>
+  
+    <div class="orders-processing">
+      <h2>Processing(In transit)</h3>
+      <% @processing.each do |order| %>
+        <div>
+          <%= order.fulfilled_at&.to_date %> - 
+          <%= link_to "Order #{order.id}", admin_order_path(order) %>
+          <%= number_to_currency(order.total/100) || number_to_currency(order.subtotal/100) %>
+        </div>
+      <% end %>
+    </div>
 
-<%= link_to admin_orders_index_path(@order) %>
+    <div class="orders-fulfilled">
+      <h2>Finished</h3>
+      <% @fulfilled.each do |order| %>
+        <div>
+          <%= order.completed_at&.to_date %> - 
+          <%= link_to "Order #{order.id}", admin_order_path(order) %>
+          <%= number_to_currency(order.total/100) || number_to_currency(order.subtotal/100) %>
+        </div>
+      <% end %>
+    </div>
+    
+    <div class="orders-misc">
+      <h3>Less Important</h2>
+      <h4>Cancelled</h3>
+      <% @cancelled.each do |order| %>
+        <div>
+          <%= order.created_at&.to_date %> - 
+          <%= link_to "Order #{order.id}", admin_order_path(order) %>
+          <%= number_to_currency(order.total/100) || number_to_currency(order.subtotal/100) %>
+        </div>
+      <% end %>
+      <h4>Pending</h3>
+      <% @pending.each do |order| %>
+        <div>
+          <%= order.created_at&.to_date %> - 
+          <%= link_to "Order #{order.id}", admin_order_path(order) %>
+          <%= number_to_currency(order.total/100) || number_to_currency(order.subtotal/100) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</main>
