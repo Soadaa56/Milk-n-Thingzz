@@ -17,9 +17,9 @@
     <% end %>
   </div>
   <div class="totals">
-    <p>Subtotal: <%= order.subtotal %> </p>
-    <p>Shipping: <%= order.shipping_total || "N/A" %></p>
-    <p>Taxes: <%= order.tax_total || "N/A" %></p>
-    <p>Total: <%= order.total || "N/A" %></p>
+    <p>Subtotal: <%= number_to_currency(order.subtotal/100) %> </p>
+    <p>Shipping: <%= number_to_currency(order.shipping_total/100) || "N/A" %></p>
+    <p>Taxes: <%= number_to_currency(order.tax_total/100) || "N/A" %></p>
+    <p>Total: <%= number_to_currency(order.total/100) || "N/A" %></p>
   </div>
 </div>

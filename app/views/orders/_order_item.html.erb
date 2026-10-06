@@ -1,10 +1,10 @@
 <div class="order_item">
   <div class="name">
     <% if order_item.variant_name === "default" %>
-      <%= order_item.craft.name %>
+      <%= order_item.craft_name %>
     <% else %>
-      <%= order_item.craft.name %> :
-      <%= order_item.variant.name %>
+      <%= order_item.craft_name %> :
+      <%= order_item.variant_name %>
     <% end %>
   </div>
 
