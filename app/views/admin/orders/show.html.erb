@@ -1,2 +1,26 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<main class="admin-order-show">
+  <h1>Admin::Orders#show</h1>
+  
+  <div class="order-container">
+    <div class="order-info">
+      <p>Order #: <%= @order.id %></p>
+      <p>User: <%= @user.id %>, <%= @user.email %></p>
+      <p>Stripe Payment #: <%= @order.stripe_payment_intent_id %></p>
+      <p>Carrier: <%= @order.shipping_carrier %></p>
+      <p>Tracking #: <%= @order.tracking_number %></p>
+    </div>
+
+    <div class="order-items">
+      <% @order.order_items.each do |item| %>
+        <%= render "order_item", order_item: item %>
+      <% end %>
+    </div>
+
+    <div class="order-totals">
+      <p>Subtotal: <%= number_to_currency(@order.subtotal/100) %></p>
+      <p>Taxes: <%= number_to_currency(@order.tax_total/100) %></p>
+      <p>Shipping: <%= number_to_currency(@order.shipping_total/100) %></p>
+      <p>Total: <%= number_to_currency(@order.total/100) %></p>
+    </div>
+  </div>
+</main>
