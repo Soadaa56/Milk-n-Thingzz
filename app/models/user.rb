@@ -15,14 +15,14 @@ class User < ApplicationRecord
 
   def stripe_attributes(pay_customer)
     {
-      address: {
-        line1: pay_customer.owner.line1,
-        line2: pay_customer.owner.line2,
-        postal_code: pay_customer.owner.postal_code,
-        state: pay_customer.owner.state,
-        city: pay_customer.owner.city,
-        country: pay_customer.owner.country
-      },
+      # address: {
+      #   line1: pay_customer.owner.line1,
+      #   line2: pay_customer.owner.line2,
+      #   postal_code: pay_customer.owner.postal_code,
+      #   state: pay_customer.owner.state,
+      #   city: pay_customer.owner.city,
+      #   country: pay_customer.owner.country
+      # },
       metadata: {
         pay_customer_id: pay_customer.id,
         user_id: id
