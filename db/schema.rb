@@ -13,197 +13,205 @@
 ActiveRecord::Schema[8.1].define(version: 2026_09_26_225647) do
   create_table "cart_items", force: :cascade do |t|
     t.integer "cart_id", null: false
-    t.datetime "created_at", null: false
-    t.integer "quantity", default: 1, null: false
-    t.datetime "updated_at", null: false
     t.integer "variant_id", null: false
+    t.integer "quantity", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
     t.index ["variant_id"], name: "index_cart_items_on_variant_id"
   end
 
   create_table "carts", force: :cascade do |t|
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "crafts", force: :cascade do |t|
-    t.string "category"
-    t.datetime "created_at", null: false
-    t.string "default_dimensions"
-    t.decimal "default_price", precision: 7, scale: 2
+    t.string "name", null: false
     t.text "description"
-    t.text "details"
+    t.string "category"
+    t.string "subtype"
+    t.string "slug", null: false
     t.boolean "for_sale", default: false, null: false
     t.boolean "has_variants", default: false, null: false
-    t.string "name", null: false
+    t.decimal "default_price", precision: 7, scale: 2
+    t.string "default_dimensions"
     t.string "shopify_product_id"
-    t.string "slug", null: false
-    t.string "subtype"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "details"
     t.index ["for_sale"], name: "index_crafts_on_for_sale"
     t.index ["slug"], name: "index_crafts_on_slug", unique: true
   end
 
   create_table "images", force: :cascade do |t|
-    t.datetime "created_at", null: false
+    t.integer "variant_id"
     t.text "image_data"
     t.integer "position", default: 0
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "variant_id"
     t.index ["variant_id"], name: "index_images_on_variant_id"
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "craft_id", null: false
-    t.string "craft_name", null: false
-    t.datetime "created_at", null: false
     t.integer "order_id", null: false
+    t.integer "craft_id", null: false
+    t.integer "variant_id", null: false
+    t.string "craft_name", null: false
+    t.string "variant_name"
+    t.string "sku"
     t.decimal "price", precision: 7, scale: 2, null: false
     t.integer "quantity", null: false
-    t.string "sku"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "variant_id", null: false
-    t.string "variant_name"
     t.index ["craft_id"], name: "index_order_items_on_craft_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["variant_id"], name: "index_order_items_on_variant_id"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.datetime "completed_at"
-    t.datetime "created_at", null: false
-    t.datetime "fulfilled_at"
-    t.datetime "paid_at"
-    t.string "shipping_carrier"
-    t.decimal "shipping_total", precision: 7, scale: 2
+    t.integer "user_id"
     t.integer "status", default: 0, null: false
-    t.string "stripe_checkout_session_id"
-    t.string "stripe_payment_intent_id"
     t.decimal "subtotal", precision: 7, scale: 2, null: false
+    t.decimal "shipping_total", precision: 7, scale: 2
     t.decimal "tax_total", precision: 7, scale: 2
     t.decimal "total", precision: 7, scale: 2
+    t.string "stripe_checkout_session_id"
+    t.string "stripe_payment_intent_id"
+    t.string "shipping_carrier"
     t.string "tracking_number"
+    t.string "shipping_name"
+    t.string "shipping_address_line1"
+    t.string "shipping_address_line2"
+    t.string "shipping_city"
+    t.string "shipping_state"
+    t.string "shipping_postal_code"
+    t.string "shipping_country"
+    t.string "shipping_phone"
+    t.datetime "paid_at"
+    t.datetime "fulfilled_at"
+    t.datetime "completed_at"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "pay_charges", force: :cascade do |t|
-    t.integer "amount", null: false
-    t.integer "amount_refunded"
-    t.integer "application_fee_amount"
-    t.datetime "created_at", null: false
-    t.string "currency"
     t.bigint "customer_id", null: false
-    t.json "data"
-    t.json "metadata"
-    t.json "object"
-    t.string "processor_id", null: false
-    t.string "stripe_account"
     t.bigint "subscription_id"
-    t.string "type"
+    t.string "processor_id", null: false
+    t.integer "amount", null: false
+    t.string "currency"
+    t.integer "application_fee_amount"
+    t.integer "amount_refunded"
+    t.json "metadata"
+    t.json "data"
+    t.string "stripe_account"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "type"
+    t.json "object"
     t.index ["customer_id", "processor_id"], name: "index_pay_charges_on_customer_id_and_processor_id", unique: true
     t.index ["subscription_id"], name: "index_pay_charges_on_subscription_id"
   end
 
   create_table "pay_customers", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.json "data"
-    t.boolean "default"
-    t.datetime "deleted_at", precision: nil
-    t.json "object"
-    t.bigint "owner_id"
     t.string "owner_type"
+    t.bigint "owner_id"
     t.string "processor", null: false
     t.string "processor_id"
+    t.boolean "default"
+    t.json "data"
     t.string "stripe_account"
-    t.string "type"
+    t.datetime "deleted_at", precision: nil
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "type"
+    t.json "object"
     t.index ["owner_type", "owner_id", "deleted_at"], name: "pay_customer_owner_index", unique: true
     t.index ["processor", "processor_id"], name: "index_pay_customers_on_processor_and_processor_id", unique: true
   end
 
   create_table "pay_merchants", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.json "data"
-    t.boolean "default"
-    t.bigint "owner_id"
     t.string "owner_type"
+    t.bigint "owner_id"
     t.string "processor", null: false
     t.string "processor_id"
-    t.string "type"
+    t.boolean "default"
+    t.json "data"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "type"
     t.index ["owner_type", "owner_id", "processor"], name: "index_pay_merchants_on_owner_type_and_owner_id_and_processor"
   end
 
   create_table "pay_payment_methods", force: :cascade do |t|
-    t.datetime "created_at", null: false
     t.bigint "customer_id", null: false
-    t.json "data"
+    t.string "processor_id", null: false
     t.boolean "default"
     t.string "payment_method_type"
-    t.string "processor_id", null: false
+    t.json "data"
     t.string "stripe_account"
-    t.string "type"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "type"
     t.index ["customer_id", "processor_id"], name: "index_pay_payment_methods_on_customer_id_and_processor_id", unique: true
   end
 
   create_table "pay_subscriptions", force: :cascade do |t|
-    t.decimal "application_fee_percent", precision: 8, scale: 2
-    t.datetime "created_at", null: false
-    t.datetime "current_period_end", precision: nil
-    t.datetime "current_period_start", precision: nil
     t.bigint "customer_id", null: false
-    t.json "data"
-    t.datetime "ends_at", precision: nil
-    t.json "metadata"
-    t.boolean "metered"
     t.string "name", null: false
-    t.json "object"
-    t.string "pause_behavior"
-    t.datetime "pause_resumes_at", precision: nil
-    t.datetime "pause_starts_at", precision: nil
-    t.string "payment_method_id"
     t.string "processor_id", null: false
     t.string "processor_plan", null: false
     t.integer "quantity", default: 1, null: false
     t.string "status", null: false
-    t.string "stripe_account"
+    t.datetime "current_period_start", precision: nil
+    t.datetime "current_period_end", precision: nil
     t.datetime "trial_ends_at", precision: nil
-    t.string "type"
+    t.datetime "ends_at", precision: nil
+    t.boolean "metered"
+    t.string "pause_behavior"
+    t.datetime "pause_starts_at", precision: nil
+    t.datetime "pause_resumes_at", precision: nil
+    t.decimal "application_fee_percent", precision: 8, scale: 2
+    t.json "metadata"
+    t.json "data"
+    t.string "stripe_account"
+    t.string "payment_method_id"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "type"
+    t.json "object"
     t.index ["customer_id", "processor_id"], name: "index_pay_subscriptions_on_customer_id_and_processor_id", unique: true
     t.index ["metered"], name: "index_pay_subscriptions_on_metered"
     t.index ["pause_starts_at"], name: "index_pay_subscriptions_on_pause_starts_at"
   end
 
   create_table "pay_webhooks", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.json "event"
-    t.string "event_type"
     t.string "processor"
+    t.string "event_type"
+    t.json "event"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.datetime "confirmation_sent_at"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "created_at", null: false
+    t.integer "role", default: 0
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.integer "failed_attempts", default: 0, null: false
-    t.datetime "locked_at"
-    t.datetime "remember_created_at"
-    t.datetime "reset_password_sent_at"
     t.string "reset_password_token"
-    t.integer "role", default: 0
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
+    t.datetime "locked_at"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -212,15 +220,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_26_225647) do
   end
 
   create_table "variants", force: :cascade do |t|
-    t.boolean "active", default: true, null: false
     t.integer "craft_id", null: false
-    t.datetime "created_at", null: false
-    t.string "dimensions"
     t.string "name"
-    t.decimal "price", precision: 7, scale: 2
-    t.string "shopify_variant_id"
     t.string "sku"
+    t.decimal "price", precision: 7, scale: 2
     t.integer "stock"
+    t.string "dimensions"
+    t.boolean "active", default: true, null: false
+    t.string "shopify_variant_id"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["active"], name: "index_variants_on_active"
     t.index ["craft_id"], name: "index_variants_on_craft_id"

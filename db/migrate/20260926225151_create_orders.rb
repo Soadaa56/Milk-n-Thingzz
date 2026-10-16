@@ -15,6 +15,15 @@ class CreateOrders < ActiveRecord::Migration[8.1]
 
       t.string :shipping_carrier
       t.string :tracking_number
+
+      t.string :shipping_name
+      t.string :shipping_address_line1
+      t.string :shipping_address_line2
+      t.string :shipping_city
+      t.string :shipping_state
+      t.string :shipping_postal_code
+      t.string :shipping_country
+      t.string :shipping_phone
       
       t.datetime :paid_at
       t.datetime :fulfilled_at
