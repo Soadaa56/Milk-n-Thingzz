@@ -21,6 +21,7 @@ group :development do
   gem "web-console"
   gem 'bullet'
   gem "sqlite3", ">= 2.1"
+  gem "letter_opener"
 end
 
 group :test do

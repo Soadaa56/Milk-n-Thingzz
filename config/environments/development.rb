@@ -41,10 +41,7 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
-
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
-
+  
   # Make template changes take effect immediately.
   config.action_mailer.perform_caching = false
 
@@ -66,6 +63,8 @@ Rails.application.configure do
   # Highlight code that enqueued background job in logs.
   config.active_job.verbose_enqueue_logs = true
 
+  config.active_job.queue_adapter = :async
+
   # Highlight code that triggered redirect in logs.
   config.action_dispatch.verbose_redirect_logs = true
 
@@ -81,23 +80,18 @@ Rails.application.configure do
   # Raise error when a before_action's only/except options reference missing actions.
   config.action_controller.raise_on_missing_callback_actions = true
 
-# Might not need below code
-  # If your app is using the Sprockets gem, ensure it sets `config.assets.manifest`.
-  # See https://github.com/basecamp/kamal/issues/626 for details
-  # config.assets.manifest = Rails.root.join('config', 'manifest.json')
-
-  # custom
-  # config.assets.debug = true
-  # config.assets.compile = true
-  # config.assets.digest = false
-  # config.assets.check_precompiled_asset = false
-
-  # ==> Custom Mailer settings with AWS SES using STMP
+  # local email testing
+  config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  config.action_mailer.default_options = { from: 'do-not-reply@milknthingzz.xyz' }
+  config.action_mailer.default_options = { from: 'support@milknthingzz.xyz' }
+
+  # ==> Custom Mailer settings with AWS SES using STMP
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # config.action_mailer.default_options = { from: 'do-not-reply@milknthingzz.xyz' }
 
   config.action_mailer.smtp_settings = {
     address: 'email-smtp.us-east-2.amazonaws.com',
