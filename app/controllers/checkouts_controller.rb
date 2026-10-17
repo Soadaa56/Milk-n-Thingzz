@@ -28,6 +28,7 @@ class CheckoutsController < ApplicationController
     order = Order.createOrderFromCart!(@cart)
 
     session = Stripe::Checkout::Session.create({
+      customer: current_user.payment_processor.processor_id,
       success_url: root_url(success: true),
       cancel_url: root_url,
       line_items: cart_items,
