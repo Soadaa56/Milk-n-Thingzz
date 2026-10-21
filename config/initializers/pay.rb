@@ -13,7 +13,8 @@ Pay.setup do |config|
   config.enabled_processors = [:stripe]
 
   config.send_emails = true
-  # By default emails are sent via Pay::UserMailer which inherits from Pay::ApplicationMailer. Instead, you may wish to inherit from ApplicationMailer, or use a different mailer entirely.
+  # By default emails are sent via Pay::UserMailer which inherits from Pay::ApplicationMailer. 
+  # Instead, you may wish to inherit from ApplicationMailer, or use a different mailer entirely.
   # config.parent_mailer = "ApplicationMailer"
   # config.mailer = "MyCustomPayMailer"
 
