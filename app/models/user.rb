@@ -25,7 +25,7 @@ class User < ApplicationRecord
       # },
       metadata: {
         pay_customer_id: pay_customer.id,
-        user_id: id
+        user_id: id || pay_customer.owner_id
       }
     }
   end
