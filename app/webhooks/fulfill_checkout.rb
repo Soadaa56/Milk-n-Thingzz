@@ -31,6 +31,7 @@ class FulfillCheckout
           shipping_postal_code: shipping.address.postal_code,
           shipping_country: shipping.address.country
           )
+
         order.order_items.each do |item|
           variant = Variant.find(item.variant_id)
           variant_new_stock = variant.stock - item.quantity
