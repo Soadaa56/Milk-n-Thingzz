@@ -61,7 +61,8 @@ class CheckoutsController < ApplicationController
 
       metadata: {
         user_id: current_user.id.to_s,
-        cart_id: @cart.id.to_s
+        cart_id: @cart.id.to_s,
+        order_id: order.id
       }
     })
 
