@@ -33,8 +33,6 @@ class CheckoutsController < ApplicationController
       line_items: cart_items,
       mode: "payment",
       currency: "usd",
-      
-      customer_email: current_user.email,
       client_reference_id: current_user.id.to_s,
 
       excluded_payment_method_types: [
@@ -46,6 +44,7 @@ class CheckoutsController < ApplicationController
         "bacs_debit",       # Bacs Direct Debit (UK)
       ],
       
+      customer_update: { shipping: "auto" },
       automatic_tax: { enabled: true },
       shipping_address_collection: {
         allowed_countries: ["US"]
