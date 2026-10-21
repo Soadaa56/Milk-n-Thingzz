@@ -1,11 +1,12 @@
-We received payment for your <%= Pay.application_name %> subscription. Thanks for your business!
+We received payment for your purchase at <%= Pay.application_name %>. 
+Thanks for your business, it means a lot to a us!
 
 Questions? Please reply to this email.
 
-------------------------------------
-RECEIPT - SUBSCRIPTION
 
-<%= Pay.application_name %>
+------------------------------------
+RECEIPT - <%= Pay.application_name %>
+
 Amount: <%= params[:pay_charge].amount_with_currency %>
 
 Charged to: <%= params[:pay_charge].charged_to %>
@@ -15,6 +16,4 @@ Date: <%= l params[:pay_charge].created_at %>
 <%= params[:pay_charge].customer.owner.extra_billing_info %>
 <% end %>
 
-<%= Pay.business_name %>
-<%= Pay.business_address %>
 ------------------------------------
