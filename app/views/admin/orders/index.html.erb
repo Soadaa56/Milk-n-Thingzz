@@ -8,7 +8,7 @@
         <div>
           <%= order.paid_at&.to_date %> - 
           <%= link_to "Order #{order.id}", admin_order_path(order) %>
-          <%= number_to_currency(order.total/100) || number_to_currency(order.subtotal/100) %>
+          <%= number_to_currency(order.total/100) %>
         </div>
       <% end %>
     </div>
@@ -19,7 +19,7 @@
         <div>
           <%= order.fulfilled_at&.to_date %> - 
           <%= link_to "Order #{order.id}", admin_order_path(order) %>
-          <%= number_to_currency(order.total/100) || number_to_currency(order.subtotal/100) %>
+          <%= number_to_currency(order.total/100) %>
         </div>
       <% end %>
     </div>
@@ -30,7 +30,7 @@
         <div>
           <%= order.completed_at&.to_date %> - 
           <%= link_to "Order #{order.id}", admin_order_path(order) %>
-          <%= number_to_currency(order.total/100) || number_to_currency(order.subtotal/100) %>
+          <%= number_to_currency(order.total/100) %>
         </div>
       <% end %>
     </div>
@@ -42,7 +42,7 @@
         <div>
           <%= order.created_at&.to_date %> - 
           <%= link_to "Order #{order.id}", admin_order_path(order) %>
-          <%= number_to_currency(order.total/100) || number_to_currency(order.subtotal/100) %>
+          <%= number_to_currency(order.total/100) %>
         </div>
       <% end %>
       <h4>Pending</h3>
@@ -50,7 +50,7 @@
         <div>
           <%= order.created_at&.to_date %> - 
           <%= link_to "Order #{order.id}", admin_order_path(order) %>
-          <%= number_to_currency(order.total/100) || number_to_currency(order.subtotal/100) %>
+          <%= number_to_currency(order.total/100) %>
         </div>
       <% end %>
     </div>
