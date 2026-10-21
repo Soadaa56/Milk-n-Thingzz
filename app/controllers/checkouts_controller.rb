@@ -9,6 +9,7 @@ class CheckoutsController < ApplicationController
 
   # Assume stripe checkout for now; could refactor for google pay later
   def create
+    order = Order.createOrderFromCart!(@cart)
     cart_items = @cart.cart_items.map do |item|
       product = Variant.find(item[:variant_id])
 
@@ -24,8 +25,6 @@ class CheckoutsController < ApplicationController
         quantity: item[:quantity]
     }
     end
-
-    order = Order.createOrderFromCart!(@cart)
 
     session = Stripe::Checkout::Session.create({
       customer: current_user.payment_processor.processor_id,
