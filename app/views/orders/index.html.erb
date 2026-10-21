@@ -8,7 +8,7 @@
         <div>
           <%= order.paid_at.to_date || order.created_at.to_date %>: 
           <%= link_to "Order #{order.id}", order_path(order.id) %>
-          <%= ", #{number_to_currency(order.total/100)}" %>
+          <%= ": #{number_to_currency(order.total/100)}" %>
         </div>
       <% end %>
     </div>
