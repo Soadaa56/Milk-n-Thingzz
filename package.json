@@ -18,9 +18,13 @@
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
-    "watch:css": "nodemon --watch ./app/assets/stylesheets/ --ext scss --exec \"yarn build:css\""
+    "build:css": "sass --load-path=node_modules ./app/assets/stylesheets:./app/assets/builds",
+    "watch:css": "nodemon --watch ./app/assets/stylesheets/ --ext scss --exec \"pnpm build:css\""
   },
   "browserslist": [
     "defaults"
-  ]
+  ],
+  "devDependencies": {
+    "sass": "^1.106.1"
+  }
 }
