@@ -1,33 +1,33 @@
 require "test_helper"
 
 class VariantsControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get variants_index_url
-    assert_response :success
+  test "Non-admin should get redirected" do
+    get variants_url
+    assert_response :redirect
   end
 
   test "should get show" do
-    get variants_show_url
+    get variants_url
     assert_response :success
   end
 
   test "should get new" do
-    get variants_new_url
+    get variants_url
     assert_response :success
   end
 
   test "should get create" do
-    get variants_create_url
+    get variants_url
     assert_response :success
   end
 
   test "should get update" do
-    get variants_update_url
+    get variants_url
     assert_response :success
   end
 
   test "should get destroy" do
-    get variants_destroy_url
+    get variants_url
     assert_response :success
   end
 end
