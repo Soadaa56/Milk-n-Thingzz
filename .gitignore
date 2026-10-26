@@ -54,6 +54,9 @@ setup.sh
 # Ignore text files
 ideas.txt
 troubleshoot.txt
+
 # Ignore key files for decrypting credentials and more.
 /config/credentials/*.key
 
+# Ignore default example files
+test/controllers/examples_controller_test.rb
