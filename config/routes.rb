@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get 'home/painting'
   get 'home/print'
 
-  get 'checkout', to: 'checkout#show'
+  get 'checkout', to: 'checkouts#show'
 
   resources :crafts, only: [:index, :show, :edit, :new, :create, :update, :destroy] do
     collection do
