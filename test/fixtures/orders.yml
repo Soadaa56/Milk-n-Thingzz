@@ -1,0 +1,17 @@
+one:
+  user: one
+  status: paid
+  subtotal: 10
+  total: 11
+  paid_at: 1970-01-01 00:00:00
+  fulfilled_at: 1970-01-01 00:00:00
+  completed_at: 1970-01-01 00:00:00
+
+two:
+  user: two
+  status: paid
+  subtotal: 20
+  total: 22
+  paid_at: 1970-01-01 00:00:00
+  fulfilled_at: 1970-01-01 00:00:00
+  completed_at: 1970-01-01 00:00:00

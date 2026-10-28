@@ -1,0 +1,29 @@
+one:
+  craft: one
+  name: oneFirst
+  price: 10
+  stock: 5
+
+two:
+  craft: two
+  name: twoFirst
+  price: 20
+  stock: 3
+
+three:
+  craft: three
+  name: threeFirst
+  price: 5
+  stock: 20
+
+oneSecond:
+  craft: one
+  name: oneSecond
+  price: 11
+  stock: 10
+
+twoSecond:
+  craft: two
+  name: twoSecond
+  price: 22
+  stock: 50

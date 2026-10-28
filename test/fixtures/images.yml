@@ -1,9 +1,8 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
   variant: one
-  image_data: MyText
 
 two:
   variant: two
-  image_data: MyText
+
+three:
+  variant: three

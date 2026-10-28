@@ -1,0 +1,13 @@
+one:
+  order: one
+  craft: one
+  variant: one
+  craft_name: MyString
+  price: 10
+
+two:
+  order: two
+  craft: two
+  variant: two
+  craft_name: MyOtherString
+  price: 20

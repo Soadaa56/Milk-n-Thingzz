@@ -1,13 +1,22 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  category: MyString
-  slug: One
+  name: forSaleHasVariants
+  category: earrings
+  slug: craft-one
   for_sale: true
+  has_variants: true
 
 two:
-  name: MyString
-  category: MyString
-  slug: Two
+  name: notForSale
+  category: print
+  slug: not-for-sale
   for_sale: false
+  has_variants: true
+
+three:
+  name: noVariants
+  category: print
+  slug: no-variants
+  for_sale: true
+  has_variants: false
