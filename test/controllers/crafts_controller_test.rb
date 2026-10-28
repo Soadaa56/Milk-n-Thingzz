@@ -1,13 +1,20 @@
 require "test_helper"
 
 class CraftsControllerTest < ActionDispatch::IntegrationTest
-  test "non-admin should get redirect from index" do
+  test "non-user should get redirect to root" do
+    get crafts_url
+    assert_response :redirect
+    assert_redirected_to root_url
+  end
+
+  test "non-admin user should get redirect from index" do
     user = users(:one)
     sign_in user
     
     get crafts_url
-    assert_response :success
+    assert_response :redirect
   end
+
   test "admin should get index" do
     user = users(:admin)
     sign_in user
