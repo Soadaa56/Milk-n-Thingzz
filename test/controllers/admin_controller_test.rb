@@ -7,16 +7,14 @@ class AdminControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "non-admin user should not get index" do
-    user = users(:one)
-    sign_in user
+    sign_in users(:one)
     
     get admin_url
     assert_response :redirect
   end
 
   test "admin user should get index" do
-    user = users(:admin)
-    sign_in user
+    sign_in users(:admin)
 
     get admin_url
     assert_response :success

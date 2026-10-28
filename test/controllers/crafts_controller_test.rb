@@ -8,39 +8,37 @@ class CraftsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "non-admin user should get redirect from index" do
-    user = users(:one)
-    sign_in user
+    sign_in users(:one)
     
     get crafts_url
     assert_response :redirect
   end
 
   test "admin should get index" do
-    user = users(:admin)
-    sign_in user
+    sign_in users(:admin)
 
     get crafts_url
     assert_response :success
   end
 
   test "should get show" do
-    get crafts_url(:craft)
+    @craft = crafts(:one).slug
+
+    get craft_url(@craft)
     assert_response :success
   end
 
   test "non-admin should get redirected from new" do
-    user = users(:one)
-    sign_in user
+    sign_in users(:one)
 
-    get new_crafts_url
+    get new_craft_url
     assert_response :redirect
   end
 
   test "admin should get new" do
-    user = users(:admin)
-    sign_in user
+    sign_in users(:admin)
 
-    get new_crafts_url
+    get new_craft_url
     assert_response :success
   end
 end
