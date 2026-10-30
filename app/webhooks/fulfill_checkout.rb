@@ -12,7 +12,6 @@ class FulfillCheckout
       Rails.logger.tagged("StripeObjectTesting") do
         Rails.logger.info "Processing transaction..."
         Rails.logger.info object
-        Rails.logger.error "Transaction failed!"
       end
 
       ActiveRecord::Base.transaction do
@@ -38,11 +37,14 @@ class FulfillCheckout
           variant.update!(stock: variant_new_stock)
         end
       end
-      
+
       user = User.find(order.user_id)
       user.cart.empty_cart
 
       # email admin/push notifacation
+      NotifyMailer.with(email: Rails.application.credentials.dig(:email, :milk), order: order.id)
+                  .notify_sale
+                  .deliver_now
     end
     
   rescue StandardError => e
