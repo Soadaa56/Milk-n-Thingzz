@@ -61,3 +61,6 @@ bin/credentials:edit
 
 # Ignore default example files
 test/controllers/examples_controller_test.rb
+# Ignore key files for decrypting credentials and more.
+/config/credentials/*.key
+
