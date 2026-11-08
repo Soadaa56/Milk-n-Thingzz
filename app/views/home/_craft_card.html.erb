@@ -1,5 +1,5 @@
 <% if craft.images.present? %>
-  <%= link_to craft_path(craft.slug) do %>
+  <%= link_to craft_path(craft.slug), data: { turbo_frame: "_top"} do %>
     <%= image_tag(craft.images.first.image_url(:card) || 
                   craft.images.first.image_url) %>
   <% end %>
