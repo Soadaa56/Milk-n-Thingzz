@@ -1,4 +1,5 @@
 class Variant < ApplicationRecord
+  class OutOfStock < StandardError; end
   belongs_to :craft
   
   has_many :images, -> { order(position: :asc) }, dependent: :destroy
@@ -31,6 +32,15 @@ class Variant < ApplicationRecord
 
   def for_sale?
     craft.for_sale? && active?
+  end
+
+  def reserve!(quantity)
+    with_lock do
+      raise OutOfStock if self.available < quantity
+      
+      self.available -= quantity
+      self.save!
+    end
   end
 
   scope :in_stock, -> { where("variants.stock > 0") }
