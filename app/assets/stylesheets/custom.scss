@@ -629,10 +629,17 @@ nav a {
   display: block;
 }
 
-.craft-details .chevron {
-  max-width: 0.6rem;
-  margin: 0.25rem;
-  transform: rotate(90deg);
+.craft-details {
+
+  .chevron {
+    margin: 0.5rem 0rem;
+    max-width: 0.85rem;
+    transform: rotate(0deg);
+  }
+
+  .rotate img {
+    transform: rotate(90deg);
+  }
 }
 
 // #endregion

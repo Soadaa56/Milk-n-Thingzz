@@ -5,10 +5,11 @@ export default class extends Controller {
   static targets = [ "chevron", "details" ]
 
   connect() {
-    console.log(this.detailsTarget)
+    console.log(this.chevronTarget)
   }
 
   toggleDetails() {
-    this.detailsTarget.toggleAttribute('hidden')
+    this.detailsTarget.toggleAttribute("hidden")
+    this.chevronTarget.classList.toggle("rotate")
   }
 }
