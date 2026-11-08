@@ -43,6 +43,11 @@ class Variant < ApplicationRecord
     end
   end
 
+  def self.output_stock
+    # WiP
+    puts self.stock
+  end
+
   scope :in_stock, -> { where("variants.stock > 0") }
 
   private
