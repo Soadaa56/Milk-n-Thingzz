@@ -4,7 +4,7 @@
   <%= turbo_frame_tag "crafts-list" do %>
     <div class="craft-card-container"
       data-store-filter-target="crafts">
-      <% if @crafts.any?%>
+      <% if @crafts.present? %>
         <% @crafts.each do |craft| %>
           <div class="craft-card">
             <%= render 'craft_card', craft: craft %>
