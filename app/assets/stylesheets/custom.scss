@@ -380,7 +380,7 @@ nav a {
   }
 }
 
-@media(min-width: 601px) {
+@media(width > 600px) {
 
   #sidebar {
     display: block;
@@ -389,6 +389,8 @@ nav a {
     font-family: 'DotGothic16', sans-serif;
     font-size: 1.8rem;
     padding-left: 3rem;
+    // Dirty quick fix to extend nav bar to bottom of screen
+    padding-bottom: 60%;
 
     .nav-link {
       display: grid;
