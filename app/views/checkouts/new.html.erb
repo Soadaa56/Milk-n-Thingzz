@@ -1,8 +1,8 @@
 <main class="cart">
   <h2>Your Cart</h2>
   
-  <div class="center">
-    <div class="cart-container">
+  <div class="cart-container">
+    <div>
       <% @cart_items.each do |cart_item| %>
         <%= turbo_frame_tag dom_id(cart_item) do %>
           <%= render "cart_item", cart_item: cart_item %>

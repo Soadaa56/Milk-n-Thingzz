@@ -164,14 +164,13 @@ main {
 .btn-back {
   margin-top: 5rem;
 }
-
-@media (max-width: 600px) {
+@media (width <= 600px ) {
   .desktop {
     display: none !important;
   }
 }
 
-@media (min-width: 601px) {
+@media (width > 600px) {
   nav {
     display: none;
   }
@@ -765,6 +764,16 @@ main.cart {
   &>* {
     margin-bottom: 0.35rem;
   }
+
+  button {
+  width: 100%;
+  font-size: 1rem;
+  background-color: var(--shade-dark-color);
+  color: var(--light-accent-color);
+  border: 2px solid var(--temp-h2-color);
+  border-radius: 8%;
+  padding: 1em;
+  }
 }
 
 .cart-subtotal {
@@ -773,16 +782,24 @@ main.cart {
   justify-content: space-between;
 }
 
-.cart-checkout button {
-  width: 100%;
-  font-size: 1rem;
-  background-color: var(--shade-dark-color);
-  color: var(--light-accent-color);
-  border: 2px solid var(--temp-h2-color);
-  border-radius: 8%;
-  padding: 1em;
-}
+@media (width > 600px) {
 
+  .cart-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cart-checkout {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    border: none;
+    box-shadow: none;
+    max-width: 500px;
+  }
+}
 // #endregion
 
 // #region STORE 
