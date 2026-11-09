@@ -47,7 +47,7 @@ env:
 
 builder:
   args:
-    RUBY_VERSION: 3.2.7
+    RUBY_VERSION: 3.4.7
   arch:
     - amd64
   secrets:
