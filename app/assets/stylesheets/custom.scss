@@ -414,7 +414,7 @@ nav a {
 
 // #endregion
 
-// #region ADMIN
+// #region ADMIN 
 #admin-dashboard {
   color: var(--dark-accent-color);
   font-family: 'Courier New', Courier, monospace;
@@ -615,7 +615,7 @@ nav a {
 
 // #endregion
 
-// #region CRAFT_SHOW
+// #region CRAFT_SHOW 
 .craft-show-category {
   &:hover {
     color: var(--light-accent-color);
@@ -627,6 +627,23 @@ nav a {
   object-fit: cover;
   margin: 0 auto;
   display: block;
+}
+
+.mail-to {
+  margin: 0.5rem;
+  font-size: 1.5rem;
+  color: var(--light-accent-color);
+  background: linear-gradient(135deg, var(--dark-accent-color), var(--shade-dark-color));
+  // background-color: var(--dark-accent-color);
+  border: 2px solid var(--shade-dark-color);
+  border-radius: 12px;
+  transition: ease-out 0.3s;
+  box-shadow: 0 6px 8px rgba(0, 112, 243, 0.15);
+
+  &:hover {
+    // background-color: var(--dark-accent-color);
+    color: var(--main-bg-color);
+  }
 }
 
 .craft-details {
@@ -768,7 +785,7 @@ main.cart {
 
 // #endregion
 
-// #region STORE
+// #region STORE 
 main.store {
   margin: 1rem 0.5rem;
 }
