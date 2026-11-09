@@ -782,6 +782,10 @@ main.cart {
   justify-content: space-between;
 }
 
+.disable-checkout {
+  text-decoration: line-through;
+}
+
 @media (width > 600px) {
 
   .cart-container {

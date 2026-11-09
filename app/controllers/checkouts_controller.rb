@@ -2,6 +2,7 @@ class CheckoutsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_cart
   before_action :verify_cart
+  before_action :checkout_disabled, only: [:create]
 
   def new
     @cart_items = @cart.cart_items.includes(variant: [:craft, :images])  
@@ -74,6 +75,10 @@ class CheckoutsController < ApplicationController
   end
 
   private
+
+  def checkout_disabled
+    redirect_to new_checkout_path, alert: "Checkout is disabled currently"
+  end
 
   def set_cart
     @cart = current_cart

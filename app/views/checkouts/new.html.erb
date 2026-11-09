@@ -1,3 +1,4 @@
+<%# Disabled until stripe account setup %>
 <main class="cart">
   <h2>Your Cart</h2>
   
@@ -14,9 +15,11 @@
       <div id="cart-subtotal" class="cart-subtotal">
         <%= render "subtotal", cart: @cart %>
       </div>
-      <%= button_to "Checkout securely with Stripe", 
+      <%= button_to "Checkout securely with Stripe",
         checkout_path,
         method: :post,
+        disabled: true,
+        class: "disable-checkout",
         data: { turbo: false }
       %>
     </div>
