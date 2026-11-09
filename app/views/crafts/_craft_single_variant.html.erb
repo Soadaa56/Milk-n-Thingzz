@@ -1,39 +1,33 @@
 <%# Needs accesbility editing %>
-<div class="row">
-  <div class="col">
-      <%#= render "gallery", craft: @craft %>
-      <%= render "carousel", craft: @craft %>
-  </div>
-
-  <section class="col">
-    <div id="craft-info" class="fs-2">
-      <h2 class="fs-1 underline">Craft Information</h2>
-        <% if cv.craft.description && cv.craft.description.present? %>
-          <div class="d-flex flex-row p-2">
-            <p class="p-2">Description: </p>
-            <p class="p-2"><%= cv.craft.description %></p>
-          </div>
-        <% end %>
-        
-        <% if cv.effective_dimensions && cv.effective_dimensions.present? %>
-          <div class="d-flex flex-row p-2">
-            <p class="p-2">Dimensions: </p>
-            <p class="p-2"><%= cv.effective_dimensions %></p>
-          </div>
-        <% end %>
-    </div>
-
-    <div id="craft-purchase">
-      <%# For sale %>
-      <% if cv.craft.for_sale? && cv.in_stock? %>
-        <%= render "for_sale", cv: cv %>
-      <%# For sale but out of stock %>
-      <% elsif cv.craft.for_sale? && cv.stock == 0 %>
-        <%= render "not_in_stock", cv: cv %>
-      <%# Not for sale %>
-      <% else %>
-        <%= render "not_for_sale", cv: cv %>
-      <% end %>
-    </div>
-  </section>
+<div class="craft-gallery">
+  <%#= render "gallery", craft: cv %>
+  <%= render "carousel", craft: cv %>
 </div>
+
+<div class="craft-purchase m-2">
+  <%# For sale %>
+  <% if cv.craft.for_sale? && cv.in_stock? %>
+    <%= render "for_sale", cv: cv %>
+  <%# For sale but out of stock %>
+  <% elsif cv.craft.for_sale? && cv.stock == 0 %>
+    <%= render "not_in_stock", cv: cv %>
+  <%# Not for sale %>
+  <% else %>
+    <%= render "not_for_sale", cv: cv %>
+  <% end %>
+</div>
+
+<% if cv.craft.description && cv.craft.description.present? %>
+  <div class="d-flex flex-row p-2">
+    <p class="p-2">Description: </p>
+    <p class="p-2"><%= cv.craft.description %></p>
+  </div>
+<% end %>
+
+<% if cv.effective_dimensions && cv.effective_dimensions.present? %>
+  <div class="d-flex flex-row p-2">
+    <p class="p-2">Dimensions: </p>
+    <p class="p-2"><%= cv.effective_dimensions %></p>
+  </div>
+<% end %>
+
