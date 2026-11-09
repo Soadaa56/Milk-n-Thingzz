@@ -2,13 +2,15 @@
 <div class="center d-grid gap-3 m-3">
   <div>
     <%= link_to "All Crafts", crafts_path, class:'btn btn-dark fs-5' %>
-    <%= link_to "View This Post", craft_path(@craft.slug), class: 'btn btn-dark fs-5' %>
+    <%= link_to "View This Post", craft_path(@craft.slug), class: 'btn btn-light fs-5' %>
   </div>
   <div>
-    <% if @craft.variants %>
+    <% if @craft.has_variants? %>
       <%= link_to "View All Variants", craft_variants_path(@craft), class: 'btn btn-primary fs-4' %>
+      <%= link_to "Add Variant", new_craft_variant_path(@craft), class: 'btn btn-info fs-4' %>
+    <% else %>
+      <%= link_to "Add First Variant?", new_craft_variant_path(@craft), class: 'btn btn-info fs-4' %>
     <% end %>
-    <%= link_to "Add Variant", new_craft_variant_path(@craft), class: 'btn btn-primary fs-4' %>
   </div>
 </div>
 

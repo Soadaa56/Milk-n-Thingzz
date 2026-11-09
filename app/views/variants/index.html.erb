@@ -1,6 +1,6 @@
 <h1>All Variants of: <%= @craft.name %></h1>
 <div class="center">
-  <%= link_to "View Craft", craft_path(@craft.slug), class: "btn btn-dark fs-5 mt-3 mb-3" %>
+  <%= link_to "View Craft", craft_path(@craft.slug), class: "btn btn-light fs-5 mt-3 mb-3" %>
   <%= link_to "Edit Base Craft", edit_craft_path(@craft), class: "btn btn-primary fs-5 mt-3 mb-3" %>
 </div>
 
@@ -14,7 +14,7 @@
       <th scope="col">Image</th>
       <th scope="col">Active</th>
       <th scope="col">
-        <%= link_to "Add Variant", new_craft_variant_path(@craft), class: "btn btn-primary fs-4" %>
+        <%= link_to "Add Variant", new_craft_variant_path(@craft), class: "btn btn-info fs-4" %>
       </th>
       <th scope="col">Delete</th>
     </tr>
@@ -40,14 +40,20 @@
           <% end %>
         </td>
         <td class="align-middle">
-          <%= link_to 'Edit Variant', edit_craft_variant_path(@craft, v) %>
+          <% if v == @variants.first %>
+            <%= link_to 'Caution Editing This', edit_craft_variant_path(@craft, v), class: "red" %>
+          <% else %>
+            <%= link_to 'Edit Variant', edit_craft_variant_path(@craft, v) %>
+          <% end %>
         </td>
         <td class="align-middle">
-          <%= button_to 'Delete', craft_variant_path(@craft, v), 
-              method: :delete,
-              data: { turbo: false },
-              onclick: "return confirm('Are you sure you want to delete this variant?');",
-              class: "btn btn-danger ms-1" %>
+          <% unless v == @variants.first %>
+            <%= button_to 'Delete', craft_variant_path(@craft, v), 
+                method: :delete,
+                data: { turbo: false },
+                onclick: "return confirm('Are you sure you want to delete this variant?');",
+                class: "btn btn-danger ms-1" %>
+          <% end %>
         </td>
       </tr>
     <% end %>

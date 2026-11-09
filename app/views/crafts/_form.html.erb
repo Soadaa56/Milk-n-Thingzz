@@ -14,11 +14,11 @@
 
     <div class="row align-items-start mt-4 mb-4">
       <div class="col">
-        <div>
+        <div class="m-2">
           <%= f.label :name, style: "display: block" %>
           <%= f.text_field :name %>
         </div>
-        <div data-controller="subtype">
+        <div class="m-2" data-controller="subtype">
           <div data-action="change->subtype#updateSubtype">
             <%= f.label :category, style: "display: block" %>
             <%= f.select :category, ["3D-Print", "Crochet", "Embroidery", "Earring", "Painting", "Necklace", "Miscellaneous"] %>
@@ -28,55 +28,71 @@
             <%=  f.select :subtype, [] %>
           </div>
         </div>
-        <div>
+        <div class="m-2">
           <%= f.label :description, style: "display: block" %>
           <%= f.text_area :description, rows: 5, cols: 40 %>
         </div>
       </div>
-      <div class="col">
-
-        <div>
-          <%= f.label :details, style: "display: block" %>
-          <%= f.text_area :details, rows: 5, cols: 40 %>
+      <div class="col me-5">
+        <div class="d-inline-flex mb-4">
+          <div class="me-2">
+            <%= f.label :details, style: "display: block" %>
+            <%= f.text_area :details, rows: 5, cols: 40 %>
+          </div>
+          <p class="light-accent-color mt-5">
+            Ideally organized as <strong>bullet points</strong>.
+          </p>
         </div>
-        <div>
-          <%= f.label :default_dimensions, style: "display: block" %>
-          <%= f.text_area :default_dimensions, rows: 5, cols: 40 %>
-          <p class="light-accent-color">
-            Dimensions purpose for back-end calculate shipping cost with size/weight if we use over flat-rate.
+        <div class="d-inline-flex">
+          <div class="me-2">
+            <%= f.label :default_dimensions, style: "display: block" %>
+            <%= f.text_area :default_dimensions, rows: 3, cols: 40 %>
+          </div>
+          <p class="light-accent-color mt-3">
+            Meant for calculating <strong>shipping cost</strong> to be used over <strong>flat shipping</strong>;
+          </p>
+          <p class="light-accent-color mt-3">
+            Unsure how to implement this.
           </p>
         </div>
       </div>
     </div>
 
     <h3 style="font-size: 3rem;">Back-end Info</h3>
-    <div class="row align-items-start d-grid gap-3">
-      <div class="col">
-        <div>
-          <%= f.label :for_sale %>
-          <%= f.check_box :for_sale %>
+    <div>
+      <div>
+        <div class="d-inline-flex m-2">
+          <div class="me-3">
+            <%= f.label :for_sale %>
+            <%= f.check_box :for_sale %>
+          </div>
           <p class="light-accent-color">
-            If Craft (and any variants) should be marked for sale or not
+            If <strong>Craft</strong> (and any <strong>variants</strong>) should be marked for sale or not.
           </p>
         </div>
-        <div>
-          <%= f.label :default_price %>
-          <%= f.number_field :default_price, step: 0.01, min: 0 %>
+        <div></div>
+        <div class="d-inline-flex m-2">
+          <div class="me-3">
+            <%= f.label :default_price %>
+            <%= f.number_field :default_price, step: 0.01, min: 0 %>
+          </div>
           <p class="light-accent-color">
-            Blank is valid (better than 0)
+            Blank is valid (better than 0).
           </p>
         </div>
-        <div>
-          <%= f.label :stock %>
-          <%= number_field_tag :stock, craft.variants.first&.stock, step: 1, min: 0 %>
-          <p class="dark-accent-color">
-            Leave blank if this is going to have variants.
+        <div class="m-2">
+          <div class="me-3">
+            <%= f.label :stock %>
+            <%= number_field_tag :stock, craft.variants.first&.stock, step: 1, min: 0 %>
+          </div>
+          <p class="green">
+            Leave <strong>blank</strong> if this craft will have <strong>variants</strong>.
           </p>
-          <p class="light-accent-color">
-            Blank is valid (isn't stocked)
+          <p class="red">
+            <strong>Blank</strong> is valid (Meaning we don't keep this stocked).
           </p>
-          <p class="light-accent-color">
-            0 means we would like to stock, but its currently 0.
+          <p class="yellow">
+            0 means our stock is currently 0, but we ideally have it stocked.
           </p>
         </div>
       </div>
@@ -86,17 +102,17 @@
     <div class="mt-5 mb-5">
       <%= file_field_tag "files[]", id: "files", multiple: true %>
       <%= label_tag "files", "Upload New Images" %>
-      <p>To delete images, check the box next to the image then update craft.</p>
+      <p class="red mt-2">To delete images, check the box next to the image then <strong>update craft</strong>.</p>
     </div>
     
-    <div class="craft-images-wrapper mt-4 mb-4" 
+    <div class="craft-images-wrapper d-flex mt-4 mb-4" 
       data-controller="sortable" 
       data-sortable-url-value="<%= craft.id.present? ? move_image_craft_path(craft) : '#' %>" >
       <% craft.variants.each do |variant| %>
         <%= f.fields_for :variants, variant do |v| %>
           <%= v.fields_for :images do |vi| %>
             <% next unless vi.object.image_url.present? %>
-            <div class="craft-form-image-card sortable-item">
+            <div class="craft-form-image-card sortable-item m-2">
               <%= image_tag vi.object.image_url(:small), class: "" %>
               <%= vi.hidden_field :id %>
               <%= vi.hidden_field :image_data %>
@@ -110,11 +126,11 @@
     
     <% if @craft.new_record? %>
       <div class="mt-4 mb-4">
-        <%= f.submit "Create New Craft", class: "btn btn-primary fs-3" %>
+        <%= f.submit "Create New Craft", class: "btn btn-success fs-3" %>
       </div>
     <% else %>
       <div class="mt-4 mb-4">
-        <%= f.submit "Update Craft", class: "btn btn-primary fs-3" %>
+        <%= f.submit "Update Craft", class: "btn btn-success fs-3" %>
       </div>
     <% end %>
   <% end %>

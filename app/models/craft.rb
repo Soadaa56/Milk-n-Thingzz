@@ -2,6 +2,8 @@ class Craft < ApplicationRecord
   has_many :variants, dependent: :destroy
   has_many :images, through: :variants
 
+  attribute :for_sale, :boolean, default: true
+
   accepts_nested_attributes_for :variants, allow_destroy: true
 
   before_validation :generate_slug
