@@ -432,42 +432,75 @@ nav a {
 // #endregion
 
 // #region SOCIAL 
-.social-wrapper2 {
-  margin-top: 10rem;
-}
-
 .social-about-us-link {
   margin-top: 10rem;
 }
 
 .social-wrapper {
-  display: grid;
-  margin: 1rem;
-  grid-template-columns: repeat(2, minmax(15rem, 1fr));
-  grid-row: auto auto;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 2rem;
-  outline: 5px solid black;
+}
+
+.social-item {
+  display: flex;
+  gap: 2rem;
+
+  a {
+    color: var(--light-accent-color);
+    text-decoration: none;
+
+    &:hover {
+      transition: 0.3s ease-in;
+      color: var(--dark-accent-color)
+    }
+  }
+
+  .social-text-link {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .social-logo {
   height: auto;
-  width: 15rem;
+  width: 3rem;
   margin-bottom: 1rem;
+  transform: scale(1);
+  transition: transform 0.7s ease-out;
 }
 
 .social-logo:hover {
-  filter: brightness(110%);
-  transform: scale(1.08);
-  transition: 0.5s ease;
+  filter: brightness(130%);
+  transform: scale(1.1);
+  transition: 0.4s ease-in-out;
 }
 
-@media (min-width: 601px) {
+@media (width <= 600px) {
+  .social-item {
+    span {
+      display: none;
+    }
+  }
+}
+
+@media (width > 600px) {
   .social-wrapper {
-    padding-top: 10rem;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 2fr));
-    gap: 8rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(15rem, 2fr));
+    gap: 4rem 1rem;
     outline: none;
+  }
+
+  .social-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .social-logo {
+      width: 10rem;
+    }
   }
 }
 
@@ -636,10 +669,10 @@ nav a {
   // background-color: var(--dark-accent-color);
   border: 2px solid var(--shade-dark-color);
   border-radius: 12px;
-  transition: ease-out 0.3s;
   box-shadow: 0 6px 8px rgba(0, 112, 243, 0.15);
 
   &:hover {
+    transition: ease-out 0.3s;
     // background-color: var(--dark-accent-color);
     color: var(--main-bg-color);
   }
@@ -699,6 +732,7 @@ main.cart {
       text-decoration: none;
 
       &:hover {
+        transition: ease-out 0.3s;
         color: var(--light-accent-color);
       }
     }

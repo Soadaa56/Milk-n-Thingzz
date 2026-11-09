@@ -1,23 +1,34 @@
-<h1>Socials</h1>
-
-<div class='social-wrapper text-center'>
-  <div class='social-item'>
-    <%= link_to image_tag('social/etsy-logo.svg', class: 'social-logo'), 'https://milknthingz.etsy.com/' %>
-    <p class='fs-1'>Etsy</p>
-    <a href='https://milknthingz.etsy.com/' class='fs-5'>Milknthingz</a>
+<main class="social">
+  <h1>Socials</h1>
+  
+  <div class="social-wrapper text-center m-5">
+    <div class="social-item">
+      <div>
+        <%= link_to image_tag("social/etsy-logo.svg", class: "social-logo"), 
+                              "https://milknthingz.etsy.com/" %>
+        <span>Etsy</span>
+      </div>
+      <a href="https://milknthingz.etsy.com/" class="social-text-link fs-3">Milknthingz</a>
+    </div>
+    <div class="social-item">
+      <div>
+        <%= link_to image_tag("social/youtube-logo.svg", class: "social-logo"), 
+                              "https://www.youtube.com/@chaicuterie" %>
+        <span>Youtube</span>
+      </div>
+      <a href="https://www.youtube.com/@chaicuterie" class="social-text-link fs-3">@Chaicuterie</a>
+    </div>
+    <div class="social-item">
+      <div>
+        <%= link_to image_tag("social/instagram-logo.svg", class: "social-logo"),
+                              "https://www.instagram.com/milknthingzz?igsh=c3M1NXRwbnV2N3J3&utm_source=qr" %>
+        <span>Instagram</span>
+      </div>
+      <a href="https://www.instagram.com/milknthingzz?igsh=c3M1NXRwbnV2N3J3&utm_source=qr" class="social-text-link fs-3">@Milknthingzz</a>
+    </div>
   </div>
-  <div class='social-item'>
-    <%= link_to image_tag('social/youtube-logo.svg', class: 'social-logo'), 'https://www.youtube.com/@chaicuterie' %>
-    <p class='fs-1'>Youtube</p>
-    <a href='https://www.youtube.com/@chaicuterie' class='fs-5'>@Chaicuterie</a>
+  
+  <div class="social-about-us-link">
+    <%= render "home/about" %>
   </div>
-  <div class='social-item'>
-    <%= link_to image_tag('social/instagram-logo.svg', class: 'social-logo'), 'https://www.instagram.com/milknthingzz?igsh=c3M1NXRwbnV2N3J3&utm_source=qr' %>
-    <p class='fs-1'>Instagram</p>
-    <a href='https://www.instagram.com/milknthingzz?igsh=c3M1NXRwbnV2N3J3&utm_source=qr' class='fs-5'>@Milknthingzz</a>
-  </div>
-</div>
-
-<div class="social-about-us-link">
-  <%= render 'home/about' %>
-</div>
+</main>
