@@ -2,8 +2,9 @@ class User < ApplicationRecord
   pay_customer default_payment_processor: :stripe, stripe_attributes: :stripe_attributes
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
+         # :registerable (disable sign-ups until stmp ses setup)
          
   enum :role, { standard: 0, admin: 1 }
 
