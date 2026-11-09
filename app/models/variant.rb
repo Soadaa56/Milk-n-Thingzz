@@ -1,0 +1,66 @@
+class Variant < ApplicationRecord
+  class OutOfStock < StandardError; end
+  belongs_to :craft
+  
+  has_many :images, -> { order(position: :asc) }, dependent: :destroy
+  has_many :cart_items, dependent: :restrict_with_error
+  has_many :carts, through: :cart_items
+
+  accepts_nested_attributes_for :images, allow_destroy: true
+
+  before_validation :normalize_sku
+  before_validation :set_default_price_from_craft
+
+  after_save :craft_has_many_variants
+  after_destroy :craft_has_many_variants
+
+  def effective_price
+    price.presence || craft.default_price
+  end
+
+  def effective_dimensions
+    dimensions.presence || craft.default_dimensions
+  end
+
+  def in_stock?
+    !stock.nil? && stock > 0
+  end
+
+  def tracks_inventory?
+    stock.present?
+  end
+
+  def for_sale?
+    craft.for_sale? && active?
+  end
+
+  def reserve!(quantity)
+    with_lock do
+      raise OutOfStock if self.available < quantity
+      
+      self.available -= quantity
+      self.save!
+    end
+  end
+
+  def self.output_stock
+    # WiP
+    puts self.stock
+  end
+
+  scope :in_stock, -> { where("variants.stock > 0") }
+
+  private
+
+  def craft_has_many_variants
+    craft.update_column(:has_variants, craft.variants.many?)
+  end
+
+  def normalize_sku
+    self.sku = nil if sku.blank?
+  end
+
+  def set_default_price_from_craft
+    self.price ||= craft.default_price
+  end
+end

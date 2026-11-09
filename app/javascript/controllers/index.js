@@ -4,17 +4,29 @@
 
 import { application } from "./application"
 
-import CommentController from "./comment_controller"
-application.register("comment", CommentController)
+import CarouselController from "./carousel_controller"
+application.register("carousel", CarouselController)
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import CartQuantityController from "./cart_quantity_controller"
+application.register("cart-quantity", CartQuantityController)
+
+import CraftDetailsController from "./craft_details_controller"
+application.register("craft-details", CraftDetailsController)
+
+import GalleryController from "./gallery_controller"
+application.register("gallery", GalleryController)
 
 import MenuController from "./menu_controller"
 application.register("menu", MenuController)
 
+import NavController from "./nav_controller"
+application.register("nav", NavController)
+
 import SortableController from "./sortable_controller"
 application.register("sortable", SortableController)
+
+import StoreFilterController from "./store_filter_controller"
+application.register("store-filter", StoreFilterController)
 
 import SubtypeController from "./subtype_controller"
 application.register("subtype", SubtypeController)
@@ -22,5 +34,5 @@ application.register("subtype", SubtypeController)
 import SubtypeSortController from "./subtype_sort_controller"
 application.register("subtype-sort", SubtypeSortController)
 
-import CarouselController from "./carousel_controller"
-application.register("carousel", CarouselController)
+import VariantSelectorController from "./variant_selector_controller"
+application.register("variant-selector", VariantSelectorController)

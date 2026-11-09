@@ -1,0 +1,16 @@
+<main class="orders-index">
+  <h1>Your Orders</h1>
+  <p class="center">Hello<%= ", " + current_user.email || "" %></p>
+  
+  <% if @orders %>
+    <div class="orders-container">
+      <% @orders.each do |order| %>
+        <div>
+          <%= order.paid_at.to_date || order.created_at.to_date %>: 
+          <%= link_to "Order #{order.id}", order_path(order.id) %>
+          <%= ": #{number_to_currency(order.total/100)}" %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</main>

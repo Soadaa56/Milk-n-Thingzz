@@ -1,0 +1,11 @@
+<div>
+  <p>
+    <span class="cross-out"><%= number_to_currency(cv.effective_price) %></span>
+  </p>
+  <p>Out of stock.</p>
+  <p>Feel free to email if this will come back in stock soon!</p>
+  <%= mail_to "soadaablog@gmail.com", 
+              "Contact Me", 
+              subject: "Milknthingzz #{cv.craft.name} out of stock",
+              class: "btn mail-to" %>
+</div>

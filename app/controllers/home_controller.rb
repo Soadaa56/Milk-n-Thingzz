@@ -4,36 +4,48 @@ class HomeController < ApplicationController
     @crafts = Craft.all
   end
 
+  def store
+    @crafts = Craft.includes(:images)
+    @categories = Craft.distinct.pluck(:category).sort
+
+    # filters
+    @crafts = @crafts.where(category: params[:category]) if params[:category].present?
+    @crafts = @crafts.where(for_sale: true) if params[:for_sale] == "1"
+    if params[:in_stock] == "1"
+      @crafts = @crafts.joins(:variants).merge(Variant.in_stock).distinct
+    end
+  end
+
   def crochet
-    @crafts = Craft.includes(:craft_images).where(category: "Crotchet")
+    @crafts = Craft.includes(:images).where(category: "Crochet")
   end
 
   def embroidery
-    @crafts = Craft.includes(:craft_images).where(category: "Embroidery")
+    @crafts = Craft.includes(:images).where(category: "Embroidery")
   end
 
   def print
-    @crafts = Craft.includes(:craft_images).where(category: "3D-Print")
+    @crafts = Craft.includes(:images).where(category: "3D-Print")
   end
 
   def painting
-    @crafts = Craft.includes(:craft_images).where(category: "Painting")
+    @crafts = Craft.includes(:images).where(category: "Painting")
   end
 
   def earring
-    @crafts = Craft.includes(:craft_images).where(category: "Earring")
-    @subtypes = @crafts.pluck(:subtype).uniq
+    @crafts = Craft.includes(:images).where(category: "Earring")
+    @subtypes = @crafts.where.not(subtype: [nil, ""]).pluck(:subtype).uniq
 
     @crafts = sort_crafts_by_subtype
     @selected_subtype = params[:sort_by] || 'All'
   end
 
   def necklace
-    @crafts = Craft.includes(:craft_images).where(category: 'Necklace')
+    @crafts = Craft.includes(:images).where(category: 'Necklace')
   end
 
   def miscellaneous
-    @crafts = Craft.includes(:craft_images).where(category: "Miscellaneous")
+    @crafts = Craft.includes(:images).where(category: "Miscellaneous")
   end
 
   def about; end

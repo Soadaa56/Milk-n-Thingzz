@@ -1,0 +1,46 @@
+<%# Needs accesbility editing %>
+<div data-controller="variant-selector">
+  <div>
+    <label for="variant_selector">Select:</label>
+    <%= select_tag "variant_selector",
+        options_for_select(craft_variants.map { |variant| [variant.name, variant.id] }),
+        id: "variant_selector",
+        class: "text-capitalize mb-2",
+        data: {
+          action: "variant-selector#update",
+          variant_selector_target: "select"
+        } %>
+  </div>
+  
+  <% craft_variants.each do |cv| %>
+    <div 
+      data-variant-selector-target="display" 
+      data-id="<%= cv.id %>"
+      <%= "hidden" unless cv.id == craft_variants.first.id %>>
+      <div class="craft-gallery">
+        <%#= render "gallery", craft: cv %>
+        <%= render "carousel", craft: cv %>
+      </div>
+
+      <h2 class="text-capitalize m-1"><%= cv.name.capitalize %></h2>
+      <div class="craft-purchase m-2">
+        <%# For sale and in stock %>
+        <% if cv.craft.for_sale? && cv.in_stock? %>
+          <%= render "for_sale", cv: cv %>
+        <%# For sale but out of stock %>
+        <% elsif cv.for_sale? && cv.stock == 0 %>
+          <%= render "not_in_stock", cv: cv %>
+        <%# Not for sale %>
+        <% else %>
+          <%= render "not_for_sale", cv: cv %>
+        <% end %>
+      </div>
+
+      <div class="craft-info">
+        <% if cv.craft.description.present? %>
+          <p><%= cv.craft.description %></p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

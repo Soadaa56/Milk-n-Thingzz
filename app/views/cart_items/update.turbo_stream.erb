@@ -1,0 +1,15 @@
+<%= turbo_stream.update dom_id(@cart_item) do %>
+  <%= render "checkouts/cart_item", cart_item: @cart_item %>
+<% end %>
+
+<%= turbo_stream.update "cart-subtotal" do %>
+  <%= render "checkouts/subtotal", cart: @cart %>
+<% end %>
+
+<%= turbo_stream.update "cart-count" do %>
+  <%= render "checkouts/cart_count", cart: @cart %>
+<% end %>
+
+<%= turbo_stream.update "cart-svg-count" do %>
+  <%= cart_item_count %>
+<% end %>

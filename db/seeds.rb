@@ -1,3 +1,5 @@
+# Probably not using this anymore, will need to rework index.html.erb
+
 # Initial Craft table seed
 # upsert_all used to update the initial db:seed on the VPS postgreSQl container that didn't have image_data
 

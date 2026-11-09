@@ -1,20 +1,13 @@
 class ProfileController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:edit, :update]
 
   def index
     @user = current_user
-    @comments = @user.comments.includes(:rich_text_body).order(created_at: :desc)
-  end
-
-  def show
-    @comments = @user.comments.includes(:rich_text_body).order(created_at: :desc)
   end
 
   def edit
-    if current_user == @user
-      @bio = @user.bio
-    else
+    if current_user == !@user
       redirect_to root_path, alert: "That isn't your profile"
     end
   end
@@ -34,6 +27,6 @@ class ProfileController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:bio)
+    params.require(:user)
   end
 end

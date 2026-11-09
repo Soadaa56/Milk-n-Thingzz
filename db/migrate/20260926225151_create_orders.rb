@@ -1,0 +1,35 @@
+class CreateOrders < ActiveRecord::Migration[8.1]
+  def change
+    create_table :orders do |t|
+      t.references :user, null: true, foreign_key: { on_delete: :nullify }
+
+      t.integer :status, null: false, default: 0
+
+      t.decimal :subtotal, precision: 7, scale: 2, null: false
+      t.decimal :shipping_total, precision: 7, scale: 2
+      t.decimal :tax_total, precision: 7, scale: 2
+      t.decimal :total, precision: 7, scale: 2
+
+      t.string :stripe_checkout_session_id
+      t.string :stripe_payment_intent_id
+
+      t.string :shipping_carrier
+      t.string :tracking_number
+
+      t.string :shipping_name
+      t.string :shipping_address_line1
+      t.string :shipping_address_line2
+      t.string :shipping_city
+      t.string :shipping_state
+      t.string :shipping_postal_code
+      t.string :shipping_country
+      t.string :shipping_phone
+      
+      t.datetime :paid_at
+      t.datetime :fulfilled_at
+      t.datetime :completed_at
+
+      t.timestamps
+    end
+  end
+end

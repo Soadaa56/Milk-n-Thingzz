@@ -1,12 +1,10 @@
-<% if current_user&.admin? %>
-  <h1>New Craft</h1>
-  <h4 class='center'>
-    <%= link_to 'Admin Dashboard', admin_index_path, class:'btn btn-dark' %>
-    <%= link_to 'List all crafts', crafts_path, class: 'btn btn-primary' %>
-  </h4>
-  <%= render 'form', craft: @craft %>
-<% else %>
-  <p>You seem to be lost!</p>
-<% end %>
+<h1>New Craft</h1>
 
-<%= link_to 'Back', :back, class:'btn btn-custom indent', style: 'margin-left: 5rem' %>
+<div class="center">
+  <%= link_to "Admin Dashboard", admin_index_path, class: "btn btn-dark fs-5" %>
+  <%= link_to "List all crafts", crafts_path, class: "btn btn-primary fs-4" %>
+</div>
+
+<%= render "form", craft: @craft %>
+
+<%= render "shared/back" %>

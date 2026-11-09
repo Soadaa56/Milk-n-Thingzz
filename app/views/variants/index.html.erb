@@ -1,0 +1,56 @@
+<h1>All Variants of: <%= @craft.name %></h1>
+<div class="center">
+  <%= link_to 'View Craft', craft_path(@craft.slug), class: "btn btn-dark fs-5 mt-3 mb-3" %>
+</div>
+
+<table class="table table-dark table-hover m-1">
+  <thead class="variant-table-head">
+    <tr class="center fs-4">
+      <th scope="col">Name</th>
+      <th scope="col">SKU</th>
+      <th scope="col">Stock</th>
+      <th scope="col">Price</th>
+      <th scope="col">Image</th>
+      <th scope="col">Active</th>
+      <th scope="col">
+        <%= link_to "Add Variant", new_craft_variant_path(@craft), class: "btn btn-primary fs-4" %>
+      </th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody class="center variant-table-body">
+    <% @variants.each do |v| %>
+      <tr class="fs-5">
+        <th scope="row" class="align-middle"><%= v.name %></th>
+        <td class="align-middle"><%= v.sku || "X" %></td>
+        <td class="align-middle"><%= v.stock || "X" %></td>
+        <td class="align-middle"><%= number_to_currency(v.effective_price) || "X" %></td>
+        <td class="align-middle thumbnail-container">
+          <% if v.images.any? && v.images.first.image_url(:small) %>
+            <%= image_tag v.images.first.image_url(:small), 
+                class: "thumbnail-image" %>
+          <% end %>
+        </td>
+        <td class="align-middle">
+          <% if v.active? %>
+            <span>Yes</span>
+          <% else %>
+            <span>X</span>
+          <% end %>
+        </td>
+        <td class="align-middle">
+          <%= link_to 'Edit Variant', edit_craft_variant_path(@craft, v) %>
+        </td>
+        <td class="align-middle">
+          <%= button_to 'Delete', craft_variant_path(@craft, v), 
+              method: :delete,
+              data: { turbo: false },
+              onclick: "return confirm('Are you sure you want to delete this variant?');",
+              class: "btn btn-danger ms-1" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= render 'shared/back' %>

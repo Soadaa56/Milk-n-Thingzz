@@ -1,21 +1,26 @@
 class Craft < ApplicationRecord
-  has_many :comments, -> { reorder(nil) }, dependent: :destroy
+  has_many :variants, dependent: :destroy
+  has_many :images, through: :variants
+
+  accepts_nested_attributes_for :variants, allow_destroy: true
+
+  before_validation :generate_slug
+  before_validation :normalize_name
+
   validates :name, presence: true
+  validates :slug, presence: true, uniqueness: true
 
-  include ImageUploader::Attachment(:image)
-  has_many :craft_images, -> { order(position: :asc) }, dependent: :destroy
-  accepts_nested_attributes_for :craft_images, allow_destroy: true
-  validate :must_have_at_least_one_image
-
-  def display_category
-    category.downcase == "crotchet" ? "Crochet" : category
+  def cover_image
+    images.first
   end
 
-  private 
+  private
 
-  def must_have_at_least_one_image
-    if craft_images.empty?
-      errors.add(:base, "Craft must have at least one image")
-    end
+  def generate_slug
+    self.slug = name.parameterize
+  end
+
+  def normalize_name
+    self.name = name.squish if name.present?
   end
 end
