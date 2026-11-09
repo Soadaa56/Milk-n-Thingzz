@@ -3,8 +3,8 @@ class CreateOrderItems < ActiveRecord::Migration[8.1]
     create_table :order_items do |t|
       t.references :order, null: false, foreign_key: true
 
-      t.references :craft, null: false, foreign_key: true
-      t.references :variant, null: false, foreign_key: true
+      t.references :craft, null: false, foreign_key: { on_delete: :nullify }
+      t.references :variant, null: false, foreign_key: { on_delete: :nullify }
 
       t.string :craft_name, null: false
       t.string :variant_name

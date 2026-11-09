@@ -17,7 +17,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_26_225647) do
     t.integer "quantity", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+    t.index ["cart_id", "variant_id"], name: "index_cart_items_on_cart_id_and_variant_id", unique: true
     t.index ["variant_id"], name: "index_cart_items_on_variant_id"
   end
 
@@ -25,12 +25,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_26_225647) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_carts_on_user_id"
+    t.index ["user_id"], name: "index_carts_on_user_id", unique: true
   end
 
   create_table "crafts", force: :cascade do |t|
     t.string "name", null: false
     t.text "description"
+    t.string "details"
     t.string "category"
     t.string "subtype"
     t.string "slug", null: false
@@ -38,10 +39,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_26_225647) do
     t.boolean "has_variants", default: false, null: false
     t.decimal "default_price", precision: 7, scale: 2
     t.string "default_dimensions"
-    t.string "shopify_product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "details"
     t.index ["for_sale"], name: "index_crafts_on_for_sale"
     t.index ["slug"], name: "index_crafts_on_slug", unique: true
   end
@@ -227,7 +226,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_26_225647) do
     t.integer "stock"
     t.string "dimensions"
     t.boolean "active", default: true, null: false
-    t.string "shopify_variant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["active"], name: "index_variants_on_active"
@@ -239,9 +237,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_26_225647) do
   add_foreign_key "cart_items", "variants"
   add_foreign_key "carts", "users"
   add_foreign_key "images", "variants"
-  add_foreign_key "order_items", "crafts"
+  add_foreign_key "order_items", "crafts", on_delete: :nullify
   add_foreign_key "order_items", "orders"
-  add_foreign_key "order_items", "variants"
+  add_foreign_key "order_items", "variants", on_delete: :nullify
   add_foreign_key "orders", "users", on_delete: :nullify
   add_foreign_key "pay_charges", "pay_customers", column: "customer_id"
   add_foreign_key "pay_charges", "pay_subscriptions", column: "subscription_id"

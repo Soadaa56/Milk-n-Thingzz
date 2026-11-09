@@ -1,8 +1,9 @@
-class RecreateSchemeTablesForCraftsImagesVariants < ActiveRecord::Migration[7.2]
+class CreateCraftsVariantsAndImages < ActiveRecord::Migration[8.1]
   def change
     create_table :crafts do |t|
       t.string :name, null: false
       t.text :description
+      t.string :details
       t.string :category
       t.string :subtype
       t.string :slug,                 null: false
@@ -10,7 +11,6 @@ class RecreateSchemeTablesForCraftsImagesVariants < ActiveRecord::Migration[7.2]
       t.boolean :has_variants,        default: false, null: false
       t.decimal :default_price,       precision: 7, scale: 2
       t.string :default_dimensions
-      t.string :shopify_product_id
       t.timestamps
     end
     add_index :crafts, :slug, unique: true
@@ -24,7 +24,6 @@ class RecreateSchemeTablesForCraftsImagesVariants < ActiveRecord::Migration[7.2]
       t.integer :stock,               null: true
       t.string :dimensions,           null: true
       t.boolean :active,              default: true, null: false
-      t.string :shopify_variant_id
       t.timestamps
     end
     add_index :variants, :active
