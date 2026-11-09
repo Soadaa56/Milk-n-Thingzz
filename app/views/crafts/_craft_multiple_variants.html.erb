@@ -1,13 +1,11 @@
 <%# Needs accesbility editing %>
-<h1 class="debug desktop">Multiple Var Page</h1>
-
 <div data-controller="variant-selector">
   <div>
     <label for="variant_selector">Variant:</label>
     <%= select_tag "variant_selector",
         options_for_select(craft_variants.map { |variant| [variant.name, variant.id] }),
         id: "variant_selector",
-        class: "text-capitalize",
+        class: "text-capitalize mb-2",
         data: {
           action: "variant-selector#update",
           variant_selector_target: "select"
@@ -32,41 +30,19 @@
         <% end %>
       </div>
       
-      <div class="craft-variable">
+      <div class="craft-purchase">
         <%# For sale and in stock %>
         <% if cv.craft.for_sale? && cv.in_stock? %>
           <%= render "for_sale", cv: cv %>
-
         <%# For sale but out of stock %>
         <% elsif cv.for_sale? && cv.stock == 0 %>
-          <p>
-            Sorry, we are currently out of stock for this current item!. Hopefully
-            it comes back into stock shortly, but feel free to email me any questions.
-          </p>
-          <%= mail_to "soadaablog@gmail.com",
-                      "Contact Me",
-                      subject: "Milknthingzz #{cv.craft.name}- #{cv.name}: Out of Stock",
-                      class: "btn light-accent-color" %>
-
+          <%= render "not_in_stock", cv: cv %>
         <%# Not for sale %>
         <% else %>
-          <p>
-            Sorry, this isn't being sold right now! But if you're interested
-            feel free to email me about custom orders!
-          </p>
-        <%= mail_to "soadaablog@gmail.com",
-                      "Contact Me",
-                      subject: "Milknthingzz #{cv.craft.name}- #{cv.name}: Inquiry",
-                      class: "btn light-accent-color" %>
+          <%= render "not_for_sale", cv: cv %>
         <% end %>
       </div>
     </div>
     <%=%>
   <% end %>
-
-  
-        <%# if cv.effective_price != 0 || nil %>
-          <%#= number_to_currency(cv.effective_price) %>
-        <%# end %>
-  
 </div>

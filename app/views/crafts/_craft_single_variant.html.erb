@@ -27,35 +27,12 @@
       <%# For sale %>
       <% if cv.craft.for_sale? && cv.in_stock? %>
         <%= render "for_sale", cv: cv %>
-
       <%# For sale but out of stock %>
       <% elsif cv.craft.for_sale? && cv.stock == 0 %>
-        <div>
-            <p>
-              Sorry! I'm out of stock for the current item. Hopefully it 
-              will come back in stock soon but feel free to email me for inquiries.
-            </p>
-            <%= mail_to "soadaablog@gmail.com", 
-                      "Contact Me", 
-                      subject: "Milknthingzz #{cv.craft.name} out of stock",
-                      class: "btn light-accent-color" %>
-            <p>
-              <span class="cross-out"><%= number_to_currency(cv.effective_price) %></span>
-            </p>
-        </div>
-
+        <%= render "not_in_stock", cv: cv %>
       <%# Not for sale %>
       <% else %>
-        <div>
-          <p>
-            Sorry, This craft isn't being sold right now! but if you're 
-            interested I would love to make you a custom order.
-          </p>
-          <%= mail_to "soadaablog@gmail.com", 
-                      "Contact Me", 
-                      subject: "Milknthingzz #{cv.craft.name} Inquiry",
-                      class: "btn light-accent-color" %>
-        </div>
+        <%= render "not_for_sale", cv: cv %>
       <% end %>
     </div>
   </section>
