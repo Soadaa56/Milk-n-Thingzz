@@ -21,8 +21,8 @@ RUN apt-get update -qq && \
     apt-get install -y build-essential curl default-libmysqlclient-dev git libpq-dev libyaml-dev libvips libxml2 libxml2-dev libxslt1-dev node-gyp pkg-config python-is-python3 imagemagick
 
 # Install JavaScript dependencies
-ARG NODE_VERSION=26.8.2
-ARG PNPM_VERSION=11.26.0
+ARG NODE_VERSION=26.13.0
+ARG PNPM_VERSION=12.18.0
 
 ENV PATH=/usr/local/node/bin:$PATH
 RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz -C /tmp/ && \
