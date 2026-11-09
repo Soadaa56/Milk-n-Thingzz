@@ -35,7 +35,6 @@ RUN gem install bundler -v 4.0.10
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
-RUN gem update --system 3.3.22
 RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
