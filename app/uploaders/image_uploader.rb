@@ -1,18 +1,18 @@
 class ImageUploader < Shrine
   Attacher.derivatives do |original|
-    magick = ImageProcessing::MiniMagick.source(original)
+    vips = ImageProcessing::Vips.source(original)
     {
-      small:   magick.resize_to_fill(180, 180)
+      small:   vips.resize_to_fill(180, 180)
                       .convert("webp")
-                      .saver(quality: 63)
+                      .saver(q: 61, strip: true)
                       .call,
-      card:         magick.resize_to_fill(500,500)
+      card:         vips.resize_to_fill(500,500)
                       .convert("webp")
-                      .saver(quality: 78)
+                      .saver(q: 75, strip: true)
                       .call,
-      detail:       magick.resize_to_limit(1200, 1200)
+      detail:       vips.resize_to_limit(1200, 1200)
                       .convert("webp")
-                      .saver(quality: 83)
+                      .saver(q: 82, strip: true)
                       .call
     }
   end

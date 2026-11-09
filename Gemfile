@@ -33,6 +33,7 @@ end
 gem "image_processing", "~> 1.2"
 gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'shrine', '~> 3.5'
+gem "ruby-vips"
 
 # Custom 
 gem "jsbundling-rails"
