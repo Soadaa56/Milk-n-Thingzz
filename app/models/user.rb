@@ -2,7 +2,7 @@ class User < ApplicationRecord
   pay_customer default_payment_processor: :stripe, stripe_attributes: :stripe_attributes
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable,
+  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          # :registerable (disable sign-ups until stmp ses setup)
          
@@ -29,11 +29,6 @@ class User < ApplicationRecord
         user_id: id || pay_customer.owner_id
       }
     }
-  end
-
-  def pay_should_sync_customer?
-    # super will invoke Pay's default (e-mail changed)
-    super || self.saved_change_to_address? || self.saved_change_to_name?
   end
 
   private
