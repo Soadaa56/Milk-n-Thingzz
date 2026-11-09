@@ -85,6 +85,13 @@ h3 {
   margin-left: 5rem;
 }
 
+.thumbnail-container {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+}
+
 .thumbnail-image {
   max-height: 70px;
 }
