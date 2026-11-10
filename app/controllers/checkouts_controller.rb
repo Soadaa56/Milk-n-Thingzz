@@ -25,7 +25,7 @@ class CheckoutsController < ApplicationController
         quantity: item[:quantity]
     }
     end
-
+    
     session = Stripe::Checkout::Session.create({
       customer: current_user.payment_processor.processor_id,
       success_url: root_url(success: true),
@@ -43,6 +43,12 @@ class CheckoutsController < ApplicationController
         "acss_debit",       # Pre-authorized debit (Canada)
         "bacs_debit",       # Bacs Direct Debit (UK)
       ],
+
+      customer_update: {
+        address: "auto",
+        shipping: "auto",
+        name: "auto"
+      },
       
       automatic_tax: { enabled: true },
       shipping_address_collection: {
@@ -66,6 +72,8 @@ class CheckoutsController < ApplicationController
     })
 
     order.update!(stripe_checkout_session_id: session.id)
+
+    Rails.logger.info(session)
 
     redirect_to session.url, allow_other_host: true
   rescue Stripe::StripeError => e
