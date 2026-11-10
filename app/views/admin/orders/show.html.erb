@@ -1,26 +1,80 @@
 <main class="admin-order-show">
   <h1>Admin::Orders#show</h1>
   
-  <div class="order-container">
-    <div class="order-info">
-      <p>Order #: <%= @order.id %></p>
-      <p>User: <%= @user.id %>, <%= @user.email %></p>
-      <p>Stripe Payment #: <%= @order.stripe_payment_intent_id %></p>
-      <p>Carrier: <%= @order.shipping_carrier %></p>
-      <p>Tracking #: <%= @order.tracking_number %></p>
+  <div class="order-container light-accent-color">
+    <div class="order-header row p-3">
+      <div class="shipping-info col">
+        <div class="row">
+          <p class="col">Carrier:</p>
+          <p class="col"><%= @order.shipping_carrier %></p>
+        </div>
+        <div class="row">
+          <p class="col">Tracking Number:</p>
+          <p class="col"><%= @order.tracking_number %></p>
+        </div>
+        <div class="row">
+          <p class="col">State:</p>
+          <p class="col"><%= @order.shipping_state %></p>
+        </div>
+        <div class="row">
+          <p class="col">City:</p>
+          <p class="col"><%= @order.shipping_city %></p>
+        </div>
+        <div class="row">
+          <p class="col">Zip:</p>
+          <p class="col"><%= @order.shipping_postal_code %></p>
+        </div>
+        <div class="row">
+          <p class="col">Address:</p>
+          <p class="col"><%= @order.shipping_address_line1 %></p>
+          <% if @order.shipping_address_line2 %>
+            <p><%= @order.shipping_address_line2 %></p>
+          <% end %>
+        </div>
+        <div class="row">
+          <p class="col">Name:</p>
+          <p class="col"><%= @order.shipping_name %></p>
+        </div>
+      </div>
+
+      <div class="col"></div>
+
+      <div class="order-info col">
+        <div class="row">
+          <p class="col">Order Number:</p>
+          <p class="col"><%= @order.id %></p>
+        </div>
+        <div class="row">
+          <p class="col">User:</p>
+          <p class="col"><%= @user.email %> (ID - <%= @user.id %>)</p>
+        </div>
+        <div class="row">
+          <p class="col">Stripe Payment Number:</p>
+          <p class="col"><%= @order.stripe_payment_intent_id %></p>
+        </div>
+      </div>
     </div>
 
-    <div class="order-items">
+    <div class="order-items d-inline-flex m-3">
       <% @order.order_items.each do |item| %>
         <%= render "order_item", order_item: item %>
       <% end %>
     </div>
 
-    <div class="order-totals">
-      <p>Subtotal: <%= number_to_currency(@order.subtotal) %></p>
-      <p>Taxes: <%= number_to_currency(@order.tax_total/100) %></p>
-      <p>Shipping: <%= number_to_currency(@order.shipping_total/100) %></p>
-      <p>Total: <%= number_to_currency(@order.total/100) %></p>
+    <div class="order-total m-3">
+      <div>
+        <p>Subtotal: <span><%= number_to_currency(@order.subtotal) %></span></p>
+      </div>
+      <div>
+        <p>Taxes: <span><%= number_to_currency(@order.tax_total/100) %></span></p>
+      </div>
+      <div>
+        <p>Shipping: <span><%= number_to_currency(@order.shipping_total/100) %></span></p>
+      </div>
+      <div>
+        <p>Total: <span><%= number_to_currency(@order.total/100) %></span></p>
+      </div>
     </div>
   </div>
+
 </main>
