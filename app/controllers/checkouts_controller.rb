@@ -44,7 +44,6 @@ class CheckoutsController < ApplicationController
         "bacs_debit",       # Bacs Direct Debit (UK)
       ],
       
-      customer_update: { shipping: "auto" },
       automatic_tax: { enabled: true },
       shipping_address_collection: {
         allowed_countries: ["US"]
