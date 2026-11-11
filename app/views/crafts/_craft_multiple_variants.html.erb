@@ -22,21 +22,23 @@
         <%= render "carousel", craft: cv %>
       </div>
 
-      <h2 class="text-capitalize m-1"><%= cv.name.capitalize %></h2>
-      <div class="craft-purchase m-2">
-        <%# For sale and in stock %>
-        <% if cv.craft.for_sale? && cv.in_stock? %>
-          <%= render "for_sale", cv: cv %>
-        <%# For sale but out of stock %>
-        <% elsif cv.for_sale? && cv.stock == 0 %>
-          <%= render "not_in_stock", cv: cv %>
-        <%# Not for sale %>
-        <% else %>
-          <%= render "not_for_sale", cv: cv %>
-        <% end %>
-      </div>
+      <% unless cv.name == "default" %>
+        <h2 class="text-capitalize m-1"><%= cv.name.capitalize %></h2>
+        <div class="craft-purchase m-2">
+          <%# For sale and in stock %>
+          <% if cv.craft.for_sale? && cv.in_stock? %>
+            <%= render "for_sale", cv: cv %>
+          <%# For sale but out of stock %>
+          <% elsif cv.for_sale? && cv.stock == 0 %>
+            <%= render "not_in_stock", cv: cv %>
+          <%# Not for sale %>
+          <% else %>
+            <%= render "not_for_sale", cv: cv %>
+          <% end %>
+        </div>
+      <% end %>
 
-      <div class="craft-info">
+      <div class="craft-info mt-3">
         <% if cv.craft.description.present? %>
           <p><%= cv.craft.description %></p>
         <% end %>
