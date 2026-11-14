@@ -2,9 +2,16 @@
   <article>
     <header class="mb-3">
       <h1><%= @craft.name %></h1>
-      <h2 class="craft-show-category">
+      <%# Desktop only, link to category page %>
+      <h2 class="craft-show-category desktop">
         <%= link_to @craft.category,
               craft_category_path_helper(@craft),
+              class:"center nav-link" %>
+      </h2>
+      <%# Mobile only, link to store w/ filter applied %>
+      <h2 class="craft-show-category mobile">
+        <%= link_to @craft.category,
+              home_store_path(category: @craft.category),
               class:"center nav-link" %>
       </h2>
       
