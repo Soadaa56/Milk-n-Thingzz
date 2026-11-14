@@ -1,4 +1,14 @@
 class ImageUploader < Shrine
+  plugin :processing
+
+  process(:store) do |io, **|
+    ImageProcessing::Vips
+      .source(io.download)
+      .convert("webp")
+      .saver(Q: 89, strip: true)
+      .call
+  end
+
   Attacher.derivatives do |original|
     vips = ImageProcessing::Vips.source(original)
     {
