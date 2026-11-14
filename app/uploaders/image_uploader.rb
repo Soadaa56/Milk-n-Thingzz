@@ -4,15 +4,15 @@ class ImageUploader < Shrine
     {
       small:        vips.resize_to_fill(180, 180)
                       .convert("webp")
-                      .saver(q: 61, strip: true)
+                      .saver(Q: 60, strip: true)
                       .call,
-      card:         vips.resize_to_fill(500,500)
+      card:         vips.resize_to_fill(540,540)
                       .convert("webp")
-                      .saver(q: 75, strip: true)
+                      .saver(Q: 71, strip: true)
                       .call,
-      detail:       vips.resize_to_limit(1200, 1200)
+      detail:       vips.resize_to_limit(1000, 1000)
                       .convert("webp")
-                      .saver(q: 82, strip: true)
+                      .saver(Q: 79, strip: true)
                       .call
     }
   end
