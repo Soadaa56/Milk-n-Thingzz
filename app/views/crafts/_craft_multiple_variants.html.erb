@@ -18,8 +18,8 @@
       data-id="<%= cv.id %>"
       <%= "hidden" unless cv.id == craft_variants.first.id %>>
       <div class="craft-gallery">
-        <%#= render "gallery", craft: cv %>
-        <%= render "carousel", craft: cv %>
+        <%= render "gallery", cv: cv %>
+        <%#= render "carousel", craft: cv %>
       </div>
 
       <% unless cv.name == "default" %>

@@ -1,7 +1,34 @@
-<div id="gallery" data-controller="gallery">
-  <div class="gallery-main-image">
-    <% craft.images.first  %>
+<div id="gallery" 
+  data-controller="gallery"
+  data-gallery-has-gallery-variant-params="<%= cv.craft.has_variants %>">
+  <div class="main-image">
+    <% if cv.images.first.present? %>
+      <%= image_tag cv.images.first.image_url(:detail),
+          fetchpriority: "high",
+          alt: cv.craft.name,
+          data: { 
+            gallery_target: "main",
+            action: "click->gallery#inspect",
+            id: cv.images.first.id,
+            detail:  cv.images.first.image_url(:detail),
+            small: cv.images.first.image_url(:small)
+          } %>
+    <% end %>
   </div>
-  <div class="gallery-cards">
-  </div>
+  <% if cv.images.drop(1).present? %>
+    <div class="thumbnail-gallery">
+      <% cv.images.drop(1).each do |image| %>
+        <div class="thumbnail">
+          <%= image_tag image.image_url(:small),
+              data: { 
+                gallery_target: "thumbnail",
+                action: "click->gallery#swap",
+                id: image.id,
+                detail: image.image_url(:detail),
+                small: image.image_url(:small)
+              } %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
