@@ -2,7 +2,7 @@ class ImageUploader < Shrine
   Attacher.derivatives do |original|
     vips = ImageProcessing::Vips.source(original)
     {
-      small:   vips.resize_to_fill(180, 180)
+      small:        vips.resize_to_fill(180, 180)
                       .convert("webp")
                       .saver(q: 61, strip: true)
                       .call,
