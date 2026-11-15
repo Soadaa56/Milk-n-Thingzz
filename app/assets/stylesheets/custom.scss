@@ -699,7 +699,15 @@ nav a {
 
 .craft-purchase {
   margin: 1rem 0;
-  font-size: 1.75rem;
+  font-size: 1.30rem;
+
+  p {
+    max-width: 300px;
+    margin-inline: auto;
+  }
+  .craft-price {
+    font-size: 1.85rem;
+  }
 }
 
 .craft-show-category {
@@ -719,11 +727,11 @@ nav a {
   margin: 0.5rem;
   font-size: 1.5rem;
   color: var(--light-accent-color);
-  background: linear-gradient(135deg, var(--dark-accent-color), var(--shade-dark-color));
-  filter: brightness(110%);
-  border: 2px solid var(--shade-dark-color);
+  background: linear-gradient(135deg, var(--shade-dark-color), var(--dark-accent-color));
+  border: 3px solid var(--temp-h2-color);
   border-radius: 12px;
   box-shadow: 0 6px 8px rgba(0, 112, 243, 0.15);
+  filter: brightness(110%);
 
   &:hover {
     transition: ease-out 0.3s;
