@@ -7,7 +7,7 @@ class CraftsController < ApplicationController
   end
 
   def show
-    @craft = Craft.includes(variants: :images).find_by!(slug: params[:id])
+    @craft = Craft.where(active: true).includes(variants: :images).find_by!(slug: params[:id])
   end
 
   def edit ; end
@@ -66,7 +66,7 @@ class CraftsController < ApplicationController
           dimensions: params[:default_dimensions],
           stock: params[:stock]
       )
-        format.html { redirect_to craft_url(@craft.slug), notice: "Craft updated" }
+        format.html { redirect_to edit_craft_path(@craft), notice: "Craft updated" }
         format.json { render :show, status: :ok, location: @craft }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -99,7 +99,7 @@ class CraftsController < ApplicationController
   def craft_params
     params.require(:craft).permit(
       :name, :description, :category, :subtype, :for_sale,
-      :details, :default_price, :default_dimensions,
+      :active, :details, :default_price, :default_dimensions,
       variants_attributes: [
         :id, :name, :sku, :price, :dimensions, :stock, :active, :_destroy,
         images_attributes: [:id, :variant_id, :image, :image_data, :_destroy]

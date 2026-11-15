@@ -73,6 +73,16 @@
         <div></div>
         <div class="d-inline-flex m-2">
           <div class="me-3">
+            <%= f.label :active %>
+            <%= f.check_box :active %>
+          </div>
+          <p class="light-accent-color">
+            Mark <strong>Inactive</strong> to hide from customers and disallow ordering.
+          </p>
+        </div>
+        <div></div>
+        <div class="d-inline-flex m-2">
+          <div class="me-3">
             <%= f.label :default_price %>
             <%= f.number_field :default_price, step: 0.01, min: 0 %>
           </div>
