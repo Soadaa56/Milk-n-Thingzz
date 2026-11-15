@@ -18,7 +18,6 @@
       <% if @craft.subtype.present? %>
         <div class="center"><%= @craft.subtype %></div>
       <% end %>
-      <h6 class="center">Uploaded: <%= @craft.created_at.strftime("%B %d, %Y") %></h6>
     </header>
     
     <% if current_user&.admin? %>

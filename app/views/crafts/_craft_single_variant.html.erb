@@ -3,7 +3,7 @@
   <%= render "gallery", cv: cv %>
 </div>
 
-<div class="craft-purchase m-2">
+<div class="craft-purchase">
   <%# For sale %>
   <% if cv.craft.for_sale? && cv.in_stock? %>
     <%= render "for_sale", cv: cv %>

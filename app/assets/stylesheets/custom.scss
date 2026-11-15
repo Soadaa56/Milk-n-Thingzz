@@ -696,6 +696,12 @@ nav a {
     height: 65px;
   }
 }
+
+.craft-purchase {
+  margin: 1rem 0;
+  font-size: 1.75rem;
+}
+
 .craft-show-category {
   &:hover {
     color: var(--light-accent-color);
@@ -709,19 +715,18 @@ nav a {
   display: block;
 }
 
-.mail-to {
+.purchase-btn {
   margin: 0.5rem;
   font-size: 1.5rem;
   color: var(--light-accent-color);
   background: linear-gradient(135deg, var(--dark-accent-color), var(--shade-dark-color));
-  // background-color: var(--dark-accent-color);
+  filter: brightness(110%);
   border: 2px solid var(--shade-dark-color);
   border-radius: 12px;
   box-shadow: 0 6px 8px rgba(0, 112, 243, 0.15);
 
   &:hover {
     transition: ease-out 0.3s;
-    // background-color: var(--dark-accent-color);
     color: var(--main-bg-color);
   }
 }
