@@ -669,33 +669,82 @@ nav a {
 // #endregion
 
 // #region CRAFT_SHOW 
+#gallery {
+  padding: 0 5%;
+
+  .main-image-container {
+    display: flex;
+    justify-content: center;
+  }
+  .main-image-container img {
+    aspect-ratio: auto;
+    // width: 100%;
+    // height: 540px;
+    // object-fit: contain;
+  }
+
+  .thumbnail-gallery {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .thumbnail {
+    width: 65px;
+    height: 65px;
+  }
+}
+
+.craft-purchase {
+  margin: 1rem 0;
+  font-size: 1.30rem;
+
+  p {
+    max-width: 300px;
+    margin-inline: auto;
+  }
+  .craft-price {
+    font-size: 1.85rem;
+  }
+}
+
 .craft-show-category {
   &:hover {
     color: var(--light-accent-color);
   }
 }
 
-.carousel-img {
-  max-width: 100%;
-  object-fit: cover;
-  margin: 0 auto;
-  display: block;
-}
-
-.mail-to {
+.purchase-btn {
   margin: 0.5rem;
   font-size: 1.5rem;
   color: var(--light-accent-color);
-  background: linear-gradient(135deg, var(--dark-accent-color), var(--shade-dark-color));
-  // background-color: var(--dark-accent-color);
-  border: 2px solid var(--shade-dark-color);
+  background: linear-gradient(135deg, var(--shade-dark-color), var(--dark-accent-color));
+  border: 3px solid var(--temp-h2-color);
   border-radius: 12px;
   box-shadow: 0 6px 8px rgba(0, 112, 243, 0.15);
+  filter: brightness(110%);
 
   &:hover {
     transition: ease-out 0.3s;
-    // background-color: var(--dark-accent-color);
     color: var(--main-bg-color);
+  }
+}
+
+.craft-info {
+  margin-top: 5rem;
+  padding: 0.5rem;
+  background-color: oklch(from var(--main-bg-color) calc(l - 0.30) c h);
+  border: 2px solid var(--dark-accent-color);
+  border-radius: 12px;
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  .description {
+    margin-block-start: 1rem;
   }
 }
 

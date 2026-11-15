@@ -1,10 +1,9 @@
 <%# Needs accesbility editing %>
 <div class="craft-gallery">
-  <%#= render "gallery", craft: cv %>
-  <%= render "carousel", craft: cv %>
+  <%= render "gallery", cv: cv %>
 </div>
 
-<div class="craft-purchase m-2">
+<div class="craft-purchase">
   <%# For sale %>
   <% if cv.craft.for_sale? && cv.in_stock? %>
     <%= render "for_sale", cv: cv %>
@@ -16,18 +15,3 @@
     <%= render "not_for_sale", cv: cv %>
   <% end %>
 </div>
-
-<% if cv.craft.description && cv.craft.description.present? %>
-  <div class="d-flex flex-row p-2">
-    <p class="p-2">Description: </p>
-    <p class="p-2"><%= cv.craft.description %></p>
-  </div>
-<% end %>
-
-<% if cv.effective_dimensions && cv.effective_dimensions.present? %>
-  <div class="d-flex flex-row p-2">
-    <p class="p-2">Dimensions: </p>
-    <p class="p-2"><%= cv.effective_dimensions %></p>
-  </div>
-<% end %>
-

@@ -2,7 +2,6 @@ class CheckoutsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_cart
   before_action :verify_cart
-  before_action :checkout_disabled, only: [:create]
 
   def new
     @cart_items = @cart.cart_items.includes(variant: [:craft, :images])  
@@ -26,7 +25,7 @@ class CheckoutsController < ApplicationController
         quantity: item[:quantity]
     }
     end
-
+    
     session = Stripe::Checkout::Session.create({
       customer: current_user.payment_processor.processor_id,
       success_url: root_url(success: true),
@@ -44,8 +43,13 @@ class CheckoutsController < ApplicationController
         "acss_debit",       # Pre-authorized debit (Canada)
         "bacs_debit",       # Bacs Direct Debit (UK)
       ],
+
+      customer_update: {
+        address: "auto",
+        shipping: "auto",
+        name: "auto"
+      },
       
-      customer_update: { shipping: "auto" },
       automatic_tax: { enabled: true },
       shipping_address_collection: {
         allowed_countries: ["US"]
@@ -69,16 +73,14 @@ class CheckoutsController < ApplicationController
 
     order.update!(stripe_checkout_session_id: session.id)
 
+    Rails.logger.info(session)
+
     redirect_to session.url, allow_other_host: true
   rescue Stripe::StripeError => e
-    redirect_to cart_path, alert: e.message
+    redirect_to new_checkout_path, alert: e.message
   end
 
   private
-
-  def checkout_disabled
-    redirect_to new_checkout_path, alert: "Checkout is disabled currently"
-  end
 
   def set_cart
     @cart = current_cart
@@ -88,15 +90,17 @@ class CheckoutsController < ApplicationController
     cart_items_adjusted = false
 
     @cart.cart_items.each do |item|
-      unless item.variant.for_sale? && item.variant.in_stock?
+      variant = item.variant
+
+      unless variant.for_sale? && variant.in_stock? && variant.craft.active?
         item.destroy
         cart_items_adjusted = true
         next
       end
 
       # Assumes stock is > 0 due to above check
-      unless item.variant.stock >= item.quantity
-        item.update!(quantity: 1)
+      unless variant.stock >= item.quantity
+        item.update!(quantity: variant.stock)
         cart_items_adjusted = true
       end
     end

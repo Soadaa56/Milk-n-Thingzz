@@ -2,16 +2,22 @@
   <article>
     <header class="mb-3">
       <h1><%= @craft.name %></h1>
-      <h2 class="craft-show-category">
+      <%# Desktop only, link to category page %>
+      <h2 class="craft-show-category desktop">
         <%= link_to @craft.category,
               craft_category_path_helper(@craft),
+              class:"center nav-link" %>
+      </h2>
+      <%# Mobile only, link to store w/ filter applied %>
+      <h2 class="craft-show-category mobile">
+        <%= link_to @craft.category,
+              home_store_path(category: @craft.category),
               class:"center nav-link" %>
       </h2>
       
       <% if @craft.subtype.present? %>
         <div class="center"><%= @craft.subtype %></div>
       <% end %>
-      <h6 class="center">Uploaded: <%= @craft.created_at.strftime("%B %d, %Y") %></h6>
     </header>
     
     <% if current_user&.admin? %>
@@ -43,7 +49,14 @@
       </div>
     <% end %>
 
-    <% if @craft.details.present? %>
+    <% if @craft.description.present? %>
+      <div class="craft-info">
+        <h2 class="underline">About This Craft</h2>
+        <div class="description"><%= @craft.description %></div>
+      </div>
+    <% end %>
+
+    <% if @craft.details.present? && false %>
       <div class="craft-details"
            data-controller="craft-details">
         <span>Craft Details</span>

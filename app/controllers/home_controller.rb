@@ -1,11 +1,12 @@
 class HomeController < ApplicationController
+  before_action :set_active_crafts
 
   def index
-    @crafts = Craft.all
+    @crafts = @crafts.all
   end
 
   def store
-    @crafts = Craft.includes(:images)
+    @crafts = @crafts.includes(:images)
     @categories = Craft.distinct.pluck(:category).sort
 
     # filters
@@ -17,23 +18,23 @@ class HomeController < ApplicationController
   end
 
   def crochet
-    @crafts = Craft.includes(:images).where(category: "Crochet")
+    @crafts = @crafts.includes(:images).where(category: "Crochet")
   end
 
   def embroidery
-    @crafts = Craft.includes(:images).where(category: "Embroidery")
+    @crafts = @crafts.includes(:images).where(category: "Embroidery")
   end
 
   def print
-    @crafts = Craft.includes(:images).where(category: "3D-Print")
+    @crafts = @crafts.includes(:images).where(category: "3D-Print")
   end
 
   def painting
-    @crafts = Craft.includes(:images).where(category: "Painting")
+    @crafts = @crafts.includes(:images).where(category: "Painting")
   end
 
   def earring
-    @crafts = Craft.includes(:images).where(category: "Earring")
+    @crafts = @crafts.includes(:images).where(category: "Earring")
     @subtypes = @crafts.where.not(subtype: [nil, ""]).pluck(:subtype).uniq
 
     @crafts = sort_crafts_by_subtype
@@ -41,11 +42,11 @@ class HomeController < ApplicationController
   end
 
   def necklace
-    @crafts = Craft.includes(:images).where(category: 'Necklace')
+    @crafts = @crafts.includes(:images).where(category: 'Necklace')
   end
 
   def miscellaneous
-    @crafts = Craft.includes(:images).where(category: "Miscellaneous")
+    @crafts = @crafts.includes(:images).where(category: "Miscellaneous")
   end
 
   def about; end
@@ -57,6 +58,10 @@ class HomeController < ApplicationController
   def social; end
 
   private
+
+  def set_active_crafts
+    @crafts = Craft.where(active: true)
+  end
 
   def sort_crafts_by_subtype
     if params[:sort_by].present?

@@ -1,7 +1,41 @@
 <main class="order-show">
-  <h1>Orders#show</h1>
-  
-  <%= render "order", order: @order %>
+  <h1>Your Order</h1>
+
+  <div class="order-container light-accent-color">
+    <div class="info p-3 capitalize">
+      <p>Status: <%= @order.status %></p>
+      <p>Shipping carrier: <%= @order.shipping_carrier %></p>
+      <p>Tracking number: <%= @order.tracking_number %></p>
+      <p>Paid: <%= @order.paid_at %></p>
+      <% if @order.fulfilled_at %>
+        <p>Order sent: <%= @order.fulfilled_at %></p>
+      <% end %>
+      <% if @order.completed_at %>
+        <p>Order completed: <%= @order.completed_at %></p>
+      <% end %>
+    </div>
+
+    <div class="order-items d-inline-flex m-3">
+      <% @order.order_items.each do |item| %>
+        <%= render "order_item", order_item: item %>
+      <% end %>
+    </div>
+
+    <div class="order-total m-3">
+      <div>
+        <p>Subtotal: <span><%= number_to_currency(@order.subtotal) %></span></p>
+      </div>
+      <div>
+        <p>Taxes: <span><%= number_to_currency(@order.tax_total/100) %></span></p>
+      </div>
+      <div>
+        <p>Shipping: <span><%= number_to_currency(@order.shipping_total/100) %></span></p>
+      </div>
+      <div>
+        <p>Total: <span><%= number_to_currency(@order.total/100) %></span></p>
+      </div>
+    </div>
+  </div>
 
   <%= render "shared/back" %>
 </main>
