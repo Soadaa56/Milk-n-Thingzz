@@ -90,15 +90,17 @@ class CheckoutsController < ApplicationController
     cart_items_adjusted = false
 
     @cart.cart_items.each do |item|
-      unless item.variant.for_sale? && item.variant.in_stock?
+      variant = item.variant
+
+      unless variant.for_sale? && variant.in_stock? && variant.craft.active?
         item.destroy
         cart_items_adjusted = true
         next
       end
 
       # Assumes stock is > 0 due to above check
-      unless item.variant.stock >= item.quantity
-        item.update!(quantity: 1)
+      unless variant.stock >= item.quantity
+        item.update!(quantity: variant.stock)
         cart_items_adjusted = true
       end
     end
