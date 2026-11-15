@@ -1,7 +1,7 @@
 <div id="gallery" 
   data-controller="gallery"
   data-gallery-has-gallery-variant-params="<%= cv.craft.has_variants %>">
-  <div class="main-image">
+  <div class="main-image-container">
     <% if cv.images.first.present? %>
       <%= image_tag cv.images.first.image_url(:detail),
           fetchpriority: "high",
