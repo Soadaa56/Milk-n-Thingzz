@@ -5,6 +5,7 @@ export default class extends Controller {
   static targets = [ "main", "thumbnail" ]
 
   connect() {
+    console.log(this)
   }
 
   inspect(e) {
