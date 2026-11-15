@@ -49,7 +49,14 @@
       </div>
     <% end %>
 
-    <% if @craft.details.present? %>
+    <% if @craft.description.present? %>
+      <div class="craft-info">
+        <h2>About This Craft</h2>
+        <%= @craft.description %>
+      </div>
+    <% end %>
+
+    <% if @craft.details.present? && false %>
       <div class="craft-details"
            data-controller="craft-details">
         <span>Craft Details</span>
