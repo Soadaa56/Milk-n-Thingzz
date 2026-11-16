@@ -761,6 +761,23 @@ nav a {
   }
 }
 
+@media(width > 600px) {
+  #gallery {
+    .main-image-container {
+      height: 45vh;
+
+      img {
+        max-height: 100%;
+      }
+    }
+
+    .thumbnail {
+      height: 140px;
+      width: 140px;
+    }
+  }
+}
+
 // #endregion
 
 // #region CART
