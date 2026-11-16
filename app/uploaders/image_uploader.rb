@@ -18,11 +18,11 @@ class ImageUploader < Shrine
                       .call,
       card:         vips.resize_to_fill(540,540)
                       .convert("webp")
-                      .saver(Q: 71, strip: true)
+                      .saver(Q: 75, strip: true)
                       .call,
       detail:       vips.resize_to_limit(1000, 1000)
                       .convert("webp")
-                      .saver(Q: 79, strip: true)
+                      .saver(Q: 82, strip: true)
                       .call
     }
   end
