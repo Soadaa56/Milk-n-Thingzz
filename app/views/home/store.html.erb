@@ -2,7 +2,7 @@
 
   <%# Doesnt center text on else case %>
   <%= turbo_frame_tag "crafts-list" do %>
-    <div class="craft-card-container"
+    <div class="store-results"
       data-store-filter-target="crafts">
       <% if @crafts.present? %>
         <% @crafts.each do |craft| %>

@@ -866,10 +866,16 @@ main.store {
   margin: 1rem 0.5rem;
 }
 
-.craft-card-container {
-  // for debugging
+.store-results {
   display: flex;
-  max-width: 1000px;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  .craft-card {
+    flex-basis: calc(50% - 0.25rem);
+    aspect-ratio: 3.5 / 3;
+    overflow: hidden;
+  }
 }
 
 .search-filter-wrapper {
