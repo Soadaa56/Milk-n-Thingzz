@@ -221,7 +221,7 @@ main {
 
   .banner-title {
     color: var(--shade-light-color);
-    font-size: 2.75rem;
+    font-size: 2.4rem;
     font-family: 'Silkscreen', cursive;
     text-align: center !important;
     display: block !important;
@@ -300,6 +300,14 @@ main {
   --bs-btn-hover-color: var(--shade-light-color);
   --bs-btn-hover-border-color: var(--shade-dark-color);
   filter: brightness(105%);
+}
+
+@media(width > 600px) {
+  #banner {
+    .banner-title {
+      font-size: 3rem;
+    }
+  }
 }
 
 // #endregion
