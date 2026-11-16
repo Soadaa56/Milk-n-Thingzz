@@ -6,7 +6,7 @@
 
 <table class="table table-dark table-hover m-1">
   <thead class="variant-table-head">
-    <tr class="center fs-4">
+    <tr class="center fs-4 capitalize">
       <th scope="col">Name</th>
       <th scope="col">SKU</th>
       <th scope="col">Stock</th>
@@ -22,7 +22,13 @@
   <tbody class="center variant-table-body">
     <% @variants.each do |v| %>
       <tr class="fs-5">
-        <th scope="row" class="align-middle"><%= v.name %></th>
+        <th scope="row" class="align-middle capitalize">
+          <% if v.active? %>
+            <%= v.name %>
+          <% else %>
+            <p><span class="cross-out red"><%= v.name %></span> (Disabled)</p>
+          <% end %>
+        </th>
         <td class="align-middle"><%= v.sku || "X" %></td>
         <td class="align-middle"><%= v.stock || "X" %></td>
         <td class="align-middle"><%= number_to_currency(v.effective_price) || "X" %></td>
