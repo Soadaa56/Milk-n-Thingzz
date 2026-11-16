@@ -1,5 +1,4 @@
 class CheckoutsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_cart
   before_action :verify_cart
   before_action :checkout_disabled, only: [:create]
