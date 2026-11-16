@@ -8,11 +8,10 @@
 
 <table class="table table-dark table-hover m-2">
   <thead class="craft-table-head">
-    <tr class="center fs-4">
-      <th scope="col">ID</th>
+    <tr class="center fs-4 capitalize">
+      <th scope="col">Id</th>
       <th scope="col">Name</th>
       <th scope="col">Price</th>
-      <th scope="col">For Sale?</th>
       <th scope="col">Stock</th>
       <th scope="col">Image</th>
       <th scope="col">Edit</th>
@@ -20,23 +19,21 @@
       <th scope="col">Delete</th>
     </tr>
   </thead>
-  <tbody class="center craft-table-body">
+  <tbody class="center craft-table-body capitalize">
     <% @crafts.each do |craft| %>
       <tr class="fs-5">
         <th scope="row" class="align-middle"><%= craft.id %></th>
 
         <td class="align-middle">
-          <%= link_to craft.name, craft_path(craft.slug) %>
+          <% if craft.active? %>
+            <%= link_to craft.name, craft_path(craft.slug) %>
+          <% else %>
+            <p><span class="cross-out red"><%= craft.name %></span> (Disabled)</p>
+          <% end %>
         </td>
 
         <td class="align-middle">
           <%= number_to_currency(craft.variants.first.effective_price) || "X" %>
-        </td>
-
-        <td class="align-middle text-capitalize">
-          <span class="badge <%= craft.for_sale? ? 'bg-success' : 'bg-danger' %>">
-            <%= craft.for_sale? || "false" %>
-          </span>
         </td>
 
         <td class="align-middle">
@@ -80,3 +77,4 @@
 
 <%= render 'shared/back' %>
 
+<% console %>
