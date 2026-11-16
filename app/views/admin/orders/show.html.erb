@@ -44,10 +44,12 @@
           <p class="col">Order Number:</p>
           <p class="col"><%= @order.id %></p>
         </div>
-        <div class="row">
-          <p class="col">User:</p>
-          <p class="col"><%= @user.email %> (ID - <%= @user.id %>)</p>
-        </div>
+        <% if @user.email && @user.id%>
+          <div class="row">
+            <p class="col">User:</p>
+            <p class="col"><%= @user.email %> (ID - <%= @user.id %>)</p>
+          </div>
+        <% end %>
         <div class="row">
           <p class="col">Stripe Payment Number:</p>
           <p class="col"><%= @order.stripe_payment_intent_id %></p>
@@ -65,15 +67,35 @@
       <div>
         <p>Subtotal: <span><%= number_to_currency(@order.subtotal) %></span></p>
       </div>
-      <div>
-        <p>Taxes: <span><%= number_to_currency(@order.tax_total/100) %></span></p>
-      </div>
-      <div>
-        <p>Shipping: <span><%= number_to_currency(@order.shipping_total/100) %></span></p>
-      </div>
+      <% if @order.tax_total %>
+        <div>
+          <p>Taxes: <span><%= number_to_currency(@order.tax_total/100) %></span></p>
+        </div>
+      <% else %>
+        <div>
+          <p>Taxes: ?</p>
+        </div>
+      <% end %>
+
+      <% if @order.shipping_total %>
+        <div>
+          <p>Shipping: <span><%= number_to_currency(@order.shipping_total/100) %></span></p>
+        </div>
+      <% else %>
+        <div>
+          <p>Shipping: ?</p>
+        </div>
+      <% end %>
+
+      <% if @order.total %>
       <div>
         <p>Total: <span><%= number_to_currency(@order.total/100) %></span></p>
       </div>
+      <% else %>
+        <div>
+          <p>Total: ?</p>
+        </div>
+      <% end %>
     </div>
   </div>
 
