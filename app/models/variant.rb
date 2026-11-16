@@ -31,7 +31,7 @@ class Variant < ApplicationRecord
   end
 
   def for_sale?
-    craft.for_sale? && active?
+    craft.active? && active?
   end
 
   def reserve!(quantity)

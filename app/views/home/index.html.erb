@@ -1,34 +1,37 @@
 <main>
   <article class="prose">
     <h1>Under Construction!</h1>
-    <h4 class="center">(November 2026)</h4>
 
-    <div class="mobile fs-5 center">
-      <%= link_to "View Store", home_store_path %>
+    <div class="d-flex justify-content-center m-5">
+      <%= image_tag "milk-purple.png" %>
+      <%= image_tag "milk-purple.png" %>
+      <%= image_tag "milk-purple.png" %>
+    </div>
+
+    <div class="mobile fs-2 center">
+      <%= link_to "View Store", home_store_path, class: "btn btn-primary" %>
     </div>
     
     <p>
-      Not sure how you stumbled upon this site while in the midst of our update to allow sales
-      (only because I don't expect much traffic until we start promoting more), but welcome nonetheless!
+      Not sure how you stumbled upon this site while in the midst of updating, but welcome nonetheless!
     </p>
     <p>
-      While this message is here I can pretty much guarantee that buying products won't be possible and
-      there're probably some bugs. I have updated the site (mainly mobile)
+      While this message is here checkouts are disabled and there might be bugs.
     </p>
     <p>
-      I am still updating the site but also allowing Milksteakmami to start uploading crafts to see how things look
-      and perform while in use.
+      Milksteammami is still in the process of uploading more crafts, but uploaded ones will be available for viewing.
     </p>
     <p>
-      If you have any feedback or questions feel free to message me (the dude updating the site directly) soadaablog@gmail.com
+      If you have any questions or feedback, feel free to message me (the dude updating the site) <strong>soadaablog@gmail.com</strong>
     </p>
+  
+    <div class="d-flex justify-content-center m-5">
+      <%= image_tag "milk-purple.png" %>
+      <%= image_tag "milk-purple.png" %>
+      <%= image_tag "milk-purple.png" %>
+    </div>
+
+    <div class="center">Last Updated: November 15th, 2026</div>
   </article>
-  
-  <div class="d-flex justify-content-center m-5">
-    <%= image_tag "milk-purple.png" %>
-    <%= image_tag "milk-purple.png" %>
-    <%= image_tag "milk-purple.png" %>
-  </div>
-  
   <%= render 'home/about' %>
 </main>
