@@ -28,7 +28,8 @@ class FulfillCheckout
           shipping_city: shipping.address.city,
           shipping_state: shipping.address.state,
           shipping_postal_code: shipping.address.postal_code,
-          shipping_country: shipping.address.country
+          shipping_country: shipping.address.country,
+          email: object.customer_email
           )
 
         order.order_items.each do |item|
