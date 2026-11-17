@@ -6,6 +6,8 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.where(user_id: current_user.id).find(params[:id])
+    @order = Order.where(user_id: current_user.id)
+             .where.not(paid_at: nil)
+             .find(params[:id])
   end
 end
