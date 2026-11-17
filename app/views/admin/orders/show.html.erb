@@ -1,8 +1,8 @@
-<main class="admin-order-show">
+<main class="order-show admin-order-show">
   <h1>Admin::Orders#show</h1>
   
   <div class="order-container light-accent-color">
-    <div class="order-header row p-3">
+    <div class="order-header row">
       <div class="shipping-info col">
         <div class="row">
           <p class="col">Carrier:</p>
@@ -62,47 +62,57 @@
           <p class="col">Stripe Payment Number:</p>
           <p class="col"><%= @order.stripe_payment_intent_id %></p>
         </div>
+        <div class="order-totals col">
+          <div class="row">
+            <p class="col">Subtotal:</p>
+            <p class="col"><%= number_to_currency(@order.subtotal) %></p>
+          </div>
+
+          <% if @order.tax_total %>
+            <div class="row">
+              <p class="col">Taxes:</p>
+              <p class="col"><%= number_to_currency(@order.tax_total/100) %></p>
+            </div>
+          <% else %>
+            <div class="row">
+              <p class="col">Taxes:</p>
+              <p class="col">?</p>
+            </div>
+          <% end %>
+
+          <% if @order.shipping_total %>
+            <div class="row">
+              <p class="col">Shipping: </p>
+              <p class="col"><%= number_to_currency(@order.shipping_total/100) %></p>
+            </div>
+          <% else %>
+            <div class="row">
+              <p class="col">Shipping:</p>
+              <p class="col">?</p>
+            </div>
+          <% end %>
+
+          <% if @order.total %>
+            <div class="row">
+              <p class="col">Total:</p>
+              <p class="col"><span class="green"><%= number_to_currency(@order.total/100) %></span></p>
+            </div>
+          <% else %>
+            <div class="row">
+              <p class="col">Total:</p>
+              <p class="col">?</p>
+            </div>
+          <% end %>
+        </div>
       </div>
+
+
+
     </div>
 
-    <div class="order-items d-inline-flex m-3">
+    <div class="order-items">
       <% @order.order_items.each do |item| %>
         <%= render "order_item", order_item: item %>
-      <% end %>
-    </div>
-
-    <div class="order-total m-3">
-      <div>
-        <p>Subtotal: <span><%= number_to_currency(@order.subtotal) %></span></p>
-      </div>
-      <% if @order.tax_total %>
-        <div>
-          <p>Taxes: <span><%= number_to_currency(@order.tax_total/100) %></span></p>
-        </div>
-      <% else %>
-        <div>
-          <p>Taxes: ?</p>
-        </div>
-      <% end %>
-
-      <% if @order.shipping_total %>
-        <div>
-          <p>Shipping: <span><%= number_to_currency(@order.shipping_total/100) %></span></p>
-        </div>
-      <% else %>
-        <div>
-          <p>Shipping: ?</p>
-        </div>
-      <% end %>
-
-      <% if @order.total %>
-      <div>
-        <p>Total: <span><%= number_to_currency(@order.total/100) %></span></p>
-      </div>
-      <% else %>
-        <div>
-          <p>Total: ?</p>
-        </div>
       <% end %>
     </div>
   </div>
