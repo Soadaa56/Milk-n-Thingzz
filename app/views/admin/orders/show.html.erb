@@ -27,10 +27,13 @@
         <div class="row">
           <p class="col">Address:</p>
           <p class="col"><%= @order.shipping_address_line1 %></p>
-          <% if @order.shipping_address_line2 %>
-            <p><%= @order.shipping_address_line2 %></p>
-          <% end %>
         </div>
+        <% if @order.shipping_address_line2 %>
+          <div class="row">
+            <p class="col">Address Line_2:</p>
+            <p class="col"><%= @order.shipping_address_line2 %></p>
+          </div>
+        <% end %>
         <div class="row">
           <p class="col">Name:</p>
           <p class="col"><%= @order.shipping_name %></p>
@@ -103,6 +106,6 @@
       <% end %>
     </div>
   </div>
-  
+
   <%= render "shared/back" %>
 </main>
