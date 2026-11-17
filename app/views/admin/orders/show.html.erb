@@ -44,10 +44,15 @@
           <p class="col">Order Number:</p>
           <p class="col"><%= @order.id %></p>
         </div>
-        <% if @user.email && @user.id%>
+        <% unless @order.guest? %>
           <div class="row">
             <p class="col">User:</p>
-            <p class="col"><%= @user.email %> (ID - <%= @user.id %>)</p>
+            <p class="col"><strong><%= @user.email %></strong> (ID: <%= @user.id %>)</p>
+          </div>
+        <% else %>
+          <div class="row">
+            <p class="col">User:</p>
+            <p class="col"><strong>Guest</strong></p>
           </div>
         <% end %>
         <div class="row">
@@ -100,3 +105,5 @@
   </div>
 
 </main>
+
+<% console %>

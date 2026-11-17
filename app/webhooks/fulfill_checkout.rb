@@ -1,6 +1,6 @@
 class FulfillCheckout
   # config/initializers/pay.rb
-  # Currently only for stripe.checkout.session.completed
+  # stripe.checkout.session.completed
   def call(event)
     object = event.data.object
     shipping = object.collected_information.shipping_details
@@ -38,9 +38,9 @@ class FulfillCheckout
         end
       end
 
-      user = User.find(order.user_id)
-      user.cart.empty_cart
-
+      cart = Cart.find(object.metadata.cart_id)
+      cart.empty_cart
+        
       # email admin/push notifacation
       NotifyMailer.with(email: Rails.application.credentials.dig(:email, :milk), order: order.id)
                   .notify_sale

@@ -12,8 +12,8 @@ class Admin::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find_by(params[:id])
-    @user = User.find_by(id: @order.user_id)
+    @order = Order.find(params[:id])
+    @user = @order.user
   end
 
   private
