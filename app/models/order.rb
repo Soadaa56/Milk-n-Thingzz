@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
 
   has_many :order_items, dependent: :destroy
 
@@ -31,6 +31,10 @@ class Order < ApplicationRecord
 
       order
     end
+  end
+
+  def guest?
+    user_id.nil?
   end
 
 end

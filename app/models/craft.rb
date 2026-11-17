@@ -10,7 +10,7 @@ class Craft < ApplicationRecord
   before_validation :normalize_name
 
   validates :name, presence: true
-  validates :slug, presence: true, uniqueness: true
+  validates :slug, presence: true, uniqueness: { message: "Name is already taken" }
 
   def cover_image
     images.first

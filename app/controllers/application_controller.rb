@@ -5,12 +5,11 @@ class ApplicationController < ActionController::Base
 
   # Needs cleanup
   def current_cart
-    return unless current_user
 
     if current_user
       current_user.cart || current_user.create_cart
     else
-      Cart.find_by(id: session[cart_id]) ||
+      Cart.find_by(id: session[:cart_id]) ||
       Cart.create.tap { |cart| session[:cart_id] = cart.id }
     end
   end

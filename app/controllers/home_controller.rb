@@ -6,8 +6,8 @@ class HomeController < ApplicationController
   end
 
   def store
+    @categories = @crafts.distinct.pluck(:category).sort
     @crafts = @crafts.includes(:images)
-    @categories = Craft.distinct.pluck(:category).sort
 
     # filters
     @crafts = @crafts.where(category: params[:category]) if params[:category].present?

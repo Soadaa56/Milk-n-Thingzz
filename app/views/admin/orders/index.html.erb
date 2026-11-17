@@ -1,59 +1,61 @@
 <main class="admin-orders-index">
   <h1>Admin::Orders#index</h1>
   
-  <div class="orders-container">
-    <div class="orders-paid">
-      <h2>Paid <bold>(Needs Shipment/update!)</bold></h3>
-      <% @paid.each do |order| %>
-        <div>
-          <%= order.paid_at&.to_date %> - 
-          <%= link_to "Order #{order.id}", admin_order_path(order) %>
-          <%= number_to_currency(order.total/100) %>
-        </div>
-      <% end %>
-    </div>
-  
-    <div class="orders-processing">
-      <h2>Processing(In transit)</h3>
-      <% @processing.each do |order| %>
-        <div>
-          <%= order.fulfilled_at&.to_date %> - 
-          <%= link_to "Order #{order.id}", admin_order_path(order) %>
-          <%= number_to_currency(order.total/100) %>
-        </div>
-      <% end %>
+  <div class="orders-container row">
+    <div class="left col">
+      <div class="orders-paid">
+        <h2>Paid : <strong>Needs Shipment!</strong> (<%= @paid.count %>)</h3>
+        <% @paid.each do |order| %>
+          <div class="order">
+            <%= order.paid_at&.to_date %>: 
+            <%= link_to "Order #{order.id}", admin_order_path(order) %> | 
+            <strong>Total: <%= number_to_currency(order.total/100) %></strong>
+          </div>
+        <% end %>
+      </div>
+      <div class="orders-processing">
+        <h2>Processing(In transit)</h3>
+        <% @processing.each do |order| %>
+          <div class="order">
+            <%= order.fulfilled_at&.to_date %>: 
+            <%= link_to "Order #{order.id}", admin_order_path(order) %> | 
+            <strong>Total: <%= number_to_currency(order.total/100) %></strong>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="orders-misc">
+        <h3>Less Important </h2>
+        <h4>Pending (Might be cancelled)</h3>
+        <% @pending.each do |order| %>
+          <div class="order">
+            <%= order.created_at&.to_date %>: 
+            <%= link_to "Order #{order.id}", admin_order_path(order) %> | 
+            <strong>Subtotal: <%= number_to_currency(order.subtotal) %></strong>
+          </div>
+        <% end %>
+        <h4>Cancelled</h3>
+        <% @cancelled.each do |order| %>
+          <div class="order">
+            <%= order.created_at&.to_date %>: 
+            <%= link_to "Order #{order.id}", admin_order_path(order) %> | 
+            <strong>Subtotal: <%= number_to_currency(order.subtotal) %></strong>
+          </div>
+        <% end %>
+      </div>
     </div>
 
-    <div class="orders-fulfilled">
-      <h2>Finished</h3>
-      <% @fulfilled.each do |order| %>
-        <div>
-          <%= order.completed_at&.to_date %> - 
-          <%= link_to "Order #{order.id}", admin_order_path(order) %>
-          <%= number_to_currency(order.total/100) %>
-        </div>
-      <% end %>
-    </div>
-    
-    <div class="orders-misc">
-      <h3>Less Important</h2>
-      <h4>Cancelled</h3>
-      <% @cancelled.each do |order| %>
-        <div>
-          <%= order.created_at&.to_date %> - 
-          <%= link_to "Order #{order.id}", admin_order_path(order) %>
-          <%= number_to_currency(order.total/100) %>
-        </div>
-      <% end %>
-      <h4>Pending</h3>
-      <% @pending.each do |order| %>
-        <div>
-          <%= order.created_at&.to_date %> - 
-          <%= link_to "Order #{order.id}", admin_order_path(order) %>
-          <%= number_to_currency(order.total/100) %>
-        </div>
-      <% end %>
+    <div class="right col">
+      <div class="orders-fulfilled">
+        <h2>Finished (<%= @fulfilled.count %>)</h3>
+        <% @fulfilled.each do |order| %>
+          <div class="order">
+            <%= order.completed_at&.to_date %>: 
+            <%= link_to "Order #{order.id}", admin_order_path(order) %> |
+            <strong>Total: <%= number_to_currency(order.total/100) %></strong>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-
 </main>
