@@ -2,39 +2,66 @@
   <h1>Your Order</h1>
 
   <div class="order-container light-accent-color">
-    <div class="info p-3 capitalize">
-      <p>Status: <%= @order.status %></p>
-      <p>Shipping carrier: <%= @order.shipping_carrier %></p>
-      <p>Tracking number: <%= @order.tracking_number %></p>
-      <p>Paid: <%= @order.paid_at %></p>
-      <% if @order.fulfilled_at %>
-        <p>Order sent: <%= @order.fulfilled_at %></p>
-      <% end %>
-      <% if @order.completed_at %>
-        <p>Order completed: <%= @order.completed_at %></p>
-      <% end %>
+    <div class="order-header row">
+      <div class="capitalize col">
+        <div class="row">
+          <p class="col">Status:</p>
+          <p class="col"><%= @order.status %></p>
+        </div>
+        <div class="row">
+          <p class="col">Shipping carrier:</p>
+          <p class="col"><%= @order.shipping_carrier %></p>
+        </div>
+        <div class="row">
+          <p class="col">Tracking number:</p>
+          <p class="col"><%= @order.tracking_number %></p>
+        </div>
+        <div class="row">
+          <p class="col">Paid:</p>
+          <p class="col"><%= @order.paid_at %></p>
+        </div>
+          <div class="row">
+            <p class="col">Order sent:</p>
+            <% if @order.fulfilled_at %>
+              <p class="col"><%= @order.fulfilled_at %></p>
+            <% end %>
+          </div>
+          <div class="row">
+            <p class="col">Order completed:</p>
+            <% if @order.completed_at %>
+              <p class="col"><%= @order.completed_at %></p>
+            <% end %>
+          </div>
+      </div>
+
+      <div class="col"></div>
+
+      <div class="capitalize order-totals col">
+        <div class="row">
+          <p class="col">Subtotal:</p>
+          <p class="col"><%= number_to_currency(@order.subtotal) %></span></p>
+        </div>
+        <div class="row">
+          <p class="col">Taxes:</p>
+          <p class="col"><%= number_to_currency(@order.tax_total/100) %></span></p>
+        </div>
+        <div class="row">
+          <p class="col">Shipping:</p>
+          <p class="col"><%= number_to_currency(@order.shipping_total/100) %></span></p>
+        </div>
+        <div class="row ">
+          <p class="col">Total:</p>
+          <p class="col"><span class="green"><%= number_to_currency(@order.total/100) %></span></p>
+        </div>
+      </div>
     </div>
 
-    <div class="order-items d-inline-flex m-3">
+    <div class="order-items">
       <% @order.order_items.each do |item| %>
         <%= render "order_item", order_item: item %>
       <% end %>
     </div>
 
-    <div class="order-total m-3">
-      <div>
-        <p>Subtotal: <span><%= number_to_currency(@order.subtotal) %></span></p>
-      </div>
-      <div>
-        <p>Taxes: <span><%= number_to_currency(@order.tax_total/100) %></span></p>
-      </div>
-      <div>
-        <p>Shipping: <span><%= number_to_currency(@order.shipping_total/100) %></span></p>
-      </div>
-      <div>
-        <p>Total: <span><%= number_to_currency(@order.total/100) %></span></p>
-      </div>
-    </div>
   </div>
 
   <%= render "shared/back" %>

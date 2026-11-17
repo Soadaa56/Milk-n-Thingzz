@@ -460,6 +460,73 @@ nav a {
   outline: 1px solid black;
 }
 
+.admin-orders-index {
+  margin: 0 2rem;
+
+  h2, h3,
+  h4, h5, h6 {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    margin: 1rem 0;
+  }
+
+  .order {
+    margin: 0.2rem 0
+  }
+}
+
+// Made in desktop first - not ideal - not a big feature
+main.order-show {
+  .order-container {
+    margin: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .order-header {
+  background-color: var(--dark-accent-color);
+  border: 1px solid var(--light-accent-color);
+  box-shadow: 4px 5px 6px black;
+  margin: 0rem 3rem;
+  padding: 0.5rem;
+
+  .row {
+    margin: 0.5rem 0;
+    outline: 1px solid black;
+  }
+  }
+  
+  .order-items {
+    display: flex;
+    background-color: var(--dark-accent-color);
+    border: 1px solid var(--light-accent-color);
+    box-shadow: 4px 5px 6px black;
+    margin-top: 4rem;
+    gap: 3rem;
+
+    .order_item {
+      color: white;
+      font-size: 1.1rem;
+
+      .name {
+        color: var(--light-accent-color);
+        font-weight: bolder;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+main.admin-order-show {
+  .order-totals {
+    outline: 2px solid var(--main-bg-color);
+    .row {
+      outline: none;
+    }
+  }
+}
+
+
 // #endregion
 
 // #region SOCIAL 

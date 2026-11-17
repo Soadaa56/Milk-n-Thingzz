@@ -1,28 +1,25 @@
 class FulfillCheckout
   # config/initializers/pay.rb
-  # Currently only for stripe.checkout.session.completed
+  # stripe.checkout.session.completed
   def call(event)
     object = event.data.object
     shipping = object.collected_information.shipping_details
     return if object.payment_status != "paid"
 
     order = Order.find_by(stripe_checkout_session_id: object.id)
-
     if order.pending?
-      Rails.logger.tagged("StripeObjectTesting") do
-        Rails.logger.info "Processing transaction..."
-        Rails.logger.info object
-      end
-
       ActiveRecord::Base.transaction do
         order.update!(
           status: :paid,
           stripe_payment_intent_id: object.payment_intent,
+          email: object.customer_details.email,
+
           shipping_total: object.total_details.amount_shipping,
           tax_total: object.total_details.amount_tax,
           total: object.amount_total,
           paid_at: Time.now,
-          shipping_name: shipping.name || object.name,
+
+          shipping_name: shipping.name,
           shipping_address_line1: shipping.address.line1,
           shipping_address_line2: shipping.address.line2,
           shipping_city: shipping.address.city,
@@ -38,9 +35,9 @@ class FulfillCheckout
         end
       end
 
-      user = User.find(order.user_id)
-      user.cart.empty_cart
-
+      cart = Cart.find(object.metadata.cart_id)
+      cart.empty_cart
+        
       # email admin/push notifacation
       NotifyMailer.with(email: Rails.application.credentials.dig(:email, :milk), order: order.id)
                   .notify_sale

@@ -1,5 +1,6 @@
 class Admin::OrdersController < ApplicationController
-  before_action :check_if_admin?
+  before_action :authenticate_user!
+  before_action :require_admin
 
   def index
     @orders = Order.all
@@ -12,12 +13,13 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @user = User.find(@order.user_id)
+    @user = @order.user
   end
 
   private
 
-  def check_if_admin?
-    redirect_to root_path unless current_user&.admin?
+  def require_admin
+    return if current_user.admin?
+    redirect_to root_url, alert: 'Unauthorized request'
   end
 end
