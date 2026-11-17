@@ -7,29 +7,31 @@ class FulfillCheckout
     return if object.payment_status != "paid"
 
     order = Order.find_by(stripe_checkout_session_id: object.id)
-
     if order.pending?
       Rails.logger.tagged("StripeObjectTesting") do
         Rails.logger.info "Processing transaction..."
         Rails.logger.info object
       end
 
+      Rails.logger.info "STRIPE CUSTOMER EMAIL: #{object.customer_details&.email.inspect}"
       ActiveRecord::Base.transaction do
         order.update!(
           status: :paid,
           stripe_payment_intent_id: object.payment_intent,
+          email: object.customer_details.email,
+
           shipping_total: object.total_details.amount_shipping,
           tax_total: object.total_details.amount_tax,
           total: object.amount_total,
           paid_at: Time.now,
-          shipping_name: shipping.name || object.name,
+
+          shipping_name: shipping.name,
           shipping_address_line1: shipping.address.line1,
           shipping_address_line2: shipping.address.line2,
           shipping_city: shipping.address.city,
           shipping_state: shipping.address.state,
           shipping_postal_code: shipping.address.postal_code,
-          shipping_country: shipping.address.country,
-          email: object.customer_email
+          shipping_country: shipping.address.country
           )
 
         order.order_items.each do |item|
@@ -38,6 +40,8 @@ class FulfillCheckout
           variant.update!(stock: variant_new_stock)
         end
       end
+      order.reload
+      Rails.logger.info "SAVED ORDER EMAIL: #{order.email.inspect}"
 
       cart = Cart.find(object.metadata.cart_id)
       cart.empty_cart
