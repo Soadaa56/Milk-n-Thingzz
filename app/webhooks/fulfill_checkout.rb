@@ -8,12 +8,6 @@ class FulfillCheckout
 
     order = Order.find_by(stripe_checkout_session_id: object.id)
     if order.pending?
-      Rails.logger.tagged("StripeObjectTesting") do
-        Rails.logger.info "Processing transaction..."
-        Rails.logger.info object
-      end
-
-      Rails.logger.info "STRIPE CUSTOMER EMAIL: #{object.customer_details&.email.inspect}"
       ActiveRecord::Base.transaction do
         order.update!(
           status: :paid,
@@ -40,8 +34,6 @@ class FulfillCheckout
           variant.update!(stock: variant_new_stock)
         end
       end
-      order.reload
-      Rails.logger.info "SAVED ORDER EMAIL: #{order.email.inspect}"
 
       cart = Cart.find(object.metadata.cart_id)
       cart.empty_cart
