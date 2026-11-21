@@ -35,13 +35,16 @@ gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'shrine', '~> 3.5'
 gem "ruby-vips"
 
-# Custom 
+##### Custom ##### 
 gem "jsbundling-rails"
 gem 'pg', '~> 1.2'
-gem 'aws-sdk-rails', '~> 5'
 gem 'acts_as_list'
 gem 'requestjs-rails'
 gem "rack-attack", "~> 6.8"
+
+# Email
+gem 'aws-sdk-rails', '~> 5'
+gem 'aws-actionmailer-ses', '~> 1'
 
 # Pay-rails and checkout
 gem "pay", "~> 11.5"

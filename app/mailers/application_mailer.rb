@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "support@Milknthingzz.com"
+  default from: "do-not-reply@Milknthingzz.com"
   layout "mailer"
 end

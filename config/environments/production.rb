@@ -38,10 +38,11 @@ Rails.application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
 
+
+
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for Apache
   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
-
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
@@ -70,21 +71,18 @@ Rails.application.configure do
   # Replace the default in-process and non-durable queuing backend for Active Job.
   # config.active_job.queue_adapter = :resque
 
+  # Enable DNS rebinding protection and other `Host` header attacks.
+  # config.hosts = [
+  #   "example.com",     # Allow requests from example.com
+  #   /.*\.example\.com/ # Allow requests from subdomains like `www.example.com`
+  # ]
+  #
+  # Skip DNS rebinding protection for the default health check endpoint.
+  # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = false
-
-  # Set host to be used by links generated in mailer templates.
-  # config.action_mailer.default_url_options = { host: "example.com" }
-
-  # Specify outgoing SMTP server. Remember to add smtp/* credentials via bin/rails credentials:edit.
-  # config.action_mailer.smtp_settings = {
-  #   user_name: Rails.application.credentials.dig(:smtp, :user_name),
-  #   password: Rails.application.credentials.dig(:smtp, :password),
-  #   address: "smtp.example.com",
-  #   port: 587,
-  #   authentication: :plain
-  # }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
@@ -96,22 +94,18 @@ Rails.application.configure do
   # Only use :id for inspections in production.
   config.active_record.attributes_for_inspect = [ :id ]
 
-  # Enable DNS rebinding protection and other `Host` header attacks.
-  # config.hosts = [
-  #   "example.com",     # Allow requests from example.com
-  #   /.*\.example\.com/ # Allow requests from subdomains like `www.example.com`
-  # ]
-  #
-  # Skip DNS rebinding protection for the default health check endpoint.
-  # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
-
   # Custom Asset Pipeline settings.
   config.assets.digest = true
-  config.assets.version = '1.0'
+  config.assets.version = "1.0"
 
   # ==> Custom Mailer settings with AWS SES
-  config.action_mailer.perform_deliveries = false
-  #config.action_mailer.delivery_method = :smtp
-  #config.action_mailer.default_url_options = { host: 'milknthingzz.xyz', protocol: 'https' }
-  #config.action_mailer.default_options = { from: 'do-not-reply@milknthingzz.xyz' }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :ses_v2
+  config.action_mailer.ses_v2_settings = { region: "us-ease-1" }
+  config.action_mailer.default_url_options = { host: "milknthingzz.xyz", protocol: "https" }
+  config.action_mailer.default_options = { from: "do-not-reply@milknthingzz.xyz" }
+
+   # Optional: reuse one client (e.g. fewer credential refreshes per email)
+  sesv2_client = Aws::SESV2::Client.new(region: "us-ease-1")
+  config.action_mailer.ses_v2_settings = { sesv2_client: sesv2_client }
 end
