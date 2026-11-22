@@ -106,6 +106,6 @@ Rails.application.configure do
   sesv2_client = Aws::SESV2::Client.new(region: "us-east-1")
   config.action_mailer.ses_v2_settings = { sesv2_client: sesv2_client }
 
-  config.action_mailer.default_url_options = { host: "milknthingzz.xyz", protocol: "https" }
-  config.action_mailer.default_options = { from: "do-not-reply@milknthingzz.xyz" }
+  config.action_mailer.default_url_options = { host: "filthychai.me", protocol: "https" }
+  config.action_mailer.default_options = { from: "do-not-reply@FilthyChai.me" }
 end

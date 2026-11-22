@@ -1,5 +1,5 @@
 class NotifyMailer < ApplicationMailer
-  default from: "do-not-reply@milknthingzz.com"
+  default from: "do-not-reply@FilthyChai.me"
 
   def notify_sale
     @email = params[:email]
