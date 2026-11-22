@@ -2,8 +2,8 @@ Pay.setup do |config|
   # For use in the receipt/refund/renewal mailers
   config.business_name = "Filthy Chai"
   config.business_address = ""
-  config.application_name = "Filthy Name"
-  config.support_email = "<support@filthychai.me>"
+  config.application_name = "Filthy Chai"
+  config.support_email = "support@filthychai.me"
 
   config.default_product_name = "craft"
   config.default_plan_name = "default"
@@ -15,7 +15,7 @@ Pay.setup do |config|
   config.send_emails = true
   # By default emails are sent via Pay::UserMailer which inherits from Pay::ApplicationMailer. 
   # Instead, you may wish to inherit from ApplicationMailer, or use a different mailer entirely.
-  # config.parent_mailer = "ApplicationMailer"
+  config.parent_mailer = "ApplicationMailer"
   # config.mailer = "MyCustomPayMailer"
 
   config.emails.payment_action_required = false

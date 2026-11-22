@@ -1,6 +1,4 @@
 class NotifyMailer < ApplicationMailer
-  default from: "do-not-reply@filthychai.me"
-
   def notify_sale
     @email = params[:email]
     @order = params[:order]
