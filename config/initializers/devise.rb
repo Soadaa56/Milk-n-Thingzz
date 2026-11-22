@@ -310,8 +310,4 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
-
-  # ==> Custom Mailer settings AWS SES
-  config.action_mailer.delivery_method = :ses_v2
-  config.action_mailer.default_url_options = { host: "filthychai.me" }
 end
