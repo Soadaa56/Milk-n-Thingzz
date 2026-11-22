@@ -6,9 +6,15 @@
     <div class="orders-container">
       <% @orders.each do |order| %>
         <div>
-          <%= order.paid_at.to_date || order.created_at.to_date %>: 
+          <%= order.paid_at&.to_date || order.created_at.to_date %>: 
           <%= link_to "Order #{order.id}", order_path(order.id) %>
-          <%= ": #{number_to_currency(order.total/100)}" %>
+          <% if order.total %>
+            <%= "Total: #{number_to_currency(order.total/100)}" %>
+          <% elsif order.subtotal %>
+            <%= "Subtotal: #{number_to_currency(order.subtotal)}" %>
+          <% else %>
+            <p>Nil (issue on backend)</p>
+          <% end %>
         </div>
       <% end %>
     </div>
