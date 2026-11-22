@@ -3,7 +3,7 @@ Pay.setup do |config|
   config.business_name = "Filthy Chai"
   config.business_address = ""
   config.application_name = "Filthy Name"
-  config.support_email = "<support@FilthyChai.me>"
+  config.support_email = "<support@filthychai.me>"
 
   config.default_product_name = "craft"
   config.default_plan_name = "default"
