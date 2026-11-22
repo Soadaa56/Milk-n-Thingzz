@@ -7,22 +7,33 @@ servers:
       - 3.94.55.110
     labels:
       traefik.http.routers.milknthingzz.entrypoints: websecure
-      traefik.http.routers.milknthingzz.rule: Host(`milknthingzz.xyz`)
+      traefik.http.routers.milknthingzz.rule: Host(`filthychai.me`)
       traefik.http.routers.milknthingzz.tls.certresolver: letsencrypt
+
       # Redirect www -> main domain
-      traefik.http.routers.www-milknthingzz.rule: Host(`www.milknthingzz.xyz`)
+      traefik.http.routers.www-milknthingzz.rule: Host(`www.filthychai.me`)
       traefik.http.routers.www-milknthingzz.entrypoints: websecure
       traefik.http.routers.www-milknthingzz.tls.certresolver: letsencrypt
       traefik.http.routers.www-milknthingzz.middlewares: www-to-root
 
-      traefik.http.middlewares.www-to-root.redirectregex.regex: ^https://www\.milknthingzz\.xyz/(.*)
-      traefik.http.middlewares.www-to-root.redirectregex.replacement: https://milknthingzz.xyz/$${1}
+      traefik.http.middlewares.www-to-root.redirectregex.regex: ^https://www\.filthychai\.me/(.*)
+      traefik.http.middlewares.www-to-root.redirectregex.replacement: https://filthychai.me/$${1}
       traefik.http.middlewares.www-to-root.redirectregex.permanent: true
+
+      # Old domain to New
+      traefik.http.routers.old-domain.rule: Host(`milknthingzz.xyz`) || Host(`www.milknthingzz.xyz`)
+      traefik.http.routers.old-domain.entrypoints: websecure
+      traefik.http.routers.old-domain.tls.certresolver: letsencrypt
+      traefik.http.routers.old-domain.middlewares: old-domain-redirect
+
+      traefik.http.middlewares.old-domain-redirect.redirectregex.regex: ^https?://(www\.)?milknthingzz\.xyz/(.*)
+      traefik.http.middlewares.old-domain-redirect.redirectregex.replacement: https://filthychai.com/$${2}
+      traefik.http.middlewares.old-domain-redirect.redirectregex.permanent: true
 
 # Newer Kamal 2 configs
 proxy:
   ssl: true
-  host: milknthingzz.xyz
+  host: filthychai.me
   app_port: 3000
 
 registry:
@@ -38,12 +49,8 @@ env:
   secret:
     - RAILS_MASTER_KEY
     - POSTGRES_PASSWORD
-    - SMTP_USERNAME
-    - SMTP_PASSWORD
-    - SMTP_HOSTNAME
-    - SMTP_PORT
-    #- AWS_ACCESS_KEY_ID
-    #- AWS_SECRET_ACCESS_KEY
+    - AWS_ACCESS_KEY_ID
+    - AWS_SECRET_ACCESS_KEY
 
 builder:
   args:
