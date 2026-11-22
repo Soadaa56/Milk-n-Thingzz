@@ -101,17 +101,11 @@ Rails.application.configure do
   # ==> Custom Mailer settings with AWS SES
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :ses_v2
-  config.action_mailer.ses_v2_settings = { 
-    region: "us-east-1",
-    credentials: Aws::Credentials.new(
-      Rails.application.credentials.dig(:aws, :access_key_id),
-      Rails.application.credentials.dig(:aws, :secret_access_key)
-    )
-  }
-  config.action_mailer.default_url_options = { host: "milknthingzz.xyz", protocol: "https" }
-  config.action_mailer.default_options = { from: "do-not-reply@milknthingzz.xyz" }
 
-   # Optional: reuse one client (e.g. fewer credential refreshes per email)
+  # Optional: reuse one client (e.g. fewer credential refreshes per email)
   sesv2_client = Aws::SESV2::Client.new(region: "us-east-1")
   config.action_mailer.ses_v2_settings = { sesv2_client: sesv2_client }
+
+  config.action_mailer.default_url_options = { host: "milknthingzz.xyz", protocol: "https" }
+  config.action_mailer.default_options = { from: "do-not-reply@milknthingzz.xyz" }
 end
