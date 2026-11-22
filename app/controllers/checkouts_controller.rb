@@ -76,6 +76,12 @@ class CheckoutsController < ApplicationController
         line_items: @cart_items,
         mode: "payment",
         currency: "usd",
+
+        ui_mode: "hosted_page",
+        allow_promotion_codes: false,
+        submit_type: "auto",
+        integration_identifier: "hosted_web_0001",
+        origin_context: "web",
   
         excluded_payment_method_types: [
           # Disable all just in case I open up international payments in the future
@@ -84,7 +90,7 @@ class CheckoutsController < ApplicationController
           "au_becs_debit",    # BECS Direct Debit (Australia)
           "acss_debit",       # Pre-authorized debit (Canada)
           "bacs_debit",       # Bacs Direct Debit (UK)
-        ],
+        ],  
         
         automatic_tax: { enabled: true },
 
