@@ -1,7 +1,7 @@
 class CheckoutsController < ApplicationController
   before_action :set_cart
   before_action :verify_cart
-  # before_action :checkout_disabled, only: [:create]
+  before_action :checkout_disabled, only: [:create]
 
   def new
     @cart_items = @cart.cart_items.includes(variant: [:craft, :images])  
