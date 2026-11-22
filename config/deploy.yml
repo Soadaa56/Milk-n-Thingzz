@@ -61,3 +61,6 @@ ssh:
   user: ubuntu
   keys:
     - ~/.ssh/LightsailDefaultKey-us-east-1.pem
+
+aliases:
+  console: app exec -i --reuse "bin/rails console"
