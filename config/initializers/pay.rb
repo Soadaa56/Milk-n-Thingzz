@@ -1,9 +1,9 @@
 Pay.setup do |config|
   # For use in the receipt/refund/renewal mailers
-  config.business_name = "Milknthingzz"
+  config.business_name = "Filthy Chai"
   config.business_address = ""
-  config.application_name = "Milknthingzz"
-  config.support_email = "<support@Milknthingzz.com>"
+  config.application_name = "Filthy Name"
+  config.support_email = "<support@FilthyChai.me>"
 
   config.default_product_name = "craft"
   config.default_plan_name = "default"

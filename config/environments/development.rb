@@ -84,22 +84,6 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  config.action_mailer.default_options = { from: 'support@milknthingzz.xyz' }
-
-  # ==> Custom Mailer settings with AWS SES using STMP
-  # config.action_mailer.perform_deliveries = true
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  # config.action_mailer.default_options = { from: 'do-not-reply@milknthingzz.xyz' }
-
-  config.action_mailer.smtp_settings = {
-    address: 'email-smtp.us-east-2.amazonaws.com',
-    port: 587,
-    domain: 'milknthingzz.xyz',
-    user_name: Rails.application.credentials.dig(:aws, :ses_access_key_id),
-    password: Rails.application.credentials.dig(:aws, :ses_secret_access_key),
-    authentication: :login,
-    enable_starttls_auto: true
-  }
+  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+  config.action_mailer.default_options = { from: "support@FilthyChai.me" }
 end
