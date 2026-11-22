@@ -98,7 +98,7 @@ class CheckoutsController < ApplicationController
         shipping_options: [
           shipping_rate_data: {
             type: "fixed_amount",
-            fixed_amount: { amount: 500, currency: "usd" },
+            fixed_amount: { amount: 700, currency: "usd" },
             display_name: "Standard Shipping (5-10 business days)",
             tax_behavior: "exclusive"
           }
