@@ -1,7 +1,7 @@
 We received payment for your purchase at <%= Pay.application_name %>.<br/>
 Thanks for your business, it means a lot to a us!<br/>
 <br/>
-Questions? Please reply to this email.<br/>
+Questions? Please reply to <%= Pay.support_email %><br/>
 <br/>
 ------------------------------------<br/>
 RECEIPT - <%= Pay.application_name %><br/>
@@ -11,7 +11,6 @@ Charged to: <%= params[:pay_charge].charged_to %><br/>
 Transaction ID: <%= params[:pay_charge].id %><br/>
 Date: <%= l params[:pay_charge].created_at %><br/>
 <% if params[:pay_charge].customer.owner.try(:extra_billing_info?) %>
-<%= params[:pay_charge].customer.owner.extra_billing_info %><br/>
+  <%= params[:pay_charge].customer.owner.extra_billing_info %><br/>
 <% end %>
-<br/>
 ------------------------------------<br/>
