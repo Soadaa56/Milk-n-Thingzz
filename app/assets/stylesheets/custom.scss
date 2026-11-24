@@ -166,11 +166,10 @@ main {
   margin: 0 1rem;
 
   .prose {
-    margin: 0 1rem;
+    margin: 0 3rem;
   }
 
   .prose p {
-    text-align: justify;
     font-size: 1.25rem;
     margin-top: 2rem;
   }
@@ -1006,6 +1005,17 @@ main.cart {
 // #endregion
 
 // #region STORE 
+  // not on store page, but links to it
+.store-button {
+  font-size: 1rem;
+  background-color: var(--shade-dark-color);
+  color: var(--light-accent-color);
+  border: 2px solid var(--temp-h2-color);
+  border-radius: 1rem;
+  padding: 0.8em;
+  box-shadow: 4px 4px 6px 1px black;
+}
+
 main.store {
   margin: 1rem 0.5rem;
 }
