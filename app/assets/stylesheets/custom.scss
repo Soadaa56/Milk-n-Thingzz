@@ -800,7 +800,7 @@ main.admin-order-show {
   background: linear-gradient(135deg, var(--shade-dark-color), var(--dark-accent-color));
   border: 3px solid var(--temp-h2-color);
   border-radius: 12px;
-  box-shadow: 0 6px 8px rgba(0, 112, 243, 0.15);
+  box-shadow: 2px 2px 6px 8px rgba(0, 112, 243, 0.15);
   filter: brightness(110%);
 
   &:hover {
