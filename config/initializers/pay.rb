@@ -25,5 +25,7 @@ Pay.setup do |config|
 end
 
 ActiveSupport.on_load(:pay) do
+  # checkout.session.async_payment_succeeded - for bank transfer/ACH/SEPA (session completed earlier but payment_status was unpaid)
+  # Would require rewrite on FulfillCheckout.call to seperate what is called on each event (complete vs async_payment_succeeded)
   Pay::Webhooks.delegator.subscribe "stripe.checkout.session.completed", FulfillCheckout.new
 end
