@@ -3,8 +3,8 @@
     <% if craft.images.present? %>
       <div class="sorted-image-container">
         <%= link_to craft_path(craft.slug) do %>
-          <%= image_tag(craft.images.first.image_url(:card) || 
-                        craft.images.first.image_url, class: "sorted-img") %>
+          <%= image_tag(craft.images.first.image_url(:card), class: "sorted-img", alt: craft.name || 
+                        craft.images.first.image_url, class: "sorted-img", alt: craft.name) %>
         <% end %>
       </div>
     <% else %>
