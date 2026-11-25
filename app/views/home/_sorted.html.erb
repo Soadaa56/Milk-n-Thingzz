@@ -2,7 +2,7 @@
   <% @crafts.each do |craft| %>
     <% if craft.images.present? %>
       <div class="sorted-image-container">
-        <%= link_to craft_path(craft.slug) do %>
+        <%= link_to craft_path(craft.slug), aria: { label: "Link to product page" } do %>
           <%= image_tag(craft.images.first.image_url(:card), class: "sorted-img", alt: craft.name || 
                         craft.images.first.image_url, class: "sorted-img", alt: craft.name) %>
         <% end %>

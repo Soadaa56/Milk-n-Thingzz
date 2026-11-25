@@ -1,9 +1,9 @@
 <header class="banner-container">
   <div class="mobile nav-menu-container">
-    <%= image_tag("mobile-menu.png", alt: "Menu icon", 
+    <%= image_tag("mobile-menu.png", alt: "", 
 		id: "mobile-menu-button", 
 		class: "mobile nav-menu-button",
-    alt: "Open Mobile Menu",
+    aria: { label: "Opens mobile Menu" },
     data: {
     controller: "nav",
     action: "click->nav#openNav"
@@ -16,8 +16,8 @@
     </div>
 
     <div class="shopping-cart-svg-container">
-      <%= link_to new_checkout_path do %>
-        <%= image_tag "svg/cart.svg", class: "shopping-cart-svg", alt: "Checkout link" %>
+      <%= link_to new_checkout_path, aria: { label: "Go to checkout" } do %>
+        <%= image_tag "svg/cart.svg", class: "shopping-cart-svg", alt: "" %>
           <% if current_cart %>
             <span id="cart-svg-count" class="cart-svg-count">
               <%= cart_item_count unless cart_item_count == 0 %>
