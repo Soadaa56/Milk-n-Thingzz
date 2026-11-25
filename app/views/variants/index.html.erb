@@ -35,7 +35,7 @@
         <td class="align-middle thumbnail-container">
           <% if v.images.any? && v.images.first.image_url(:small) %>
             <%= image_tag v.images.first.image_url(:small), 
-                class: "thumbnail-image" %>
+                class: "thumbnail-image", alt: v.name %>
           <% end %>
         </td>
         <td class="align-middle">
