@@ -1,7 +1,8 @@
 <div class="cart-item">
   <% if cart_item.variant.images.present? %>
     <%= image_tag cart_item.variant.images.first.image_url(:small),
-        class: "cart-item-img" %>
+        class: "cart-item-img",
+        alt: cart_item.variant.craft.name %>
   <% end %>
 
   <div class="cart-item-name">
@@ -23,7 +24,8 @@
     <%= button_to image_tag("svg/x.svg", alt: "Remove Item"),
           cart_cart_item_path(cart_item),
           method: :delete,
-          class: "cart-item-remove-button" %>
+          class: "cart-item-remove-button",
+          alt: "Remove item from cart" %>
   </div>
 
   <div
@@ -40,7 +42,7 @@
           cart_quantity_target: "minus"
         },
         class: "cart-quantity-button" do %>
-      <%= image_tag "svg/minus-circle.svg" %>
+      <%= image_tag "svg/minus-circle.svg", alt: "Decrease item quantity" %>
     <% end %>
 
     <div><%= cart_item.quantity %></div>
@@ -53,7 +55,7 @@
           cart_quantity_target: "plus"
         },
         class: "cart-quantity-button" do %>
-      <%= image_tag "svg/plus-circle.svg" %>
+      <%= image_tag "svg/plus-circle.svg", alt: "Increase item quantity" %>
     <% end %>
   </div>
 
