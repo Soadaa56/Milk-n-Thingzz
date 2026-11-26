@@ -1,9 +1,17 @@
 # See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
 User-agent: *
-Disallow: /admin
-Disallow: /rails
-Disallow: /api/private
-Disallow: /login
-Disallow: /signup
-
 Allow: /
+
+Disallow: /admin
+Disallow: /users
+Disallow: /profile
+Disallow: /crafts/new
+Disallow: /crafts/*/edit
+Disallow: /crafts/*/variants
+Disallow: /cart
+Disallow: /checkout
+Disallow: /orders
+Disallow: /pay
+Disallow: /rails
+Disallow: /home/store?
+Disallow: /*?sort_by=

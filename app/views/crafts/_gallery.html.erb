@@ -20,6 +20,7 @@
       <% cv.images.drop(1).each do |image| %>
         <div class="thumbnail">
           <%= image_tag image.image_url(:small),
+              alt: cv.craft.name,
               data: { 
                 gallery_target: "thumbnail",
                 action: "click->gallery#swap",

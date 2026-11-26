@@ -1,27 +1,27 @@
 <div id="sidebar" class="navbar-nav">
-  <%= link_to "Crochet", home_crochet_path, class:"nav-link" %>
-  <%= link_to "Earrings", home_earring_path, class:"nav-link" %>
-  <%= link_to "Embroidery", home_embroidery_path, class:"nav-link" %>
-  <%= link_to "Necklaces", home_necklace_path, class: "nav-link" %>
+  <%= link_to "Crochet", home_crochet_path, class:"nav-link", aria: { label: "Filter crafts" } %>
+  <%= link_to "Earrings", home_earring_path, class:"nav-link", aria: { label: "Filter crafts" } %>
+  <%= link_to "Embroidery", home_embroidery_path, class:"nav-link", aria: { label: "Filter crafts" } %>
+  <%= link_to "Necklaces", home_necklace_path, class: "nav-link", aria: { label: "Filter crafts" } %>
   <%#= link_to "Painting", home_painting_path, class:"nav-link" %>
-  <%= link_to "3-D Prints", home_print_path, class:"nav-link" %>
-  <%= link_to "Misc.", home_miscellaneous_path, class:"nav-link" %>
+  <%= link_to "3-D Prints", home_print_path, class:"nav-link", aria: { label: "Filter crafts" } %>
+  <%= link_to "Misc.", home_miscellaneous_path, class:"nav-link", aria: { label: "Filter crafts" } %>
 
   <br>
-  <%= link_to "Socials", home_social_path, class:"nav-link" %>
+  <%= link_to "Socials", home_social_path, class:"nav-link", aria: { label: "Social links" } %>
 
   <br>
   <div class="account-links">
     <% if current_user %>
-      <%= link_to "Account", profile_path, class: "nav-link" %>
+      <%= link_to "Account", profile_path, class: "nav-link", aria: { label: "Link to account settings" } %>
     <% else %>
-      <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
-      <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "nav-link", aria: { label: "Sign up for a filthy chai account" } %>
+      <%= link_to "Sign In", new_user_session_path, class: "nav-link", aria: { label: "Sign in to an existing filthy chai account" } %>
     <% end %>
   </div>
   
   <% if current_user&.admin? %>
-    <div class="navbar-admin">
+    <div class="navbar-admin" aria: { hidden: true }>
       <%= link_to "New Craft", new_craft_path, class:"nav-link" %>
       <%= link_to "All Crafts", crafts_path, class:"nav-link" %>
       <%= link_to "Admin", admin_index_path, class:"nav-link" %>

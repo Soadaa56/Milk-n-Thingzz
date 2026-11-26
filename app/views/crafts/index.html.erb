@@ -43,7 +43,7 @@
         <td class="align-middle">
           <% if craft.images.any? && craft.images.first.image_url(:small) %>
             <%= image_tag craft.images.first.image_url(:small), 
-                class: "thumbnail-image" %>
+                class: "thumbnail-image", alt: craft.name %>
           <% end %>
           
         <td class="align-middle">

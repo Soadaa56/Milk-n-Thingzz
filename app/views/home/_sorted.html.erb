@@ -1,10 +1,10 @@
-<div class='grid-sorted'>
+<div class="grid-sorted">
   <% @crafts.each do |craft| %>
     <% if craft.images.present? %>
-      <div class='sorted-image-container'>
-        <%= link_to craft_path(craft.slug) do %>
-          <%= image_tag(craft.images.first.image_url(:card) || 
-                        craft.images.first.image_url, class: 'sorted-img') %>
+      <div class="sorted-image-container">
+        <%= link_to craft_path(craft.slug), aria: { label: "Link to product page" } do %>
+          <%= image_tag(craft.images.first.image_url(:card), class: "sorted-img", alt: craft.name || 
+                        craft.images.first.image_url, class: "sorted-img", alt: craft.name) %>
         <% end %>
       </div>
     <% else %>
@@ -14,8 +14,8 @@
 
 <% if @crafts.empty? %>
   <div class="center fs-3 m-5">
-    <p>There aren't any crafts of this type yet! :(</p>
+    <p>There aren"t any crafts of this type yet! :(</p>
     <p>Check back later when some are added! :)</p>
   </div>
-  <%= render 'home/about' %>
+  <%= render "home/about" %>
 <% end %>

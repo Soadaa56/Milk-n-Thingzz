@@ -8,19 +8,19 @@
   %>
 
   <ul>
-    <li><%= link_to "Crochet", home_store_path(category: "Crochet"), class:"nav-item",
+    <li><%= link_to "Crochet", home_store_path(category: "Crochet"), class:"nav-item", aria: { label: "Filter crafts" },
               data: { turbo_frame: "crafts-list",
                       action: "click->nav#closeNav" } %></li>
-    <li><%= link_to "Earrings", home_store_path(category: "Earring"), class:"nav-item",
+    <li><%= link_to "Earrings", home_store_path(category: "Earring"), class:"nav-item", aria: { label: "Filter crafts" },
               data: { turbo_frame: "crafts-list",
                       action: "click->nav#closeNav" } %></li>
-    <li><%= link_to "Embroidery", home_store_path(category: "Embroidery"), class:"nav-item",
+    <li><%= link_to "Embroidery", home_store_path(category: "Embroidery"), class:"nav-item", aria: { label: "Filter crafts" },
               data: { turbo_frame: "crafts-list",
                       action: "click->nav#closeNav" } %></li>
-    <li><%= link_to "Necklaces", home_store_path(category: "Necklace"), class: "nav-item",
+    <li><%= link_to "Necklaces", home_store_path(category: "Necklace"), class: "nav-item", aria: { label: "Filter crafts" },
               data: { turbo_frame: "crafts-list",
                       action: "click->nav#closeNav" } %></li>
-    <li><%= link_to "3-D Prints", home_store_path(category: "3D-Print"), class:"nav-item",
+    <li><%= link_to "3-D Prints", home_store_path(category: "3D-Print"), class:"nav-item", aria: { label: "Filter crafts" },
               data: { turbo_frame: "crafts-list",
                       action: "click->nav#closeNav" } %></li>
     <%# Perhaps conditional for misc path if misc crafts active %>
@@ -30,13 +30,13 @@
                       action: "click->nav#closeNav" } %></li>
 
     <li class="social-links">
-      <%= link_to image_tag("social/etsy-logo.svg", class: "social-link-img"), 
+      <%= link_to image_tag("social/etsy-logo.svg", class: "social-link-img", alt: "Filthy Chai Etsy store link"), 
                             "https://www.etsy.com/dk-en/shop/FilthyChaii?etsrc=sdt",
                             target: :_blank %>
-      <%= link_to image_tag("social/youtube-logo.svg", class: "social-link-img"), 
+      <%= link_to image_tag("social/youtube-logo.svg", class: "social-link-img", alt: "Chai cuterie youtube page link"), 
                             "https://www.youtube.com/@chaicuterie",
                             target: :_blank %>
-      <%= link_to image_tag("social/instagram-logo.svg", class: "social-link-img"), 
+      <%= link_to image_tag("social/instagram-logo.svg", class: "social-link-img", alt: "Milknthingzz instagram link"), 
                             "https://www.instagram.com/milknthingzz?igsh=c3M1NXRwbnV2N3J3&utm_source=qr",
                             target: :_blank %>
     </li>
